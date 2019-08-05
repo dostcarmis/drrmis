@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Daguioman" id="Daguioman">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>Daguioman</name>
+  <Placemark>
+	<name>DAGUIOMAN</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Daguioman">
+		<SimpleData name="Descriptio">Municipal</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>relativeToGround</altitudeMode><coordinates>120.906316,17.417989 120.891705,17.445114 120.883592,17.468127 120.90585,17.475025 120.921635,17.480909 120.932217,17.485042 120.97897,17.503275 120.980313,17.502928 120.980283,17.503788 120.982541,17.502697 120.984189,17.501909 120.985913,17.500301 120.986562,17.498613 120.988042,17.496716 120.990071,17.495169 120.990903,17.493262 120.991742,17.49163 120.993459,17.490502 120.996831,17.489797 120.997234,17.427731 120.997066,17.420991 120.996418,17.417072 120.993107,17.407193 120.989109,17.396485 120.969849,17.403135 120.927957,17.411678 120.923435,17.41186 120.906316,17.417989</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

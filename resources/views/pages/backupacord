@@ -1,0 +1,175 @@
+<div class="wrap accord">
+    	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  <div class="panel panel-default pnl-roadnetworks active">
+		    <div class="panel-heading" role="tab" id="headingOne">
+		      <h4 class="panel-title">
+		        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#roadnetworks" aria-expanded="true" aria-controls="roadnetworks">
+		          Road Networks <i class="fa fa-minus-circle" aria-hidden="true"></i>
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="roadnetworks" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="RoadNetworks">
+		      <div class="panel-body">
+		      <?php if(empty($roadnetworks)) { ?>
+		      	<span class="defsp">No Road reports.</span>
+				<?php } else { ?>
+					@foreach($roadnetworks as $roadnetwork)
+		
+			<div class="col-xs-12 col-sm-12 col-sm-12 per-monitoring-home">
+				<div class="col-xs-12 np monitoring-inner-wrap">
+					<div class="col-xs-12 roadnetworks-title-home">
+						<span class="defsp r-spstatus">Status: <span>{{ $roadnetwork->status }}</span></span>
+						<span class="defsp r-sptimeanddate">Date: <span><?php echo date("F j Y g:i A", strtotime($roadnetwork->date));?></span></span>
+					</div>
+					<div class="col-xs-12 r-monitoringwrap-details">
+						<span class="defsp r-splocation">{{ $roadnetwork->location }}</span>
+			
+					</div>
+					<div class="col-xs-12 r-per-monitoring-blw">
+						<span>Source: <span>{{ $roadnetwork->author }}</span></span> | <span>Uploaded by: 
+						@foreach($users as $user)
+							@if($roadnetwork->user_id === $user->id)
+								
+							@endif
+						@endforeach
+						</span>
+					</div>
+					<div class="col-xs-12 r-links">
+						<a href="#"><a href="#">Read More</a>
+					</div>
+				</div>
+			</div>
+			
+		@endforeach
+		<?php if (Auth::check()) : ?>
+			<div class="col-xs-12 np r-moreroadlink">
+				<a href="{{ action("RoadController@viewRoadnetworksmonitoring") }}" class="btn btn-primary">More Roadnetworks</a>
+			</div>   
+		<?php endif;?>
+				<?php } ?>
+		       
+		
+		      </div>
+		    </div>
+		  </div>
+		  <div class="panel panel-default pnl-landslides">
+		    <div class="panel-heading" role="tab" id="Landslides">
+		      <h4 class="panel-title">
+		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#landslides" aria-expanded="false" aria-controls="Landslides">
+		          Landslides <i class="fa  fa-plus-circle" aria-hidden="true"></i>
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="landslides" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Landslides">
+		      <div class="panel-body">
+		      <?php if(empty($landslides)) { ?>
+		      	<span class="defsp">No Landslide reports.</span>
+		      <?php } else { ?>
+		      	 @foreach($landslides as $landslide)
+	
+
+			<div class="col-xs-12 col-sm-12 col-sm-12 per-monitoring-home">
+				<div class="col-xs-12 np monitoring-inner-wrap">
+					<div class="col-xs-12 roadnetworks-title-home">
+						<span class="defsp r-sptimeanddate">Date: <span><?php echo date("F j Y g:i A", strtotime($landslide->date));?></span></span>
+					</div>
+					<div class="col-xs-12 r-monitoringwrap-details">
+						<span class="defsp r-splocation">{{ $landslide->location }}</span>
+			
+					</div>
+					<div class="col-xs-12 r-per-monitoring-blw">
+						<span>Source: <span>{{ $landslide->author }}</span></span> | <span>Uploaded by: 
+						@foreach($users as $user)
+							@if($landslide->user_id === $user->id)
+								
+							@endif
+						@endforeach
+						</span>
+					</div>
+					<div class="col-xs-12 r-links">
+						<a href="#" class="l-viewmap" id="{{ $landslide->id }}">View on Map</a> | <a href="<?php echo url('viewperlandslide'); ?>/<?php echo $landslide->id?>">Read More</a>
+					</div>
+				</div>
+			</div>
+			
+		@endforeach
+		<?php if (Auth::check()) : ?>
+			<div class="col-xs-12 np r-moreroadlink">
+				<a href="{{ action("LandslideController@viewmultipleLandslides") }}" class="btn btn-primary">More Landslides</a>
+			</div>   
+		<?php endif;?>
+		      <?php } ?>
+		        
+		      </div>
+		    </div>
+		  </div>
+		  <div class="panel panel-default pnl-floods">
+		    <div class="panel-heading" role="tab" id="Floods">
+		      <h4 class="panel-title">
+		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#floods" aria-expanded="false" aria-controls="Floods">
+		          Floods <i class="fa  fa-plus-circle" aria-hidden="true"></i>
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="floods" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Floods">
+		      <div class="panel-body">
+		        <?php if(empty($floods)) { ?>
+		        <span class="defsp">No Flood reports.</span>
+		        <?php } else { ?>
+
+		        @foreach($floods as $flood)
+	
+
+			<div class="col-xs-12 col-sm-12 col-sm-12 per-monitoring-home">
+				<div class="col-xs-12 np monitoring-inner-wrap">
+					<div class="col-xs-12 roadnetworks-title-home">
+						<span class="defsp r-sptimeanddate">Date: <span><?php echo date("F j Y g:i A", strtotime($flood->date));?></span></span>
+					</div>
+					<div class="col-xs-12 r-monitoringwrap-details">
+						<span class="defsp r-splocation">{{ $flood->location }}</span>
+			
+					</div>
+					<div class="col-xs-12 r-per-monitoring-blw">
+						<span>Source: <span>{{ $flood->author }}</span></span> | <span>Uploaded by: 
+						@foreach($users as $user)
+							@if($flood->user_id === $user->id)
+					
+							@endif
+						@endforeach
+						</span>
+					</div>
+					<div class="col-xs-12 r-links">
+						<a href="#" id="{{$flood->id}}" class="f-viewmap" >View on Map</a> | <a href="<?php echo url('viewperflood'); ?>/<?php echo $flood->id?>">Read More</a>
+					</div>
+				</div>
+			</div>
+			
+		@endforeach
+		<?php if (Auth::check()) { ?>
+			<div class="col-xs-12 np r-moreroadlink">
+				<a href="{{ action("FloodController@viewmultipleFloods") }}" class="btn btn-primary">More Floods</a>
+			</div>   
+		<?php } ?>
+		    <?php } ?>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="panel panel-default pnl-sensors">
+		    <div class="panel-heading" role="tab" id="Landslides">
+		      <h4 class="panel-title">
+		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#sensors" aria-expanded="false" aria-controls="Sensors">
+		          View Sensors <i class="fa  fa-plus-circle" aria-hidden="true"></i>
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="sensors" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Landslides">
+		      <ul class="ulsensorstop">
+                <li id="rg"><div class="checkbox"><label><input  class="faChkSqr" id="rain-gauge" type="checkbox" name="Rain Gauges"  value="1">Rain Gauges</label></div></li>
+                <li id="sg"><div class="checkbox"><label><input class="faChkSqr" id="stream-gauge"  type="checkbox" name="Stream Gauges" value="2">Stream Gauges</label></div></li>
+                <li id="dsg"><div class="checkbox"><label><input class="faChkSqr" id="rain-and-stream-gauge"  type="checkbox" name="Rain and Stream Gauges" value="3">Rain and Stream Gauges</label></div></li>
+                <li id="ws"><div class="checkbox"><label><input class="faChkSqr" id="weather-stations"  type="checkbox" name="" value="4">Weather Stations</label></div></li>
+            </ul>
+		    </div>
+		  </div>
+		</div>
+    </div><!--end accord-->

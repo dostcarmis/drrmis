@@ -1,0 +1,247 @@
+Light,Moderate,Heavy,Intense ,Torrential
+"<Placemark>
+<name>DAGUIOMAN</name>
+<description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+<styleUrl>#poly-light</styleUrl>
+<ExtendedData>
+  <Data name=""description"">
+    <value/>
+  </Data>
+  <Data name=""Descriptio"">
+    <value>Municipal</value>
+  </Data>
+</ExtendedData>
+<Polygon>
+  <outerBoundaryIs>
+    <LinearRing>
+      <tessellate>1</tessellate>
+      <coordinates>
+        120.906316,17.417989,0
+        120.923435,17.41186,0
+        120.927957,17.411678,0
+        120.969849,17.403135,0
+        120.989109,17.396485,0
+        120.993107,17.407193,0
+        120.996418,17.417072,0
+        120.997066,17.420991,0
+        120.997234,17.427731,0
+        120.996831,17.489797,0
+        120.993459,17.490502,0
+        120.991742,17.49163,0
+        120.990903,17.493262,0
+        120.990071,17.495169,0
+        120.988042,17.496716,0
+        120.986562,17.498613,0
+        120.985913,17.500301,0
+        120.984189,17.501909,0
+        120.982541,17.502697,0
+        120.980283,17.503788,0
+        120.980313,17.502928,0
+        120.97897,17.503275,0
+        120.932217,17.485042,0
+        120.921635,17.480909,0
+        120.90585,17.475025,0
+        120.883592,17.468127,0
+        120.891705,17.445114,0
+        120.906316,17.417989,0
+      </coordinates>
+    </LinearRing>
+  </outerBoundaryIs>
+</Polygon>
+</Placemark>","<Placemark>
+<name>DAGUIOMAN</name>
+<description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+<styleUrl>#poly-moderate</styleUrl>
+<ExtendedData>
+  <Data name=""description"">
+    <value/>
+  </Data>
+  <Data name=""Descriptio"">
+    <value>Municipal</value>
+  </Data>
+</ExtendedData>
+<Polygon>
+  <outerBoundaryIs>
+    <LinearRing>
+      <tessellate>1</tessellate>
+      <coordinates>
+        120.906316,17.417989,0
+        120.923435,17.41186,0
+        120.927957,17.411678,0
+        120.969849,17.403135,0
+        120.989109,17.396485,0
+        120.993107,17.407193,0
+        120.996418,17.417072,0
+        120.997066,17.420991,0
+        120.997234,17.427731,0
+        120.996831,17.489797,0
+        120.993459,17.490502,0
+        120.991742,17.49163,0
+        120.990903,17.493262,0
+        120.990071,17.495169,0
+        120.988042,17.496716,0
+        120.986562,17.498613,0
+        120.985913,17.500301,0
+        120.984189,17.501909,0
+        120.982541,17.502697,0
+        120.980283,17.503788,0
+        120.980313,17.502928,0
+        120.97897,17.503275,0
+        120.932217,17.485042,0
+        120.921635,17.480909,0
+        120.90585,17.475025,0
+        120.883592,17.468127,0
+        120.891705,17.445114,0
+        120.906316,17.417989,0
+      </coordinates>
+    </LinearRing>
+  </outerBoundaryIs>
+</Polygon>
+</Placemark>","<Placemark>
+<name>DAGUIOMAN</name>
+<description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+<styleUrl>#poly-heavy</styleUrl>
+<ExtendedData>
+  <Data name=""description"">
+    <value/>
+  </Data>
+  <Data name=""Descriptio"">
+    <value>Municipal</value>
+  </Data>
+</ExtendedData>
+<Polygon>
+  <outerBoundaryIs>
+    <LinearRing>
+      <tessellate>1</tessellate>
+      <coordinates>
+        120.906316,17.417989,0
+        120.923435,17.41186,0
+        120.927957,17.411678,0
+        120.969849,17.403135,0
+        120.989109,17.396485,0
+        120.993107,17.407193,0
+        120.996418,17.417072,0
+        120.997066,17.420991,0
+        120.997234,17.427731,0
+        120.996831,17.489797,0
+        120.993459,17.490502,0
+        120.991742,17.49163,0
+        120.990903,17.493262,0
+        120.990071,17.495169,0
+        120.988042,17.496716,0
+        120.986562,17.498613,0
+        120.985913,17.500301,0
+        120.984189,17.501909,0
+        120.982541,17.502697,0
+        120.980283,17.503788,0
+        120.980313,17.502928,0
+        120.97897,17.503275,0
+        120.932217,17.485042,0
+        120.921635,17.480909,0
+        120.90585,17.475025,0
+        120.883592,17.468127,0
+        120.891705,17.445114,0
+        120.906316,17.417989,0
+      </coordinates>
+    </LinearRing>
+  </outerBoundaryIs>
+</Polygon>
+</Placemark>","<Placemark>
+<name>DAGUIOMAN</name>
+<description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+<styleUrl>#poly-intense</styleUrl>
+<ExtendedData>
+  <Data name=""description"">
+    <value/>
+  </Data>
+  <Data name=""Descriptio"">
+    <value>Municipal</value>
+  </Data>
+</ExtendedData>
+<Polygon>
+  <outerBoundaryIs>
+    <LinearRing>
+      <tessellate>1</tessellate>
+      <coordinates>
+        120.906316,17.417989,0
+        120.923435,17.41186,0
+        120.927957,17.411678,0
+        120.969849,17.403135,0
+        120.989109,17.396485,0
+        120.993107,17.407193,0
+        120.996418,17.417072,0
+        120.997066,17.420991,0
+        120.997234,17.427731,0
+        120.996831,17.489797,0
+        120.993459,17.490502,0
+        120.991742,17.49163,0
+        120.990903,17.493262,0
+        120.990071,17.495169,0
+        120.988042,17.496716,0
+        120.986562,17.498613,0
+        120.985913,17.500301,0
+        120.984189,17.501909,0
+        120.982541,17.502697,0
+        120.980283,17.503788,0
+        120.980313,17.502928,0
+        120.97897,17.503275,0
+        120.932217,17.485042,0
+        120.921635,17.480909,0
+        120.90585,17.475025,0
+        120.883592,17.468127,0
+        120.891705,17.445114,0
+        120.906316,17.417989,0
+      </coordinates>
+    </LinearRing>
+  </outerBoundaryIs>
+</Polygon>
+</Placemark>","<Placemark>
+<name>DAGUIOMAN</name>
+<description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+<styleUrl>#poly-torrential</styleUrl>
+<ExtendedData>
+  <Data name=""description"">
+    <value/>
+  </Data>
+  <Data name=""Descriptio"">
+    <value>Municipal</value>
+  </Data>
+</ExtendedData>
+<Polygon>
+  <outerBoundaryIs>
+    <LinearRing>
+      <tessellate>1</tessellate>
+      <coordinates>
+        120.906316,17.417989,0
+        120.923435,17.41186,0
+        120.927957,17.411678,0
+        120.969849,17.403135,0
+        120.989109,17.396485,0
+        120.993107,17.407193,0
+        120.996418,17.417072,0
+        120.997066,17.420991,0
+        120.997234,17.427731,0
+        120.996831,17.489797,0
+        120.993459,17.490502,0
+        120.991742,17.49163,0
+        120.990903,17.493262,0
+        120.990071,17.495169,0
+        120.988042,17.496716,0
+        120.986562,17.498613,0
+        120.985913,17.500301,0
+        120.984189,17.501909,0
+        120.982541,17.502697,0
+        120.980283,17.503788,0
+        120.980313,17.502928,0
+        120.97897,17.503275,0
+        120.932217,17.485042,0
+        120.921635,17.480909,0
+        120.90585,17.475025,0
+        120.883592,17.468127,0
+        120.891705,17.445114,0
+        120.906316,17.417989,0
+      </coordinates>
+    </LinearRing>
+  </outerBoundaryIs>
+</Polygon>
+</Placemark>"

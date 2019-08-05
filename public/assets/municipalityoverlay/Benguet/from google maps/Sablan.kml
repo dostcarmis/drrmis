@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Sablan</name>
+    <Style id="poly-0097A7-1000-153-normal">
+      <LineStyle>
+        <color>ffa79700</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>99a79700</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Style id="poly-0097A7-1000-153-highlight">
+      <LineStyle>
+        <color>ffa79700</color>
+        <width>1.5</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>99a79700</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <StyleMap id="poly-0097A7-1000-153">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-0097A7-1000-153-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-0097A7-1000-153-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>SABLAN</name>
+      <description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+      <styleUrl>#poly-0097A7-1000-153</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value/>
+        </Data>
+        <Data name="Descriptio">
+          <value>Municipal</value>
+        </Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              120.566053,16.546065,0
+              120.536405,16.546205,0
+              120.515711,16.548333,0
+              120.498276,16.542586,0
+              120.495016,16.535314,0
+              120.481826,16.515334,0
+              120.476215,16.506961,0
+              120.473568,16.50467,0
+              120.472935,16.503768,0
+              120.472515,16.502898,0
+              120.471882,16.501368,0
+              120.471615,16.500288,0
+              120.471348,16.499178,0
+              120.471119,16.497379,0
+              120.471187,16.496153,0
+              120.471729,16.492621,0
+              120.472649,16.486148,0
+              120.473843,16.478913,0
+              120.47563,16.466405,0
+              120.478422,16.45181,0
+              120.503865,16.449084,0
+              120.518551,16.44806,0
+              120.549267,16.444226,0
+              120.551258,16.455793,0
+              120.554448,16.476023,0
+              120.554722,16.478257,0
+              120.559697,16.511478,0
+              120.5631,16.530464,0
+              120.563795,16.534185,0
+              120.566053,16.546065,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>

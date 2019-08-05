@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Kapangan" id="Kapangan">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>Kapangan</name>
+  <Placemark>
+	<name>KAPANGAN</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Kapangan">
+		<SimpleData name="Descriptio">Municipal</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>relativeToGround</altitudeMode><coordinates>120.677076,16.636756 120.676763,16.636761 120.654005,16.620769 120.63783,16.610482 120.637723,16.593302 120.637296,16.578748 120.63725,16.578416 120.637212,16.57076 120.636602,16.547385 120.619756,16.546973 120.594472,16.546327 120.590833,16.5463 120.570074,16.546309 120.566053,16.546065 120.536405,16.546205 120.515711,16.548333 120.537165,16.572401 120.543739,16.578913 120.549506,16.585089 120.559747,16.597798 120.552658,16.603535 120.542912,16.608502 120.563947,16.631746 120.57746,16.652856 120.579854,16.660114 120.582448,16.661926 120.585082,16.663814 120.588164,16.666559 120.59014,16.668428 120.59558,16.673319 120.599417,16.678408 120.600294,16.679235 120.657491,16.647821 120.666189,16.642777 120.677076,16.636756</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

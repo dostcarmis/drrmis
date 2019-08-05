@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Bucloc" id="Bucloc">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>Bucloc</name>
+  <Placemark>
+	<name>BUCLOC</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Bucloc">
+		<SimpleData name="Descriptio">Municipal</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>relativeToGround</altitudeMode><coordinates>120.906316,17.417989 120.878109,17.416487 120.851703,17.416352 120.837948,17.41638 120.823681,17.416064 120.788494,17.415931 120.788211,17.444188 120.802302,17.448279 120.817113,17.452112 120.822687,17.453186 120.843831,17.458487 120.865186,17.463525 120.883592,17.468127 120.891705,17.445114 120.906316,17.417989</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

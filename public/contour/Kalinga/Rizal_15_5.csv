@@ -1,0 +1,247 @@
+Light,Moderate,Heavy,Intense ,Torrential
+"<Placemark>
+  <name>RIZAL (LIWAN)</name>
+  <description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+  <styleUrl>#poly-light</styleUrl>
+  <ExtendedData>
+    <Data name=""description"">
+      <value/>
+    </Data>
+    <Data name=""Descriptio"">
+      <value>Municipal</value>
+    </Data>
+  </ExtendedData>
+  <Polygon>
+    <outerBoundaryIs>
+      <LinearRing>
+        <tessellate>1</tessellate>
+        <coordinates>
+          121.584653,17.575158,0
+          121.559216,17.569946,0
+          121.529744,17.565784,0
+          121.486851,17.55934,0
+          121.494893,17.549802,0
+          121.500027,17.54311,0
+          121.513463,17.52612,0
+          121.53436,17.500793,0
+          121.547116,17.48467,0
+          121.554226,17.476678,0
+          121.568653,17.459856,0
+          121.579487,17.446696,0
+          121.6114,17.408685,0
+          121.653284,17.431483,0
+          121.665349,17.448859,0
+          121.669089,17.459552,0
+          121.668694,17.471388,0
+          121.667812,17.486071,0
+          121.665021,17.49083,0
+          121.663105,17.492954,0
+          121.653624,17.504073,0
+          121.639394,17.516685,0
+          121.630818,17.526207,0
+          121.625684,17.531664,0
+          121.61456,17.544173,0
+          121.598401,17.560508,0
+          121.591797,17.567098,0
+          121.584653,17.575158,0
+        </coordinates>
+      </LinearRing>
+    </outerBoundaryIs>
+  </Polygon>
+</Placemark>","<Placemark>
+  <name>RIZAL (LIWAN)</name>
+  <description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+  <styleUrl>#poly-moderate</styleUrl>
+  <ExtendedData>
+    <Data name=""description"">
+      <value/>
+    </Data>
+    <Data name=""Descriptio"">
+      <value>Municipal</value>
+    </Data>
+  </ExtendedData>
+  <Polygon>
+    <outerBoundaryIs>
+      <LinearRing>
+        <tessellate>1</tessellate>
+        <coordinates>
+          121.584653,17.575158,0
+          121.559216,17.569946,0
+          121.529744,17.565784,0
+          121.486851,17.55934,0
+          121.494893,17.549802,0
+          121.500027,17.54311,0
+          121.513463,17.52612,0
+          121.53436,17.500793,0
+          121.547116,17.48467,0
+          121.554226,17.476678,0
+          121.568653,17.459856,0
+          121.579487,17.446696,0
+          121.6114,17.408685,0
+          121.653284,17.431483,0
+          121.665349,17.448859,0
+          121.669089,17.459552,0
+          121.668694,17.471388,0
+          121.667812,17.486071,0
+          121.665021,17.49083,0
+          121.663105,17.492954,0
+          121.653624,17.504073,0
+          121.639394,17.516685,0
+          121.630818,17.526207,0
+          121.625684,17.531664,0
+          121.61456,17.544173,0
+          121.598401,17.560508,0
+          121.591797,17.567098,0
+          121.584653,17.575158,0
+        </coordinates>
+      </LinearRing>
+    </outerBoundaryIs>
+  </Polygon>
+</Placemark>","<Placemark>
+  <name>RIZAL (LIWAN)</name>
+  <description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+  <styleUrl>#poly-heavy</styleUrl>
+  <ExtendedData>
+    <Data name=""description"">
+      <value/>
+    </Data>
+    <Data name=""Descriptio"">
+      <value>Municipal</value>
+    </Data>
+  </ExtendedData>
+  <Polygon>
+    <outerBoundaryIs>
+      <LinearRing>
+        <tessellate>1</tessellate>
+        <coordinates>
+          121.584653,17.575158,0
+          121.559216,17.569946,0
+          121.529744,17.565784,0
+          121.486851,17.55934,0
+          121.494893,17.549802,0
+          121.500027,17.54311,0
+          121.513463,17.52612,0
+          121.53436,17.500793,0
+          121.547116,17.48467,0
+          121.554226,17.476678,0
+          121.568653,17.459856,0
+          121.579487,17.446696,0
+          121.6114,17.408685,0
+          121.653284,17.431483,0
+          121.665349,17.448859,0
+          121.669089,17.459552,0
+          121.668694,17.471388,0
+          121.667812,17.486071,0
+          121.665021,17.49083,0
+          121.663105,17.492954,0
+          121.653624,17.504073,0
+          121.639394,17.516685,0
+          121.630818,17.526207,0
+          121.625684,17.531664,0
+          121.61456,17.544173,0
+          121.598401,17.560508,0
+          121.591797,17.567098,0
+          121.584653,17.575158,0
+        </coordinates>
+      </LinearRing>
+    </outerBoundaryIs>
+  </Polygon>
+</Placemark>","<Placemark>
+  <name>RIZAL (LIWAN)</name>
+  <description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+  <styleUrl>#poly-intense</styleUrl>
+  <ExtendedData>
+    <Data name=""description"">
+      <value/>
+    </Data>
+    <Data name=""Descriptio"">
+      <value>Municipal</value>
+    </Data>
+  </ExtendedData>
+  <Polygon>
+    <outerBoundaryIs>
+      <LinearRing>
+        <tessellate>1</tessellate>
+        <coordinates>
+          121.584653,17.575158,0
+          121.559216,17.569946,0
+          121.529744,17.565784,0
+          121.486851,17.55934,0
+          121.494893,17.549802,0
+          121.500027,17.54311,0
+          121.513463,17.52612,0
+          121.53436,17.500793,0
+          121.547116,17.48467,0
+          121.554226,17.476678,0
+          121.568653,17.459856,0
+          121.579487,17.446696,0
+          121.6114,17.408685,0
+          121.653284,17.431483,0
+          121.665349,17.448859,0
+          121.669089,17.459552,0
+          121.668694,17.471388,0
+          121.667812,17.486071,0
+          121.665021,17.49083,0
+          121.663105,17.492954,0
+          121.653624,17.504073,0
+          121.639394,17.516685,0
+          121.630818,17.526207,0
+          121.625684,17.531664,0
+          121.61456,17.544173,0
+          121.598401,17.560508,0
+          121.591797,17.567098,0
+          121.584653,17.575158,0
+        </coordinates>
+      </LinearRing>
+    </outerBoundaryIs>
+  </Polygon>
+</Placemark>","<Placemark>
+  <name>RIZAL (LIWAN)</name>
+  <description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+  <styleUrl>#poly-torrential</styleUrl>
+  <ExtendedData>
+    <Data name=""description"">
+      <value/>
+    </Data>
+    <Data name=""Descriptio"">
+      <value>Municipal</value>
+    </Data>
+  </ExtendedData>
+  <Polygon>
+    <outerBoundaryIs>
+      <LinearRing>
+        <tessellate>1</tessellate>
+        <coordinates>
+          121.584653,17.575158,0
+          121.559216,17.569946,0
+          121.529744,17.565784,0
+          121.486851,17.55934,0
+          121.494893,17.549802,0
+          121.500027,17.54311,0
+          121.513463,17.52612,0
+          121.53436,17.500793,0
+          121.547116,17.48467,0
+          121.554226,17.476678,0
+          121.568653,17.459856,0
+          121.579487,17.446696,0
+          121.6114,17.408685,0
+          121.653284,17.431483,0
+          121.665349,17.448859,0
+          121.669089,17.459552,0
+          121.668694,17.471388,0
+          121.667812,17.486071,0
+          121.665021,17.49083,0
+          121.663105,17.492954,0
+          121.653624,17.504073,0
+          121.639394,17.516685,0
+          121.630818,17.526207,0
+          121.625684,17.531664,0
+          121.61456,17.544173,0
+          121.598401,17.560508,0
+          121.591797,17.567098,0
+          121.584653,17.575158,0
+        </coordinates>
+      </LinearRing>
+    </outerBoundaryIs>
+  </Polygon>
+</Placemark>"

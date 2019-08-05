@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Tublay</name>
+    <Style id="poly-0097A7-1000-156-normal">
+      <LineStyle>
+        <color>ffa79700</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>9ca79700</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Style id="poly-0097A7-1000-156-highlight">
+      <LineStyle>
+        <color>ffa79700</color>
+        <width>1.5</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>9ca79700</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <StyleMap id="poly-0097A7-1000-156">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-0097A7-1000-156-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-0097A7-1000-156-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>TUBLAY</name>
+      <description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+      <styleUrl>#poly-0097A7-1000-156</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value/>
+        </Data>
+        <Data name="Descriptio">
+          <value>Municipal</value>
+        </Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              120.699673,16.473828,0
+              120.680516,16.498912,0
+              120.66168,16.519827,0
+              120.655965,16.526096,0
+              120.650625,16.531572,0
+              120.642133,16.547538,0
+              120.636602,16.547385,0
+              120.619756,16.546973,0
+              120.594472,16.546327,0
+              120.590833,16.5463,0
+              120.570074,16.546309,0
+              120.566053,16.546065,0
+              120.563795,16.534185,0
+              120.581319,16.522323,0
+              120.593922,16.513803,0
+              120.611493,16.501438,0
+              120.612889,16.50071,0
+              120.622776,16.493895,0
+              120.667721,16.462698,0
+              120.684559,16.468488,0
+              120.699673,16.473828,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>

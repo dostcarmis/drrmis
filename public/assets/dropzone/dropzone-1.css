@@ -1,0 +1,64 @@
+h1 {
+    margin-bottom: 20px;
+}
+form.dropzone{
+    width: 100%;
+    float: left;
+}
+.dropzone {
+    margin-top: 10px;
+    border: 1px ridge #ccc;
+    padding: 20px;
+    background: #fff;
+    color: #555;
+    text-align: center;
+    float: left;
+    width: 100%;
+    border-radius: 1px;
+}
+
+.dropzone h3 {
+    color: white;
+    text-align: center;
+    line-height: 3em;
+    margin-top: 20px;
+}
+
+.dz-clickable {
+    cursor: pointer;
+}
+
+.dz-drag-hover {
+    border: 2px solid #EB7260;
+}
+
+.dz-preview, .dz-processing, .dz-image-preview, .dz-success, .dz-complete {
+    background-color: rgba(0, 0, 0, .5);
+    padding: 5px;
+}
+
+.dz-preview {
+    width: 12.5% !important;
+    float: left;
+    position: relative;
+    padding-top: 20px;
+}
+
+.dz-image {
+    text-align: center;
+    /*border: 1px solid #EB7260;*/
+}
+
+.dz-details {
+    padding: 10px;
+}
+
+.dz-success-mark, .dz-error-mark {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 45%;
+}
+.dz-error-mark{
+     left: 35% !important;
+}

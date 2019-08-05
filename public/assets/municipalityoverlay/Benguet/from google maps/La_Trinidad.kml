@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>La_Trinidad</name>
+    <Style id="poly-0097A7-1000-156-normal">
+      <LineStyle>
+        <color>ffa79700</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>9ca79700</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Style id="poly-0097A7-1000-156-highlight">
+      <LineStyle>
+        <color>ffa79700</color>
+        <width>1.5</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>9ca79700</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <StyleMap id="poly-0097A7-1000-156">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-0097A7-1000-156-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-0097A7-1000-156-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>LA TRINIDAD (Capital)</name>
+      <description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+      <styleUrl>#poly-0097A7-1000-156</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value/>
+        </Data>
+        <Data name="Descriptio">
+          <value>Municipal</value>
+        </Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              120.667721,16.462698,0
+              120.622776,16.493895,0
+              120.612889,16.50071,0
+              120.611493,16.501438,0
+              120.593922,16.513803,0
+              120.581319,16.522323,0
+              120.563795,16.534185,0
+              120.5631,16.530464,0
+              120.559697,16.511478,0
+              120.554722,16.478257,0
+              120.554448,16.476023,0
+              120.551258,16.455793,0
+              120.549267,16.444226,0
+              120.557521,16.443164,0
+              120.574116,16.441042,0
+              120.577855,16.440565,0
+              120.584416,16.439963,0
+              120.591526,16.438916,0
+              120.594097,16.438767,0
+              120.598057,16.438711,0
+              120.600984,16.438265,0
+              120.602908,16.438046,0
+              120.605361,16.437668,0
+              120.608044,16.437218,0
+              120.610615,16.436632,0
+              120.611515,16.436426,0
+              120.616261,16.435482,0
+              120.625134,16.433964,0
+              120.632138,16.432459,0
+              120.631962,16.44902,0
+              120.634549,16.450067,0
+              120.667721,16.462698,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>

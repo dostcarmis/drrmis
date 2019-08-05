@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Sablan" id="Sablan">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>Sablan</name>
+  <Placemark>
+	<name>SABLAN</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Sablan">
+		<SimpleData name="Descriptio">Municipal</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>relativeToGround</altitudeMode><coordinates>120.566053,16.546065 120.563795,16.534185 120.5631,16.530464 120.559697,16.511478 120.554722,16.478257 120.554448,16.476023 120.551258,16.455793 120.549267,16.444226 120.518551,16.44806 120.503865,16.449084 120.478422,16.45181 120.47563,16.466405 120.473843,16.478913 120.472649,16.486148 120.471729,16.492621 120.471187,16.496153 120.471119,16.497379 120.471348,16.499178 120.471615,16.500288 120.471882,16.501368 120.472515,16.502898 120.472935,16.503768 120.473568,16.50467 120.476215,16.506961 120.481826,16.515334 120.495016,16.535314 120.498276,16.542586 120.515711,16.548333 120.536405,16.546205 120.566053,16.546065</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

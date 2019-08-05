@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="La_Trinidad" id="La_Trinidad">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>La_Trinidad</name>
+  <Placemark>
+	<name>LA TRINIDAD (Capital)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#La_Trinidad">
+		<SimpleData name="Descriptio">Municipal</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>relativeToGround</altitudeMode><coordinates>120.667721,16.462698 120.634549,16.450067 120.631962,16.44902 120.632138,16.432459 120.625134,16.433964 120.616261,16.435482 120.611515,16.436426 120.610615,16.436632 120.608044,16.437218 120.605361,16.437668 120.602908,16.438046 120.600984,16.438265 120.598057,16.438711 120.594097,16.438767 120.591526,16.438916 120.584416,16.439963 120.577855,16.440565 120.574116,16.441042 120.557521,16.443164 120.549267,16.444226 120.551258,16.455793 120.554448,16.476023 120.554722,16.478257 120.559697,16.511478 120.5631,16.530464 120.563795,16.534185 120.581319,16.522323 120.593922,16.513803 120.611493,16.501438 120.612889,16.50071 120.622776,16.493895 120.667721,16.462698</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

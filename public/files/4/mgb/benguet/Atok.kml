@@ -1,0 +1,2367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Atok</name>
+	<Style id="poly-A52714-1-189-normal">
+		<LineStyle>
+			<color>ff1427a5</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>bd1427a5</color>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="poly-097138-1-186">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#poly-097138-1-186-normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#poly-097138-1-186-highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="poly-097138-1-186-highlight">
+		<LineStyle>
+			<color>ff387109</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>ba387109</color>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="poly-FF5252-1-189">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#poly-FF5252-1-189-normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#poly-FF5252-1-189-highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="poly-097138-1-186-normal">
+		<LineStyle>
+			<color>ff387109</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>ba387109</color>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="poly-A52714-1-189">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#poly-A52714-1-189-normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#poly-A52714-1-189-highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="poly-A52714-1-189-highlight">
+		<LineStyle>
+			<color>ff1427a5</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>bd1427a5</color>
+		</PolyStyle>
+	</Style>
+	<Style id="poly-FF5252-1-189-normal">
+		<LineStyle>
+			<color>ff5252ff</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>bd5252ff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="poly-FF5252-1-189-highlight">
+		<LineStyle>
+			<color>ff5252ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>bd5252ff</color>
+		</PolyStyle>
+	</Style>
+	<Folder>
+		<name>Atok_high</name>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.725935,16.651548,0 120.76192,16.643254,0 120.777451,16.628708,0 120.784239,16.655458,0 120.779615,16.678818,0 120.76918,16.683903,0 120.725127,16.658423,0 120.725935,16.651548,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.766441,16.630045,0 120.766384,16.630152,0 120.766405,16.630108,0 120.766441,16.630045,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.759118,16.62019,0 120.773424,16.612883,0 120.777046,16.62701,0 120.76688,16.629067,0 120.766791,16.628743,0 120.76659,16.628419,0 120.766482,16.628166,0 120.766354,16.62795,0 120.766263,16.627788,0 120.766097,16.62766,0 120.765895,16.627479,0 120.765823,16.627227,0 120.765733,16.627011,0 120.765625,16.626669,0 120.765574,16.626292,0 120.765596,16.62597,0 120.765691,16.62581,0 120.765991,16.625616,0 120.76603,16.625437,0 120.766032,16.625257,0 120.765979,16.625006,0 120.765927,16.62471,0 120.765762,16.624457,0 120.765653,16.624276,0 120.765432,16.624041,0 120.765118,16.623858,0 120.764656,16.623638,0 120.764158,16.623292,0 120.763676,16.623162,0 120.763305,16.62314,0 120.762841,16.623027,0 120.762488,16.623023,0 120.762137,16.622786,0 120.76186,16.622622,0 120.761547,16.622368,0 120.761307,16.62224,0 120.760956,16.622003,0 120.760698,16.621821,0 120.760458,16.621675,0 120.760274,16.621493,0 120.760053,16.621312,0 120.759814,16.621094,0 120.759593,16.620912,0 120.759521,16.620732,0 120.759319,16.620479,0 120.759118,16.62019,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.759164,16.620241,0 120.758994,16.619952,0 120.758749,16.619663,0 120.758479,16.619397,0 120.758184,16.619202,0 120.757865,16.61896,0 120.757446,16.618716,0 120.757102,16.618426,0 120.756857,16.618208,0 120.756588,16.617894,0 120.756269,16.617628,0 120.7559,16.617361,0 120.755581,16.617119,0 120.755186,16.616899,0 120.75504,16.616706,0 120.754818,16.616632,0 120.754594,16.616678,0 120.754494,16.616748,0 120.754467,16.616987,0 120.754488,16.617274,0 120.754337,16.617488,0 120.75426,16.617726,0 120.75438,16.618038,0 120.754575,16.618327,0 120.754596,16.618685,0 120.754592,16.618996,0 120.754587,16.619379,0 120.754257,16.620044,0 120.75403,16.6204,0 120.753728,16.620827,0 120.753374,16.621373,0 120.753121,16.621801,0 120.743749,16.621866,0 120.743908,16.604025,0 120.758158,16.600075,0 120.766968,16.588469,0 120.759164,16.620241,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.766651,16.588797,0 120.767382,16.588506,0 120.773466,16.613053,0 120.759267,16.620291,0 120.759103,16.62013,0 120.766651,16.588797,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.743986,16.604069,0 120.743881,16.618753,0 120.743846,16.621762,0 120.728944,16.632499,0 120.715881,16.623209,0 120.712235,16.612852,0 120.743986,16.604069,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.746527,16.632816,0 120.746873,16.632939,0 120.747343,16.63304,0 120.747565,16.63309,0 120.747887,16.633093,0 120.748285,16.633026,0 120.748632,16.632982,0 120.749032,16.632699,0 120.749308,16.632416,0 120.749486,16.632107,0 120.749713,16.631775,0 120.749866,16.631346,0 120.74997,16.630989,0 120.750172,16.630608,0 120.750742,16.630686,0 120.751236,16.630787,0 120.751633,16.630815,0 120.752129,16.630821,0 120.752649,16.630874,0 120.753092,16.631142,0 120.753534,16.631481,0 120.753878,16.631724,0 120.754518,16.632113,0 120.754888,16.632356,0 120.755181,16.632694,0 120.755425,16.633032,0 120.755889,16.63361,0 120.756631,16.633833,0 120.757274,16.633936,0 120.757968,16.633967,0 120.758563,16.633974,0 120.764332,16.641083,0 120.761977,16.643161,0 120.745717,16.646976,0 120.725785,16.651727,0 120.728838,16.631987,0 120.739185,16.632418,0 120.739042,16.632739,0 120.739094,16.633062,0 120.73912,16.63321,0 120.739145,16.633412,0 120.739213,16.633628,0 120.739475,16.633873,0 120.739807,16.634092,0 120.740374,16.634461,0 120.74079,16.634707,0 120.741304,16.634901,0 120.741651,16.634986,0 120.741901,16.635123,0 120.742416,16.635142,0 120.742837,16.634918,0 120.743175,16.634639,0 120.743542,16.634321,0 120.744066,16.633627,0 120.744345,16.633576,0 120.744813,16.632735,0 120.745045,16.632222,0 120.745269,16.632148,0 120.745928,16.631832,0 120.746305,16.631783,0 120.746315,16.632065,0 120.746354,16.632321,0 120.746449,16.632551,0 120.746527,16.632816,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.747481,16.629836,0 120.746922,16.629955,0 120.746346,16.629877,0 120.745923,16.629514,0 120.745817,16.629029,0 120.745462,16.629132,0 120.745071,16.629182,0 120.744785,16.629196,0 120.744395,16.629192,0 120.743864,16.629294,0 120.743385,16.629692,0 120.742738,16.630182,0 120.742233,16.630406,0 120.741868,16.630603,0 120.741011,16.631145,0 120.740523,16.63114,0 120.739953,16.631013,0 120.739396,16.630884,0 120.738861,16.631144,0 120.738856,16.631325,0 120.738964,16.631636,0 120.739114,16.631919,0 120.739237,16.632176,0 120.73915,16.632444,0 120.736737,16.632472,0 120.735454,16.63247,0 120.729005,16.632179,0 120.743773,16.621664,0 120.75316,16.62167,0 120.753094,16.62179,0 120.75298,16.621968,0 120.75279,16.62236,0 120.752563,16.622662,0 120.752279,16.623089,0 120.752053,16.623356,0 120.751826,16.62364,0 120.75162,16.623781,0 120.751284,16.623885,0 120.750911,16.624043,0 120.750388,16.624234,0 120.750143,16.624465,0 120.749918,16.624659,0 120.749693,16.624782,0 120.749206,16.625118,0 120.748962,16.625348,0 120.74855,16.625595,0 120.748344,16.625718,0 120.748064,16.625822,0 120.747727,16.626016,0 120.74739,16.626156,0 120.747,16.626187,0 120.746737,16.626346,0 120.746568,16.626487,0 120.746474,16.626594,0 120.746472,16.626791,0 120.746526,16.626953,0 120.746746,16.627188,0 120.747006,16.627263,0 120.747339,16.627338,0 120.747748,16.627343,0 120.748007,16.627489,0 120.748247,16.627599,0 120.748526,16.627638,0 120.748768,16.627641,0 120.749029,16.627536,0 120.749273,16.627359,0 120.749371,16.62693,0 120.749561,16.626574,0 120.749714,16.626217,0 120.749829,16.625931,0 120.75,16.625628,0 120.750095,16.625414,0 120.750228,16.625218,0 120.750414,16.625167,0 120.750656,16.625133,0 120.750972,16.625137,0 120.751325,16.625159,0 120.751827,16.625164,0 120.752275,16.625043,0 120.75261,16.625011,0 120.753038,16.62498,0 120.75367,16.625041,0 120.754394,16.625102,0 120.754746,16.625178,0 120.755062,16.625199,0 120.755415,16.625203,0 120.755918,16.625119,0 120.756514,16.625089,0 120.757165,16.625025,0 120.757482,16.624992,0 120.757724,16.624959,0 120.757891,16.624961,0 120.75802,16.625052,0 120.758056,16.62516,0 120.758036,16.625339,0 120.757923,16.625463,0 120.75753,16.625674,0 120.756836,16.626132,0 120.756575,16.626219,0 120.756295,16.626342,0 120.755753,16.626551,0 120.755213,16.626653,0 120.754691,16.626755,0 120.754335,16.626948,0 120.753981,16.627034,0 120.753681,16.627264,0 120.753174,16.62767,0 120.752874,16.6279,0 120.752667,16.628095,0 120.752479,16.628272,0 120.752347,16.628432,0 120.751899,16.628553,0 120.75134,16.628672,0 120.750966,16.628848,0 120.750593,16.628969,0 120.750164,16.629036,0 120.749831,16.628961,0 120.749552,16.628958,0 120.749215,16.629133,0 120.748766,16.629379,0 120.748354,16.629587,0 120.748147,16.629799,0 120.747481,16.629836,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.693638,16.564434,0 120.724102,16.570274,0 120.724053,16.576692,0 120.708111,16.576007,0 120.707938,16.575934,0 120.707616,16.57593,0 120.707243,16.575974,0 120.706945,16.576042,0 120.706523,16.576109,0 120.706225,16.576178,0 120.705877,16.57627,0 120.705579,16.576338,0 120.705105,16.576548,0 120.704831,16.576641,0 120.704556,16.576877,0 120.704403,16.57721,0 120.704326,16.577495,0 120.704124,16.577756,0 120.703948,16.577993,0 120.703746,16.578302,0 120.703595,16.578491,0 120.703295,16.578703,0 120.703047,16.578748,0 120.702823,16.578794,0 120.702648,16.578887,0 120.702622,16.579054,0 120.70257,16.579269,0 120.702543,16.57946,0 120.702541,16.579627,0 120.702538,16.579866,0 120.70261,16.58001,0 120.702754,16.580442,0 120.702772,16.580676,0 120.702699,16.580919,0 120.70267,16.58123,0 120.702543,16.581539,0 120.702318,16.58168,0 120.702117,16.581917,0 120.701965,16.582154,0 120.70179,16.582272,0 120.701738,16.582534,0 120.701735,16.582749,0 120.701758,16.582893,0 120.701856,16.583013,0 120.695681,16.577842,0 120.693638,16.564434,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.708104,16.576005,0 120.724146,16.57631,0 120.72355,16.585628,0 120.710251,16.585402,0 120.70165,16.585281,0 120.701548,16.58276,0 120.701804,16.582862,0 120.701859,16.58297,0 120.701956,16.583012,0 120.702067,16.583027,0 120.702374,16.583043,0 120.702638,16.58306,0 120.70282,16.583035,0 120.702946,16.582956,0 120.703004,16.582835,0 120.703118,16.582594,0 120.703302,16.582328,0 120.703388,16.582165,0 120.703503,16.581897,0 120.703533,16.581696,0 120.703592,16.581387,0 120.703706,16.5812,0 120.703862,16.581027,0 120.70399,16.5808,0 120.704342,16.580494,0 120.704413,16.580388,0 120.704415,16.580226,0 120.704403,16.580051,0 120.704405,16.579904,0 120.704393,16.579702,0 120.704563,16.579462,0 120.704787,16.57937,0 120.705012,16.579225,0 120.705194,16.579213,0 120.705346,16.579255,0 120.705472,16.579243,0 120.70564,16.579191,0 120.705865,16.579059,0 120.705936,16.578926,0 120.705993,16.578778,0 120.706095,16.57843,0 120.706312,16.577773,0 120.706343,16.577478,0 120.706485,16.577332,0 120.706696,16.577173,0 120.706864,16.57704,0 120.707103,16.576881,0 120.707397,16.576817,0 120.707663,16.57674,0 120.707929,16.576622,0 120.708139,16.576516,0 120.708182,16.576463,0 120.708239,16.576356,0 120.708282,16.576262,0 120.708256,16.576128,0 120.708104,16.576005,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.69569,16.577827,0 120.695691,16.577729,0 120.701582,16.582532,0 120.701772,16.585083,0 120.723729,16.585484,0 120.723352,16.597304,0 120.70577,16.597238,0 120.692604,16.59275,0 120.69133,16.581305,0 120.69569,16.577827,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.724028,16.570314,0 120.728809,16.571195,0 120.729504,16.56827,0 120.751016,16.555162,0 120.743753,16.564738,0 120.761842,16.585501,0 120.777889,16.580489,0 120.76745,16.58858,0 120.766914,16.58874,0 120.758007,16.600202,0 120.712337,16.613,0 120.705033,16.607934,0 120.70571,16.597063,0 120.723258,16.597181,0 120.724028,16.570314,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.723953,16.57031,0 120.724218,16.559031,0 120.725542,16.558791,0 120.725672,16.558983,0 120.725868,16.559209,0 120.726129,16.55953,0 120.726325,16.559692,0 120.726523,16.559694,0 120.726656,16.559632,0 120.72689,16.559379,0 120.726928,16.559029,0 120.726967,16.558456,0 120.74537,16.558688,0 120.729594,16.568364,0 120.728799,16.571319,0 120.723887,16.57031,0 120.723953,16.57031,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.723227,16.547764,0 120.735439,16.540401,0 120.751161,16.555174,0 120.745601,16.558748,0 120.726934,16.558513,0 120.727008,16.557844,0 120.726979,16.557462,0 120.726916,16.557174,0 120.726789,16.55679,0 120.726595,16.556374,0 120.726335,16.555989,0 120.726273,16.555701,0 120.726112,16.555285,0 120.725984,16.554933,0 120.725658,16.554547,0 120.725463,16.55429,0 120.725334,16.554065,0 120.725271,16.55381,0 120.725274,16.553555,0 120.725376,16.553301,0 120.725379,16.553014,0 120.725349,16.552727,0 120.725352,16.552504,0 120.725288,16.552344,0 120.72506,16.552055,0 120.724702,16.551573,0 120.724506,16.551379,0 120.724277,16.551154,0 120.723916,16.55099,0 120.723588,16.550764,0 120.723326,16.55057,0 120.723097,16.550408,0 120.722868,16.550214,0 120.722737,16.550053,0 120.722771,16.549958,0 120.722937,16.54996,0 120.723037,16.549834,0 120.723073,16.549643,0 120.723076,16.549356,0 120.723045,16.549133,0 120.722983,16.548845,0 120.723019,16.548559,0 120.723123,16.548145,0 120.723227,16.547764,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<MultiGeometry>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>
+								120.727256,16.532676,0 120.727197,16.53323,0 120.727067,16.533364,0 120.727256,16.532676,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>
+								120.727067,16.533364,0 120.723127,16.547782,0 120.723068,16.54724,0 120.723139,16.546826,0 120.723307,16.546541,0 120.723411,16.546128,0 120.723485,16.545491,0 120.723621,16.545174,0 120.723625,16.544824,0 120.723529,16.544536,0 120.723535,16.543994,0 120.723805,16.543519,0 120.723877,16.543042,0 120.723981,16.54266,0 120.723984,16.542406,0 120.724018,16.542247,0 120.724185,16.542089,0 120.724187,16.541993,0 120.724155,16.541897,0 120.724156,16.54177,0 120.724127,16.541419,0 120.724097,16.541164,0 120.724101,16.540877,0 120.724138,16.540495,0 120.72411,16.540112,0 120.724113,16.539794,0 120.724117,16.539475,0 120.724054,16.539187,0 120.723993,16.538772,0 120.723797,16.538547,0 120.723801,16.53826,0 120.723837,16.537974,0 120.723906,16.537784,0 120.724043,16.537371,0 120.724211,16.537086,0 120.724445,16.536833,0 120.724746,16.536518,0 120.724981,16.536234,0 120.72515,16.535949,0 120.725317,16.535727,0 120.725485,16.535538,0 120.725587,16.535284,0 120.725757,16.534904,0 120.725926,16.534555,0 120.726093,16.534365,0 120.726193,16.534167,0 120.726395,16.533986,0 120.726662,16.533798,0 120.726862,16.533577,0 120.727067,16.533364,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.707455,16.567105,0 120.707568,16.554773,0 120.725409,16.554937,0 120.725471,16.55532,0 120.725628,16.556023,0 120.725657,16.556373,0 120.725751,16.556757,0 120.725845,16.557236,0 120.725842,16.557491,0 120.725773,16.557681,0 120.725505,16.557997,0 120.725436,16.558283,0 120.725531,16.558635,0 120.725562,16.558794,0 120.724303,16.559068,0 120.724037,16.570506,0 120.707455,16.567105,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.726449,16.531931,0 120.726167,16.531888,0 120.725814,16.531705,0 120.725483,16.531701,0 120.725218,16.531794,0 120.725052,16.531888,0 120.724951,16.532046,0 120.724882,16.532268,0 120.724947,16.532566,0 120.72494,16.532906,0 120.724937,16.533225,0 120.724935,16.533416,0 120.724833,16.533606,0 120.724754,16.533814,0 120.724661,16.53421,0 120.724658,16.534465,0 120.724656,16.534592,0 120.724521,16.534846,0 120.724452,16.535132,0 120.724382,16.535418,0 120.724215,16.535607,0 120.724013,16.535924,0 120.723779,16.536144,0 120.723576,16.536556,0 120.723341,16.536841,0 120.723173,16.537126,0 120.723004,16.537411,0 120.72287,16.5376,0 120.722867,16.537887,0 120.722896,16.538174,0 120.722924,16.538653,0 120.723116,16.539133,0 120.723211,16.539516,0 120.723274,16.539804,0 120.723335,16.540219,0 120.723332,16.540474,0 120.723327,16.540888,0 120.723356,16.541213,0 120.723416,16.541724,0 120.723445,16.542075,0 120.72344,16.542489,0 120.72347,16.542808,0 120.723465,16.54319,0 120.723494,16.543541,0 120.723392,16.543827,0 120.723158,16.544016,0 120.722958,16.544173,0 120.722922,16.544396,0 120.722887,16.544586,0 120.72272,16.544744,0 120.722717,16.545031,0 120.722712,16.545445,0 120.722741,16.545764,0 120.722739,16.545955,0 120.722571,16.546176,0 120.72227,16.54646,0 120.721968,16.546871,0 120.721698,16.54741,0 120.72163,16.547568,0 120.721494,16.547822,0 120.721491,16.548077,0 120.721421,16.548427,0 120.721351,16.54877,0 120.721349,16.548961,0 120.721379,16.549217,0 120.721409,16.54944,0 120.721405,16.54979,0 120.721501,16.550078,0 120.721498,16.550301,0 120.721563,16.550461,0 120.721759,16.550655,0 120.721987,16.55088,0 120.722382,16.55098,0 120.722514,16.551077,0 120.72261,16.55127,0 120.722937,16.551592,0 120.723168,16.551658,0 120.723496,16.551789,0 120.723826,16.551888,0 120.723991,16.551922,0 120.724385,16.552118,0 120.724514,16.552374,0 120.724609,16.552726,0 120.72467,16.553141,0 120.724731,16.553556,0 120.724794,16.553875,0 120.725019,16.554355,0 120.725376,16.554933,0 120.707831,16.554836,0 120.708237,16.528886,0 120.723956,16.529505,0 120.726449,16.531931,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.708353,16.528862,0 120.708622,16.514476,0 120.724038,16.529576,0 120.708353,16.528862,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.708653,16.514617,0 120.708275,16.535468,0 120.684555,16.535301,0 120.685135,16.514325,0 120.708653,16.514617,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.696877,16.535419,0 120.708279,16.535098,0 120.707967,16.55036,0 120.696667,16.550299,0 120.696639,16.54722,0 120.696737,16.547177,0 120.697035,16.54718,0 120.697333,16.54712,0 120.697598,16.546995,0 120.6977,16.546805,0 120.6979,16.54668,0 120.698099,16.546555,0 120.698167,16.546428,0 120.698334,16.54627,0 120.698403,16.545984,0 120.698506,16.545731,0 120.698541,16.54554,0 120.698476,16.545443,0 120.698378,16.545347,0 120.698214,16.545249,0 120.698016,16.545247,0 120.697818,16.545213,0 120.697587,16.545179,0 120.697224,16.545111,0 120.696696,16.545105,0 120.696877,16.535419,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.696845,16.535355,0 120.696762,16.545106,0 120.69663,16.545041,0 120.696331,16.545228,0 120.696032,16.545384,0 120.695798,16.545573,0 120.695664,16.545699,0 120.695695,16.545891,0 120.695892,16.54602,0 120.695921,16.546339,0 120.695951,16.546595,0 120.695982,16.546786,0 120.696113,16.546915,0 120.696276,16.547076,0 120.696649,16.54725,0 120.696672,16.547113,0 120.696675,16.547179,0 120.6968,16.550205,0 120.684246,16.550066,0 120.684524,16.535059,0 120.696845,16.535355,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.706195,16.550356,0 120.707956,16.550232,0 120.707804,16.5547,0 120.707672,16.559574,0 120.704252,16.559561,0 120.704478,16.553014,0 120.704552,16.553063,0 120.704749,16.553184,0 120.704996,16.553283,0 120.705143,16.553356,0 120.705292,16.553381,0 120.70544,16.553455,0 120.705711,16.553553,0 120.70601,16.553389,0 120.706185,16.553248,0 120.706336,16.553082,0 120.706463,16.552797,0 120.706591,16.552464,0 120.706746,16.551963,0 120.70675,16.551581,0 120.706729,16.551318,0 120.706607,16.551173,0 120.70636,16.551051,0 120.706187,16.551025,0 120.706195,16.550356,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.70627,16.550261,0 120.706211,16.551121,0 120.705912,16.551237,0 120.705687,16.551378,0 120.705387,16.551614,0 120.705163,16.551731,0 120.705062,16.551897,0 120.704984,16.552183,0 120.704883,16.552301,0 120.704808,16.552396,0 120.704607,16.552609,0 120.704506,16.552727,0 120.704455,16.55287,0 120.704453,16.553062,0 120.704436,16.550289,0 120.70627,16.550261,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.704534,16.550361,0 120.704426,16.559539,0 120.692704,16.559505,0 120.692866,16.550065,0 120.704534,16.550361,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.684243,16.549946,0 120.693014,16.550139,0 120.692804,16.55941,0 120.68418,16.559362,0 120.684243,16.549946,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.684183,16.559174,0 120.694044,16.559379,0 120.693735,16.564538,0 120.694171,16.567387,0 120.684978,16.567261,0 120.685005,16.567118,0 120.685083,16.566832,0 120.685184,16.566642,0 120.685261,16.566404,0 120.685264,16.566165,0 120.685119,16.565876,0 120.684947,16.565731,0 120.68475,16.565609,0 120.684527,16.565655,0 120.684303,16.565724,0 120.684177,16.565866,0 120.684183,16.559174,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.694056,16.559403,0 120.70771,16.559458,0 120.707693,16.567226,0 120.693598,16.564513,0 120.694056,16.559403,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.684942,16.567261,0 120.694302,16.567249,0 120.695816,16.577768,0 120.692466,16.580474,0 120.678645,16.580293,0 120.678744,16.580133,0 120.678815,16.580013,0 120.678929,16.579839,0 120.678874,16.579758,0 120.678821,16.579555,0 120.6787,16.579178,0 120.678675,16.578909,0 120.678678,16.578707,0 120.678666,16.578492,0 120.678655,16.578303,0 120.678588,16.578074,0 120.678716,16.57782,0 120.678816,16.577619,0 120.678763,16.57739,0 120.678751,16.577256,0 120.678739,16.577054,0 120.678825,16.57688,0 120.678827,16.576705,0 120.678865,16.576425,0 120.678963,16.576014,0 120.678968,16.57562,0 120.679064,16.575388,0 120.679085,16.575137,0 120.679072,16.574725,0 120.679038,16.57442,0 120.679022,16.574204,0 120.67908,16.574008,0 120.679213,16.573758,0 120.679515,16.573439,0 120.679741,16.57319,0 120.679947,16.573031,0 120.680116,16.57289,0 120.680342,16.572677,0 120.680548,16.572482,0 120.680755,16.57227,0 120.680944,16.572003,0 120.68106,16.571663,0 120.681063,16.57143,0 120.681066,16.571162,0 120.680995,16.570892,0 120.680905,16.570622,0 120.680758,16.570495,0 120.680745,16.570011,0 120.680674,16.569777,0 120.680639,16.569561,0 120.680474,16.569398,0 120.680326,16.569307,0 120.680271,16.56927,0 120.68016,16.56918,0 120.681011,16.568006,0 120.681268,16.568278,0 120.681453,16.568334,0 120.681732,16.568337,0 120.681918,16.568339,0 120.68216,16.568288,0 120.682458,16.568237,0 120.68283,16.568205,0 120.683202,16.568174,0 120.683592,16.568178,0 120.684039,16.568183,0 120.684356,16.568061,0 120.684617,16.567956,0 120.684806,16.567743,0 120.684882,16.567637,0 120.68492,16.567494,0 120.684942,16.567261,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.67857,16.580284,0 120.692455,16.580385,0 120.691403,16.581323,0 120.692245,16.588629,0 120.678565,16.588476,0 120.67857,16.580284,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.678547,16.588424,0 120.692154,16.588504,0 120.692661,16.592722,0 120.692551,16.595715,0 120.678536,16.595523,0 120.678547,16.588424,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.692561,16.595681,0 120.692589,16.602672,0 120.678517,16.602516,0 120.678528,16.595417,0 120.692561,16.595681,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.692515,16.6026,0 120.692615,16.592682,0 120.7058,16.597046,0 120.705415,16.602814,0 120.692515,16.6026,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.692534,16.602566,0 120.705435,16.602727,0 120.705093,16.607993,0 120.705014,16.609982,0 120.692412,16.609699,0 120.692534,16.602566,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.704996,16.609961,0 120.705038,16.607917,0 120.712342,16.612892,0 120.713402,16.616005,0 120.704944,16.615876,0 120.704996,16.609961,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.705009,16.615866,0 120.713394,16.615887,0 120.715948,16.623193,0 120.717312,16.62414,0 120.704764,16.623984,0 120.705009,16.615866,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.704802,16.623884,0 120.717184,16.624038,0 120.718879,16.625312,0 120.718778,16.632302,0 120.706991,16.632172,0 120.706983,16.63124,0 120.707077,16.631169,0 120.707115,16.631116,0 120.707153,16.631027,0 120.707138,16.63074,0 120.707084,16.63056,0 120.706974,16.630469,0 120.70666,16.630268,0 120.706346,16.63005,0 120.706089,16.629832,0 120.705868,16.62965,0 120.705684,16.629504,0 120.705482,16.629287,0 120.705354,16.629035,0 120.70517,16.628871,0 120.704802,16.623884,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.718907,16.625269,0 120.728828,16.632315,0 120.728827,16.632351,0 120.718787,16.632295,0 120.718907,16.625269,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.714178,16.632138,0 120.728903,16.632246,0 120.727493,16.641427,0 120.714088,16.64128,0 120.714178,16.632138,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.714126,16.641228,0 120.727456,16.641429,0 120.72635,16.648497,0 120.713948,16.648361,0 120.714126,16.641228,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.714023,16.648328,0 120.726389,16.648356,0 120.725904,16.651649,0 120.724949,16.658507,0 120.713049,16.651662,0 120.714023,16.648328,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.703318,16.64637,0 120.703549,16.640921,0 120.714145,16.641164,0 120.714004,16.648353,0 120.713916,16.652181,0 120.703318,16.64637,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.703549,16.640921,0 120.703705,16.63089,0 120.703888,16.631143,0 120.704147,16.631253,0 120.704351,16.631327,0 120.704647,16.631438,0 120.705093,16.631461,0 120.70539,16.6315,0 120.705743,16.631522,0 120.706097,16.631508,0 120.706507,16.631423,0 120.706861,16.631319,0 120.707049,16.63116,0 120.707057,16.632074,0 120.714252,16.632171,0 120.714182,16.641164,0 120.703549,16.640921,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.684691,16.636092,0 120.685077,16.633292,0 120.703821,16.633584,0 120.703956,16.646802,0 120.684691,16.636092,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.703731,16.633518,0 120.685386,16.633458,0 120.685884,16.620819,0 120.70492,16.621126,0 120.704887,16.623874,0 120.705175,16.628873,0 120.7049,16.629037,0 120.704602,16.62913,0 120.704303,16.629222,0 120.704078,16.629339,0 120.703877,16.6296,0 120.703775,16.629814,0 120.703748,16.630029,0 120.70372,16.630267,0 120.703716,16.630602,0 120.703737,16.630913,0 120.703731,16.633518,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.705078,16.609925,0 120.704969,16.621158,0 120.685932,16.62097,0 120.686094,16.609523,0 120.705078,16.609925,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.684689,16.636262,0 120.668928,16.634726,0 120.668828,16.630098,0 120.685637,16.630095,0 120.685397,16.633558,0 120.684689,16.636262,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.668852,16.630199,0 120.669146,16.618156,0 120.686174,16.61837,0 120.685611,16.630195,0 120.668852,16.630199,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.669146,16.618187,0 120.669329,16.609178,0 120.68623,16.609558,0 120.686098,16.618472,0 120.669146,16.618187,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.692512,16.609697,0 120.678534,16.60947,0 120.678545,16.602371,0 120.692623,16.60248,0 120.692512,16.609697,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.669365,16.609272,0 120.66966,16.599165,0 120.678582,16.599312,0 120.678609,16.609423,0 120.669365,16.609272,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.669659,16.599241,0 120.6699,16.589564,0 120.678622,16.589733,0 120.678581,16.599365,0 120.669659,16.599241,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.678611,16.580361,0 120.678672,16.589755,0 120.669923,16.589729,0 120.670297,16.579217,0 120.674931,16.579316,0 120.675076,16.579557,0 120.675271,16.579846,0 120.675788,16.580186,0 120.676208,16.580239,0 120.676506,16.580218,0 120.676853,16.580198,0 120.67725,16.580203,0 120.677572,16.58023,0 120.677893,16.580305,0 120.678017,16.580331,0 120.678239,16.580405,0 120.678462,16.580407,0 120.678611,16.580361,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.660301,16.633779,0 120.659895,16.628486,0 120.661591,16.62672,0 120.653154,16.617447,0 120.669503,16.618253,0 120.669017,16.634642,0 120.660301,16.633779,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.65378,16.618171,0 120.651983,16.615998,0 120.651974,16.614179,0 120.652271,16.614183,0 120.652503,16.614153,0 120.652703,16.614028,0 120.652936,16.613871,0 120.653137,16.613651,0 120.653171,16.613555,0 120.653173,16.613396,0 120.653174,16.613301,0 120.653175,16.613237,0 120.653012,16.613012,0 120.652784,16.612786,0 120.652488,16.612687,0 120.652025,16.612682,0 120.652151,16.602294,0 120.6696,16.602395,0 120.669453,16.609118,0 120.669243,16.618325,0 120.65378,16.618171,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.65225,16.602337,0 120.652202,16.600807,0 120.652599,16.600779,0 120.652834,16.600527,0 120.653198,16.600436,0 120.653496,16.600407,0 120.653662,16.600377,0 120.653984,16.600324,0 120.654227,16.600237,0 120.654423,16.600258,0 120.654623,16.600165,0 120.654724,16.599975,0 120.654826,16.599785,0 120.65506,16.599564,0 120.655293,16.599408,0 120.655493,16.59925,0 120.655628,16.599029,0 120.655629,16.598965,0 120.655399,16.598867,0 120.654902,16.598925,0 120.654506,16.598921,0 120.654275,16.598886,0 120.653978,16.598819,0 120.653812,16.598913,0 120.653612,16.599038,0 120.653345,16.599258,0 120.653144,16.599479,0 120.653099,16.599722,0 120.652809,16.599858,0 120.652542,16.600046,0 120.652277,16.600138,0 120.652605,16.586726,0 120.670084,16.586986,0 120.669665,16.602565,0 120.65225,16.602337,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.652571,16.586776,0 120.652783,16.571992,0 120.673663,16.572032,0 120.673611,16.572246,0 120.673559,16.572413,0 120.673557,16.57258,0 120.673629,16.572796,0 120.673676,16.573012,0 120.673773,16.573228,0 120.673895,16.573373,0 120.673942,16.573564,0 120.673892,16.573612,0 120.673667,16.5738,0 120.673343,16.573892,0 120.673193,16.574034,0 120.673141,16.574272,0 120.673187,16.574512,0 120.673382,16.574777,0 120.673702,16.574996,0 120.673898,16.575189,0 120.673896,16.575333,0 120.673795,16.575475,0 120.67372,16.575594,0 120.673617,16.575879,0 120.673589,16.576142,0 120.673561,16.576428,0 120.673558,16.576691,0 120.673555,16.576882,0 120.673554,16.577026,0 120.673576,16.577265,0 120.673597,16.577528,0 120.673842,16.577818,0 120.674036,16.578155,0 120.674281,16.578396,0 120.674428,16.578541,0 120.674673,16.578783,0 120.674842,16.579144,0 120.674963,16.57936,0 120.670429,16.579261,0 120.670161,16.587079,0 120.652571,16.586776,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.652048,16.61269,0 120.6519,16.612665,0 120.651701,16.61271,0 120.651502,16.612756,0 120.651377,16.612826,0 120.651202,16.612991,0 120.651051,16.613157,0 120.65095,16.613347,0 120.650946,16.613634,0 120.651018,16.613826,0 120.651263,16.614044,0 120.651436,16.614117,0 120.651584,16.614143,0 120.652055,16.614148,0 120.653853,16.617965,0 120.648803,16.612809,0 120.644778,16.607746,0 120.65217,16.608796,0 120.652048,16.61269,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.652316,16.600105,0 120.652111,16.600157,0 120.651887,16.600244,0 120.651533,16.600276,0 120.651365,16.600363,0 120.651252,16.600452,0 120.651064,16.600593,0 120.65095,16.600789,0 120.650949,16.600914,0 120.650947,16.60104,0 120.650983,16.601148,0 120.651076,16.601185,0 120.651225,16.601168,0 120.651355,16.601134,0 120.651635,16.601048,0 120.651822,16.600996,0 120.651916,16.600907,0 120.652233,16.600785,0 120.652326,16.602364,0 120.652098,16.608815,0 120.644895,16.60809,0 120.642031,16.604404,0 120.638003,16.599574,0 120.652316,16.600105,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.652257,16.600143,0 120.639656,16.600085,0 120.637431,16.592012,0 120.652523,16.592254,0 120.652257,16.600143,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.637468,16.592017,0 120.634966,16.582824,0 120.652669,16.583244,0 120.652682,16.586776,0 120.652485,16.592259,0 120.637468,16.592017,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.634967,16.582947,0 120.634309,16.580538,0 120.633447,16.578036,0 120.632647,16.575069,0 120.647813,16.575223,0 120.647679,16.583145,0 120.634967,16.582947,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.647692,16.575258,0 120.652803,16.575315,0 120.652725,16.583256,0 120.647557,16.583233,0 120.647692,16.575258,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.64771,16.575269,0 120.647885,16.566989,0 120.652735,16.567062,0 120.652805,16.57201,0 120.652821,16.575309,0 120.64771,16.575269,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.652694,16.572023,0 120.652717,16.56704,0 120.65286,16.562936,0 120.66968,16.563036,0 120.669571,16.572069,0 120.652694,16.572023,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.66945,16.57205,0 120.669687,16.563233,0 120.684185,16.563215,0 120.68423,16.565672,0 120.684077,16.566047,0 120.683982,16.566225,0 120.683848,16.566492,0 120.68366,16.566669,0 120.68338,16.566756,0 120.683269,16.566755,0 120.683029,16.566573,0 120.682714,16.566497,0 120.682343,16.566493,0 120.682082,16.56649,0 120.681729,16.566504,0 120.681487,16.566556,0 120.681318,16.566661,0 120.681149,16.566803,0 120.681073,16.566981,0 120.680959,16.567195,0 120.680919,16.567428,0 120.680841,16.567696,0 120.681005,16.567948,0 120.680191,16.569248,0 120.680062,16.569121,0 120.679728,16.569117,0 120.679392,16.569167,0 120.67902,16.569217,0 120.67874,16.569304,0 120.678292,16.569442,0 120.678068,16.569547,0 120.677825,16.569634,0 120.677601,16.569721,0 120.677247,16.569843,0 120.677041,16.569948,0 120.676853,16.570161,0 120.676813,16.57034,0 120.676811,16.570537,0 120.676808,16.570752,0 120.676899,16.570968,0 120.677027,16.571149,0 120.677248,16.571259,0 120.67734,16.571349,0 120.677358,16.571439,0 120.677356,16.571583,0 120.677355,16.57169,0 120.677298,16.571761,0 120.677205,16.571796,0 120.677056,16.571794,0 120.676907,16.571793,0 120.676684,16.57179,0 120.676517,16.571753,0 120.676332,16.571679,0 120.676036,16.571622,0 120.67585,16.571566,0 120.675572,16.571509,0 120.675238,16.571505,0 120.675034,16.571449,0 120.674811,16.571429,0 120.674588,16.571426,0 120.674235,16.571422,0 120.674086,16.571474,0 120.673954,16.571598,0 120.673878,16.571741,0 120.673708,16.572008,0 120.66945,16.57205,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.669669,16.563141,0 120.669922,16.556027,0 120.68425,16.556241,0 120.684184,16.563285,0 120.669669,16.563141,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.669903,16.556069,0 120.670159,16.547108,0 120.684414,16.547177,0 120.684212,16.556282,0 120.669903,16.556069,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.669688,16.563093,0 120.652896,16.56303,0 120.653228,16.550919,0 120.670055,16.55118,0 120.669688,16.563093,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.640579,16.551203,0 120.643195,16.548626,0 120.64523,16.545477,0 120.64844,16.54234,0 120.651194,16.538065,0 120.669942,16.541952,0 120.670178,16.5471,0 120.670054,16.551203,0 120.640579,16.551203,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.653065,16.542043,0 120.651359,16.53789,0 120.652169,16.536628,0 120.652792,16.535224,0 120.653609,16.534496,0 120.670148,16.534149,0 120.669922,16.54207,0 120.653065,16.542043,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.670122,16.547147,0 120.669847,16.542123,0 120.670026,16.534955,0 120.684615,16.53501,0 120.684413,16.547217,0 120.670122,16.547147,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.684614,16.535038,0 120.670101,16.534966,0 120.670036,16.534195,0 120.670508,16.525757,0 120.684871,16.526006,0 120.684614,16.535038,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.632647,16.575099,0 120.629855,16.564288,0 120.653015,16.563236,0 120.65282,16.567034,0 120.647913,16.56705,0 120.647788,16.575319,0 120.632647,16.575099,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.628806,16.56038,0 120.63015,16.55861,0 120.629983,16.557844,0 120.630345,16.556508,0 120.630549,16.556001,0 120.631416,16.555373,0 120.631953,16.554678,0 120.632547,16.554738,0 120.63349,16.554522,0 120.635929,16.553799,0 120.639521,16.551304,0 120.654818,16.549211,0 120.652953,16.563225,0 120.629842,16.56435,0 120.628806,16.56038,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.656816,16.528063,0 120.665722,16.516832,0 120.668577,16.513842,0 120.670576,16.525905,0 120.656816,16.528063,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.670514,16.525833,0 120.66794,16.514741,0 120.670303,16.513559,0 120.68522,16.514428,0 120.684882,16.526112,0 120.670514,16.525833,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.668258,16.514292,0 120.672542,16.509656,0 120.675262,16.504852,0 120.685433,16.504843,0 120.685169,16.514544,0 120.668258,16.514292,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.685421,16.504843,0 120.698652,16.50475,0 120.708841,16.51471,0 120.685145,16.514448,0 120.685421,16.504843,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.68541,16.504955,0 120.682817,16.494163,0 120.696418,16.500606,0 120.697743,16.500664,0 120.696641,16.502749,0 120.698698,16.504779,0 120.68541,16.504955,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.682929,16.494129,0 120.685457,16.504938,0 120.675574,16.505006,0 120.678658,16.50014,0 120.682929,16.494129,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.72728,16.532644,0 120.735514,16.540482,0 120.723335,16.547855,0 120.723162,16.547805,0 120.727048,16.533382,0 120.727201,16.532977,0 120.72728,16.532644,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.628979,16.561157,0 120.631301,16.569626,0 120.6282,16.570102,0 120.627531,16.567862,0 120.627756,16.56765,0 120.627898,16.56749,0 120.627954,16.567437,0 120.627871,16.567382,0 120.627733,16.5673,0 120.627399,16.567215,0 120.627339,16.56302,0 120.6279,16.562785,0 120.628265,16.562574,0 120.628493,16.562173,0 120.628861,16.561666,0 120.628979,16.561157,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.628228,16.570089,0 120.631303,16.569492,0 120.635337,16.583869,0 120.632347,16.5844,0 120.63222,16.58343,0 120.632611,16.583354,0 120.632807,16.583276,0 120.633145,16.582957,0 120.633372,16.582664,0 120.633572,16.582263,0 120.633661,16.58186,0 120.633808,16.58119,0 120.633841,16.580787,0 120.633483,16.58042,0 120.633015,16.579957,0 120.632463,16.579494,0 120.632077,16.57914,0 120.631579,16.578812,0 120.631249,16.578431,0 120.631059,16.578026,0 120.630924,16.577675,0 120.630899,16.577406,0 120.630904,16.576976,0 120.630964,16.576627,0 120.630903,16.576109,0 120.631014,16.575606,0 120.631177,16.575177,0 120.6311,16.574692,0 120.631048,16.574315,0 120.630775,16.573882,0 120.630389,16.573528,0 120.63,16.573416,0 120.629664,16.573547,0 120.629411,16.573732,0 120.629269,16.573892,0 120.628228,16.570089,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.63246,16.584294,0 120.635368,16.583654,0 120.637425,16.590965,0 120.634524,16.591066,0 120.63246,16.584294,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.634469,16.591025,0 120.637315,16.590842,0 120.637343,16.59087,0 120.637287,16.590869,0 120.640354,16.602305,0 120.636611,16.598256,0 120.634469,16.591025,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.752192,16.574093,0 120.754116,16.575389,0 120.755253,16.576166,0 120.756213,16.576941,0 120.758051,16.578066,0 120.760597,16.578858,0 120.763585,16.57957,0 120.766223,16.580109,0 120.769039,16.580479,0 120.770711,16.580667,0 120.771857,16.580679,0 120.773267,16.580694,0 120.775295,16.580546,0 120.776531,16.580389,0 120.777677,16.580316,0 120.761827,16.586775,0 120.751477,16.574936,0 120.752192,16.574093,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.751481,16.574596,0 120.742876,16.564389,0 120.75039,16.554782,0 120.753882,16.55797,0 120.752488,16.559604,0 120.751194,16.561419,0 120.75051,16.563455,0 120.749727,16.566333,0 120.749612,16.568626,0 120.749594,16.570156,0 120.750377,16.571014,0 120.751585,16.573237,0 120.751749,16.574344,0 120.751481,16.574596,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-FF5252-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.65731,16.52771,0 120.670735,16.524914,0 120.670853,16.53466,0 120.653609,16.534496,0 120.65475,16.532979,0 120.654302,16.531826,0 120.65731,16.52771,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+	</Folder>
+	<Folder>
+		<name>Atok_moderate</name>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.766247,16.627729,0 120.766513,16.628281,0 120.766806,16.628667,0 120.766976,16.629003,0 120.766948,16.629266,0 120.766519,16.629907,0 120.766266,16.630358,0 120.766014,16.630738,0 120.764773,16.630772,0 120.764053,16.630932,0 120.762827,16.631827,0 120.762,16.632583,0 120.760828,16.633168,0 120.759906,16.633588,0 120.758585,16.634179,0 120.757222,16.63414,0 120.755788,16.63379,0 120.754934,16.632609,0 120.753952,16.63181,0 120.752695,16.631175,0 120.750912,16.630941,0 120.750171,16.630717,0 120.75029,16.629022,0 120.751237,16.628602,0 120.75233,16.62847,0 120.752984,16.627664,0 120.754034,16.626863,0 120.756222,16.626361,0 120.75722,16.625822,0 120.758092,16.625411,0 120.757899,16.624978,0 120.755317,16.625261,0 120.753015,16.624973,0 120.751301,16.625266,0 120.750186,16.625158,0 120.750272,16.624227,0 120.751741,16.623621,0 120.752571,16.622602,0 120.753053,16.621663,0 120.753557,16.620976,0 120.754162,16.620169,0 120.754468,16.619408,0 120.754529,16.618428,0 120.754116,16.617683,0 120.754468,16.617233,0 120.754202,16.616704,0 120.755021,16.616617,0 120.756103,16.617418,0 120.756886,16.618263,0 120.757821,16.618846,0 120.758779,16.619598,0 120.759608,16.62085,0 120.76059,16.621697,0 120.761747,16.622379,0 120.762584,16.622914,0 120.763771,16.623139,0 120.764856,16.623653,0 120.765545,16.624114,0 120.765935,16.624644,0 120.766049,16.62553,0 120.765548,16.625955,0 120.765735,16.626937,0 120.765903,16.627417,0 120.766272,16.627707,0 120.766247,16.627729,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.750282,16.630681,0 120.749923,16.631705,0 120.749417,16.63256,0 120.748841,16.633056,0 120.747772,16.633283,0 120.746512,16.632935,0 120.746224,16.632047,0 120.74631,16.631068,0 120.74766,16.630127,0 120.748586,16.629396,0 120.749483,16.628976,0 120.74993,16.628909,0 120.75035,16.629033,0 120.750282,16.630681,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.750307,16.624295,0 120.750348,16.625012,0 120.750019,16.625535,0 120.749892,16.625796,0 120.74956,16.626653,0 120.749253,16.627438,0 120.748506,16.627765,0 120.747593,16.627349,0 120.746851,16.627221,0 120.74636,16.626833,0 120.746563,16.626382,0 120.747037,16.626148,0 120.747833,16.625893,0 120.748657,16.6254,0 120.749207,16.625048,0 120.749982,16.624459,0 120.750307,16.624295,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.707749,16.575837,0 120.70773,16.575806,0 120.708091,16.575931,0 120.708284,16.576175,0 120.70828,16.57646,0 120.707734,16.57671,0 120.70702,16.576944,0 120.706443,16.577341,0 120.706255,16.577984,0 120.706081,16.578493,0 120.705921,16.579041,0 120.70543,16.579318,0 120.705167,16.579208,0 120.704494,16.579456,0 120.704406,16.579871,0 120.704484,16.580356,0 120.703976,16.580862,0 120.70365,16.581275,0 120.70349,16.581824,0 120.703302,16.582414,0 120.702849,16.583041,0 120.70236,16.583062,0 120.701845,16.58303,0 120.701639,16.582745,0 120.70163,16.582355,0 120.702053,16.581929,0 120.702576,16.581357,0 120.702808,16.580723,0 120.702656,16.580348,0 120.702452,16.579892,0 120.702415,16.579509,0 120.702461,16.579116,0 120.702601,16.578775,0 120.702843,16.578686,0 120.703282,16.578662,0 120.703536,16.578383,0 120.703898,16.577862,0 120.704259,16.577412,0 120.704389,16.57699,0 120.704633,16.576701,0 120.705149,16.576454,0 120.70558,16.576237,0 120.705999,16.576161,0 120.706429,16.576095,0 120.70689,16.575969,0 120.707434,16.575935,0 120.707749,16.575837,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.742644,16.630241,0 120.742607,16.630294,0 120.742889,16.630029,0 120.743884,16.629215,0 120.744684,16.629152,0 120.745764,16.629056,0 120.746036,16.629597,0 120.746386,16.629905,0 120.746869,16.629928,0 120.74767,16.629776,0 120.748208,16.629907,0 120.748499,16.630484,0 120.748492,16.631075,0 120.747614,16.631442,0 120.746085,16.631784,0 120.74517,16.632133,0 120.744791,16.632702,0 120.744373,16.633523,0 120.744037,16.633609,0 120.743357,16.634497,0 120.742401,16.635168,0 120.741992,16.635182,0 120.741473,16.634997,0 120.740751,16.634738,0 120.739939,16.634245,0 120.739164,16.633663,0 120.739007,16.632819,0 120.73922,16.632122,0 120.738762,16.631507,0 120.738934,16.631079,0 120.739494,16.630906,0 120.740477,16.631132,0 120.741111,16.631102,0 120.741533,16.630777,0 120.742207,16.630355,0 120.742644,16.630241,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.695951,16.546194,0 120.69597,16.546141,0 120.69573,16.545959,0 120.695675,16.545886,0 120.695678,16.545689,0 120.695773,16.545529,0 120.696242,16.54514,0 120.696931,16.545022,0 120.697413,16.545099,0 120.698044,16.54516,0 120.698507,16.545326,0 120.698669,16.54574,0 120.698479,16.546097,0 120.698176,16.546595,0 120.697709,16.546769,0 120.697426,16.547178,0 120.696663,16.547242,0 120.696162,16.547165,0 120.696,16.54675,0 120.695951,16.546194,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.705029,16.552197,0 120.704992,16.552197,0 120.705089,16.551803,0 120.705371,16.551537,0 120.70569,16.551272,0 120.706139,16.551026,0 120.706547,16.551102,0 120.706749,16.551302,0 120.706686,16.551964,0 120.706454,16.552679,0 120.706262,16.553232,0 120.705849,16.553568,0 120.705552,16.553529,0 120.705294,16.553365,0 120.705072,16.553309,0 120.704609,16.553142,0 120.704462,16.552979,0 120.704446,16.552764,0 120.704616,16.552515,0 120.705029,16.552197,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.679724,16.569087,0 120.680577,16.569311,0 120.680701,16.569832,0 120.680715,16.570191,0 120.680749,16.57046,0 120.68095,16.570714,0 120.681059,16.570984,0 120.681092,16.571271,0 120.681087,16.571719,0 120.680896,16.572165,0 120.680632,16.572431,0 120.680275,16.572803,0 120.679768,16.573192,0 120.67943,16.573529,0 120.679183,16.573956,0 120.679066,16.574385,0 120.679061,16.574816,0 120.67907,16.575595,0 120.678894,16.576328,0 120.678737,16.577062,0 120.678805,16.577582,0 120.678667,16.578208,0 120.678699,16.578657,0 120.678749,16.579123,0 120.678802,16.579375,0 120.678891,16.579699,0 120.678925,16.57995,0 120.678774,16.580163,0 120.678623,16.580341,0 120.678343,16.580427,0 120.678065,16.580388,0 120.677806,16.580278,0 120.677601,16.580258,0 120.677416,16.580256,0 120.677081,16.580252,0 120.676784,16.580249,0 120.676691,16.580248,0 120.676338,16.580244,0 120.675929,16.580221,0 120.675485,16.580073,0 120.675247,16.579765,0 120.674844,16.579241,0 120.674645,16.578791,0 120.674406,16.578591,0 120.674094,16.578229,0 120.673746,16.577795,0 120.67349,16.577433,0 120.673458,16.577021,0 120.673595,16.576449,0 120.6736,16.576018,0 120.673641,16.575696,0 120.673887,16.575376,0 120.673797,16.57507,0 120.673503,16.57478,0 120.673246,16.574509,0 120.673101,16.574256,0 120.673291,16.573864,0 120.673909,16.573512,0 120.67373,16.572972,0 120.673472,16.572754,0 120.673704,16.572018,0 120.673914,16.571519,0 120.674139,16.571378,0 120.674789,16.571439,0 120.675197,16.571515,0 120.675588,16.571502,0 120.676755,16.571784,0 120.67709,16.571769,0 120.677426,16.571648,0 120.6773,16.571306,0 120.676913,16.570997,0 120.67677,16.570583,0 120.676719,16.570134,0 120.677225,16.569799,0 120.678027,16.569593,0 120.6787,16.569296,0 120.679185,16.569104,0 120.679743,16.569074,0 120.679724,16.569087,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<MultiGeometry>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>
+								120.654067,16.598736,0 120.65403,16.598751,0 120.653948,16.598756,0 120.654067,16.598736,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>
+								120.65403,16.598751,0 120.654311,16.598733,0 120.654603,16.598777,0 120.654784,16.598833,0 120.655286,16.598825,0 120.655716,16.598951,0 120.655755,16.599234,0 120.655474,16.599405,0 120.654941,16.599641,0 120.654782,16.600137,0 120.654488,16.600255,0 120.654153,16.600211,0 120.653817,16.600341,0 120.653244,16.600442,0 120.652697,16.600705,0 120.652362,16.600782,0 120.651465,16.601121,0 120.650961,16.60129,0 120.650908,16.601075,0 120.650982,16.600739,0 120.651222,16.600487,0 120.651406,16.600301,0 120.651993,16.600132,0 120.652651,16.599952,0 120.653093,16.599733,0 120.653208,16.599452,0 120.653379,16.599091,0 120.653716,16.59888,0 120.65403,16.598751,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.721339,16.55011,0 120.721289,16.550134,0 120.721589,16.549946,0 120.722013,16.549735,0 120.722458,16.549836,0 120.722997,16.55032,0 120.72349,16.550564,0 120.724006,16.550904,0 120.724375,16.551195,0 120.724913,16.551822,0 120.725181,16.552208,0 120.725473,16.552641,0 120.725492,16.553096,0 120.725315,16.553476,0 120.725213,16.553714,0 120.725407,16.554075,0 120.725773,16.554533,0 120.726138,16.55511,0 120.726232,16.555542,0 120.726448,16.556165,0 120.726691,16.556551,0 120.726908,16.557031,0 120.727052,16.557511,0 120.727024,16.557749,0 120.726992,16.558323,0 120.726959,16.559063,0 120.72693,16.559445,0 120.726703,16.559778,0 120.726381,16.559774,0 120.726085,16.559627,0 120.725867,16.559171,0 120.725524,16.558832,0 120.725454,16.558473,0 120.725458,16.558139,0 120.725836,16.557617,0 120.725669,16.557041,0 120.725553,16.556347,0 120.725487,16.555653,0 120.725467,16.555246,0 120.725201,16.554742,0 120.724787,16.554068,0 120.724595,16.553516,0 120.724576,16.553038,0 120.72458,16.552727,0 120.724511,16.552296,0 120.724142,16.552053,0 120.723822,16.55181,0 120.723451,16.551759,0 120.722833,16.551656,0 120.722687,16.55144,0 120.722542,16.551103,0 120.72237,16.550982,0 120.721975,16.550858,0 120.721679,16.550735,0 120.721435,16.550422,0 120.721339,16.55011,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.726138,16.531863,0 120.726063,16.53192,0 120.72646,16.531901,0 120.726822,16.532207,0 120.727219,16.532625,0 120.727291,16.532817,0 120.727262,16.533199,0 120.726786,16.533624,0 120.72616,16.534191,0 120.725881,16.534738,0 120.725499,16.535642,0 120.724996,16.53627,0 120.724469,16.53679,0 120.723965,16.537526,0 120.72386,16.538003,0 120.723854,16.538576,0 120.72417,16.539105,0 120.724187,16.539727,0 120.724156,16.540276,0 120.724125,16.540802,0 120.72412,16.541256,0 120.724115,16.541686,0 120.724334,16.542023,0 120.723933,16.542366,0 120.723929,16.542748,0 120.723874,16.543201,0 120.723668,16.543821,0 120.723564,16.544274,0 120.723727,16.54516,0 120.723621,16.545708,0 120.723465,16.546328,0 120.723262,16.546804,0 120.723183,16.547162,0 120.723272,16.548023,0 120.723067,16.548595,0 120.723037,16.549024,0 120.72308,16.549575,0 120.723051,16.549957,0 120.722654,16.550024,0 120.722283,16.549925,0 120.721837,16.549944,0 120.721414,16.550106,0 120.72137,16.549652,0 120.721279,16.548957,0 120.721383,16.548476,0 120.721341,16.54783,0 120.721618,16.547474,0 120.721897,16.546952,0 120.722149,16.54662,0 120.722375,16.546311,0 120.722627,16.54598,0 120.722682,16.54555,0 120.72269,16.544833,0 120.723022,16.544024,0 120.723323,16.543716,0 120.723401,16.543335,0 120.723405,16.543,0 120.723409,16.54269,0 120.723438,16.542351,0 120.723393,16.541968,0 120.723273,16.541584,0 120.723253,16.541201,0 120.723306,16.540891,0 120.723311,16.540461,0 120.723266,16.540054,0 120.723126,16.539383,0 120.722984,16.538808,0 120.722819,16.538089,0 120.72285,16.53754,0 120.723178,16.537017,0 120.723506,16.536495,0 120.724059,16.53588,0 120.724213,16.535403,0 120.724492,16.534905,0 120.724675,16.53407,0 120.724904,16.533523,0 120.724984,16.533093,0 120.724989,16.532663,0 120.724895,16.53216,0 120.724898,16.531921,0 120.725123,16.531756,0 120.725423,16.531568,0 120.725596,16.53157,0 120.725868,16.531669,0 120.726138,16.531863,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.680953,16.56687,0 120.68099,16.566888,0 120.681142,16.566585,0 120.681721,16.566358,0 120.68211,16.566488,0 120.682723,16.566513,0 120.683427,16.5667,0 120.68382,16.566417,0 120.684107,16.565811,0 120.68463,16.56553,0 120.685094,16.565589,0 120.685275,16.565985,0 120.685195,16.566504,0 120.684963,16.567219,0 120.684844,16.567881,0 120.684209,16.568089,0 120.683278,16.568222,0 120.682479,16.568267,0 120.681511,16.568328,0 120.681032,16.568036,0 120.68085,16.567657,0 120.680855,16.567263,0 120.680953,16.56687,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.627251,16.567335,0 120.627746,16.56734,0 120.627943,16.567438,0 120.627794,16.567532,0 120.627444,16.567719,0 120.627251,16.567335,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.629156,16.573666,0 120.630052,16.573342,0 120.630693,16.573588,0 120.630933,16.57426,0 120.631121,16.575075,0 120.630861,16.576076,0 120.630851,16.576888,0 120.630889,16.577893,0 120.631719,16.578858,0 120.632849,16.579684,0 120.633827,16.580842,0 120.633613,16.58213,0 120.632957,16.583031,0 120.632757,16.58322,0 120.632109,16.583452,0 120.629156,16.573666,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.629187,16.574306,0 120.629268,16.573805,0 120.629605,16.573593,0 120.630053,16.573455,0 120.630497,16.573639,0 120.630827,16.573966,0 120.631008,16.574362,0 120.631261,16.574939,0 120.631406,16.575263,0 120.631252,16.575727,0 120.63117,16.5763,0 120.631126,16.576909,0 120.631045,16.577446,0 120.631225,16.577878,0 120.631516,16.578419,0 120.632067,16.578999,0 120.632582,16.579435,0 120.63317,16.579944,0 120.63376,16.580417,0 120.633935,16.581225,0 120.633811,16.582264,0 120.633619,16.582763,0 120.633242,16.583189,0 120.63298,16.583366,0 120.632645,16.583398,0 120.632015,16.583211,0 120.629187,16.574306,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.626947,16.556928,0 120.630195,16.55571,0 120.631506,16.554901,0 120.631539,16.55526,0 120.631015,16.55554,0 120.630417,16.555856,0 120.630372,16.556465,0 120.630179,16.557037,0 120.629948,16.557715,0 120.630054,16.558147,0 120.630122,16.558685,0 120.629892,16.55922,0 120.629402,16.559788,0 120.629172,16.560395,0 120.629125,16.561183,0 120.628704,16.562147,0 120.628439,16.562574,0 120.627917,16.562675,0 120.627653,16.562995,0 120.627355,16.563028,0 120.626947,16.556928,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-097138-1-186</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.639529,16.551227,0 120.654304,16.531635,0 120.654953,16.532599,0 120.654948,16.532981,0 120.654875,16.533554,0 120.654472,16.534123,0 120.653468,16.535195,0 120.652665,16.536015,0 120.652457,16.536841,0 120.651918,16.537663,0 120.651447,16.538423,0 120.650908,16.539245,0 120.650369,16.540132,0 120.649291,16.54184,0 120.648416,16.543169,0 120.647613,16.543925,0 120.646747,16.544552,0 120.646014,16.545054,0 120.645076,16.546127,0 120.644535,16.547077,0 120.643995,16.548091,0 120.643657,16.54866,0 120.643119,16.549419,0 120.642319,16.550047,0 120.641517,16.550739,0 120.640785,16.551177,0 120.640188,16.551362,0 120.639529,16.551227,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+	</Folder>
+	<Folder>
+		<name>Atok_veryhigh</name>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-A52714-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.704197,16.63132,0 120.703631,16.630979,0 120.703614,16.630334,0 120.703695,16.629737,0 120.704097,16.629263,0 120.704597,16.628958,0 120.705193,16.628845,0 120.705608,16.6294,0 120.706204,16.629922,0 120.706795,16.630279,0 120.707181,16.630588,0 120.707226,16.630947,0 120.707023,16.631304,0 120.706103,16.631556,0 120.705408,16.631644,0 120.704616,16.631492,0 120.704197,16.63132,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0]]></description>
+			<styleUrl>#poly-A52714-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							120.765303,16.5682,0 120.777766,16.580232,0 120.776968,16.580734,0 120.774851,16.580881,0 120.771943,16.58085,0 120.769738,16.580996,0 120.764809,16.580433,0 120.757872,16.578234,0 120.754726,16.57599,0 120.752801,16.57478,0 120.75132,16.573319,0 120.750541,16.572121,0 120.749589,16.570581,0 120.749346,16.568793,0 120.749642,16.566077,0 120.750556,16.563197,0 120.751737,16.560151,0 120.754057,16.557626,0 120.757721,16.560895,0 120.756643,16.562668,0 120.756015,16.563596,0 120.755031,16.56486,0 120.7544,16.566128,0 120.753942,16.567568,0 120.753751,16.568841,0 120.753736,16.570116,0 120.754342,16.571057,0 120.755302,16.571917,0 120.756707,16.572357,0 120.757764,16.572369,0 120.758733,16.572379,0 120.760323,16.572056,0 120.761473,16.571729,0 120.762891,16.570979,0 120.764228,16.569719,0 120.765303,16.5682,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

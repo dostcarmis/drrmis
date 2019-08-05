@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Sadanga" id="Sadanga">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>Sadanga</name>
+  <Placemark>
+	<name>SADANGA</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Sadanga">
+		<SimpleData name="Descriptio">Municipal</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>relativeToGround</altitudeMode><coordinates>120.913867,17.212245 120.914645,17.222538 120.91347,17.246411 120.986718,17.235684 121.03242,17.228881 121.043673,17.231627 121.050944,17.232449 121.054881,17.232249 121.062516,17.228715 121.068705,17.222291 121.074305,17.215855 121.077136,17.212616 121.080409,17.208431 121.080409,17.201548 121.083109,17.195746 121.084862,17.191738 121.085939,17.188134 121.086336,17.186179 121.092867,17.176378 121.09247,17.166313 121.093813,17.157451 121.102311,17.143793 121.105447,17.12421 121.102472,17.099428 121.09929,17.093398 121.090135,17.103182 121.074449,17.116971 121.071794,17.117734 121.056375,17.132591 121.036493,17.145651 121.015268,17.158652 120.982843,17.180452 120.968904,17.189159 120.952761,17.19749 120.933291,17.204902 120.913867,17.212245</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

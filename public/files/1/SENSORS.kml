@@ -1,0 +1,1828 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>SENSORS</name>
+    <description/>
+    <Style id="icon-1739-0288D1-labelson">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-1739-A52714-labelson">
+      <IconStyle>
+        <color>ff1427a5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Folder>
+      <name>Sensors</name>
+      <Placemark>
+        <name>ABRA STATE INSTITUTE OF SCIENCE AND TECHNOLOGY</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.736219,17.612411,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Luna</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.372444,18.330861,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>IFUGAO STATE UNIVERSITY, LAMUT</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.1715,16.71621,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bulanao</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.227275,17.391858,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gov. Center, Bontoc</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.03351,17.066343,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Irisan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.596007,16.402333,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bokod</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.830524,16.491353,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Banaue</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.060291,16.914323,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hingyon</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.099006,16.852347,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Asipulo</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.056704,16.768173,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bauko</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.857009,16.853702,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Besao</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.855944,17.095139,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bakun</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.727664,16.783353,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sablan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.487003,16.497398,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tuba</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.637185,16.265221,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kapangan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.605795,16.575992,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Buguias</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.78244,16.72336,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Canao, Bridge</name>
+        <description><![CDATA[Sensor Type: WLMS<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>WLMS</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.417599,17.403238,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Manabo, Bridge</name>
+        <description><![CDATA[Sensor Type: TDM<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>TDM</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.692053,17.433662,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Asin, Bridge</name>
+        <description><![CDATA[Sensor Type: TDM<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>TDM</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.493856,16.443097,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ibulao, Bridge</name>
+        <description><![CDATA[Sensor Type: TDM<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>TDM</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.121333,16.78425,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Boliney</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.821184,17.378809,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pilar</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.595582,17.414893,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sagada</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.90047,17.08451,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mankayan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.79345,16.85724,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kiangan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.08703,16.77655,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Conner</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.322266,17.795214,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Flora</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.471109,18.01623,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sta. Marcela</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.433333,18.283333,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pudtol</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.345066,18.127294,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Alfonso Lista</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.487043,16.922825,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tanudan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.239391,17.292555,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tinglayan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.14843,17.26515,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Itogon</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.67493,16.36575,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lubuagan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.175004,17.351324,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Paracelis</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.403552,17.18108,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Camp 6, Bridge</name>
+        <description><![CDATA[Sensor Type: TDM<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>TDM</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.613,16.350148,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tinoc</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.931,16.68404,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lamut</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.221,16.65136,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Hungduan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.005,16.83865,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mayoyao</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.221,16.972692,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aguinaldo</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.3263,16.97871,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pasil</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.1597,17.389611,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Balbalan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.162,17.401431,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rizal</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.489,16.920685,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sabangan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.907,16.971458,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sadanga</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.026,17.168152,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kabayan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.8377,16.623466,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Natonin</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.279,17.10895,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pidigan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.5893,17.556999,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Licuan-Baay</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.9016,17.571259,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Peñarubia</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.6507,17.564114,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>San Quintin</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.5185,17.54322,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tayum</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.6538,17.617278,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Daguiman</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.92644,17.458972,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tubo</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.72466,17.25845,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sallapadan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.7613,17.493452,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Luba</name>
+        <description><![CDATA[Sensor Type: TDM<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>TDM</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.6971,17.315854,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>La Paz</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.6995,17.706207,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>San Isidro</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.6027,17.465758,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dolores</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.709287,17.648084,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bucloc</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.8571,17.441627,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Villaviciosa</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.6249,17.4381,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>San Juan</name>
+        <description><![CDATA[Sensor Type: TDM<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>TDM</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.7323,17.67945,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lagayan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.705,17.719902,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kabugao</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.183,18.014998,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Malibcong</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.0541,17.585178,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Danglas</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.6564,17.70072,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Licuan-Baay, Bridge</name>
+        <description><![CDATA[Sensor Type: TDM<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>TDM</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.9026,17.582917,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Langiden</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.5678,17.578742,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bangaan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.1304,16.90967,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Atok</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.681,16.572253,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pinukpuk</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.3464,17.573876,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kibungan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.6612,16.66033,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tocmo</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.6544,16.43047,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Balili, Bridge</name>
+        <description><![CDATA[Sensor Type: TDM<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>TDM</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.58897,16.46278,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Caganayan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.8039,17.818687,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Vira, Tineg</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.8219,17.721714,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lacub</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.945,17.664122,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lagangilang</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.781,17.62906,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Barlig</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.100863,17.040894,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Samoki</name>
+        <description><![CDATA[Sensor Type: TDM<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>TDM</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.9792593,17.0882476,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Calaba, Bridge</name>
+        <description><![CDATA[Sensor Type: WLMS<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>WLMS</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.618,17.620794,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Amolong Bridge</name>
+        <description><![CDATA[Sensor Type: TDM<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>TDM</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.399,17.18971,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Conner, Bridge</name>
+        <description><![CDATA[Sensor Type: WLMS<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>WLMS</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.3238,17.79885,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aluling, Bridge</name>
+        <description><![CDATA[Sensor Type: TDM<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>TDM</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.747,16.98843,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Swan Dam</name>
+        <description><![CDATA[Sensor Type: TDM<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>TDM</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.365,18.199968,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Calanasan, Bridge</name>
+        <description><![CDATA[Sensor Type: WLMS<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>WLMS</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.035,18.258322,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dacao Dam</name>
+        <description><![CDATA[Sensor Type: WLMS<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>WLMS</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.363,18.17448,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Alno</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.58,16.495445,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>City Camp</name>
+        <description><![CDATA[Sensor Type: TDM<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>TDM</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.586,16.409297,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Namaltugan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.072,18.12806,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aurora</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.339,18.08043,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bubulayan, Bridge</name>
+        <description><![CDATA[Sensor Type: WLMS<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>WLMS</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.313,18.10147,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aninipan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.453,18.15464,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>UP NHRC</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.071,16.789883,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tadian</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.822,16.99612,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tanglagan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.964,18.37868,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Butao</name>
+        <description><![CDATA[Sensor Type: WLMS<br>description: ]]></description>
+        <styleUrl>#icon-1739-A52714-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>WLMS</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            120.999,18.1087674,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Calanasan</name>
+        <description><![CDATA[Sensor Type: ARG<br>description: ]]></description>
+        <styleUrl>#icon-1739-0288D1-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="Sensor Type">
+            <value>ARG</value>
+          </Data>
+          <Data name="description">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            121.0437369,18.2560685,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

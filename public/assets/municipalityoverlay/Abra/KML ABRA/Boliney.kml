@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Boliney" id="Boliney">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>Boliney</name>
+  <Placemark>
+	<name>BOLINEY</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Boliney">
+		<SimpleData name="Descriptio">Municipal</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>relativeToGround</altitudeMode><coordinates>120.767482,17.339297 120.764225,17.363945 120.762294,17.380895 120.761448,17.395503 120.760257,17.415771 120.761883,17.415637 120.762699,17.415473 120.763256,17.415079 120.782528,17.41538 120.788494,17.415931 120.823681,17.416064 120.837948,17.41638 120.851703,17.416352 120.878109,17.416487 120.906316,17.417989 120.923435,17.41186 120.927957,17.411678 120.969849,17.403135 120.989109,17.396485 120.984981,17.385894 120.981197,17.37663 120.977184,17.368163 120.972698,17.360653 120.968151,17.353435 120.962902,17.342368 120.940738,17.342501 120.880039,17.341858 120.845627,17.340415 120.839435,17.341447 120.812824,17.341024 120.767482,17.339297</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

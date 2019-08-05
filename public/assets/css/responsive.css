@@ -1,0 +1,477 @@
+/*mobile
+col-xs-
+*/
+@media (max-width: 320px){
+
+}
+@media (max-width: 667px){
+	/*home*/
+	.top-wrap{
+		position: fixed;
+		z-index: 9999;
+		top: 0px;
+		background: transparent;
+	}
+	#login-nav ul{
+		width: 50%;
+		float: left;
+		text-align:center;
+		margin: 0px;
+	}
+
+	#login-nav ul li a{
+		border: none !important;
+	}
+	.logo-left{
+		text-align: center;
+		display: none;
+	}
+
+	.spprofileslabel{
+		text-align: left;
+	}
+	.proformtext,.profimg-img,.proimg-right{
+		width: 100%;
+	}
+	h1.page-header{
+		font-size: 23px;
+	}
+	.paginationwrapinner{
+		text-align: center;
+	}
+	.spaccidenttitle{
+		font-size: 16px;
+		margin-bottom: 10px;
+	}
+	.logowrap{
+		background:rgba(58,58,58,.8);
+		padding: 5px 0px 7px 0px;
+	}
+	.logos{
+		margin-top: 0px;
+	}
+	.logos ul li{
+		width: 16.666667%;
+	    float: left;
+	    margin-left: 0px;
+	    margin-right: 0px;
+	    padding: 0px 2px;
+	}
+	#mobilehomelinkwrap{
+		background:rgba(0,0,0,.7);
+	}
+	/*login*/
+	.txtlogin, .txtpassword, .txtfname, .txtlname, .txtemail, #province_id, #municipality_id, .txtusername{
+		border-radius: 15px;
+	}
+	.btnlogindef{
+		border-radius: 15px;
+	}
+	#login{
+		margin-top: 15%;
+	}
+	/*********DASHBOARD*********/
+	.dashboardpanel{
+		margin-top: 0px;
+	}
+	.dashboard-3-column{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.perpublished-wrap span,.ataglance li{
+		width: 100%;
+	}
+	/**********Hydromet Monitor*****************/
+	.filtertable select{
+		border-radius: 15px;
+		height: 40px;
+	}
+	.filtersensor{		
+		margin-top: 7px;
+		padding: 0px;
+		margin-bottom: 7px;
+	}
+	.filtersensor select{
+		border-radius: 15px;
+		height: 40px;
+	}
+	.searchhydro{
+		padding: 0px;
+	}
+	.searchhydro #basic-addon1{
+		display: none;
+	}
+	.searchhydro .input-group{
+		width: 100%;		
+	}
+	.searchhydro .input-group .form-control{
+		height: 40px;
+		border-radius: 15px;
+	}
+	.per-inputhydrometfilter select{
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.per-inputhydrometfilter>div{
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.per-inputhydrometfilter .btn-filter{
+		width: 100%;
+	}
+	.tbldashboard tbody tr td:nth-child(n+6):nth-child(-n+11),.tbldashboard thead tr th:nth-child(n+6):nth-child(-n+11){
+		display: none;
+	}
+	.tbldashboard tbody tr td:nth-child(4),.tbldashboard thead tr th:nth-child(4){
+		display: none;
+	}
+	/***************Landslide Monitor*****************/
+	#dashboardtables_wrapper{
+		float: left;
+	}
+	.tbl-landslides thead th:nth-child(n+3):nth-child(-n+6),.tbl-landslides tbody tr td:nth-child(n+3):nth-child(-n+7){
+		display: none;
+	}
+	.tbl-landslides thead th:nth-child(n+7):nth-child(-n+11),.tbl-landslides tbody tr td:nth-child(n+7):nth-child(-n+11){
+		display: none;
+	}
+	.btnadd-location, .btn-deleteselected{
+		width: 100%;
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	.ulpaginations>div{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	/***************Flood Monitor*****************/
+	.tbl-floods thead th:nth-child(n+3):nth-child(-n+7),.tbl-floods tbody tr td:nth-child(n+3):nth-child(-n+7){
+		display: none;
+	}
+	/*legends*/
+	#homepagelegend{
+		width: 100%;
+		right: 0px;
+	}
+	.contourlegends li{
+		float: left;
+		width: 20%;
+		padding: 0px 3px;
+		font-size: 12px;
+	}
+	.contourlegends li span{
+		float: none !important;
+		display: block  !important;
+		font-size: 9px !important;
+	}
+	.sensorlegends li{
+		float: left;
+		width: 33.3333%;
+	}
+	.sensorlegends li:first-child{
+		width: 47%;
+	}
+	.sensorlegends li:nth-child(2){
+		width: 30%;
+	}
+	.sensorlegends li:nth-child(3){
+		width: 23%;
+	}
+	.sensorlegends li span{
+		margin-right: 0px;
+	}
+	.hazardmaplegends li span{
+		width: 15px;
+		height: 15px;
+		margin-right: 3px;
+	}
+	.hazardmaplegends li{
+		width: 25%;
+	    float: left;
+	    font-size: 12px;
+	    line-height: 15px;
+	}
+	#homepagelegend h2{
+		background:rgba(46,53,51,.7);
+		font-size: 16;
+	}
+	.sensorlegends, .hazardmaplegends, .contourlegends{
+		padding: 5px 10px 0px 10px;
+		background:rgba(204,204,204,.8);
+	}
+}
+/*mobile iphone*/ 
+@media (min-width: 480px) and (max-width: 599px){
+
+}
+
+/*tablet*/
+@media (min-width: 600px) and (max-width: 767px){
+
+}
+@media(max-width: 767px){
+	.logo-right{
+		padding-left: 0px;
+		margin-top: 5px;
+	}
+	body.bckclass .logowrap,.navmainmenumobile{
+		display: block;
+	}
+	.nav.navbar-nav.side-nav{
+		overflow: initial !important;
+	}
+	/*mobile menu*/
+	.top-nav.mm-listview{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.mm-listview>li:not(.mm-divider):after{
+		left: 0px !important;
+	}
+
+	#mobilehomelinkwrap li{
+		float: left;
+		list-style: none !important;
+	}
+	.mobilenav li{
+		float: none;
+		display: block;
+	}
+	.mobilenav li a{
+		text-align: left;
+	}
+	.mobilenav{
+		z-index: 9999999999;
+	}
+	.mobilenav:not( .mm-menu ) {
+	   display: none;
+	}
+	#mobilehomelinkwrap
+	{
+		background:rgba(0,0,0,.8);
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;	
+		width: 100%;
+		height: 40px;
+	}
+	#mobilehomelinkwrap a
+	{
+		display: block;
+		width: 48px;
+		height: 40px;
+		padding: 11px;
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	.navmainmenumobile a{
+		position: relative !important;
+		color: #fff;
+	}
+	#mobilehomelinkwrap ul{
+		float: left;
+		width: 100%;
+		padding-left: 0px;
+	}
+	#mobilehomelinkwrap a.stripelink:before,
+	#mobilehomelinkwrap a.stripelink:after
+	{
+		content: '';
+		display: block;
+		background: #fff;
+		height: 2px;
+	}
+	#mobilehomelinkwrap a.stripelink span
+	{
+		background: #fff;
+		display: block;
+		height: 2px;
+		margin: 6px 0;
+	}
+	.mm-opening #mobilehomelinkwrap.mm-page.mm-slideout ul li{
+		display: block;
+		float: none;
+	}
+	.mm-opening #mobilehomelinkwrap.mm-page.mm-slideout ul li a{
+		position: relative !important;
+	}
+	.notificationmobile ul{
+		list-style: none;
+		padding-left: 0px;
+		margin-top: 0px;
+	}	
+	.notificationmobile ul li{
+		float: left;
+		width: 100%;
+		border-bottom: 1px solid #ccc;
+	}
+	.notificationmobile ul li a{
+		color: #333;
+	}
+	.notificationmobile ul li:last-child{
+		text-align: center;
+	}
+	.notificationmobile ul li.message-footer{
+		border-bottom: none;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.loginform{
+		background: #000;
+	}
+	#mobilehomelinkwrap i.fa{
+		font-size: 19px;
+	}
+}
+@media(min-width: 768px){
+	#wrapper {
+	    padding-left: 225px;
+	    float: left;
+	    width: 100%;
+	    top: 65px;
+	    position: relative;
+	}
+	.bckclass .logowrap,.navmainmenumobile{
+		display: none;
+	}
+	.web-view .logowrap{
+		display: none;
+	}
+	.innerbody .logowrap{
+		display: block;
+	}
+}
+@media(max-width: 767px){
+	#innerNav{
+		position: relative;
+	}
+}
+/*ipad laptop*/
+@media(min-width: 768px) and (max-width: 1080px){
+	.dashboardpanel .dashboard-3-column{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	h1.page-header{
+		font-size: 26px;
+	}
+	/*map view*/
+	.wrap.accord{
+		width: 300px;
+		top:20px;
+	}
+	/*monitor*/
+	.perinputwrap.dates{
+		width: 100%;
+	}
+	.col-sm-3.perinputwrap{
+		width: 50%;
+	}
+	/*dashboard*/
+	.dashboard-3-column:nth-child(2) a,.dashboard-3-column:last-child a{
+		font-size: 12px;
+	}
+	.dshboacol{
+		width: 50%;
+	}
+	.dshboacol:last-child{
+		width: 100%;
+	}
+	.perpublished-wrap span{
+		width: 100%;
+	}
+	/*panels*/
+	.navbar-brand{
+		font-size: 16px;
+	}
+	.side-nav{
+		width: 160px !important;
+		margin-right: 0px !important;
+	}
+	.side-nav>li>a {
+	    width: 160px;
+	}
+	#wrapper {
+	    padding-left: 160px !important;
+	    float: left;
+	    width: 100%;
+	    top: 50px;
+	    position: relative;
+	}
+	.nav.navbar-nav.side-nav li a{
+		font-size: 12px;
+	}
+	.side-nav>li>ul>li>a{
+		padding-left: 30px !important
+	}
+	.dropside .dropdown-menu.fslevel{
+		left: 160px;
+		top: 0px;
+		border-radius: 0px;
+		background: #333333;
+	}
+	
+	/*hydromet tabular*/
+	.well.legendwell{
+		width: 50%;
+	}
+	.per-inputhydrometfilter select{
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.per-inputhydrometfilter>div{
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.per-inputhydrometfilter .btn-filter{
+		width: 100%;
+	}
+	/*hydromet chart*/
+	.chartwrap #perchart{
+		width: 100%;
+	    border-bottom: 1px solid #eee;
+	    padding-bottom: 60px;
+	}
+}
+
+@media(min-width: 992px) and (max-width: 1169px){
+	.nav.navbar-nav.side-nav{
+		overflow: initial !important;
+	}
+	.dashboardpanel .dashboard-3-column{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+}
+@media (min-width: 1170px){
+	.nav.navbar-nav.side-nav{
+		overflow: initial !important;
+	}
+	.dashboardpanel .dashboard-3-column{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.wrap.accord{
+		width: 350px;
+		top: 10px;
+	}
+	li.message-preview{
+		width: 440px !important;
+	}
+	li.message-preview>a {
+	    padding-top: 10px;
+	    padding-bottom: 10px;
+	}
+}
+@media(min-width: 1367px){
+
+}
+
+@media(min-width: 1170px) and (max-width: 1366px){
+	.ataglance li{
+		width: 100%;
+	}
+	.ataglance ul{
+		padding-left: 18px;
+	}
+}

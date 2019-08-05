@@ -1,0 +1,182 @@
+Light,Moderate,Heavy,Intense ,Torrential
+"<Placemark>
+<name>BUCLOC</name>
+<description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+<styleUrl>#poly-light</styleUrl>
+<ExtendedData>
+  <Data name=""description"">
+    <value/>
+  </Data>
+  <Data name=""Descriptio"">
+    <value>Municipal</value>
+  </Data>
+</ExtendedData>
+<Polygon>
+  <outerBoundaryIs>
+    <LinearRing>
+      <tessellate>1</tessellate>
+      <coordinates>
+        120.906316,17.417989,0
+        120.891705,17.445114,0
+        120.883592,17.468127,0
+        120.865186,17.463525,0
+        120.843831,17.458487,0
+        120.822687,17.453186,0
+        120.817113,17.452112,0
+        120.802302,17.448279,0
+        120.788211,17.444188,0
+        120.788494,17.415931,0
+        120.823681,17.416064,0
+        120.837948,17.41638,0
+        120.851703,17.416352,0
+        120.878109,17.416487,0
+        120.906316,17.417989,0
+      </coordinates>
+    </LinearRing>
+  </outerBoundaryIs>
+</Polygon>
+</Placemark>","<Placemark>
+<name>BUCLOC</name>
+<description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+<styleUrl>#poly-moderate</styleUrl>
+<ExtendedData>
+  <Data name=""description"">
+    <value/>
+  </Data>
+  <Data name=""Descriptio"">
+    <value>Municipal</value>
+  </Data>
+</ExtendedData>
+<Polygon>
+  <outerBoundaryIs>
+    <LinearRing>
+      <tessellate>1</tessellate>
+      <coordinates>
+        120.906316,17.417989,0
+        120.891705,17.445114,0
+        120.883592,17.468127,0
+        120.865186,17.463525,0
+        120.843831,17.458487,0
+        120.822687,17.453186,0
+        120.817113,17.452112,0
+        120.802302,17.448279,0
+        120.788211,17.444188,0
+        120.788494,17.415931,0
+        120.823681,17.416064,0
+        120.837948,17.41638,0
+        120.851703,17.416352,0
+        120.878109,17.416487,0
+        120.906316,17.417989,0
+      </coordinates>
+    </LinearRing>
+  </outerBoundaryIs>
+</Polygon>
+</Placemark>","<Placemark>
+<name>BUCLOC</name>
+<description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+<styleUrl>#poly-heavy</styleUrl>
+<ExtendedData>
+  <Data name=""description"">
+    <value/>
+  </Data>
+  <Data name=""Descriptio"">
+    <value>Municipal</value>
+  </Data>
+</ExtendedData>
+<Polygon>
+  <outerBoundaryIs>
+    <LinearRing>
+      <tessellate>1</tessellate>
+      <coordinates>
+        120.906316,17.417989,0
+        120.891705,17.445114,0
+        120.883592,17.468127,0
+        120.865186,17.463525,0
+        120.843831,17.458487,0
+        120.822687,17.453186,0
+        120.817113,17.452112,0
+        120.802302,17.448279,0
+        120.788211,17.444188,0
+        120.788494,17.415931,0
+        120.823681,17.416064,0
+        120.837948,17.41638,0
+        120.851703,17.416352,0
+        120.878109,17.416487,0
+        120.906316,17.417989,0
+      </coordinates>
+    </LinearRing>
+  </outerBoundaryIs>
+</Polygon>
+</Placemark>","<Placemark>
+<name>BUCLOC</name>
+<description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+<styleUrl>#poly-intense</styleUrl>
+<ExtendedData>
+  <Data name=""description"">
+    <value/>
+  </Data>
+  <Data name=""Descriptio"">
+    <value>Municipal</value>
+  </Data>
+</ExtendedData>
+<Polygon>
+  <outerBoundaryIs>
+    <LinearRing>
+      <tessellate>1</tessellate>
+      <coordinates>
+        120.906316,17.417989,0
+        120.891705,17.445114,0
+        120.883592,17.468127,0
+        120.865186,17.463525,0
+        120.843831,17.458487,0
+        120.822687,17.453186,0
+        120.817113,17.452112,0
+        120.802302,17.448279,0
+        120.788211,17.444188,0
+        120.788494,17.415931,0
+        120.823681,17.416064,0
+        120.837948,17.41638,0
+        120.851703,17.416352,0
+        120.878109,17.416487,0
+        120.906316,17.417989,0
+      </coordinates>
+    </LinearRing>
+  </outerBoundaryIs>
+</Polygon>
+</Placemark>","<Placemark>
+<name>BUCLOC</name>
+<description><![CDATA[description: <br>Descriptio: Municipal]]></description>
+<styleUrl>#poly-torrential</styleUrl>
+<ExtendedData>
+  <Data name=""description"">
+    <value/>
+  </Data>
+  <Data name=""Descriptio"">
+    <value>Municipal</value>
+  </Data>
+</ExtendedData>
+<Polygon>
+  <outerBoundaryIs>
+    <LinearRing>
+      <tessellate>1</tessellate>
+      <coordinates>
+        120.906316,17.417989,0
+        120.891705,17.445114,0
+        120.883592,17.468127,0
+        120.865186,17.463525,0
+        120.843831,17.458487,0
+        120.822687,17.453186,0
+        120.817113,17.452112,0
+        120.802302,17.448279,0
+        120.788211,17.444188,0
+        120.788494,17.415931,0
+        120.823681,17.416064,0
+        120.837948,17.41638,0
+        120.851703,17.416352,0
+        120.878109,17.416487,0
+        120.906316,17.417989,0
+      </coordinates>
+    </LinearRing>
+  </outerBoundaryIs>
+</Polygon>
+</Placemark>"

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Rizal" id="Rizal">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>Rizal</name>
+  <Placemark>
+	<name>RIZAL (LIWAN)</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Rizal">
+		<SimpleData name="Descriptio">Municipal</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>relativeToGround</altitudeMode><coordinates>121.584653,17.575158 121.591797,17.567098 121.598401,17.560508 121.61456,17.544173 121.625684,17.531664 121.630818,17.526207 121.639394,17.516685 121.653624,17.504073 121.663105,17.492954 121.665021,17.49083 121.667812,17.486071 121.668694,17.471388 121.669089,17.459552 121.665349,17.448859 121.653284,17.431483 121.6114,17.408685 121.579487,17.446696 121.568653,17.459856 121.554226,17.476678 121.547116,17.48467 121.53436,17.500793 121.513463,17.52612 121.500027,17.54311 121.494893,17.549802 121.486851,17.55934 121.529744,17.565784 121.559216,17.569946 121.584653,17.575158</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

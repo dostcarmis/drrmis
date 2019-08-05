@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>Sta. Marcela</name>
+		<description><![CDATA[]]></description>
+		<Folder>
+			<name>staMarcelaLandslideSusceptib</name>
+			<Placemark>
+				<name></name>
+				<description><![CDATA[description: <br>Id: 0<br>Rating: ]]></description>
+				<styleUrl>#poly-097138-0-0</styleUrl>
+				<ExtendedData>
+					<Data name='description'>
+						<value></value>
+					</Data>
+					<Data name='Id'>
+						<value>0</value>
+					</Data>
+					<Data name='Rating'>
+						<value></value>
+					</Data>
+				</ExtendedData>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>121.463067,18.296052,0.0 121.463045,18.296172,0.0 121.46226,18.300523,0.0 121.462175,18.300685,0.0 121.456773,18.310884,0.0 121.432529,18.321336,0.0 121.432498,18.294128,0.0 121.432488,18.286248,0.0 121.432486,18.284121,0.0 121.432709,18.284121,0.0 121.445399,18.284104,0.0 121.468919,18.284072,0.0 121.463067,18.296052,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name></name>
+				<description><![CDATA[description: <br>Id: 0<br>Rating: Low Landslide Susceptibility]]></description>
+				<styleUrl>#poly-FFEA00-1-189</styleUrl>
+				<ExtendedData>
+					<Data name='description'>
+						<value></value>
+					</Data>
+					<Data name='Id'>
+						<value>0</value>
+					</Data>
+					<Data name='Rating'>
+						<value>Low Landslide Susceptibility</value>
+					</Data>
+				</ExtendedData>
+				<MultiGeometry>
+					<Polygon>
+						<outerBoundaryIs>
+							<LinearRing>
+								<tessellate>1</tessellate>
+								<coordinates>121.433058,18.284642,0.0 121.433352,18.285808,0.0 121.432488,18.286248,0.0 121.432486,18.284121,0.0 121.432709,18.284121,0.0 121.433058,18.284642,0.0</coordinates>
+							</LinearRing>
+						</outerBoundaryIs>
+					</Polygon>
+					<Polygon>
+						<outerBoundaryIs>
+							<LinearRing>
+								<tessellate>1</tessellate>
+								<coordinates>121.463045,18.296172,0.0 121.463035,18.296193,0.0 121.462693,18.297568,0.0 121.462175,18.300685,0.0 121.462152,18.30082,0.0 121.461309,18.302412,0.0 121.456665,18.311181,0.0 121.447523,18.315105,0.0 121.432529,18.32154,0.0 121.432529,18.321336,0.0 121.432498,18.294128,0.0 121.433112,18.295584,0.0 121.434799,18.294621,0.0 121.436463,18.293638,0.0 121.437992,18.293075,0.0 121.441185,18.293357,0.0 121.442478,18.293022,0.0 121.442987,18.291356,0.0 121.443468,18.28963,0.0 121.442555,18.28677,0.0 121.443117,18.286242,0.0 121.443802,18.285599,0.0 121.445145,18.284949,0.0 121.445366,18.284291,0.0 121.445399,18.284104,0.0 121.468919,18.284072,0.0 121.468956,18.284072,0.0 121.468205,18.28561,0.0 121.463045,18.296172,0.0</coordinates>
+							</LinearRing>
+						</outerBoundaryIs>
+					</Polygon>
+				</MultiGeometry>
+			</Placemark>
+		</Folder>
+		<Style id='poly-097138-0-0-normal'>
+			<LineStyle>
+				<color>ff387109</color>
+				<width>0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color> 0387109</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Style id='poly-097138-0-0-highlight'>
+			<LineStyle>
+				<color>ff387109</color>
+				<width>0.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color> 0387109</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<StyleMap id='poly-097138-0-0'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-097138-0-0-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-097138-0-0-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id='poly-FFEA00-1-189-normal'>
+			<LineStyle>
+				<color>ff00EAFF</color>
+				<width>1</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>BD00EAFF</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Style id='poly-FFEA00-1-189-highlight'>
+			<LineStyle>
+				<color>ff00EAFF</color>
+				<width>2.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>BD00EAFF</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<StyleMap id='poly-FFEA00-1-189'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-FFEA00-1-189-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-FFEA00-1-189-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+	</Document>
+</kml>

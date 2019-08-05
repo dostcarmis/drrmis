@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Lagayan" id="Lagayan">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>Lagayan</name>
+  <Placemark>
+	<name>LAGAYAN</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Lagayan">
+		<SimpleData name="Descriptio">Municipal</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>relativeToGround</altitudeMode><coordinates>120.712531,17.710855 120.695124,17.712449 120.687006,17.704552 120.685411,17.702498 120.674064,17.720128 120.67282,17.733273 120.673163,17.755461 120.671722,17.82802 120.676643,17.829144 120.681854,17.830347 120.685844,17.831841 120.690869,17.83458 120.693184,17.836675 120.695473,17.839391 120.698456,17.841907 120.700973,17.84497 120.702797,17.84711 120.704132,17.848436 120.706306,17.851827 120.708252,17.85478 120.711342,17.858063 120.713091,17.859956 120.743385,17.833825 120.773795,17.808069 120.803634,17.78306 120.786086,17.763482 120.764785,17.739513 120.750266,17.723702 120.737418,17.727263 120.722075,17.732147 120.72045,17.731197 120.715117,17.728714 120.713569,17.72737 120.711635,17.726257 120.710895,17.724732 120.710471,17.723746 120.710242,17.722601 120.710196,17.720458 120.710158,17.717892 120.710891,17.715058 120.712294,17.712465 120.712531,17.710855</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

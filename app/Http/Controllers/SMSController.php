@@ -1,0 +1,376 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use DB;
+use App\Models\Subscribers;
+use App\Models\User;
+use Globe\Connect\Oauth;
+use Globe\Connect\Sms;
+
+class SMSController extends Controller
+{
+
+	function __construct(){
+
+    	$this->middleware('auth');
+
+    }
+    
+    public function viewRegisteredContacts(){
+
+    	return view('pages.phonebook');
+
+    }
+
+    public function viewManualSMS(){
+
+        $users = DB::table('users')->orderBy('first_name', 'asc')->get();
+        $subscribers = DB::table('tbl_subscribers')->get();
+
+    	return view('pages.compose')->with(['users' => $users,
+                                            'subscribers' => $subscribers]);
+
+    }
+
+    public function viewAllNotifications(){
+
+    	return view('pages.inbox');
+
+    }
+
+    public function viewSubscribe(){
+
+        return view('pages.subscribe');
+
+    }
+
+    public function viewSuccessSubscribe(){
+
+        return view('pages.success-subscribe');
+
+    }
+
+    public function checkSubscribed(Request $request) {
+
+        $subscribers = DB::table('tbl_subscribers')->get();
+        $userID = $request->input('user_id');
+        $isSubscribe = "0";
+
+        foreach ($subscribers as $subscriber) {
+            
+            if ($subscriber->user_id == $userID) {
+
+                $isSubscribe = "1";
+                break;
+
+            }
+
+        }
+
+        return $isSubscribe;
+
+    }
+
+    public function unsubscribeUser(Request $request) {
+
+        $userID = $request->input('user_id');
+
+        DB::table('tbl_subscribers')->where('user_id', '=', $userID)->delete();
+
+        return "1";
+
+    }
+
+    public function getRecipients(Request $request){
+
+        $users = DB::table('users')->orderBy('first_name', 'asc')->get();
+        $provinces = DB::table('tbl_provinces')->get();
+        $subscribers = DB::table('tbl_subscribers')->get();
+
+        $data = array();
+        $recipients = json_encode(0);
+        $firstName = "";
+        $lastName = "";
+        $province = "";
+        $picture = "";
+        $phoneNumber = "";
+
+        /*
+        foreach ($users as $user) {
+
+            $tempID = $user->province_id;
+            $tempName = $user->first_name . " " . $user->last_name;
+            $tempNumber = $user->cellphone_num;
+            $picture = $user->profile_img;
+
+            foreach ($provinces as $_province) {
+                
+                if ($tempID == $_province->id) {
+
+                    $province = $_province->name;
+                    break;
+
+                }
+
+            }
+            
+            if ($tempNumber != ""){
+
+                $firstname = $user->first_name;
+                $lastname = $user->last_name;
+                
+                //$tempNumber = substr_replace($tempNumber, "+63", 0, 1);
+
+                $data[] = array("firstname" => $firstname,
+                                "lastname" => $lastname,
+                                "province" => $province,
+                                "picture" => $picture,
+                                "contact_name" => $tempName,
+                                "contact_number" => $tempNumber);
+
+            }
+
+        }*/
+
+        foreach ($subscribers as $subscriber) {
+
+            $firstName = "";
+            $lastName = "";
+            $province = "";
+            $picture = "";
+            $phoneNumber = "";
+            
+            foreach ($users as $user) {
+                
+                if ($user->id == $subscriber->user_id) {
+
+                    $firstName = $user->first_name;
+                    $lastName = $user->last_name;
+                    $phoneNumber = $subscriber->subscriber_number;
+                    $tempName = $user->first_name . " " . $user->last_name;
+                    $picture = $user->profile_img;
+
+                    foreach ($provinces as $_province) {
+                        if ($user->province_id == $_province->id) {
+
+                            $province = $_province->name;
+                            break;
+
+                        }
+                    }
+
+                    $data[] = array("firstname" => $firstName,
+                                    "lastname" => $lastName,
+                                    "province" => $province,
+                                    "picture" => $picture,
+                                    "contact_name" => $tempName,
+                                    "contact_number" => $phoneNumber);
+
+                }
+
+            }
+
+        }
+
+        $recipents = json_encode($data);
+        return $recipents;
+
+    }
+
+    public function getNotifications(Request $request){
+        $sensors = DB::table('tbl_sensors')->get();
+        $notifications = DB::table('tbl_notifications')->get();
+        $notificationContents = DB::table('tbl_notificationscontent')->get();
+        $provinces = DB::table('tbl_provinces')->get();
+        $municipalities = DB::table('tbl_municipality')->get();
+        $userID = $request->input('user_id');
+
+        $ncID = "";
+        $date_time = "";
+        $municipalID = "";
+        $provinceID = "";
+        $municipalName = "";
+        $provinceName = "";
+        $value = "";
+        $message = "";
+        $data = array();
+        $notificationData = json_encode(0);
+        foreach ($notifications as $notification) {
+            if ($notification->user_id == $userID) {
+                $ncID = $notification->nc_id;
+                $value = $notification->value;
+                $provinceID = $notification->province_id;
+                $municipalID = $notification->sensorsids;
+                $date_time = $notification->created_at;
+
+                foreach ($provinces as $province) {
+                    if ($province->id == $provinceID) {
+                        $provinceName = $province->name;
+                        break;
+                    }
+                }
+
+                foreach ($sensors as $sensor) {
+                    if ($sensor->id == $municipalID) {
+                        $municipalName = $sensor->address;
+                        break;
+                    }
+                }
+
+                foreach ($notificationContents as $content) {
+                    if ($content->id == $ncID) {
+                        $message = "$municipalName" . ", $provinceName has exceeded the threshold value from 100 to $value". "mm.";
+                        $data[] = array("date_time" => $date_time,
+                                        "message" => $message);
+                        break;
+                    }
+                }
+
+             
+            }
+        }
+
+        $notificationData = json_encode($data);
+
+        return $notificationData;
+
+    }
+
+    #=======================================================================================#
+    #======================================= SMS API =======================================#
+    #=======================================================================================#
+
+    /*-------------------------------------------------------
+        egzkIAzxGEu67igo4Xcxxzu8ogEeILEo -- ews account
+        BkABUBA97jF5bcbaa4T9yAFzMkjeUbBr -- lowil account
+        qKKMuL7Baetq5cdaR5TBnLtKGKdKuKyb -- lowil 2 account
+        BezpHpeRyeHzaTXG7AiR65HnqeyaHXMy -- mac account
+    ---------------------------------------------------------*/
+
+    private $appID = "BezpHpeRyeHzaTXG7AiR65HnqeyaHXMy"; 
+
+    /*--------------------------------------------------------------------------------------
+        69aaa2830789b6f3a6e820e0ee5a3b1811fded49e34c18058eda910cddbba529 --ews account
+        8d032697f9ba22c5ab3b44c7c78fe63a974ec2da5b09bbd581d41e2c7c1130e3 --lowil account
+        64960f423bafca7a060bf8b567f4d8346142d974e8ea387b58391ce42d4f4476 --lowil 2 account
+        8223b68655b878831d16c362cec3964d8c6a0324f91cd6caf2be4d7a4144643c --mac account
+    ----------------------------------------------------------------------------------------*/
+
+    private $appSecretCode = "8223b68655b878831d16c362cec3964d8c6a0324f91cd6caf2be4d7a4144643c";
+
+    /*-----------------------------------------------
+        "29290580094" "21580094" -- ews account
+        "29290582050" "21582050" -- lowil account
+        "29290583777" "21583777" -- lowil 2 account
+        "29290588806" "21588806" -- mac account
+    -------------------------------------------------*/
+
+    private $shortCode = "8806"; 
+
+    private function initializeAPI() {
+        $oauth = new Oauth($this->appID, $this->appSecretCode);
+        return $oauth;
+    }
+
+    public function webSubscribe() {
+        $oauth = $this->initializeAPI();
+        $redirectURL = $oauth->getRedirectUrl();
+        header('Location: ' . $redirectURL);
+        die();
+    }
+
+    public function addSubscriber(Request $request) {
+        $userID = $request->input('user_id');
+        $userURL = $request->input('user_url');
+        $subscribers = DB::table('tbl_subscribers')->get();
+        $urlLength = strlen($userURL);
+        $codeStringPos = strpos($userURL, "?code=") + 6;
+        $code = substr($userURL, $codeStringPos, $urlLength);
+        
+        $oauth = $this->initializeAPI();
+        $oauth->setCode($code);
+        $_authResponse = $oauth->getAccessToken();
+        $authResponse = json_decode($_authResponse, true);
+        $accessToken = $authResponse["access_token"];
+        $subscriberNumber = "+63" . $authResponse["subscriber_number"];
+        
+        $msg = "";
+        $countSubscriber = count($subscribers);
+
+        if ($countSubscriber == 0) {
+
+            DB::table('tbl_subscribers')->insert(
+                [ "user_id" => $userID,
+                  "access_token" => $accessToken,
+                  "subscriber_number" => $subscriberNumber ]
+            );
+
+            $msg = "1";
+
+        } else if ($countSubscriber > 0) {
+
+            foreach ($subscribers as $subscriber) {
+                if ($userID != $subscriber->user_id) {
+
+                    DB::table('tbl_subscribers')->insert(
+                        [ "user_id" => $userID,
+                          "access_token" => $accessToken,
+                          "subscriber_number" => $subscriberNumber ]
+                    );
+
+                    $msg = "1";
+                    break;
+
+                } else {
+
+                    $msg = "0";
+                    break;
+
+                }
+            }
+
+        }
+
+        // $msg = 0; Already Subscribed 
+        // $msg = 1; Successfully Subscribed
+
+        return $msg; 
+    }
+
+    public function sendMessage(Request $request){
+        $oauth = $this->initializeAPI();
+        
+        $recipient = $request->input('phone_number');
+        $msg = $request->input('msg');
+        $subscribers = DB::table('tbl_subscribers')->get();
+        $sender = $this->shortCode;
+        $accessToken = "";
+        $subscriberNumber = "";
+        $dataResponse = array();
+
+        $response = "";
+        
+        foreach ($recipient as $nCounter => $number) {
+            foreach ($subscribers as $subscriber) {
+                if ($number == $subscriber->subscriber_number) {
+                    $accessToken = $subscriber->access_token;
+                    $subscriberNumber = str_replace("+63", "0", $subscriber->subscriber_number);
+                    //$subscriberNumber = $subscriber->subscriber_number;
+
+                    $sms = new Sms($sender, $accessToken);
+                    $sms->setReceiverAddress($subscriberNumber);
+                    $sms->setMessage($msg);
+                    //$sms->setClientCorrelator('');
+                    $response .= ($nCounter + 1) . ".] " . $subscriberNumber . ": " . $sms->sendMessage() . "\n\n";
+                    break;
+                }
+            }
+        }
+        
+        //return "Message/s Sent.";
+        return $response;
+    }
+}

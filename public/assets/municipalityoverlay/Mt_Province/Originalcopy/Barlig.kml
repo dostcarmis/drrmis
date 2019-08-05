@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Barlig" id="Barlig">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>Barlig</name>
+  <Placemark>
+	<name>BARLIG</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Barlig">
+		<SimpleData name="Descriptio">Municipal</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>relativeToGround</altitudeMode><coordinates>121.057328,17.010365 121.058869,17.012785 121.065377,17.021038 121.070267,17.027519 121.073777,17.03645 121.078332,17.0453 121.089121,17.070648 121.09929,17.093398 121.102472,17.099428 121.105447,17.12421 121.102311,17.143793 121.093813,17.157451 121.09247,17.166313 121.092867,17.176378 121.086336,17.186179 121.085939,17.188134 121.084862,17.191738 121.136446,17.173291 121.160364,17.166424 121.178415,17.122982 121.183267,17.11535 121.187067,17.105727 121.189829,17.098414 121.193292,17.08709 121.195741,17.080341 121.198388,17.072196 121.201241,17.063824 121.205132,17.054249 121.207558,17.049202 121.210595,17.044366 121.214707,17.037521 121.21811,17.030345 121.219674,17.02476 121.221703,17.018776 121.222809,17.014855 121.225892,17.004993 121.189377,17.003484 121.168854,17.004289 121.14132,17.010744 121.107201,17.013156 121.057328,17.010365</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

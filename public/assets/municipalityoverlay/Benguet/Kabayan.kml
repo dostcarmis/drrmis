@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Kabayan" id="Kabayan">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>Kabayan</name>
+  <Placemark>
+	<name>KABAYAN</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Kabayan">
+		<SimpleData name="Descriptio">Municipal</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>relativeToGround</altitudeMode><coordinates>120.89211,16.55846 120.883581,16.55818 120.8719,16.558346 120.864561,16.558407 120.858503,16.558462 120.848386,16.559351 120.841581,16.560531 120.831411,16.561924 120.821119,16.5646 120.81133,16.567867 120.800863,16.572246 120.792104,16.576217 120.785947,16.579048 120.774572,16.585088 120.760961,16.592664 120.763517,16.597152 120.765676,16.602264 120.766706,16.603191 120.771108,16.615669 120.773061,16.623311 120.774816,16.632647 120.775899,16.64093 120.759412,16.639593 120.772467,16.673315 120.799704,16.675096 120.819739,16.675449 120.82411,16.675378 120.827414,16.675632 120.835135,16.676169 120.843428,16.676985 120.850028,16.67787 120.859168,16.679484 120.866362,16.681231 120.878424,16.684697 120.89427,16.689737 120.894819,16.662161 120.895124,16.630575 120.894994,16.608985 120.895589,16.607159 120.897008,16.605426 120.899335,16.603018 120.902067,16.601274 120.904058,16.600179 120.904409,16.59536 120.89211,16.55846</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

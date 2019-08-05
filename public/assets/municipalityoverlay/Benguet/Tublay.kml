@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Tublay" id="Tublay">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>Tublay</name>
+  <Placemark>
+	<name>TUBLAY</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Tublay">
+		<SimpleData name="Descriptio">Municipal</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>relativeToGround</altitudeMode><coordinates>120.699673,16.473828 120.684559,16.468488 120.667721,16.462698 120.622776,16.493895 120.612889,16.50071 120.611493,16.501438 120.593922,16.513803 120.581319,16.522323 120.563795,16.534185 120.566053,16.546065 120.570074,16.546309 120.590833,16.5463 120.594472,16.546327 120.619756,16.546973 120.636602,16.547385 120.642133,16.547538 120.650625,16.531572 120.655965,16.526096 120.66168,16.519827 120.680516,16.498912 120.699673,16.473828</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

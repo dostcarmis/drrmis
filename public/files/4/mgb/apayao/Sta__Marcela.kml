@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Sta. Marcela</name>
+	<Style id="poly-097138-0-0-normal">
+		<LineStyle>
+			<color>ff387109</color>
+			<width>0</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00387109</color>
+		</PolyStyle>
+	</Style>
+	<Style id="poly-FFEA00-1-189-normal">
+		<LineStyle>
+			<color>ff00eaff</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>bd00eaff</color>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="poly-FFEA00-1-189">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#poly-FFEA00-1-189-normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#poly-FFEA00-1-189-highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="poly-097138-0-0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#poly-097138-0-0-normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#poly-097138-0-0-highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="poly-097138-0-0-highlight">
+		<LineStyle>
+			<color>ff387109</color>
+			<width>0</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00387109</color>
+		</PolyStyle>
+	</Style>
+	<Style id="poly-FFEA00-1-189-highlight">
+		<LineStyle>
+			<color>ff00eaff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>bd00eaff</color>
+		</PolyStyle>
+	</Style>
+	<Folder>
+		<name>staMarcelaLandslideSusceptib</name>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0<br>Rating:]]></description>
+			<styleUrl>#poly-097138-0-0</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+				<Data name="Rating">
+				</Data>
+			</ExtendedData>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							121.463067,18.296052,0 121.463045,18.296172,0 121.46226,18.300523,0 121.462175,18.300685,0 121.456773,18.310884,0 121.432529,18.321336,0 121.432498,18.294128,0 121.432488,18.286248,0 121.432486,18.284121,0 121.432709,18.284121,0 121.445399,18.284104,0 121.468919,18.284072,0 121.463067,18.296052,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<description><![CDATA[description: <br>Id: 0<br>Rating: Low Landslide Susceptibility]]></description>
+			<styleUrl>#poly-FFEA00-1-189</styleUrl>
+			<ExtendedData>
+				<Data name="description">
+				</Data>
+				<Data name="Id">
+					<value>0</value>
+				</Data>
+				<Data name="Rating">
+					<value>Low Landslide Susceptibility</value>
+				</Data>
+			</ExtendedData>
+			<MultiGeometry>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>
+								121.433058,18.284642,0 121.433352,18.285808,0 121.432488,18.286248,0 121.432486,18.284121,0 121.432709,18.284121,0 121.433058,18.284642,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>
+								121.463045,18.296172,0 121.463035,18.296193,0 121.462693,18.297568,0 121.462175,18.300685,0 121.462152,18.30082,0 121.461309,18.302412,0 121.456665,18.311181,0 121.447523,18.315105,0 121.432529,18.32154,0 121.432529,18.321336,0 121.432498,18.294128,0 121.433112,18.295584,0 121.434799,18.294621,0 121.436463,18.293638,0 121.437992,18.293075,0 121.441185,18.293357,0 121.442478,18.293022,0 121.442987,18.291356,0 121.443468,18.28963,0 121.442555,18.28677,0 121.443117,18.286242,0 121.443802,18.285599,0 121.445145,18.284949,0 121.445366,18.284291,0 121.445399,18.284104,0 121.468919,18.284072,0 121.468956,18.284072,0 121.468205,18.28561,0 121.463045,18.296172,0 
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</MultiGeometry>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

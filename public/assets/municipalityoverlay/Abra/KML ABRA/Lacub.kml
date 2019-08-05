@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Lacub" id="Lacub">
+	<SimpleField name="Descriptio" type="string"></SimpleField>
+</Schema>
+<Folder><name>Lacub</name>
+  <Placemark>
+	<name>LACUB</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Lacub">
+		<SimpleData name="Descriptio">Municipal</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>relativeToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>relativeToGround</altitudeMode><coordinates>121.115966,17.739687 121.118003,17.724985 121.121687,17.682128 121.090521,17.664995 121.039417,17.657934 121.024761,17.656682 121.00902,17.655116 121.00291,17.654441 120.983469,17.651974 120.967296,17.649808 120.912885,17.642734 120.910222,17.641323 120.909978,17.640943 120.909161,17.640215 120.908734,17.640497 120.907475,17.641163 120.906552,17.641239 120.905942,17.641329 120.905369,17.641027 120.903813,17.641287 120.890538,17.643207 120.880513,17.649822 120.860097,17.663037 120.840833,17.676295 120.874778,17.733569 120.885657,17.754621 120.913076,17.744981 120.933738,17.738056 120.941297,17.735865 120.944624,17.73494 120.964597,17.735797 120.969291,17.736051 120.976965,17.735717 120.99008,17.735666 121.115966,17.739687</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>
