@@ -88,10 +88,17 @@
 
                 <div class="column">
                     <div class="card">
-                        <a href="{{ url("filedownloadpage?filetype=kml") }}"><img border="0"  src="{{ asset("assets/images/filetypeicons/map.png") }}" width="100" height="100"></a>
-                        <p>Maps</p>
+                        <a href="{{ url("filedownloadpage?filetype=kml") }}"><img border="0"  src="{{ asset("assets/images/filetypeicons/kml.png") }}" width="100" height="100"></a>
+                        <p>Maps (KML)</p>
                     </div>
                 </div> 
+
+                <div class="column">
+                  <div class="card">
+                      <a href="{{ url("filedownloadpage?filetype=jpeg") }}"><img border="0"  src="{{ asset("assets/images/filetypeicons/jpeg.png") }}" width="100" height="100"></a>
+                      <p>Maps (JPG)</p>
+                  </div>
+              </div>
 
                <div class="column">
                     <div class="card">
@@ -105,10 +112,12 @@
 
 
         <div class="modal-footer">
-          <a type="button" class="btn btn-danger" data-dismiss="modal">Cancel</a>      
+          <div class="col-xs-12 np"><a href="#" data-toggle="modal" data-target="#addModal" class="btn btn-viewupload">+ Add New File</a></div> 
+          <a type="button" class="btn btn-danger" data-dismiss="modal">Cancel</a>  
+             
         </div>
         </form>
       </div>
     </div>
   </div>
-
+  @include('pages.adddrrmfile')

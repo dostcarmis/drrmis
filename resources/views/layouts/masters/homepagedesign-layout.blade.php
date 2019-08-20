@@ -50,6 +50,7 @@
         <script src="{!! url('assets/js/responsive.js')!!}"></script>
         <script type="text/javascript" src="{!! url('js/jquery.validate.min.js') !!}"></script>
         <script src="{!! url('assets/js/main.js')!!}"></script>
+        <script src="{!! url('assets/js/confirmDRRMfile.js')!!}"></script>
         @yield('page-js-files')
 
 </body>

@@ -117,6 +117,7 @@
     <script src="{!! url('assets/js/responsive.js')!!}"></script>
 
     <script src="{!! url('assets/js/confirm2.js')!!}"></script>
+    
      @yield('page-js-files')
 </body>
 </html>

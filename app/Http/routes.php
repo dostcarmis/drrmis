@@ -1052,10 +1052,20 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 		]);
 	Route::match(['get', 'post'],'filedownloadpage/deletefile/{id}',[
-		'uses' => 'FileDownloadController@deletFile',
+		'uses' => 'FileDownloadController@deleteFile',
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 		]);
+
+
+			//sitreps
+	Route::match(['get', 'post'],'sitreps',[
+		'uses' => 'SitrepController@viewsitreps',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		]);
+	
+	
 
 	//risk assess
 	Route::match(['get', 'post'],'riskassessmentfiles',[

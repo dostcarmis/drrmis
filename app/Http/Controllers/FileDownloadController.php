@@ -35,7 +35,7 @@ class FileDownloadController extends Controller
         return view('503.blade.php');
         //return view('pages.addfile')
     }
-    public function deletFile($id){
+    public function deleteFile($id){
 
         $filename = DB::table('tbl_files')->where('id',$id)->first();
         $fileurl = public_path('fileuploads/drrmfiles');
@@ -55,7 +55,7 @@ class FileDownloadController extends Controller
         $cntUser = Auth::user();
        
         $rules = [
-            'fileToUpload' => 'required|mimes:txt,pdf,docx,pptx,xlsx,rar,kml,jpg',
+            'fileToUpload' => 'required|mimes:txt,pdf,docx,pptx,xlsx,rar,kml,jpeg,jpg',
         ];
         $rules = [];
         $v = \Validator::make($request->all(), $rules);
@@ -105,9 +105,9 @@ class FileDownloadController extends Controller
             $i = DB::table('tbl_files')->insert($row);
                 if($i > 0){
                     \Session::flash('message', 'File successfully uploaded');
-                    return back();
+                    return redirect('filedownloadpage');
                 }
-                return back();
+                return redirect('filedownloadpage');
         }
 
 

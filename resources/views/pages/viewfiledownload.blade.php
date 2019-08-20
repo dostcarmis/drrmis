@@ -10,7 +10,7 @@
 			@foreach ($errors->all() as $message)
 				<p style="color:red">{{ $message }}</p>
 			@endforeach
-					@include('pages.adddrrmfile')
+		@include('pages.adddrrmfile')
 
 <div class="col-xs-12  col-sm-12 ">
 	<table class=" table table-hover tblehead">
@@ -30,7 +30,7 @@
 				<td><span>{{$file->name}}</span>
 					<td><div class="btn-group pull-right">
 						@if($file->uploadedby == $currentUser->id)
-						<a class="delete btn btn-danger" onclick="$(this).filedel({{ $file->id }});">Delete</a>
+						<a class="delete btn btn-danger" onclick="$(this).delfile({{ $file->id }});">Delete</a>
 						@endif
 						<a class="btn btn-primary btn-success"  target="_self" href="{{ url($file->fileurl) }}" download><span class="fa fa-cloud-download"></span>Download File</a>		
 					 	</div></td>
@@ -43,9 +43,19 @@
 </div>
 </div>
 
-<form id="file-delete" method="POST" action="">
+<form id="delete-file" method="POST" action="">
     {{ csrf_field() }}
 </form>
-@endsection
 
+@include('pages.successmodal')
+@endsection
+@section('page-js-files')
+	@if (!empty(session('message')))
+	<script> 
+	$(function(){
+		$("#modalSuccess").modal();
+	});
+	</script>
+	@endif
+@endsection
 
