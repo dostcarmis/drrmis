@@ -119,4 +119,22 @@ class AuthController extends Controller
       $items = Municipality::where('province_id', '=', $province)->get();
       return Response::json($items);      
     }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $provinces = DB::table('tbl_provinces')->get();
+        $municipalities = DB::table('tbl_municipality')->get();
+
+        if (property_exists($this, 'registerView')) {
+            return view($this->registerView);
+        }
+
+
+        return view('auth.register')->with(['provinces' => $provinces,'municipalities' => $municipalities]);
+    }
 }

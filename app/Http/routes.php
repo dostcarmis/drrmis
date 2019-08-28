@@ -26,7 +26,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	Route::group(['prefix' => 'auth'], function(){
 	Route::get('register', [
 		'as' => 'get_register',
-		'uses' => 'Auth\AuthController@getRegister'
+		'uses' => 'Auth\AuthController@showRegistrationForm'
 	]);
 
 	Route::get('province-subcat','Auth\AuthController@registerprovince');
