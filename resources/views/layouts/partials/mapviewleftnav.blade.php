@@ -1,7 +1,17 @@
-<div class="col-xs-12 r-links"></div>
+
 <div class="wrap accord">
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">	
-
+     <!--Search Tab-->
+     <div class="panel panel-default lookupinci active">
+      <div class="panel-heading" role="tab" id="Landslides">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#landslides" aria-expanded="false" aria-controls="Landslides">Search </i>
+          </a>
+        </h4>
+      </div>
+    </div>
+    
+      <!--    LANDSLIDE   -->
     <div class="panel panel-default pnl-landslides active">
       <div class="panel-heading" role="tab" id="Landslides">
         <h4 class="panel-title">
@@ -10,7 +20,7 @@
           </a>
         </h4>
       </div>
-      <div id="landslides" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="Landslides">
+      <div id="landslides" class="panel-collapse collapse" role="tabpanel" aria-labelledby="Landslides">
         <div class="panel-body">
         <?php if(empty($landslides)) { ?>
           <span class="defsp">No Landslide reports.</span>
@@ -44,12 +54,12 @@
             </div>
 
             <div class="col-xs-12 r-links">
-              <a href="#" class="l-viewmap" id="{{ $landslide->id }}">View on Map</a> | <a href="<?php echo url('incident'); ?>/<?php echo $landslide->slug?>">Read More</a>
+              <a href="#l-viewmap" class="l-viewmap" id="{{ $landslide->id }}">View on Map</a> | <a href="<?php echo url('incident'); ?>/<?php echo $landslide->slug?>">Read More</a>
             </div>
 
           </div>
         </div>
-      
+
       <?php if($landslidecount >= 5){break;}?>
       @endforeach
 
@@ -69,10 +79,12 @@
       <?php endif;?>
 
         <?php } ?>
-          
+
         </div>
       </div>
     </div>
+
+
 
     <div class="panel panel-default pnl-floods">
       <div class="panel-heading" role="tab" id="Floods">
@@ -131,7 +143,7 @@
             <a href="#" id="f-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsF();">View all Floods</a> 
           </div>
           <div class="col-xs-12 r-links">
-              <a href="#" id="all-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsAll();">View all incidents </a> 
+              <a href="#all-viewmap" id="all-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsAll();">View all incidents </a> 
           </div>
         <div class="col-xs-12 np r-moreroadlink">
           <a href="{{ action("FloodController@viewmultipleFloods") }}" class="btn btn-primary">More Floods</a>

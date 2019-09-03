@@ -1441,8 +1441,8 @@ $(function(){
 				}
 
 				categoryData = datetime;
-				textTitle = "Waterlevel Value (cm)";
-		        unit = "cm";
+				textTitle = "Waterlevel Value (mm)";
+		        unit = "mm";
 		        legendToggle = "true";
 
 				if (displayType == "1"){
@@ -1464,7 +1464,7 @@ $(function(){
 		    						   	   } 
 									   } 
 		    						 },
-		                			 { field: "waterlevel", title: "Waterlevel (cm)", filterable: false, width: 190 } ];	 
+		                			 { field: "waterlevel", title: "Waterlevel (mm)", filterable: false, width: 190 } ];	 
 
 		            seriesData = [{
 								 	 type: 'area',
@@ -1494,8 +1494,8 @@ $(function(){
 		    						   	   } 
 									   } 
 		    						 },
-		                			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (cm)", filterable: false, width: 230 },
-		                			 { field: "highest_waterlevel", title: "Highest Waterlevel (cm)", filterable: false, width: 230 } ];
+		                			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (mm)", filterable: false, width: 230 },
+		                			 { field: "highest_waterlevel", title: "Highest Waterlevel (mm)", filterable: false, width: 230 } ];
 
 		            seriesData = [{
 							 	   	 type: 'area',
@@ -1529,8 +1529,8 @@ $(function(){
 		    						   	   } 
 									   } 
 		    						 },
-			            			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (cm)", filterable: false, width: 230 },
-			            			 { field: "highest_waterlevel", title: "Highest Waterlevel (cm)", filterable: false, width: 230 } ];
+			            			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (mm)", filterable: false, width: 230 },
+			            			 { field: "highest_waterlevel", title: "Highest Waterlevel (mm)", filterable: false, width: 230 } ];
 
 			        seriesData = [{
 							 	     type: 'area',
@@ -1553,8 +1553,8 @@ $(function(){
 			    	fileTitle = $("#location-title").text().replace(/ /g,'');
 
 		    		tableColumns = [ { field: "date_read", title: "Date (MM-YYYY)", width: 190 },
-			            			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (cm)", filterable: false, width: 230 },
-			            			 { field: "highest_waterlevel", title: "Highest Waterlevel (cm)", filterable: false, width: 230 } ];
+			            			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (mm)", filterable: false, width: 230 },
+			            			 { field: "highest_waterlevel", title: "Highest Waterlevel (mm)", filterable: false, width: 230 } ];
 
 			        seriesData = [{
 							 	     type: 'area',
@@ -1579,8 +1579,8 @@ $(function(){
 			    	fileTitle = $("#location-title").text().replace(/ /g,'');
 
 		    		tableColumns = [ { field: "date_read", title: "Date (YYYY)", width: 160 },
-			            			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (cm)", filterable: false, width: 230 },
-			            			 { field: "highest_waterlevel", title: "Highest Waterlevel (cm)", filterable: false, width: 230 } ];
+			            			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (mm)", filterable: false, width: 230 },
+			            			 { field: "highest_waterlevel", title: "Highest Waterlevel (mm)", filterable: false, width: 230 } ];
 
 			        seriesData = [{
 							 	   	 type: 'area',
@@ -1602,8 +1602,8 @@ $(function(){
 
 		    		tableColumns = [ { field: "date_start", title: "Date Start (YYYY-MM-DD)", filterable: false, width: 250 },
 		                			 { field: "date_end", title: "Date End (YYYY-MM-DD)", filterable: false, width: 250 },
-		                			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (cm)", filterable: false, width: 230 },
-		                			 { field: "highest_waterlevel", title: "Highest Waterlevel (cm)", filterable: false, width: 230 } ];
+		                			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (mm)", filterable: false, width: 230 },
+		                			 { field: "highest_waterlevel", title: "Highest Waterlevel (mm)", filterable: false, width: 230 } ];
 
 		            generateTable(tableData, tableColumns, fileTitle);
 					
@@ -1630,7 +1630,7 @@ $(function(){
 				}
 
 				categoryData = datetime;
-				textTitle = "Waterlevel Value (cm), Rain Cumulative Value (mm)";
+				textTitle = "Waterlevel Value (mm), Rain Cumulative Value (mm)";
 		        unit = "";
 		        legendToggle = "true";
 
@@ -1653,7 +1653,7 @@ $(function(){
 		    						   	   } 
 									   } 
 		    						 },
-		                			 { field: "waterlevel", title: "Waterlevel (cm)", filterable: false, width: 190 },
+		                			 { field: "waterlevel", title: "Waterlevel (mm)", filterable: false, width: 190 },
 		                			 { field: "rain_value", title: "Rain Value (mm)", filterable: false, width: 190 },
 		                			 { field: "rain_cumulative", title:"Rain Cumulative (mm)", filterable: false, width: 210 },
 		                			 { field: "air_pressure", title:"Air Pressure (hPa)", filterable: false, width: 190 } ];
@@ -1694,8 +1694,8 @@ $(function(){
 		    						   	   } 
 									   } 
 		    						 },
-		                			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (cm)", filterable: false, width: 230 },
-		                			 { field: "highest_waterlevel", title: "Highest Waterlevel (cm)", filterable: false, width: 230 },
+		                			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (mm)", filterable: false, width: 230 },
+		                			 { field: "highest_waterlevel", title: "Highest Waterlevel (mm)", filterable: false, width: 230 },
 		                			 { field: "rain_value", title: "Rain Value (mm)", filterable: false, width: 190 },
 		                			 { field: "rain_cumulative", title:"Rain Cumulative (mm)", filterable: false, width: 210 },
 		                			 { field: "air_pressure", title:"Air Pressure (hPa)", filterable: false, width: 190 } ];
@@ -1740,8 +1740,8 @@ $(function(){
 		    						   	   } 
 									   } 
 		    						 },
-			            			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (cm)", filterable: false, width: 230 },
-			            			 { field: "highest_waterlevel", title: "Highest Waterlevel (cm)", filterable: false, width: 230 },
+			            			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (mm)", filterable: false, width: 230 },
+			            			 { field: "highest_waterlevel", title: "Highest Waterlevel (mm)", filterable: false, width: 230 },
 			            			 { field: "rain_cumulative", title:"Rain Cumulative (mm)", filterable: false, width: 210 } ];
 
 			        seriesData = [{
@@ -1771,8 +1771,8 @@ $(function(){
 			    		fileTitle = $("#location-title").text().replace(/ /g,'');
 
 			    		tableColumns = [ { field: "date_read", title: "Date (MM-YYYY)", width: 190 },
-			                			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (cm)", filterable: false, width: 230 },
-			                			 { field: "highest_waterlevel", title: "Highest Waterlevel (cm)", filterable: false, width: 230 },
+			                			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (mm)", filterable: false, width: 230 },
+			                			 { field: "highest_waterlevel", title: "Highest Waterlevel (mm)", filterable: false, width: 230 },
 			                			 { field: "rain_cumulative", title:"Rain Cumulative (mm)", filterable: false, width: 210 } ];
 
 			            seriesData = [{
@@ -1806,8 +1806,8 @@ $(function(){
 			    	fileTitle = $("#location-title").text().replace(/ /g,'');
 
 			    	tableColumns = [ { field: "date_read", title: "Date (YYYY)", width: 160 },
-			            			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (cm)", filterable: false, width: 230 },
-			            			 { field: "highest_waterlevel", title: "Highest Waterlevel (cm)", filterable: false, width: 230 },
+			            			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (mm)", filterable: false, width: 230 },
+			            			 { field: "highest_waterlevel", title: "Highest Waterlevel (mm)", filterable: false, width: 230 },
 			            			 { field: "rain_cumulative", title:"Rain Cumulative (mm)", filterable: false, width: 210 } ];
 
 			        seriesData = [{
@@ -1834,8 +1834,8 @@ $(function(){
 
 		    		tableColumns = [ { field: "date_start", title: "Date Start (YYYY-MM-DD)", filterable: false, width: 250 },
 		                			 { field: "date_end", title: "Date End (YYYY-MM-DD)", filterable: false, width: 250 },
-		                			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (cm)", filterable: false, width: 230 },
-		                			 { field: "highest_waterlevel", title: "Highest Waterlevel (cm)", filterable: false, width: 230 },
+		                			 { field: "lowest_waterlevel", title: "Lowest Waterlevel (mm)", filterable: false, width: 230 },
+		                			 { field: "highest_waterlevel", title: "Highest Waterlevel (mm)", filterable: false, width: 230 },
 		                			 { field: "rain_cumulative", title:"Rain Cumulative (mm)", filterable: false, width: 210 } ];
 
 		            generateTable(tableData, tableColumns, fileTitle);

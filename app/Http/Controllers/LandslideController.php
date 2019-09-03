@@ -47,20 +47,14 @@ class LandslideController extends Controller
 
 
     public function viewmultipleLandslides(){
-
       $cntUser = Auth::user(); 
-
       $municipalities = DB::table('tbl_municipality')->get();
-
       $users = DB::table('users')->get();
-
       $provinces = DB::table('tbl_provinces')->get();
-
       $landslides = DB::table('tbl_incidents')
                       ->where('report_status','=','Published')
                       ->where('incident_type','=',1)
                       ->orderBy('created_at', 'desc')->paginate(12);
-
       return view('pages.viewmultiplelandslides')->with(['users' => $users,'municipalities' => $municipalities,'provinces' => $provinces,'landslides' => $landslides]);
 
     }

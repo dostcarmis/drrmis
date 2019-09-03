@@ -1,4 +1,4 @@
-@extends('layouts.masters.mapview-layouts')
+@extends('layouts.masters.incidents-mapview-layouts')
 @section('left-section')
 <aside id="menuincidents">
     @include('layouts.partials.mapviewleftnav')
