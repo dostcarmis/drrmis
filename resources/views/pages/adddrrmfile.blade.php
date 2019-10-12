@@ -11,11 +11,11 @@
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
                       <label for="text">File Name to Display:</label>
-                      <input type="text" name="filename" class="form-control" id="filename">
+                      <input type="text" name="filename" class="form-control" id="filename" required>
                     </div>
                     <div class="form-group">
                       <label for="pwd"><i class="fa fa-folder-open" aria-hidden="true"></i> File:</label>
-                      <input type="file" name="fileUploadName" id="fileUploadName">
+                      <input type="file" name="fileUploadName" id="fileUploadName" required>
                     </div>		  			  	 
         </div>    
            

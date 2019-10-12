@@ -74,7 +74,7 @@
                             <li class="dropside">
                                 <a href="#"><i class="demo-icon icon-flood">&#xe800;</i> Incidents</a>
                                 <ul id="ul-incidents" class="dropdown-menu fslevel">
-                                    <li><a href="{{ action('IncidentsController@viewaddIncident') }}">Landslide</a></li>
+                                    <li><a href="{{ action('LandslideController@viewLandslides') }}">Landslide</a></li>
                                     <li><a href="{{ action('IncidentsController@viewaddIncident') }}">Flood</a></li>
                                     <li><a href="{{ action('RoadController@viewaddRoadnetwork') }}">Road Closures</a></li>
                                  </ul>
@@ -101,7 +101,8 @@
                                     <li class="dropside-side ndlevel">
                                         <a href="{{action('IncidentsController@viewIncidents')}}?ftype=all"">Tabular</a>
                                         <ul class="dropdown-menu">
-                                            <li><a value="Landslide" class="filterincident" href="{{action('IncidentsController@viewIncidents')}}?ftype=landslides">Landslides</a></li>
+                                            <!--<li><a value="Landslide" class="filterincident" href="{{action('IncidentsController@viewIncidents')}}?ftype=landslides">Landslides</a></li>-->
+                                            <li><a value="Flood" class="filterincident" href="{{action('LandslideController@viewLandslides')}}">Landslide</a></li>
                                             <li><a value="Flood" class="filterincident" href="{{action('IncidentsController@viewIncidents')}}?ftype=floods">Floods</a></li>
                                             <li><a href="{{ action("RoadController@viewRoadnetworks") }}">Road Closures</a></li>
                                         </ul>

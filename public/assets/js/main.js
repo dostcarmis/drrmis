@@ -367,9 +367,7 @@ $(document).ready(function(){
     $( "#userform" ).validate( {
         rules: {
           location: "required",
-          author: {
-            required: true,
-          },
+          
           latitude: {
             required: true,
             number: true
@@ -383,7 +381,7 @@ $(document).ready(function(){
         },
         messages: {
           location: "Please enter the Location",
-          author: "Please enter the Author",
+          
           latitude: {
             required: "Please enter Latitude",
             number: "Please enter a valid Latitude"

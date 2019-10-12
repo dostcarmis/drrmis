@@ -9,39 +9,167 @@
     <p style="color:red">{{ $message }}</p>
 @endforeach
 
-<form id="userform" action="{{ action('LandslideController@saveLandslide') }}" method="post">
+<form id="userform" action="{{ action('LandslideController@saveLandslide') }}" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<input type="hidden" id="myimages" name="myimages" value="myimages[]">
-	<div class="col-xs-12 col-sm-6 perinputwrap dates">
-		<label>Date & Time</label>
-		<div class='input-group date' id="date">
-            <input type='text' name="date" placeholder="Date & Time" class="form-control" />
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-            </span>
-        </div>
-        @if ($errors->has('date')) <span class="reqsymbol">*</span> @endif
-	</div>
+	
 	<div class="col-xs-12 np">
-	<div class="col-xs-12 col-sm-9 perinputwrap">
-		<label>Location:</label>
-		<input type="text" name="location" id="location" class="form-control" placeholder="Enter location">
-		@if ($errors->has('location')) <span class="reqsymbol">*</span> @endif
+			<div class="col-xs-12 col-sm-4 perinputwrap dates">
+					<label>Date & Time</label>
+					<div class='input-group date' id="date">
+						<input type='text'  name="date" placeholder="Date & Time" class="form-control" />
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-calendar"></span>
+						</span>
+					</div>
+					@if ($errors->has('date')) <span class="reqsymbol">*</span> @endif
+				</div>
+
+		<div class="col-xs-12 col-sm-4 perinputwrap">
+			<label>Barangay/Sitio/Road Location:</label>
+			<input type="text" name="road_location" id="road_location" class="form-control" placeholder="Enter location" required>
+		</div>
+
+		<div class="col-xs-12 col-sm-4 perinputwrap">
+			<label>Building Location:</label>
+			<input type="text" name="house_location" id="house_location" class="form-control" placeholder="Enter location">
+		</div>
+		
+		<div class="col-xs-12 col-sm-4 perinputwrap">
+			<label>Province:</label>
+			<select name="province_id" id="province_id" class="form-control">				
+					<option>Select Province</option>
+				@foreach($provinces as $province)				
+					<option value="{{ $province->id }}">{{ $province->name }}</option>			
+				@endforeach
+			</select>
+		</div>
+
+		<div class="col-xs-12 col-sm-4 perinputwrap">
+			<label>Municipality:</label>
+			<select name="municipality_id" id="municipality_id" disabled="disabled" class="form-control">
+				<option>Select Municipality</option>
+			</select>
+		</div>
+
+		<div class="col-xs-12 col-sm-4 perinputwrap">
+			<label>Land Cover:</label>
+			<select name="landcover" id="landcover" class="form-control">
+				<option value="Public Land/Forest">Public Land/Forest</option>
+				<option value="National Park">National Park</option>
+				<option value="Wooded Lands">Wooded Lands</option>
+				<option value="Built-up Areas">Built-up Areas</option>
+			</select>
+		</div>
 	</div>
-	<div class="col-xs-12 col-sm-3 perinputwrap">
-		<label>Province:</label>
-		<select name="province_id" id="province_id" class="form-control">				
-			@foreach($provinces as $province)				
-				<option value="{{ $province->id }}">{{ $province->name }}</option>			
-			@endforeach
+
+	<div class="col-xs-12 col-sm-5 perinputwrap">
+		<label>Prominent Landmark: </label>
+		<input type="text" name="landmark" id="landmark" class="form-control" placeholder="Enter landmark">
+	</div>
+
+	<div class="col-xs-12 col-sm-4 perinputwrap">
+		<label>Landslide Type:</label>
+		<select name="landslidetype" id="landslidetype" class="form-control">
+			<option value="Fall">Fall</option>
+			<option value="Slide">Slide</option>
+			<option value="Flow">Flow</option>
+			<option value="Creep">Creep</option>
+			<option value="Subsidence">Subsidence</option>
+			<option value="Complex">Complex</option>
 		</select>
 	</div>
+
+	<div class="col-xs-12 col-sm-3 perinputwrap">
+		<label>Recurring Landslide?</label>
+		<select name="landslidereccuring" id="landslidereccuring" class="form-control">
+			<option value="No">No</option>
+			<option value="Yes">Yes</option>
+		</select>
 	</div>
-	
-	<div class="col-xs-12 col-sm-6 perinputwrap">
+
+	<div class="col-xs-12 col-sm-4 perinputwrap">
+		<label>Landslide Length:</label>
+		<input type="number" name="lelength" id="lelength" class="form-control" placeholder="Meters (m)">
+	</div>
+
+	<div class="col-xs-12 col-sm-4 perinputwrap">
+		<label>Landslide Width:</label>
+		<input type="number" name="lewidth" id="lewidth" class="form-control" placeholder="Meters (m)">
+	</div>
+
+	<div class="col-xs-12 col-sm-4 perinputwrap">
+		<label>Landslide Depth:</label>
+		<input type="number" name="ledepth" id="ledepth" class="form-control" placeholder="Meters (m)">
+	</div>
+
+	<div class="col-xs-12 col-sm-2 perinputwrap">
+		<label>No. of Casualty:</label>
+		<input type="number" value="0" name="idkilled" id="idkilled" class="form-control">
+	</div>
+
+	<div class="col-xs-12 col-sm-2 perinputwrap">
+		<label>No. of People Injured:</label>
+		<input type="number" value="0" name="idinjured" id="idinjured" class="form-control">
+	</div>
+
+	<div class="col-xs-12 col-sm-2 perinputwrap">
+		<label>No. of People Missing:</label>
+		<input type="number" value="0" name="idmissing" id="idmissing" class="form-control">
+	</div>
+
+	<div class="col-xs-12 col-sm-2 perinputwrap">
+		<label>No. of Affected Infrastructure:</label>
+		<input type="number" value="0" name="idaffectedinfra" id="idaffectedinfra" class="form-control">
+	</div>
+
+	<div class="col-xs-12 col-sm-4 perinputwrap">
+		<label><br>Value of Affected Crops:</label>
+		<input type="number" name="idaffectedcrops" id="idaffectedcrops" class="form-control" placeholder="Pesos (php)">
+	</div>
+
+	<div class="col-xs-12 col-sm-4 perinputwrap">
+			<label>Cause:</label>
+			<select name="cause" id="cause" class="form-control">
+				<option value="hydrometeorological">Hydrometeorological</option>
+				<option value="geological">Geological</option>
+			</select>
+	</div>
+
+	<div class="col-xs-12 col-sm-4 perinputwrap">
+			<label>Typhoon name: </label>
+			<input type="text" name="typhoonname" id="typhoonname" class="form-control" placeholder="Enter name">
+	</div>
+
+	<div class="col-xs-12 col-sm-4 perinputwrap">
+		<label>Heavy rainfall?</label>
+		<select name="heavyrainfall" id="heavyrainfall" class="form-control">
+			<option value="No">No</option>
+			<option value="Yes">Yes</option>
+		</select>
+	</div>
+
+	<div class="col-xs-12 col-sm-4 perinputwrap">
+		<label>Source of the report: </label>
+		<input type="text" name="author" id="author" class="form-control" placeholder="Enter name">
+	</div>
+
+	<div class="col-xs-12 col-sm-4 perinputwrap">
+		<label>Name of Reporter: </label>
+		<input type="text" name="reportedby" id="reportedby" class="form-control" placeholder="Enter name">
+	</div>
+
+	<div class="col-xs-12 col-sm-4 perinputwrap">
+		<label>Designation/Position of the Reporter: </label>
+		<input type="text" name="reporterpos" id="reporterpos" class="form-control" placeholder="Enter position">
+	</div>		
+
+
+	<div class="col-xs-12 col-sm-8 perinputwrap">
 		<div id="addcoords" style="min-height: 300px;"></div>
 	</div>
-	<div class="col-xs-12 col-sm-6 perinputwrap">
+
+	<div class="col-xs-12 col-sm-4 perinputwrap">
 		<span class="title defsp">Drag Map marker to change Coordinates</span>
 		<div class="col-xs-12 np">
 			<label>Latitude:</label>
@@ -51,31 +179,26 @@
 			<label>Longitude:</label>
 			<input type="text" name="longitude" id="longitude" class="form-control" value="121.17500399999994" placeholder="Enter longitude">
 		</div>
-	</div>
-	<div class="col-xs-12 perinputwrap">
-		<label>Source:</label>
-		<input type="text" name="author" id="author" class="form-control" placeholder="Enter Source / Office">
-		@if ($errors->has('author')) <span class="reqsymbol">*</span> @endif
-	</div>
-	<div class="col-xs-12 perinputwrap">
-		<label>Images:</label>
-		<div id="dZUpload" class="dropzone">
-		      <div class="dz-default dz-message">Drop Images here or Click to upload Image</div>
+		<div class="col-xs-12 perinputwrap np">
+				<div class="col-xs-12 text-center np">
+						<input class="btn btn-updatelocation"  type="submit" value="Save Landslide">
+						<a class="btn btn-cancel" href="{{ action("LandslideController@viewLandslides") }}">Cancel</a>
+				</div>	
 		</div>
-	</div>
-	<div class="col-xs-12 perinputwrap">
-		<label>Description:</label>
-		<textarea class="piw-textarea form-control" name="description" placeholder="Landslide Incident Details" id="piw-textarea"></textarea>
-	</div>	
-	<div class="col-xs-12 perinputwrap text-right">
-	<input class ="btn btn-updatelocation"  type ="submit" value="Save">
-	<a class="btn btn-cancel" href="{{ action("LandslideController@viewLandslides") }}">Cancel</a> 
-	</div>
 
+	</div>
+	<div class="col-xs-12 col-md-12 perinputwrap">
+			<label>Landslide Images:</label>
+			<div id="dZUpload" class="dropzone">
+				  <div class="dz-default dz-message">Drop Images here or Click to upload Image</div>
+			</div>
+		</div>
+	
 </form>
 
  @stop
  @section('page-js-files')
+
 <script type="text/javascript" src="{!! url('assets/dropzone/dropzone.js') !!}"></script>
 <script type="text/javascript">
 var baseUrl = "{{ url('/') }}";
@@ -137,4 +260,25 @@ Dropzone.autoDiscover = false;
 		$('#longitude').val(marker.getPosition().lng());
 	});
 </script>
+<script>
+$(function() {
+	$('#province_id').bind("keyup change", function(e){
+    var cat_id = e.target.value;
+    $('#municipality_id').removeAttr('disabled');
+        $.ajax({
+            type: 'GET',
+            url: 'province-show?cat_id=' + cat_id,
+            success:function(municipalities){
+                var item = $('#municipality_id');
+                item.empty();
+                $.each(municipalities, function(i, municipality){
+                    item.append("<option value='"+municipality.id+"'>" +municipality.name+"</option>");
+                });
+            }
+        });
+});
+
+});
+</script>
+
 @endsection

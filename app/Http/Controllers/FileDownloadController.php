@@ -44,7 +44,7 @@ class FileDownloadController extends Controller
 
         $i = DB::table('tbl_files')->where('id',$id)->delete();
             if($i > 0){
-                \Session::flash('message', 'Report successfully deleted');
+                \Session::flash('success_delete', 'Report successfully deleted');
                 return back();
             }
     }
@@ -104,7 +104,7 @@ class FileDownloadController extends Controller
 
             $i = DB::table('tbl_files')->insert($row);
                 if($i > 0){
-                    \Session::flash('message', 'File successfully uploaded');
+                    \Session::flash('success_upload', 'File successfully uploaded');
                     return redirect('filedownloadpage');
                 }
                 return redirect('filedownloadpage');

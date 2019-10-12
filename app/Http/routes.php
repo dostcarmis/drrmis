@@ -671,7 +671,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
 		]);
-
+		Route::get('province-show','LandslideController@showprovince');
 	
 
 
@@ -1095,6 +1095,10 @@ Route::get('viewtestsite','PagesController@viewTestsite');
 Route::get('media', ['as' => 'image.create', 'uses' => 'ImageController@create']);
 Route::post('/upload', ['as' => 'image.store' , 'uses' => 'ImageController@store']);
 
+Route::get('starto', [
+	'as' => 'starto',
+	'uses' => 'LandslideController@syncDataFromIncidentToLandslide'
+]);
 
 });
 

@@ -26,12 +26,10 @@
 		</div>
 		<div class="col-xs-12 col-sm-11 per-accident-innerwrap">
 			<div class="col-xs-12 np per-accident-wrap-top">
-				<span class="defsp spaccidenttitle">{{ $landslide->location }}</span>
+				<span class="defsp spaccidenttitle">{{ $landslide->road_location }}</span>
 				<span class="defsp spaccidentdateauthor"><em><?php echo date("g:ia", strtotime($landslide->date));?></em></span>
 			</div>
-			<div class="col-xs-12 np per-accident-wrap-middle">
-				<p><?php echo substr($landslide->description,0,300); ?> ....</p>
-			</div>
+			
 			<div class="col-xs-12 np per-accident-wrap-bottom">
 				<p>Source: <span>{{$landslide->author}}</span></p>
 				<p><a href="<?php echo url('viewperlandslide'); ?>/<?php echo $landslide->id?>" class="btn-readmore-landslide">Read More</a></p>

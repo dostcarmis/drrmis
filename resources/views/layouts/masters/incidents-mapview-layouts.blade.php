@@ -8,7 +8,6 @@
     <meta name="author" content="">
     <title>Disaster Risk Reduction Management Information System (DRRMIS)</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />  
-
     <link rel="icon" href="{{ URL::asset('assets/images/favicon.png') }}" type="image/x-icon" />
     <link  href="{{ URL::asset('css/sb-admin.css') }}" rel="stylesheet">   
     <link  href="{{ URL::asset('css/plugins/morris.css') }}" rel="stylesheet">      
@@ -34,17 +33,10 @@ if (Auth::check()) : ?>
             @yield('page-content')
         </aside>
     </div>
-        
-
         <script src="{!! url('js/jquery1-11-3.min.js')!!}"></script> 
         <script type="text/javascript" src="{{ URL::asset('js/jquery-2.2.0.js') }}"></script>
-        
-
-
         <script src="{!! url('js/corejs.min.js')!!}"></script>
         <script src="{!! url('js/jqueryui.min.js')!!}"></script>
-  
-
         <script src="{!! url('js/jquery.js')!!}"></script>
         <script src="{!! url('js/bootstrap.min.js') !!}"></script>
         <script src="http://maps.google.com/maps/api/js?key=AIzaSyC058wNQG2iAeF7z0ysRHQw_0Gsqd6Xp5s"></script>

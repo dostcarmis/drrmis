@@ -374,7 +374,8 @@ th.headerSortUp {
 .deledit,.delcoords{
 	color:#ff0000;
 }
-.perinputwrap h3{
+.
+putwrap h3{
 	font-size: 18px;
     padding: 12px;
     margin: 0;
@@ -753,10 +754,14 @@ padding: 0;
 }
 .inner-pages .page-header{
 	margin-top: 20px;
+	
 
 }
 h1.page-header{
 	font-family: 'open_sans_bold';
+	padding-bottom: 9px;
+    margin: 13px 7px -4px;
+   
 }
 .inner-pages  p{
 	color: #666;
@@ -1508,6 +1513,12 @@ input.faChkSqr:after {
 	width: 20%;
 }
 
+.landslide-rpanel{
+	width: 20%;
+}
+.landslide-lpanel{
+	width: 80%;
+}
 
 .spheader{
 	font-family: 'open_sans_bold';
