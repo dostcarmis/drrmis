@@ -26,7 +26,6 @@ use Javascript;
 
 class HydrometController extends Controller
 {
-
 	public $arrtotals = [];
 	public $filterprovince;
 	public $filtercategory;
@@ -84,8 +83,8 @@ class HydrometController extends Controller
 		$provinces = DB::table('tbl_provinces')->get();  	
 		$thresholds = DB::table('tbl_threshold')->get(); 
 		$municipalities = DB::table('tbl_municipality')->get();
-		$landslides = DB::table('tbl_incidents')->where('incident_type','=','1')->orderBy('date', 'desc')->get();  	
-		$floods = DB::table('tbl_incidents')->where('incident_type','=','2')->orderBy('date', 'desc')->get(); 
+		$landslides = DB::table('tbl_landslides')->orderBy('date', 'desc')->get();  	
+		$floods = DB::table('tbl_floods')->orderBy('date', 'desc')->get(); 
 		$roadnetworks = DB::table('tbl_roadnetworks')->orderBy('date', 'desc')->get();
 		$users = DB::table('users')->get();  
 		$sensors = DB::table('tbl_sensors')->whereIn('category_id', [1,2,3,4])->get();

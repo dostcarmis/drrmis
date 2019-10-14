@@ -28,7 +28,7 @@ $oid='';
         <p>Are you sure you want to {{ $title }} 
           @foreach($floods as $flood)
             @if($snsid === $flood->id)
-            {{ $flood->location }}
+            {{ $flood->road_location }}
             @endif
           @endforeach
           from the list?

@@ -402,7 +402,7 @@ putwrap h3{
 	margin:0px;
 	width: 100%;
 }
-.perinputwrap input[type="password"],.perinputwrap input[type="text"],.perinputwrap select,.perinputwrap input[type="text"],.perinputwrap select{
+.perinputwrap input[type="password"],.perinputwrap input[type="text"],.perinputwrap select,.perinputwrap input[type="text"],.perinputwrap select, .perinputwrap input[type="number"],.perinputwrap select{
 	height: 50px;
 	font-size: 17px;
 	border-radius: 1px;

@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="col-xs-12 dashboardpanel">
-                <h2>Welcome {{$currentUser->first_name}}</h2>
+                <h2>Welcome {{$currentUser->first_name}} {{$currentUser->last_name}}</h2>
                 <div class="col-xs-12 np">
                     <div class="col-xs-12 col-sm-4 dashboard-3-column">
                         <h3>Get Started</h3>
@@ -26,37 +26,19 @@
                         <h3>Quick Links</h3>
                         <ul>
                             <li><a href="{{action('IncidentsController@viewaddIncident')}}"><span class="glyphicon glyphicon-plus-sign"></span> Add Report</a></li>
-                            
                             <li><a href="{{action('RoadController@viewaddRoadnetwork')}}"><span class="glyphicon glyphicon-plus-sign"></span> Add Road Network Report</a></li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-4 dashboard-3-column">
                         <h3>Other DRRM Websites</h3>
                         <ul class="drrmlinks">
-                            <li>
-                                <a href="http://www.pagasa.dost.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> PAGASA</a>
-                            </li>
-                            
-                            <li>
-                                <a href="http://www.phivolcs.dost.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> PHIVOLCS</a>
-                            </li>
-                            <li>
-                                <a href="http://fmon.asti.dost.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> PREDICT</a>
-                            </li>
-                            <li>
-                                <a href="http://climatex.dost.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> ClimateX</a>
-                            </li>
-                            
-                            <li>
-                                <a href="http://noah.dost.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> NOAH</a>
-                            </li>
-                            <li>
-                                <a href="https://dream.upd.edu.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> DREAM</a>
-                            </li>   
-                            <li>
-                                <a href="https://lipad.dream.upd.edu.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> LIPAD</a>
-                            </li> 
-   
+                            <li><a href="http://www.pagasa.dost.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> PAGASA</a></li>
+                            <li><a href="http://www.phivolcs.dost.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> PHIVOLCS</a></li>
+                            <li><a href="http://fmon.asti.dost.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> PREDICT</a></li>
+                            <li><a href="http://climatex.dost.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> ClimateX</a></li>
+                            <li><a href="http://noah.dost.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> NOAH</a></li>
+                            <li><a href="https://dream.upd.edu.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> DREAM</a></li>   
+                            <li><a href="https://lipad.dream.upd.edu.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> LIPAD</a></li> 
                         </ul>
                     </div>
                 </div>
@@ -114,7 +96,7 @@
                             @if($y < 2)
                                 <div class="col-xs-12 np perpublished-wrap">
                                     <span class="perpublished-ltime"><?php echo date("F j Y g:ia", strtotime($landslide->date));?></span>
-                                    <span class="perpublished-lname"><a href="<?php echo('incident');?>/{{$landslide->slug}}" title="{{$landslide->location}}">{{$landslide->location}}</a></span>
+                                    <span class="perpublished-lname"><a href="<?php echo('incident');?>/{{$landslide->id}}" title="{{$landslide->road_location}}">{{$landslide->road_location}}</a></span>
                                 </div>
                             @endif
                         <?php $y++; ?>
@@ -128,7 +110,7 @@
                             @if($z < 2)
                                 <div class="col-xs-12 np perpublished-wrap">
                                     <span class="perpublished-ltime"><?php echo date("F j Y g:ia", strtotime($flood->date));?></span>
-                                    <span class="perpublished-lname"><a href="<?php echo('incident');?>/{{$flood->slug}}" title="{{$flood->location}}">{{$flood->location}}</a></span>
+                                    <span class="perpublished-lname"><a href="<?php echo('incident');?>/{{$flood->id}}" title="{{$flood->road_location}}">{{$flood->road_location}}</a></span>
                                 </div>
                             @endif
                         <?php $z++; ?>

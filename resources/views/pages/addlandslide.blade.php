@@ -15,7 +15,7 @@
 	
 	<div class="col-xs-12 np">
 			<div class="col-xs-12 col-sm-4 perinputwrap dates">
-					<label>Date & Time</label>
+					<label href="#" data-toggle="tooltip"  title="This is the date and time of occurence of the landslide">Date & Time  <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
 					<div class='input-group date' id="date">
 						<input type='text'  name="date" placeholder="Date & Time" class="form-control" />
 						<span class="input-group-addon">
@@ -53,7 +53,7 @@
 		</div>
 
 		<div class="col-xs-12 col-sm-4 perinputwrap">
-			<label>Land Cover:</label>
+			<label href="#" data-toggle="tooltip"  title="Observed physical cover on the surface of the eroded area">Land Cover  <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
 			<select name="landcover" id="landcover" class="form-control">
 				<option value="Public Land/Forest">Public Land/Forest</option>
 				<option value="National Park">National Park</option>
@@ -103,7 +103,7 @@
 		<input type="number" name="ledepth" id="ledepth" class="form-control" placeholder="Meters (m)">
 	</div>
 
-	<div class="col-xs-12 col-sm-2 perinputwrap">
+	<div class="col-xs-12 col-sm-2 perinputwrap" style="top: 28px">
 		<label>No. of Casualty:</label>
 		<input type="number" value="0" name="idkilled" id="idkilled" class="form-control">
 	</div>
@@ -159,7 +159,7 @@
 		<input type="text" name="reportedby" id="reportedby" class="form-control" placeholder="Enter name">
 	</div>
 
-	<div class="col-xs-12 col-sm-4 perinputwrap">
+	<div class="col-xs-12 col-sm-4 perinputwrap" style="top: -29px">
 		<label>Designation/Position of the Reporter: </label>
 		<input type="text" name="reporterpos" id="reporterpos" class="form-control" placeholder="Enter position">
 	</div>		
@@ -181,8 +181,8 @@
 		</div>
 		<div class="col-xs-12 perinputwrap np">
 				<div class="col-xs-12 text-center np">
-						<input class="btn btn-updatelocation"  type="submit" value="Save Landslide">
-						<a class="btn btn-cancel" href="{{ action("LandslideController@viewLandslides") }}">Cancel</a>
+						<input class="btn btn-updatelocation"  type="submit" value="Save Landslide" style="width: 200px">
+						<a class="btn btn-cancel" href="{{ action("LandslideController@viewLandslides") }}" style="width: 127px">Cancel</a>
 				</div>	
 		</div>
 

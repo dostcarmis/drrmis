@@ -1100,6 +1100,11 @@ Route::get('starto', [
 	'uses' => 'LandslideController@syncDataFromIncidentToLandslide'
 ]);
 
+Route::get('startoF', [
+	'as' => 'startoF',
+	'uses' => 'FloodController@syncDataFromIncidentToFlood'
+]);
+
 });
 
 

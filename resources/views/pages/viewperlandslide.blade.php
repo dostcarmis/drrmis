@@ -59,8 +59,7 @@ He/she is a {!! $landslides->reporterpos !!} of the office of {!! $landslides->a
 		</div>
 		
 
-		<div class="col-xs-12 pagefoot np">
-			<!--<span class="defsp">Source: <span>{{$landslides->author}}</span></span>-->	
+		<div class="col-xs-12 pagefoot np">	
 			<span class="defsp">This report is created and added to this system by: <span>
 				@foreach($users as $user)
 				@if($user->id === $landslides->created_by)

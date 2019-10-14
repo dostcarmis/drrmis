@@ -23,24 +23,6 @@
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<input type="hidden" value="landslideimages[]" name="landslideimages" id="landslideimages" />
 	<input type="hidden" name="id" value="<?= $landslides->id ?>">	
-
-	<!--@if($currentUser->role_id != 5)
-		<div class="col-xs-12 perinputwrap">
-			<div class="col-xs-6 npl">
-
-				<label>Report Status:</label>
-					<select name="report_status" id="report_status" class="form-control">
-						@if($landslides->report_status === 'Published')
-						<option value="Pending">Pending</option>
-						<option selected="selected" value="Published">Published</option>
-						@else
-						<option selected="selected" value="Pending">Pending</option>
-						<option  value="Published">Published</option>
-						@endif
-					</select>
-			</div>
-		</div>	
-	@endif-->
 	
 	<div class="col-xs-12 np">
 			<div class="col-xs-12 col-sm-4 perinputwrap dates">
@@ -195,7 +177,7 @@
 	<div class="col-xs-12 col-sm-4 perinputwrap">
 		<label>Heavy rainfall?</label>
 		<select name="heavyrainfall" id="heavyrainfall" class="form-control">
-				<option selected="selected" value="<?= $landslides->heavyrainfall ?>">{{ $landslides->heavyrainfall }}</option>
+			<option selected="selected" value="<?= $landslides->heavyrainfall ?>">{{ $landslides->heavyrainfall }}</option>
 			<option value="No">No</option>
 			<option value="Yes">Yes</option>
 		</select>
@@ -370,8 +352,7 @@ Dropzone.autoDiscover = false;
 				}
 			});
 	});
-	
-	});
-	</script>
+});
+</script>
 @endif
 @endsection

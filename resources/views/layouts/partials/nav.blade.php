@@ -74,9 +74,9 @@
                             <li class="dropside">
                                 <a href="#"><i class="demo-icon icon-flood">&#xe800;</i> Incidents</a>
                                 <ul id="ul-incidents" class="dropdown-menu fslevel">
-                                    <li><a href="{{ action('LandslideController@viewLandslides') }}">Landslide</a></li>
-                                    <li><a href="{{ action('IncidentsController@viewaddIncident') }}">Flood</a></li>
-                                    <li><a href="{{ action('RoadController@viewaddRoadnetwork') }}">Road Closures</a></li>
+                                    <li><a href="{{ action('LandslideController@viewaddLandslide') }}">+New Landslide Report</a></li>
+                                    <li><a href="{{ action('FloodController@viewaddFlood') }}">+New Flood Report</a></li>
+                                    <li><a href="{{ action('RoadController@viewaddRoadnetwork') }}">+New Road Closures Report</a></li>
                                  </ul>
                             </li>                                                
                         </ul>
@@ -99,12 +99,12 @@
                                 <a href="#"><i class="demo-icon icon-flood">&#xe800;</i> Incidents</a>
                                 <ul id="ul-incidents" class="dropdown-menu fslevel">
                                     <li class="dropside-side ndlevel">
-                                        <a href="{{action('IncidentsController@viewIncidents')}}?ftype=all"">Tabular</a>
+                                        <a>Tabular</a>
                                         <ul class="dropdown-menu">
                                             <!--<li><a value="Landslide" class="filterincident" href="{{action('IncidentsController@viewIncidents')}}?ftype=landslides">Landslides</a></li>-->
-                                            <li><a value="Flood" class="filterincident" href="{{action('LandslideController@viewLandslides')}}">Landslide</a></li>
-                                            <li><a value="Flood" class="filterincident" href="{{action('IncidentsController@viewIncidents')}}?ftype=floods">Floods</a></li>
-                                            <li><a href="{{ action("RoadController@viewRoadnetworks") }}">Road Closures</a></li>
+                                            <li><a value="Flood" class="filterincident" href="{{action('LandslideController@viewLandslides')}}">Landslide Reports</a></li>
+                                            <li><a value="Flood" class="filterincident" href="{{action('FloodController@viewFloods')}}?ftype=floods">Floods Reports</a></li>
+                                            <li><a href="{{ action("RoadController@viewRoadnetworks") }}">Road Closures Reports</a></li>
                                         </ul>
                                     </li>                                   
                                     <li>
@@ -135,7 +135,6 @@
               
             </li>    
                                        
-            
             <!---------------------------------- Libraries Dropdown -------------------------------------------->
                     @if($currentUser->role_id == 1 || $currentUser->role_id == 2) 
                     <li>

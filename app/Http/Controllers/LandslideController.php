@@ -53,7 +53,6 @@ class LandslideController extends Controller
     	$users = DB::table('users')->get();
     	$landslides = DB::table('tbl_landslides')->where('id',$id)->first();
       $provinces = DB::table('tbl_provinces')->get();
-      
     	return view('pages.editlandslide')->with(['users' => $users,'landslides' => $landslides,'provinces' => $provinces, 'municipalities' => $municipalities]);
     }
 
@@ -93,12 +92,12 @@ class LandslideController extends Controller
     $rules = [
       'date' => 'required',  
       'road_location' => 'required',
-        'province_id' => 'required',
+      'province_id' => 'required',
     ];
     $messages = [
        'date.required' => 'Date and Time rquired',
-        'road_location.required' => 'Road location field is required',
-        'province_id.required' => 'Province and Municipality is required',
+       'road_location.required' => 'Road location field is required',
+       'province_id.required' => 'Province and Municipality is required',
     ];
     $v = \Validator::make($request->all(), $rules, $messages);
       if($v->fails()){

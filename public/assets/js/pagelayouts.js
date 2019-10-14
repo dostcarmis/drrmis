@@ -12,7 +12,8 @@ jQuery(function($){
         var myLatLng = {lat: latitude, lng: longitude};
         var map = new google.maps.Map(document.getElementById('lfmap'), {
           zoom: 13,
-          center: myLatLng
+          center: myLatLng,
+          mapTypeId: 'satellite',
         });
         var icon = '';
         if(window.location.href.indexOf("viewperlandslide") > -1) {
@@ -29,6 +30,7 @@ jQuery(function($){
           position: myLatLng,
           icon: icon,
           map: map,
+          mapTypeId: 'satellite',
           title: title
         });
       }
