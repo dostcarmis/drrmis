@@ -108,12 +108,12 @@
 		<input type="number" value="0" name="idkilled" id="idkilled" class="form-control">
 	</div>
 
-	<div class="col-xs-12 col-sm-2 perinputwrap">
+	<div class="col-xs-12 col-sm-2 perinputwrap" style="top: 28px">
 		<label>No. of People Injured:</label>
 		<input type="number" value="0" name="idinjured" id="idinjured" class="form-control">
 	</div>
 
-	<div class="col-xs-12 col-sm-2 perinputwrap">
+	<div class="col-xs-12 col-sm-2 perinputwrap" style="top: 28px">
 		<label>No. of People Missing:</label>
 		<input type="number" value="0" name="idmissing" id="idmissing" class="form-control">
 	</div>
@@ -159,7 +159,7 @@
 		<input type="text" name="reportedby" id="reportedby" class="form-control" placeholder="Enter name">
 	</div>
 
-	<div class="col-xs-12 col-sm-4 perinputwrap" style="top: -29px">
+	<div class="col-xs-12 col-sm-4 perinputwrap">
 		<label>Designation/Position of the Reporter: </label>
 		<input type="text" name="reporterpos" id="reporterpos" class="form-control" placeholder="Enter position">
 	</div>		

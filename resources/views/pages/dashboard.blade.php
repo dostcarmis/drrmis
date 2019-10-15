@@ -19,14 +19,16 @@
                             <a href="{{action('HydrometController@viewHydrometdata')}}" class="btn btn-primary btn-getstarted">Monitor Sensors</a>
                         </div>
                         <div class="col-xs-12 np">
-                            <span class="defsp spviewsite">or <a href="{{action('PagesController@home')}}"><i class="fa fa-eye" aria-hidden="true"></i> View site</a> </span>
+                            <span class="defsp spviewsite">or <a href="{{action('PagesController@home')}}"><i class="fa fa-eye" aria-hidden="true"></i> View map</a> </span>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-4 dashboard-3-column">
                         <h3>Quick Links</h3>
                         <ul>
-                            <li><a href="{{action('IncidentsController@viewaddIncident')}}"><span class="glyphicon glyphicon-plus-sign"></span> Add Report</a></li>
+                            <li><a href="{{action('LandslideController@viewaddLandslide')}}"><span class="glyphicon glyphicon-plus-sign"></span> Add Landslide Report</a></li>
+                            <li><a href="{{action('FloodController@viewaddFlood')}}"><span class="glyphicon glyphicon-plus-sign"></span> Add Flood Report</a></li>
                             <li><a href="{{action('RoadController@viewaddRoadnetwork')}}"><span class="glyphicon glyphicon-plus-sign"></span> Add Road Network Report</a></li>
+                            <li><a href="{{action('ReportController@showReport')}}"><span class="fa fa-download"></span> Download Sensors Data</a></li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-4 dashboard-3-column">
@@ -96,7 +98,7 @@
                             @if($y < 2)
                                 <div class="col-xs-12 np perpublished-wrap">
                                     <span class="perpublished-ltime"><?php echo date("F j Y g:ia", strtotime($landslide->date));?></span>
-                                    <span class="perpublished-lname"><a href="<?php echo('incident');?>/{{$landslide->id}}" title="{{$landslide->road_location}}">{{$landslide->road_location}}</a></span>
+                                    <span class="perpublished-lname"><a href="<?php echo('viewperlandslide');?>/{{$landslide->id}}" title="{{$landslide->road_location}}">{{$landslide->road_location}}</a></span>
                                 </div>
                             @endif
                         <?php $y++; ?>
@@ -110,7 +112,7 @@
                             @if($z < 2)
                                 <div class="col-xs-12 np perpublished-wrap">
                                     <span class="perpublished-ltime"><?php echo date("F j Y g:ia", strtotime($flood->date));?></span>
-                                    <span class="perpublished-lname"><a href="<?php echo('incident');?>/{{$flood->id}}" title="{{$flood->road_location}}">{{$flood->road_location}}</a></span>
+                                    <span class="perpublished-lname"><a href="<?php echo('viewperflood');?>/{{$flood->id}}" title="{{$flood->road_location}}">{{$flood->road_location}}</a></span>
                                 </div>
                             @endif
                         <?php $z++; ?>
@@ -135,7 +137,7 @@
                         <li><i class="fa fa-users" aria-hidden="true"></i> <a href="{{action('UserController@viewusers')}}"><?php echo count($users);?> Users</a></li>
                         <li><i class="demo-icon"></i> <a href="{{action('HydrometController@viewHydrometdata')}}"><?php echo count($sensors); ?> Total Sensors</a></li>
                         
-                        <?php  $nonworking = 0; ?>
+                        <!--<?php  $nonworking = 0; ?>
 
                         @foreach($mainarray as $arr)
                             @if($arr['filestatus'] == 'no_data')
@@ -144,7 +146,7 @@
                         @endforeach
                         @if($nonworking > 0)
                         <li><i class="demo-icon" style="color:#ff0000;"></i> <a href="<?php echo url('filterdata?provincefilter=0&categorytitle=0&statustitle=2&filter_table=Filter&searchall="'); ?>"><?php echo $nonworking; ?> Not Working Sensors</a></li>
-                        @endif
+                        @endif-->
                     </ul>
                 </div>
             </div>
@@ -152,8 +154,7 @@
     </div>
 </div>
 
-
-@stop
+@stop 
 @section('page-js-files')
 <script src="{!! url('assets/js/dashboarddata.js') !!}"></script>
 @stop
