@@ -18,7 +18,6 @@
 ?>
 
 <p style="color:#00CA00"><?php echo Session::get('message'); ?></p>
-
 <form id="userform" action="{{ action('LandslideController@updateLandslide') }}" method="post">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<input type="hidden" value="landslideimages[]" name="landslideimages" id="landslideimages" />

@@ -18,7 +18,7 @@ class LandslideController extends Controller
 {
     private $foo_service;
     function __construct(Checkfornotification $foo_service){
-        $this->foo_service = $foo_service;
+      $this->foo_service = $foo_service;
     }
 
     public function viewmultipleLandslides(){
@@ -28,7 +28,8 @@ class LandslideController extends Controller
       $provinces = DB::table('tbl_provinces')->get();
       $landslides = DB::table('tbl_landslides')
                       ->orderBy('created_at', 'desc')->paginate(12);
-      return view('pages.viewmultiplelandslides')->with(['users' => $users,'municipalities' => $municipalities,'provinces' => $provinces,'landslides' => $landslides]);
+      return view('pages.viewmultiplelandslides')->with(['users' => $users,
+                                                         'municipalities' => $municipalities,'provinces' => $provinces,'landslides' => $landslides]);
     }
 
     public function viewperLandslide($id){
@@ -57,7 +58,7 @@ class LandslideController extends Controller
     }
 
     public function destroymultipleLandslides(Request $request){
-      Landslide::destroy($request->chks);
+      Landslides::destroy($request->chks);
       $chk = count($request->chks);
       if($chk == 1){
          $delmsg = 'Landslide successfully deleted.';
@@ -70,9 +71,9 @@ class LandslideController extends Controller
    }
 
    public function viewaddLandslide(){
-	    $users = DB::table('users')->get();
+	   $users = DB::table('users')->get();
 		$landslides = DB::table('tbl_landslides')->orderBy('id', 'asc')->get();
-    $provinces = DB::table('tbl_provinces')->get();
+      $provinces = DB::table('tbl_provinces')->get();
 		return view('pages.addlandslide')->with(['users' => $users,'landslides' => $landslides,'provinces' => $provinces]);
    }
 

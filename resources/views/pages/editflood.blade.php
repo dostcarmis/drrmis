@@ -25,9 +25,12 @@
 
 	<div class="col-xs-12 np">
 		<div class="col-xs-12 col-sm-4 perinputwrap dates">
-				<label href="#" data-toggle="tooltip"  title="This is the date and time of occurence of the flood">Date & Time  <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
+				<label href="#" data-toggle="tooltip" title="This is the date and time of occurence of the flood">
+					Date & Time  <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i>
+				</label>
 				<div class='input-group date' id="date">
-					<input type='text'  name="date" value="<?= $floods->date ?>" placeholder="Date & Time" class="form-control" />
+					<input type='text'  name="date" value="<?= $floods->date ?>" 
+						   placeholder="Date & Time" class="form-control">
 					<span class="input-group-addon">
 						<span class="glyphicon glyphicon-calendar"></span>
 					</span>
@@ -37,7 +40,9 @@
 
 		<div class="col-xs-12 col-sm-4 perinputwrap">
 			<label>Barangay/Sitio/Road Location:</label>
-			<input type="text" name="road_location" id="road_location" class="form-control" value="<?= $floods->road_location ?>" placeholder="Enter location" required>
+			<input type="text" name="road_location" id="road_location" 
+				   class="form-control" value="{{ $floods->road_location }}" 
+				   placeholder="Enter location" required>
 		</div>
 
 		<div class="col-xs-12 col-sm-4 perinputwrap">
@@ -57,14 +62,14 @@
 		<div class="col-xs-12 col-sm-2 perinputwrap">
 			<label>Municipality:</label>
 			<select name="municipality_id" id="municipality_id" class="form-control">
+				<option>Select Municipality</option>
 					@foreach($municipalities as $municipality)
-						@if($floods->municipality == $municipality->id)	
-							<option selected="selected" value="{{ $municipality->id }}">{{ $municipality->name }}</option>
-						@else
-							<option value="{{ $municipality->id }}">{{ $municipality->name }}</option>
+						@if ($municipality->province_id == $floods->province_id)
+				<option value="{{ $municipality->id }}" {{ ($municipality->id == $floods->municipality) ? ' selected': '' }}>
+					{{ $municipality->name }}
+				</option>
 						@endif
 					@endforeach
-				<option></option>
 			</select>
 		</div>
 

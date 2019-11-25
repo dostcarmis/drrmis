@@ -64,7 +64,7 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-5 perinputwrap">
-		<label>Prominent Landmark: </label>
+		<label href="#" data-toggle="tooltip"  title="Nearest landmark near the eroded area i.e sheds, school etc.">Prominent Landmark:  <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
 		<input type="text" name="landmark" id="landmark" class="form-control" placeholder="Enter landmark">
 	</div>
 

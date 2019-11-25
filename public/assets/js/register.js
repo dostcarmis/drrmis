@@ -3,7 +3,7 @@ $('#province_id').bind("keyup change", function(e){
     $('#municipality_id').removeAttr('disabled');
         $.ajax({
             type: 'GET',
-            url: 'province-s?cat_id=' + cat_id,
+            url: 'province-subcat?cat_id=' + cat_id,
             success:function(municipalities){
                 var item = $('#municipality_id');
                 item.empty();

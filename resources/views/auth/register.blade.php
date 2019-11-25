@@ -7,10 +7,19 @@
 				    <p style="color:red">{{ $message }}</p>
 				@endforeach
 				{!! Form::open(['route' => 'post_register', 'id' => 'registration-form'])!!}
-				{!! Form::text('first_name',null,['id' => 'first_name', 'class' => 'txtfname form-control', 'placeholder' => 'First Name', 'required']) !!}
-				{!! Form::text('last_name',null,['id' => 'last_name', 'class' => 'txtlname form-control', 'placeholder' => 'Last Name', 'required']) !!}
+				{!! Form::text('first_name', null, 
+							   ['id' => 'first_name', 
+								'class' => 'txtfname form-control', 
+								'placeholder' => 'First Name', 
+								'required']) !!}
+				{!! Form::text('last_name', null,
+							   ['id' => 'last_name', 
+								'class' => 'txtlname form-control', 
+								'placeholder' => 'Last Name',
+								'required']) !!}
 				{!! Form::email('email',null,['id' => 'email', 'class' => 'txtemail form-control', 'placeholder' => 'Email Address', 'required']) !!}
 				{!! Form::text('username',null,['id' => 'username', 'class' => 'txtusername form-control', 'placeholder' => 'Username', 'required']) !!}
+				<!--{!! Form::password('password',['id' => 'password', 'class' => 'form-control txtpassword', 'placeholder' => 'Password', 'required']) !!}-->
 				<select name="province_id" id="province_id" class="form-control">
 						<option>Select Province</option>	
 					@foreach($provinces as $province)				
