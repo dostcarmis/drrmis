@@ -199,7 +199,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-9">
 					<span class="defsp spprofile">
-						<input type="text" name="password" placeholder="New Password" class="proformtext form-control">
+						<input type="password" name="password" placeholder="New Password" class="proformtext form-control">
 					</span>
 				</div>
 			</div>

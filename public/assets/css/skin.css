@@ -2451,8 +2451,12 @@ ul.sub-menu-bottom li  a{
 	float:left;
 	margin-right: 1%;
 }
-.mapimages .mres{
+.mapimages{
 	max-width: 100% !important;
+}
+.mres{
+	width: 100%;
+	height: auto;
 }
 .editlink{
 	margin-top: 15px;
