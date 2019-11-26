@@ -435,6 +435,12 @@ Route::group(['middlewareGroups' => 'web'], function () {
 
 	//SMS Module Routes
 
+	Route::get('warn/test-semaphore',[
+		'uses' => 'SMSController@testSemaphore',
+		'middleware' => 'roles',
+	'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+	]);
+
 	Route::get('warn/registered-contacts',[
 			'uses' => 'SMSController@viewRegisteredContacts',
 			'middleware' => 'roles',

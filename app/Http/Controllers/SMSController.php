@@ -240,7 +240,7 @@ class SMSController extends Controller
     }
 
     #=======================================================================================#
-    #======================================= SMS API =======================================#
+    #=================================== SMS GLOBE API =====================================#
     #=======================================================================================#
 
     /*-------------------------------------------------------
@@ -248,27 +248,30 @@ class SMSController extends Controller
         BkABUBA97jF5bcbaa4T9yAFzMkjeUbBr -- lowil account
         qKKMuL7Baetq5cdaR5TBnLtKGKdKuKyb -- lowil 2 account
         BezpHpeRyeHzaTXG7AiR65HnqeyaHXMy -- mac account
+        ngyMh6rXAzhMoc4eBdTXMKhB5g4LhAjX -- drrmis account
     ---------------------------------------------------------*/
 
-    private $appID = "BezpHpeRyeHzaTXG7AiR65HnqeyaHXMy"; 
+    private $appID = "ngyMh6rXAzhMoc4eBdTXMKhB5g4LhAjX"; 
 
     /*--------------------------------------------------------------------------------------
         69aaa2830789b6f3a6e820e0ee5a3b1811fded49e34c18058eda910cddbba529 --ews account
         8d032697f9ba22c5ab3b44c7c78fe63a974ec2da5b09bbd581d41e2c7c1130e3 --lowil account
         64960f423bafca7a060bf8b567f4d8346142d974e8ea387b58391ce42d4f4476 --lowil 2 account
         8223b68655b878831d16c362cec3964d8c6a0324f91cd6caf2be4d7a4144643c --mac account
+        45fb8c6db3ffc2cb1d7bf61f41bb369c8587a332ef5c1deb56e3bcddc871807a --drrmis account
     ----------------------------------------------------------------------------------------*/
 
-    private $appSecretCode = "8223b68655b878831d16c362cec3964d8c6a0324f91cd6caf2be4d7a4144643c";
+    private $appSecretCode = "45fb8c6db3ffc2cb1d7bf61f41bb369c8587a332ef5c1deb56e3bcddc871807a";
 
     /*-----------------------------------------------
         "29290580094" "21580094" -- ews account
         "29290582050" "21582050" -- lowil account
         "29290583777" "21583777" -- lowil 2 account
         "29290588806" "21588806" -- mac account
+        "21580045" "225650045" -- drrmis account
     -------------------------------------------------*/
 
-    private $shortCode = "8806"; 
+    private $shortCode = "0045"; 
 
     private function initializeAPI() {
         $oauth = new Oauth($this->appID, $this->appSecretCode);
@@ -372,5 +375,32 @@ class SMSController extends Controller
         
         //return "Message/s Sent.";
         return $response;
+    }
+
+    #=======================================================================================#
+    #================================= SMS SEMAPHORE API ===================================#
+    #=======================================================================================#
+
+    public function testSemaphore() {
+        $ch = curl_init();
+        $parameters = array(
+            'apikey' => 'c4f4d24799b91dc6b36e9929ca43be7e', //Your API KEY
+            'number' => '09129527475',
+            'message' => 'I just sent my first message with Semaphore',
+            'sendername' => 'SEMAPHORE'
+        );
+        curl_setopt( $ch, CURLOPT_URL,'https://semaphore.co/api/v4/messages' );
+        curl_setopt( $ch, CURLOPT_POST, 1 );
+
+        //Send the parameters set above with the request
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $parameters ) );
+
+        // Receive response from server
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+        $output = curl_exec( $ch );
+        curl_close ($ch);
+
+        //Show the server response
+        echo $output;
     }
 }
