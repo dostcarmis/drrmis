@@ -162,6 +162,7 @@
                         <ul id="users" class="collapse" aria-expanded="true">
                             <li><a href="{{ action("UserController@viewusers") }}"><i class="fa fa-users"></i> View Users</a></li>
                             <li><a href="{{ action("UserController@viewadduser") }}"><i class="fa fa-user-plus"></i> Add Users</a></li>
+                            <li><a href="{{ action("UserController@viewGroups") }}"><i class="fa fa-object-group"></i> View Groups</a></li>
                         </ul>
                     </li>
                     @endif

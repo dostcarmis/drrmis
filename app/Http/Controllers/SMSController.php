@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use DB;
+use Auth;
 use App\Models\Subscribers;
 use App\Models\User;
 use Globe\Connect\Oauth;
@@ -14,78 +15,56 @@ class SMSController extends Controller
 {
 
 	function __construct(){
-
     	$this->middleware('auth');
-
     }
     
     public function viewRegisteredContacts(){
-
     	return view('pages.phonebook');
-
     }
 
     public function viewManualSMS(){
-
         $users = DB::table('users')->orderBy('first_name', 'asc')->get();
         $subscribers = DB::table('tbl_subscribers')->get();
 
     	return view('pages.compose')->with(['users' => $users,
                                             'subscribers' => $subscribers]);
-
     }
 
     public function viewAllNotifications(){
-
     	return view('pages.inbox');
-
     }
 
     public function viewSubscribe(){
-
         return view('pages.subscribe');
-
     }
 
     public function viewSuccessSubscribe(){
-
         return view('pages.success-subscribe');
-
     }
 
     public function checkSubscribed(Request $request) {
-
         $subscribers = DB::table('tbl_subscribers')->get();
         $userID = $request->input('user_id');
         $isSubscribe = "0";
 
         foreach ($subscribers as $subscriber) {
-            
             if ($subscriber->user_id == $userID) {
-
                 $isSubscribe = "1";
                 break;
-
             }
-
         }
 
         return $isSubscribe;
-
     }
 
     public function unsubscribeUser(Request $request) {
-
         $userID = $request->input('user_id');
-
         DB::table('tbl_subscribers')->where('user_id', '=', $userID)->delete();
 
         return "1";
-
     }
 
     public function getRecipients(Request $request){
-
         $users = DB::table('users')->orderBy('first_name', 'asc')->get();
         $provinces = DB::table('tbl_provinces')->get();
         $subscribers = DB::table('tbl_subscribers')->get();
@@ -283,6 +262,7 @@ class SMSController extends Controller
     }
 
     public function addSubscriber(Request $request) {
+        /*
         $userID = $request->input('user_id');
         $userURL = $request->input('user_url');
         $subscribers = DB::table('tbl_subscribers')->get();
@@ -301,50 +281,72 @@ class SMSController extends Controller
         $countSubscriber = count($subscribers);
 
         if ($countSubscriber == 0) {
-
             DB::table('tbl_subscribers')->insert(
                 [ "user_id" => $userID,
                   "access_token" => $accessToken,
-                  "subscriber_number" => $subscriberNumber ]
+                  "subscriber_number" => $subscriberNumber]
             );
 
             $msg = "1";
-
         } else if ($countSubscriber > 0) {
-
             foreach ($subscribers as $subscriber) {
                 if ($userID != $subscriber->user_id) {
-
                     DB::table('tbl_subscribers')->insert(
                         [ "user_id" => $userID,
                           "access_token" => $accessToken,
-                          "subscriber_number" => $subscriberNumber ]
+                          "subscriber_number" => $subscriberNumber]
                     );
-
                     $msg = "1";
                     break;
-
                 } else {
-
                     $msg = "0";
                     break;
-
                 }
             }
-
         }
 
         // $msg = 0; Already Subscribed 
         // $msg = 1; Successfully Subscribed
 
-        return $msg; 
+        return $msg; */
+
+        $msg = 1; // 1 = Success, 2 = Error on phone number, 
+                  // 3 = Unknown error, 4 = already registered
+        $userID = $request->user_id;
+        $userDat = User::find($userID);
+        $subscriberCount = DB::table('tbl_subscribers')
+                             ->where('user_id', $userID)
+                             ->count();
+
+        if ($subscriberCount == 0) {
+            if ($userDat) {
+                if (!empty($userDat->cellphone_num) && strlen($userDat->cellphone_num) >= 11 &&
+                    strlen($userDat->cellphone_num) <= 13) {
+                    DB::table('tbl_subscribers')->insert(
+                        ["user_id" => $userID,
+                        "subscriber_number" => $userDat->cellphone_num]
+                    );
+                    
+                    $msg = 1;
+                } else {
+                    $msg = 2;
+                }
+            } else {
+                $msg = 3;
+            }
+        } else {
+            $msg = 4;
+        }
+
+        return $msg;
     }
 
+    /*
     public function sendMessage(Request $request){
-        $oauth = $this->initializeAPI();
+        //$oauth = $this->initializeAPI();
         
-        $recipient = $request->input('phone_number');
-        $msg = $request->input('msg');
+        $recipient = $request-phone_number;
+        $msg = $request->msg;
         $subscribers = DB::table('tbl_subscribers')->get();
         $sender = $this->shortCode;
         $accessToken = "";
@@ -356,15 +358,15 @@ class SMSController extends Controller
         foreach ($recipient as $nCounter => $number) {
             foreach ($subscribers as $subscriber) {
                 if ($number == $subscriber->subscriber_number) {
-                    $accessToken = $subscriber->access_token;
+                    //$accessToken = $subscriber->access_token;
                     $subscriberNumber = str_replace("+63", "0", $subscriber->subscriber_number);
                     //$subscriberNumber = $subscriber->subscriber_number;
-
                     $sms = new Sms($sender, $accessToken);
                     $sms->setReceiverAddress($subscriberNumber);
                     $sms->setMessage($msg);
                     //$sms->setClientCorrelator('');
                     $response .= ($nCounter + 1) . ".] " . $subscriberNumber . ": " . $sms->sendMessage() . "\n\n";
+
                     break;
                 }
             }
@@ -372,5 +374,43 @@ class SMSController extends Controller
         
         //return "Message/s Sent.";
         return $response;
+    }*/
+
+    public function sendMessage(Request $request) {
+        $userID = Auth::user()->id;
+        $userDat = DB::table('tbl_groups as grp')
+                    ->select('grp.sms_api_key')
+                    ->join('users as user', 'user.group', '=', 'grp.grp_id')
+                    ->where('user.id', $userID)
+                    ->first();
+        $recipients = $request->phone_number;
+        $msg = $request->msg;
+
+        foreach ($recipients as $recipient) {
+            $subscriberNumber = str_replace('+63', '0', $recipient);
+
+            if ($userDat) {
+                $ch = curl_init();
+                $parameters = array(
+                    'apikey' => $userDat->sms_api_key, //Your API KEY
+                    'number' => $subscriberNumber,
+                    'message' => $msg,
+                    'sendername' => 'SEMAPHORE'
+                );
+                curl_setopt( $ch, CURLOPT_URL,'https://semaphore.co/api/v4/messages' );
+                curl_setopt( $ch, CURLOPT_POST, 1 );
+
+                //Send the parameters set above with the request
+                curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $parameters ) );
+
+                // Receive response from server
+                curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+                $output = curl_exec( $ch );
+                curl_close ($ch);
+
+                //Show the server response
+                echo $output;
+            }
+        }
     }
 }

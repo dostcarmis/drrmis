@@ -5,32 +5,23 @@ $.ajaxSetup({
 });
 
 $(function(){
-
 	var userID = $("#user-id").text();
-
+	
 	initializeSubscribe_Button();
 
 	function initializeSubscribe_Button() { 
-
 		$.post('check-subscribed', {
-        
-	    _token: $('meta[name=csrf-token]').attr('content'),
-	    user_id: userID
-
+			_token: $('meta[name=csrf-token]').attr('content'),
+			user_id: userID
 		}).done(function(data) {
-
 			if (data == "0") {
 				$("#btn-subscribe").removeClass("hidden");
 			} else if (data == "1") {
 				$("#btn-unsubscribe").removeClass("hidden");
 			}
-
 		}).fail(function(xhr, status, error) {
-
 			initializeSubscribe_Button();
-
 		});
-
 	}
 
 	$("#phonebook-display").html("<div>" +
@@ -47,14 +38,10 @@ $(function(){
 	initializeRecipients();
 
 	function initializeRecipients() {
-
 		$.post('get-recipients', {
-        
 		    _token: $('meta[name=csrf-token]').attr('content'),
 		    display_Type: "1"
-
 		}).done(function(data) {
-
 			$("#phonebook-display").fadeOut(200, function(){
 				$(this).html("<div id='notification-table' style='border-color: #363940;'>" +
 					      	 "</div>").fadeIn(200, function(){
@@ -63,17 +50,12 @@ $(function(){
 
 				});
 			});
-
 		}).fail(function(xhr, status, error) {
-
 			initializeRecipients();
-
 		});
-
 	}
 
 	function generateTable(data){
-
 		var tableData = JSON.parse(data);
 		var showDate = moment();
 
@@ -86,11 +68,9 @@ $(function(){
 
 		tableFileTitle = "Table-" + fileTitle;
 		tableFileTitle = tableFileTitle.toUpperCase();
-
 		excelFilename = tableFileTitle + ".xlsx";
 
 		$("#phonebook-display").kendoGrid({
-
 			toolbar: ["excel"],
 			excel: {
 				title: fileTitle,
@@ -129,43 +109,32 @@ $(function(){
 		        buttonCount: 5
 		    },
 		    columns: tableColumns
-
 		});
 
 	}
 
 	$("#btn-subscribe").click(function() {
-
+		/*
 		window.open("subscribe", '_blank');
-
+		*/
+		window.open("success-subscribe", '_blank');
 	});
 
 	$("#btn-unsubscribe").click(function() {
-		
 		$("#modal-confirm").modal({backdrop: 'static', keyboard: false});
-
-		
 	});
 
 	$("#confirm-unsubscribe").click(function() {
-
 		$("#modal-confirm").modal("hide").on('hidden.bs.modal', function () {
-
 			$.post('unsubscribed', {
-	        
 			    _token: $('meta[name=csrf-token]').attr('content'),
 			    user_id: userID
-
 			}).done(function(data) {
-
 				if (data == "1") {
 					location.reload();
 				}
-
 			}).fail(function(xhr, status, error) {
-
 				console.log("Error!")
-
 			});
 
 		});
