@@ -19,7 +19,7 @@ $(function(){
 		    user_url: url
 
 		}).done(function(data) {
-			
+			/*
 			if (data == "1") {
                 $("#modal-success").modal().on('hidden.bs.modal', function () {
                 	window.open("registered-contacts", '_blank');
@@ -30,8 +30,29 @@ $(function(){
                 	window.open("registered-contacts", '_blank');
 				    window.top.close();
 				});
-			}
+			}*/
 
+			if (data == 1) {
+				$("#modal-success").modal().on('hidden.bs.modal', function () {
+                	window.open("registered-contacts", '_blank');
+				    window.top.close();
+				});
+			} else if (data == 2) {
+				$("#modal-failed1").modal().on('hidden.bs.modal', function () {
+                	window.open("registered-contacts", '_blank');
+				    window.top.close();
+				});
+			} else if (data == 3) {
+				$("#modal-failed2").modal().on('hidden.bs.modal', function () {
+                	window.open("registered-contacts", '_blank');
+				    window.top.close();
+				});
+			} else if (data == 4) {
+				$("#modal-failed4").modal().on('hidden.bs.modal', function () {
+                	window.open("registered-contacts", '_blank');
+				    window.top.close();
+				});
+			}
 		}).fail(function(xhr, status, error) {
 
 			$("#modal-failed2").modal().on('hidden.bs.modal', function () {

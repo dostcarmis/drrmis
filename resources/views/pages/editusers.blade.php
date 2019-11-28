@@ -9,10 +9,6 @@
     <p style="color:red">{{ $message }}</p>
 @endforeach
 
-
-
-
-
 <form id="editform" action="{{ action('UserController@updateuser') }}" method="post">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">	
 	<input type="hidden" name="id" value="<?= $users->id ?>">	
@@ -66,6 +62,23 @@
 			@endforeach
 		</select>
 
+	</div>
+	<div class="col-xs-12 col-sm-6 perinputwrap">
+		<label>Group:</label>
+		<select name="group" id="group" class="form-control">
+			<option>None</option>
+			@foreach($groups as $group)
+				@if($group->grp_id === $users->group)
+					<option selected="selected" value="{{ $group->grp_id }}">
+						{{ $group->group_name }}
+					</option>
+				@else
+					<option value="{{ $group->grp_id }}">
+						{{ $group->group_name }}
+					</option>
+				@endif
+			@endforeach
+		</select>
 	</div>
 	<div class="col-xs-12 col-sm-6 perinputwrap">
 		<label>Role:</label>

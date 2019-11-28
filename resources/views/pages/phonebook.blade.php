@@ -13,33 +13,23 @@
 	<div id="frmmain" class="form-group col-xs-12 col-md-12 col-lg-12">
 	  	<div class="panel panel-default">
 	  	  	<div class="panel-heading" style="border-color: #1e1d1f; background-color: #262626;">
-	  	  		
 	  	  		<button id="btn-subscribe" type="submit" class="btn btn-success hidden">
 				  	<i class="fa fa-user-plus"></i> Subscribe
 				</button>
-
 				<button id="btn-unsubscribe" type="submit" class="btn btn-danger hidden">
 				  	<i class="fa fa-user-times"></i> Unsubscribe
 				</button>
-	  	  		
 	  	  	</div>
 
 	  	  	<div class="panel-body" style="background-color: #252525;">
-
 	  	  		<div class="well panel-collapse collapse-in" style="background-color: #1e1d1f;">
-
 	  	  			<div id="phonebook-display" style="overflow-y: auto; border-color: #363940; border-radius: 10px;"> 
 	      	  			
 	  	  			</div>
-	  	  			
 	  	  		</div>
-	
 	  		</div>
-
 		</div>
-
 	</div>
-
 </div>
 
 <!-- Modal -->
@@ -62,7 +52,6 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
             </div>
         </div>
-    
     </div>
 </div>
 

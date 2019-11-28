@@ -251,7 +251,42 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	Route::match(['get', 'post'],'filteruser',[
 		'uses' => 'UserController@filterUser',
 		]);
-	
+
+	Route::get('usergroups', [
+		'uses' => 'UserController@viewGroups',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	]);
+	Route::get('viewcreategroup', [
+		'uses' => 'UserController@viewCreateGroup',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	]);
+	Route::get('viewupdategroup/{grp_id}', [
+		'uses' => 'UserController@viewUpdateGroup',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	]);
+	Route::post('creategroup',[
+		'uses' => 'UserController@createGroup',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	]);
+	Route::post('updategroup',[
+		'uses' => 'UserController@updateGroup',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	]);
+	Route::get('deletegroup/{grp_id}',[
+		'uses' => 'UserController@deleteGroup',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	]);
+	Route::match(['get', 'post'],'deletemultipleGroups', [
+		'uses' => 'UserController@deleteMultipleGroups',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		]);
 
 	Route::match(['get', 'post'],'viewthreshold',[
 		'uses' => 'ThresholdController@viewThreshold',
