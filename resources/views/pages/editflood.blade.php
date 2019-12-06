@@ -116,7 +116,7 @@
 		</div>
 
 		<div class="col-xs-12 col-sm-2 perinputwrap" style="top: 28px">
-			<label>No. of Casualty:</label>
+			<label>No. of Killed:</label>
 			<input type="number" name="flood_killed" id="flood_killed" value="<?= $floods->flood_killed ?>" class="form-control">
 		</div>
 	

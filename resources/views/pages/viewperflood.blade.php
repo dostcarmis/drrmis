@@ -37,7 +37,7 @@ Flood Type: {!! $floods->flood_type !!}
 The flooded are is a part/tributary to: {!! $floods->river_system !!}
 Flood water level: {!! $floods->flood_waterlvl !!} Measured at: {!! $floods->measuredat !!}
 Is this flood recurring? {!! $floods->flood_reccuring !!}
-Number of casualties: {!! $floods->flood_killed !!}
+Number of deaths: {!! $floods->flood_killed !!}
 Number of injured: {!! $floods->flood_injured !!}
 Number of missing: {!! $floods->flood_missing !!}
 Number of affected infrasturucture: {!! $floods->flood_affectedinfra !!}

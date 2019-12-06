@@ -104,7 +104,7 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-2 perinputwrap" style="top: 28px">
-		<label>No. of Casualty:</label>
+		<label>No. of Deaths:</label>
 		<input type="number" value="0" name="idkilled" id="idkilled" class="form-control">
 	</div>
 
