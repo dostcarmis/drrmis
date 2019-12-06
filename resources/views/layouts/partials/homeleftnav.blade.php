@@ -1,4 +1,4 @@
-<nav id="navleftside" class="navbar navbar-inverse sidebar hidden-xs closednavbar" role="navigation">
+<nav id="navleftside" class="navbar navbar-inverse sidebar closednavbar" role="navigation">
 <span class="defsp sptitleleftmenu">Maps</span>
 <div class="nav-side-menu">
   <div class="menu-list">
@@ -150,4 +150,4 @@
   </div>
 </div>
   </nav>
-<button class="btn hidden-xs btnleftmenu"><i class="fa fa-bars fa-2x toggle-btn"></i></button>
+<button class="btn btnleftmenu"><i class="fa fa-bars fa-2x toggle-btn"></i></button>

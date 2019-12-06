@@ -2318,7 +2318,7 @@ ul.sub-menu-bottom li  a{
 	position: relative;
 }
 .nav.navbar-nav.side-nav{
-	overflow: initial !important;
+	overflow: initial;
 }
 .dropside{
 	position: relative;

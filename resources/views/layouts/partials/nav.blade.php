@@ -176,7 +176,11 @@
                             <li><a href="http://noah.dost.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> NOAH</a></li>
                             <li><a href="https://dream.upd.edu.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> DREAM</a></li>   
                             <li><a href="https://lipad.dream.upd.edu.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> LIPAD</a></li>
-                            <li><a href="https://www.georisk.gov.ph/home" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> GeoRiskPH</a></li>   
+                            <li><a href="https://hazardhunter.georisk.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> HazardhunterPH</a></li>   
+                            <li><a href="https://v2-cloud.meteopilipinas.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> MDSI</a></li>   
+                            <li><a href="http://www.geoportal.gov.ph/?fbclid=IwAR0RX5o20shREypitmacKXnGAe6IBjhHnnkZzTzZqJLAKaNpMlqwS8Wf4Vc" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> Geoportal</a></li>
+                            <li><a href="http://gdis.mgb.gov.ph/mgbgoogle/?fbclid=IwAR1PxiAnZfvPzbDR_-ursAeDCgP2troJRbOcg9u78cbT0iOCmzgjC_ucN2o" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> MGB gdis</a></li>
+                            <li><a href="http://dews.asti.dost.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> DEWS</a></li>
                         </ul>
                     </li>
 

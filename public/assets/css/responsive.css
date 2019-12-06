@@ -5,6 +5,9 @@ col-xs-
 
 }
 @media (max-width: 667px){
+	.btnleftmenu {
+		margin-top: 70px;
+	}
 	/*home*/
 	.top-wrap{
 		position: fixed;
@@ -218,7 +221,7 @@ col-xs-
 		display: block;
 	}
 	.nav.navbar-nav.side-nav{
-		overflow: initial !important;
+		overflow: initial;
 	}
 	/*mobile menu*/
 	.top-nav.mm-listview{
@@ -436,7 +439,7 @@ col-xs-
 
 @media(min-width: 992px) and (max-width: 1169px){
 	.nav.navbar-nav.side-nav{
-		overflow: initial !important;
+		overflow: initial;
 	}
 	.dashboardpanel .dashboard-3-column{
 		padding-left: 0px;
@@ -445,7 +448,7 @@ col-xs-
 }
 @media (min-width: 1170px){
 	.nav.navbar-nav.side-nav{
-		overflow: initial !important;
+		overflow: initial;
 	}
 	.dashboardpanel .dashboard-3-column{
 		padding-left: 0px;
