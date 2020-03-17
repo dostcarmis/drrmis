@@ -10,8 +10,8 @@
       @else
       <ul class="nav navbar-nav navbar-left"> 
        <li><a href="{{ action("HydrometController@dashboard") }}"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
-       <li><a data-toggle="modal" data-target="#selectProvmodal" href="#"><i class="fa fa-download"></i> Download DRRM Files </a></li>
-       <li><a href="{{ action("SitrepController@viewsitreps") }}"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> SitReps</a></li>
+       <li><a data-toggle="modal" data-target="#selectfilemodal" href="#"><i class="fa fa-download"></i> Download DRRM Files </a></li>
+       <li><a data-toggle="modal" data-target="#selectsitreplevelmodal" href="#"<i class="fa fa-file-pdf-o" aria-hidden="true"></i> SitReps</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">    
        <li>{!! link_to_route('get_logout', 'Log out') !!}</li>
@@ -23,3 +23,5 @@
 </div>
 
 @include('pages.selectfiletypemodal')
+@include('pages.selectsitrepmodal')
+

@@ -32,18 +32,16 @@ foreach ($landslides as $landslide) {
 	);
 } 
 ?>
+
 @endsection
 
 @section('page-js-files')
 <script>
-
-
     var landslides = {!! json_encode($landslides->toArray()) !!};
     var floods = {!! json_encode($floods->toArray()) !!};
     var floodimage = {!! json_encode($floodimage) !!};
     var landslideimages = {!! json_encode($landslideimages) !!};
-
 </script>
 <script src="{!! url('assets/js/mapview.js') !!}"></script>
 
-@stop
+@endsection
