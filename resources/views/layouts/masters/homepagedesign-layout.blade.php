@@ -24,7 +24,6 @@
     <div id="wrap-main">
         <aside class="top-wrap">
             @include('layouts.partials.loginform')
-            @include('layouts.partials.banner')
             @include('layouts.partials.homenavigation')
         </aside>
         <aside class="newLayouts">
@@ -50,7 +49,7 @@
         <script src="{!! url('assets/js/responsive.js')!!}"></script>
         <script type="text/javascript" src="{!! url('js/jquery.validate.min.js') !!}"></script>
         <script src="{!! url('assets/js/main.js')!!}"></script>
-        <script src="{!! url('assets/js/confirmDRRMfile.js')!!}"></script>
+        <script src="{!! url('assets/js/deleteConfirm.js')!!}"></script>
         @yield('page-js-files')
 
 </body>

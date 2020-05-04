@@ -6,11 +6,11 @@ jQuery(function($){
 
 	
 
-	$('input[name="hazard"]').change(function() {
+	$('input[name="risk"]').change(function() {
 	  if ($(this).val() == 'Typhoon') {
-		  $('#tyname_id').prop('disabled', false);
+		  $('#typhoon_name').prop('disabled', false);
 	  } else {
-		  $('#tyname_id').prop('disabled', true);
+		  $('#typhoon_name').prop('disabled', true);
 	  }
 	});
 	  

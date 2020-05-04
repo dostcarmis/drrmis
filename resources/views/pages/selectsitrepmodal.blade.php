@@ -41,14 +41,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 href="#" data-toggle="tooltip"  title="Note: Select the level where you want to download sitrep" class="modal-title">Select Sitrep Level <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></h4>
+          <h4  data-toggle="tooltip"  title="Note: Select the level where you want to download sitrep" class="modal-title">Select Sitrep Level <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></h4>
         </div>
           <div class="modal-body">
             <div class="row">
                 <div class="column">
                 <div class="card">
                   <div></div>
-                      <a href="{{ url("filedownloadpage?filetype=docx") }}"><img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" width="100" height="100" ></a>
+                      <a href="{{ url("sitreps/provincial") }}"><img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" width="100" height="100" ></a>
                       <p>Provincial Sitreps</p>
                   </div>
               </div> 
@@ -56,7 +56,7 @@
               <div class="column">
                 <div class="card">
                   <div></div>
-                      <a href="{{ url("filedownloadpage?filetype=docx") }}"><img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" width="100" height="100" ></a>
+                      <a href="{{ url("sitreps/regional") }}"><img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" width="100" height="100" ></a>
                       <p>Regional Sitreps</p>
                   </div>
               </div>
@@ -64,7 +64,7 @@
               <div class="column">
                 <div class="card">
                   <div></div>
-                      <a href="{{ url("filedownloadpage?filetype=docx") }}"><img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" width="100" height="100" ></a>
+                      <a href="{{ url("sitreps") }}"><img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" width="100" height="100" ></a>
                       <p>All Uploaded Sitreps</p>
                   </div>
               </div>

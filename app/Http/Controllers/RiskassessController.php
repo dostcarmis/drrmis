@@ -21,7 +21,7 @@ class RiskassessController extends Controller
     public function viewFiles($province){
         $riskfiles = DB::table('tbl_riskassessfiles as risk') 
                     ->select('risk.*',
-                             DB::Raw('CONCAT(user.first_name, " ", user.last_name) as name'))
+                             DB::raw('CONCAT(user.first_name, " ", user.last_name) as name'))
                     ->join('users as user', 'user.id', '=', 'risk.uploadedby')
                     ->where('risk.province', 'LIKE', '%'.$province.'%')
                     ->orderBy('risk.created_at', 'desc')

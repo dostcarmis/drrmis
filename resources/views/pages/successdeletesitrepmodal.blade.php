@@ -92,7 +92,7 @@
 </style>
 
 <!-- Modal HTML -->
-<div id="modalSuccess" class="modal fade">
+<div id="modalSuccessDelSitrep" class="modal fade">
 	<div class="modal-dialog modal-confirm">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -100,7 +100,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body text-center">	
-				<p>File has been deleted</p>
+				<p>Sitrep has been deleted</p>
 				<button class="btn btn-success" data-dismiss="modal"><span>Okay</span></button>
 			</div>
 		</div>

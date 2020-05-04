@@ -71,8 +71,8 @@
             </li>
 
             <div style="color: white; margin-bottom: 10px;">Select Incident:<br>
-                <input type="checkbox" name="Landslide" value="Car"> Landslide<br>
-                <input type="checkbox" name="Flood" value="Boat"> Floods<br>
+                <input type="checkbox" name="Landslide" value="landslide"> Landslide<br>
+                <input type="checkbox" name="Flood" value="flood"> Floods<br>
             </div>  
 
             
@@ -85,8 +85,6 @@
                 <a href="#" id="all-viewmap" class="btn btn-default btn-block"> Proceed </a> 
             </div>
 
-
-            
         </ul>    
     </div>
 </nav>
