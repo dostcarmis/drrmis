@@ -13,20 +13,19 @@ jQuery(function($){
                 torrential++;
             }else if((mainarray[x].total >= 301) && (mainarray[x].total <= 400)){
                 intense++;
-
             }else if((mainarray[x].total >= 201) && (mainarray[x].total <= 300)){
                 heavy++;
             }else if((mainarray[x].total >= 101) && (mainarray[x].total <= 200)){
                 moderate++;
-
             }else{
                 light++;
             }
+            console.log(torrential);
         }
 
         var colors_array= ["#ff0000","#FF9707", "#000292", "#0231FF", "#00CFC9"];
         Morris.Donut({
-            element: 'morris-donut-chart',
+            element: 'donut-chart',
             colors: colors_array,
             data: [{
                 label: "Torrential",

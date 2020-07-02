@@ -63,7 +63,7 @@
                 <h3 class="panel-title"><i class="demo-icon"></i> Critical Sensor Readings</h3>
             </div>
             <div class="panel-body">
-                <div id="morris-donut-chart"></div>
+                <div id="donut-chart"></div>
                 <div class="text-right">
                     <a href="{{action('HydrometController@viewHydrometdata')}}">View Details <i class="fa fa-arrow-circle-right"></i></a>
                 </div>

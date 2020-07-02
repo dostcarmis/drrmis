@@ -158,6 +158,7 @@ function initMap() {
         arrMarkerslandslide.id = landslidelocation[i].id;        
         arrMarkerslandslide.setVisible(false);
         landslidemarkers.push(arrMarkerslandslide); 
+        //icon info when clicked
         (function (arrMarkerslandslide, data) {
             var monthNames = ["January", "February", "March", "April", "May", "June",
               "July", "August", "September", "October", "November", "December"
@@ -260,6 +261,7 @@ function initMap() {
                     infoWindow.open(map, arrMarkersflood);
                 });
         })(arrMarkersflood, data);
+        
     }
    $.fn.toggleIconsF = function() {
         var isActive = $('#f-viewmap').hasClass("activeflood");
@@ -302,7 +304,15 @@ function initMap() {
             displayfloodMarkers(this,v); 
         });
 
-//showing all loaded icons        
+    $.fn.toggleIconwithDatefilter = function(){
+        var isactive = $('#all-filteredmap').hasClass('showfiltered');
+        $('#all-filteredmap').toggleClass('showfiltered')
+        if (isactive){
+
+        }
+    }
+
+//showing all loaded icons  
     $.fn.toggleIconsAll = function() {
         var isActive = $('#all-viewmap').hasClass("activeall");
         $('#all-viewmap').toggleClass('activeall');
@@ -327,6 +337,7 @@ function initMap() {
                 landslidemarkers[i].setVisible(true);       
             }
         }
+        
     }
         
 }
@@ -357,5 +368,6 @@ $(function() {
     }, cb);
 
     cb(start, end);
-
+    
 });
+console.log(cb);

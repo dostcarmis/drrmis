@@ -6,7 +6,7 @@
       @if( !$currentUser )
         <ul class="nav navbar-nav navbar-right">    
           <li class="login">{!! link_to_route('get_login', 'Login') !!}</li>
-          <li class="register">{!! link_to_route('get_register', 'Register') !!}</li>          
+                   
         </ul>
       @else
       <ul class="nav navbar-nav navbar-left"> 

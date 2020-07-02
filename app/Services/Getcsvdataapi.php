@@ -29,7 +29,6 @@ class Getcsvdataapi
 		//$this->todaypath = 'public_html/public/data'.'/'.date('Y').'/'.date('m').'/'.date('d').'/';
         //$this->yesterday = 'public_html/public/data'.'/'.date('Y/m/d',strtotime("-1 days")).'/';
         //$this->lasttwodayspath = 'public_html/public/data'.'/'.date('Y/m/d',strtotime("-2 days")).'/';
-
 		//for local
         $this->todaypath = 'data'.'/'.date('Y').'/'.date('m').'/'.date('d').'/';
         $this->yesterday = 'data'.'/'.date('Y/m/d',strtotime("-1 days")).'/';
@@ -198,16 +197,29 @@ class Getcsvdataapi
     public function getcurrentwaterlevel($path,$csv){
         $csvfile = $this->getcsv($path,$csv);
         $limit = count($csvfile);
-        $currentreading = 0;    
+        $currentreading = 0;
+        $error = 'ERR';    
         $fnal = 0;
+
+     
         for ($i=0; $i < $limit; $i++) { 
-            if(!empty($csvfile[$i]['waterlvl'])){
-               $currentreading = $csvfile[$i]['waterlvl']; 
-           }else{
+            if(trim($csvfile[$i]['waterlvl'])=='ERR' || !$csvfile[$i]['waterlvl']){
                 $currentreading = 0;
-           }
+            }else{
+                $currentreading = $csvfile[$i]['waterlvl'];
+            }    
             
+           // if(trim(!empty($csvfile[$i]['waterlvl']))){
+           //    $currentreading = $csvfile[$i]['waterlvl']; 
+           // }elseif($csvfile[$i]['waterlvl']=='ERR'){    
+           //     $currentreading = 0;
+           //}else{
+           //     $currentreading = 0;
+           //}
+           
+           //echo ($csvfile[$i]['waterlvl']).'<br>';
         }
+       
         $fnal = $currentreading / 100;
         
         return $fnal;
@@ -568,8 +580,8 @@ class Getcsvdataapi
     //Initial variables
     $sensors = DB::table('tbl_sensors')->get();   
     //$sensors = (object)[(object)['dev_id' => 453]];
-    $username = 'dostcar';
-    $password = 'd0str0[car]';
+    $username = 'dostregioncar';
+    $password = 'dostCAR1116';
     
     //Method for session request
     $context = stream_context_create(array(
@@ -580,7 +592,7 @@ class Getcsvdataapi
 
     foreach ($sensors as $sensor) {
         if ($sensor->dev_id != 0) {
-            $url = 'http://weather.asti.dost.gov.ph/web-api/index.php/api/data/'.
+            $url = 'http://philsensors.asti.dost.gov.ph/api/data/'.
                     $sensor->dev_id . 
                     '/from/' . date('Y-m-d',strtotime("-1 days")) . '/to/' . date('Y-m-d');
             
@@ -592,16 +604,17 @@ class Getcsvdataapi
 
             $mydatas = json_decode($data, true);          
             $counter = 0; 
-            $sensorType = strtolower($mydatas['type_id']);   
+            $sensorType = strtolower($mydatas['type_name']);   
             if (!empty($mydatas['province'])) { 
                 //Variables
                 $finalarray = array(
                     array('region: CAR'),
                     array('province: '.$mydatas['province']),
+                    array('municipality: '.$mydatas['municipality']),
                     array('posx: '.$mydatas['latitude']),
                     array('posy: '.$mydatas['longitude']),
-                    array('imei: '.$mydatas['imei_num']),
-                    array('sensor_name: '.$mydatas['type_id']),
+                    //array('imei: '.$mydatas['imei_num']),
+                    array('sensor_name: '.$mydatas['type_name']),
 
                 );
                 
@@ -609,7 +622,7 @@ class Getcsvdataapi
                 $location = strtoupper(str_replace(' ', '_', $mydatas['location']));
                 $flocation = str_replace(',','',$location);
                 $finallocation = str_replace('.','',$location);
-                $type = strtoupper(str_replace(' ', '_', $mydatas['type_id']));
+                $type = strtoupper(str_replace(' ', '_', $mydatas['type_name']));
                 $ftype = str_replace('&_','', $type);
                 $rootfile = public_path() . '/data/'.date('Y').'/'.date('m').'/'.date('d').'/';
                 $filename = $province.'-'.$finallocation.'-'.$ftype.'-'.date('Ymd').'.csv';
@@ -617,7 +630,7 @@ class Getcsvdataapi
 				//dd($rootfile);
 		
                 if (is_dir($rootfile) == false) {
-                    mkdir($rootfile);
+                    mkdir($rootfile, 0777, true);
                 }
 
                 $file = fopen($rootfile.$filename,"w");
@@ -638,7 +651,7 @@ class Getcsvdataapi
                         $newKeys = [$keys[0], $keys[2], $keys[1]];
                        // dd($newKeys);
                     } elseif ($sensorType == 'waterlevel & rain 2') {
-                        $newKeys = [$keys[0], $keys[2], $keys[3], $keys[4], $keys[1]];
+                        $newKeys = [$keys[0], $keys[3], $keys[2], $keys[1]];
                        
                     } else {
                             $newKeys = $keys;
@@ -662,7 +675,7 @@ class Getcsvdataapi
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
                                        'rain_value' => $mydata['rain_value'],
                                        'waterlevel' => $mydata['waterlevel'],
-                                       'waterlevel_msl' => $mydata['waterlevel_msl'],
+                                       //'waterlevel_msl' => $mydata['waterlevel_msl'],
                                        'air_pressure' => $mydata['air_pressure']];
                         } else {
                             $newData = $mydata;
@@ -684,8 +697,8 @@ class Getcsvdataapi
         set_time_limit(0);
         ignore_user_abort(true); 
         $sensors = DB::table('tbl_sensors')->get();   
-        $username = 'dostcar';
-        $password = 'd0str0[car]';
+        $username = 'dostregioncar';
+        $password = 'dostCAR1116';
         
         $context = stream_context_create(array(
         'http' => array(
@@ -701,7 +714,7 @@ class Getcsvdataapi
         
         foreach ($sensors as $sensor) {
           if($sensor->dev_id != 0){
-            $url = 'http://weather.asti.dost.gov.ph/web-api/index.php/api/data/'.$sensor->dev_id.'/from/'.$ystyear.'-'.$ystmonth.'-'.$ystday.'/to/'.$year.'-'.$month.'-'.$day;
+            $url = 'http://philsensors.asti.dost.gov.ph/api/data/'.$sensor->dev_id.'/from/'.$ystyear.'-'.$ystmonth.'-'.$ystday.'/to/'.$year.'-'.$month.'-'.$day;
             
             try {
                 $data = file_get_contents($url, false, $context);
@@ -714,16 +727,17 @@ class Getcsvdataapi
             $counter = 0;    
             //$finalarray = [];
             //$filename = '';
-            $sensorType = strtolower($mydatas['type_id']);
+            $sensorType = strtolower($mydatas['type_name']);
             if (!empty($mydatas['province'])) {
 
                 $finalarray = array(
                     array('region: CAR'),
                     array('province: '.$mydatas['province']),
+                    array('municipality: '.$mydatas['municipality']),
                     array('posx: '.$mydatas['latitude']),
                     array('posy: '.$mydatas['longitude']),
-                    array('imei: '.$mydatas['imei_num']),
-                    array('sensor_name: '.$mydatas['type_id']),
+                    //array('imei: '.$mydatas['imei_num']),
+                    array('sensor_name: '.$mydatas['type_name']),
 
                 );
 
@@ -731,14 +745,14 @@ class Getcsvdataapi
                 $location = strtoupper(str_replace(' ', '_', $mydatas['location']));
                 $flocation = str_replace(',','',$location);
                 $finallocation = str_replace('.','',$location);
-                $type = strtoupper(str_replace(' ', '_', $mydatas['type_id']));
+                $type = strtoupper(str_replace(' ', '_', $mydatas['type_name']));
                 $ftype = str_replace('&_','', $type);
                 $rootfile = public_path() . '/data/'.$year.'/'.$month.'/'.$day.'/';
                 $filename = $province.'-'.$finallocation.'-'.$ftype.'-'.$year.$month.$day.'.csv';
             
                 if (is_dir($rootfile) === false)
                 {
-                    mkdir($rootfile);
+                    mkdir($rootfile, 0777, true);
                 }
 
                 $file = fopen($rootfile.$filename,"w");      
@@ -758,7 +772,7 @@ class Getcsvdataapi
                         $newKeys = [$keys[0], $keys[2], $keys[1]];
                        // dd($newKeys);
                     } elseif ($sensorType == 'waterlevel & rain 2') {
-                        $newKeys = [$keys[0], $keys[2], $keys[3], $keys[4], $keys[1]];
+                        $newKeys = [$keys[0], $keys[3], $keys[2], $keys[1]];
                        
                     } else {
                             $newKeys = $keys;
@@ -782,7 +796,7 @@ class Getcsvdataapi
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
                                        'rain_value' => $mydata['rain_value'],
                                        'waterlevel' => $mydata['waterlevel'],
-                                       'waterlevel_msl' => $mydata['waterlevel_msl'],
+                                       //'waterlevel_msl' => $mydata['waterlevel_msl'],
                                        'air_pressure' => $mydata['air_pressure']];
                         } else {
                             $newData = $mydata;
