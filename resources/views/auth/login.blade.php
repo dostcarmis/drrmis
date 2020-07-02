@@ -12,8 +12,8 @@
 			{!! Form::password('password',['id' => 'password', 'class' => 'form-control txtpassword', 'placeholder' => 'Password', 'required']) !!}
 			<div class="col-xs-12 np text-center">{!! Form::button('Sign in', ['class' => 'btn btn-primary btnlogindef', 'type' => 'submit']) !!}</div>
 		{!! Form::close() !!}
-		<span class="defsp spsignup text-center">{!! link_to_route('get_register', 'Sign up') !!} for new account</span>
-		<span class="defsp spsignup text-center"> or {!! link_to_action('PagesController@home', 'Go back') !!} to map</span>
+		<!--<span class="defsp spsignup text-center">{!! link_to_route('get_register', 'Sign up') !!} for new account</span>-->
+		<span class="defsp spsignup text-center">{!! link_to_action('PagesController@home', 'Go back') !!} to homepage</span>
 	</div>
 </div>
 @stop

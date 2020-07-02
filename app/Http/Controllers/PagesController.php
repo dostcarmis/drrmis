@@ -17,6 +17,8 @@ use App\Models\Incidents;
 use App\Models\Roadnetwork;
 use App\Models\Municipality;
 use App\Models\User;
+use App\Models\Landslide;
+use App\Models\Floods;
 use App\Services\Getcsvdataapi;
 use JavaScript;
 class PagesController extends Controller
@@ -213,5 +215,13 @@ class PagesController extends Controller
     }
     public function viewMedia(){
         return view('pages.media');
+    }
+
+    public function incidentsMapView(){
+        $landslides = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','1')->get();    
+        $floods = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','2')->get();
+        $landslide = Landslide::orderBy('created_at', 'desc')->get(); 
+        $flood = Floods::orderBy('created_at', 'desc')->get(); 
+        return view('pages.mapviewincidents')->with(['landslides' => $landslides,'floods' => $floods,'landslide' => $landslide, 'flood' => $flood]);
     }
 }

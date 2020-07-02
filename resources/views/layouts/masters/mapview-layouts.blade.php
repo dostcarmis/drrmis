@@ -55,7 +55,6 @@ if (Auth::check()) : ?>
         <script src="{!! url('assets/js/responsive.js')!!}"></script>
         <script src="{!! url('js/jquery.mmenu.all.min.js')!!}"></script>
         <script src="{!! url('assets/js/responsive.js')!!}"></script>
-        
         @yield('page-js-files')
 
 </body>

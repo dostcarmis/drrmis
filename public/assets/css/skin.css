@@ -34,6 +34,8 @@ a:hover,a:focus{
     width: 100%;
 }
 
+
+
 .logowrap{
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -510,6 +512,7 @@ aside.map{
 aside.map .container-fluid{
 padding: 0;
 }
+
 .sensors{
 	position: absolute;
 	right: 0;

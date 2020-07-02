@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-xs-12">
 		<h1 class="page-header"><b>Download DRRM related Files</b></h1>			
-		<div class="col-xs-12 np"><a href="#" data-toggle="modal" data-target="#addModal" class="btn btn-viewupload">+ Add New File</a></div>
+		<div class="col-xs-12 np"><a href="#" data-toggle="modal" data-target="#addfileModal" class="btn btn-viewupload">+ Add New File</a></div>
 				 	
 		<p style="color:green"><?php echo Session::get('success_upload'); ?></p>
 			@foreach ($errors->all() as $message)

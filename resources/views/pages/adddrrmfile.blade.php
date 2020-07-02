@@ -1,4 +1,4 @@
-<div id="addModal" class="modal fade" role="dialog">
+<div id="addfileModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

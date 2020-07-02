@@ -98,7 +98,8 @@ class LandslideController extends Controller
     $messages = [
        'date.required' => 'Date and Time rquired',
        'road_location.required' => 'Road location field is required',
-       'province_id.required' => 'Province and Municipality is required',
+       'province_id.required' => 'Province is required',
+       'municipality_id.required' => 'Municipality is required'
     ];
     $v = \Validator::make($request->all(), $rules, $messages);
       if($v->fails()){
@@ -255,8 +256,8 @@ class LandslideController extends Controller
         if ($validation->fails()) {
             return Response::make($validation->errors()->all(), 400);
         }
-        $destinationPath = 'files/1/Landslide Images'; // upload path
-        $destinthumb = 'files/1/Landslide Images/thumbs'; 
+        $destinationPath = 'files/1/Incident_Images'; // upload path
+        $destinthumb = 'files/1/Incident_Images'; 
         $extension = Input::file('file')->getClientOriginalExtension(); // getting file extension
         $name = Input::file('file')->getClientOriginalName();
         $img = Image::make(Input::file('file'));
@@ -282,8 +283,8 @@ class LandslideController extends Controller
         if ($validation->fails()) {
             return Response::make($validation->errors()->all(), 400);
         }
-        $destinationPath = 'files/1/Landslide Images'; // upload path
-        $destinthumb = 'files/1/Landslide Images/thumbs'; 
+        $destinationPath = 'files/1/Incident_Images'; // upload path
+        $destinthumb = 'files/1/Incident_Images/thumbs'; 
         $extension = Input::file('file')->getClientOriginalExtension(); // getting file extension
         $name = Input::file('file')->getClientOriginalName();
         $img = Image::make(Input::file('file'));

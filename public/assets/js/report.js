@@ -1115,21 +1115,13 @@ $(function(){
     $("#btn-generate").unbind("click").click(function(){
 
     	if (sensorID == ""){
-
     		if (generateAllSensors == "false"){
-
     			$("#error-report-modal").modal();
-
     		}else if (generateAllSensors == "true") {
-
     			initializeSensorData();
-
     		}
-
     	}else {
-
     		initializeSensorData();
-
     	}
 
     });

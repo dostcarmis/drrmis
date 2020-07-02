@@ -36,7 +36,7 @@
                            <li>{!! link_to_route('get_logout', 'Log out',array() ,array('class' => 'btn')) !!}</li>
                           </div>                             
                       </ul>
-                    </li>            
+                </li>            
                     @endif                   
             </ul>
             <div class="navbar-header">
@@ -108,7 +108,7 @@
                                         </ul>
                                     </li>                                   
                                     <li>
-                                        <a href="{{action('PagesController@mapView')}}">Map View</a>
+                                        <a href="{{action('PagesController@incidentsMapView')}}">Map View</a>
                                     </li>
                                  </ul>
                             </li> 

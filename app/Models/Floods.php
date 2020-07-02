@@ -14,7 +14,7 @@ class Floods extends Model
      * @var array
      */
     
-    protected $table = 'tbl_flood';
+    protected $table = 'tbl_floods';
     /**
      * The attributes that are mass assignable.
      *

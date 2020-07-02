@@ -22,7 +22,7 @@
 <body class="innerbody">   
 
     <div id="wrap-main">
-        <aside class="top-wrap ">
+        <aside class="top-wrap">
             @include('layouts.partials.loginform')
             @include('layouts.partials.banner')
             @include('layouts.partials.homenavigation')
@@ -33,6 +33,8 @@
             @yield('legend-section')  
             @yield('page-content')
         </aside>
+
+        
     </div>
         
         <script src="{!! url('js/jquery1-11-3.min.js')!!}"></script>   

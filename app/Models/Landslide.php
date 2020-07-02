@@ -14,7 +14,7 @@ class Landslide extends Model
      * @var array
      */
     
-    protected $table = 'tbl_landslide';
+    protected $table = 'tbl_landslides';
     /**
      * The attributes that are mass assignable.
      *
