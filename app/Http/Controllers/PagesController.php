@@ -152,8 +152,8 @@ class PagesController extends Controller
         $provinces = Province::all();
         $sensors = Sensors::all(); 
         $municipality = Municipality::all();   
-        $landslides = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','1')->get();    
-        $floods = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','2')->get();
+        $landslides = Landslide::orderBy('created_at', 'desc')->get();    
+        $floods = Floods::orderBy('created_at', 'desc')->get();
         $roadnetworks = DB::table('tbl_roadnetworks')->orderBy('created_at', 'desc')->limit(3)->get();
         $users = User::all();   
 
@@ -218,10 +218,10 @@ class PagesController extends Controller
     }
 
     public function incidentsMapView(){
-        $landslides = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','1')->get();    
-        $floods = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','2')->get();
-        $landslide = Landslide::orderBy('created_at', 'desc')->get(); 
-        $flood = Floods::orderBy('created_at', 'desc')->get(); 
-        return view('pages.mapviewincidents')->with(['landslides' => $landslides,'floods' => $floods,'landslide' => $landslide, 'flood' => $flood]);
+        //$landslides = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','1')->get();    
+        //$floods = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','2')->get();
+        $landslides = Landslide::orderBy('created_at', 'desc')->get(); 
+        $floods = Floods::orderBy('created_at', 'desc')->get(); 
+        return view('pages.mapviewincidents')->with(['landslides' => $landslides,'floods' => $floods]);
     }
 }

@@ -11,7 +11,7 @@
 
 <form id="userform" action="{{ action('LandslideController@saveLandslide') }}" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	<input type="hidden" id="myimages" name="myimages" value="myimages[]">
+	<input type="hidden" id="landslideimages" name="landslideimages" value="landslideimages[]">
 	
 	<div class="col-xs-12 np">
 			<div class="col-xs-12 col-sm-4 perinputwrap dates">
@@ -216,7 +216,7 @@ Dropzone.autoDiscover = false;
         	console.log("opapapaooooooooooooopsss");
         }),
         this.on("success", function(file, response) { 
-        	var imagefile = baseUrl + '/files/1/Incident_Images/'+file["name"] +'-@';
+        	var imagefile = baseUrl + '/files/1/Landslide Images/'+file["name"] +'-@';
             images[counter] = imagefile;
       		document.getElementById("myimages").value = images;
       		counter++;

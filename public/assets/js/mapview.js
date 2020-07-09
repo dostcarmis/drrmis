@@ -7,6 +7,9 @@ $( window ).resize(function() {
 var locations = []; 
 var landslidelocation = [];
 var floodlocation = [];
+var start = moment().subtract(29, 'days');
+var end = moment();
+let formatedStart, formatedEnd;
 //map initialization
 function initMap() {   
     var mapDiv = document.getElementById('incidentmap');
@@ -128,19 +131,37 @@ function initMap() {
             if(landslideimages[xyz].id == landslides[landslidecount].id){
                 myimage = landslideimages[xyz].image;
                 for (var i = 0; i < myimage.length; i++) {
-                    images[i] = '<div class="mapimages"><a data-fancybox-group="landslideimages-'+xyz+'" href='+myimage[i].replace(/ /g,"%20") +' class="fancybox"><img src='+myimage[i].replace(/ /g,"%20") +' class="mres"/></a></div>';
+                    images[i] = '<div class="mapimages"><a target="_blank" data-fancybox-group="landslideimages-'+xyz+'" href='+myimage[i].replace(/ /g,"%20") +' class="fancybox"><img src='+myimage[i].replace(/ /g,"%20") +' class="mres"/></a></div>';
                 }
             }
          }
+         //Icon info when clicked
         landslidelocation.push({
             id: landslides[landslidecount].id, 
-            name:landslides[landslidecount].location,                 
+            name:landslides[landslidecount].road_location,                 
             icon: landslideicon, 
             images: images,
             date: landslides[landslidecount].date,
             source: landslides[landslidecount].author,
             latlng: new google.maps.LatLng(landslides[landslidecount].latitude,landslides[landslidecount].longitude),
-            description: landslides[landslidecount].description,
+            type: landslides[landslidecount].landslidetype,
+            landcover: landslides[landslidecount].landcover,
+            landmark: landslides[landslidecount].landmark,
+            landslidereccuring: landslides[landslidecount].landslidereccuring,
+            width: landslides[landslidecount].lewidth,
+            length: landslides[landslidecount].lelength,
+            depth: landslides[landslidecount].ledepth,
+            casualty: landslides[landslidecount].idkilled,
+            injured: landslides[landslidecount].idinjured,
+            missing: landslides[landslidecount].idmissing,
+            infra: landslides[landslidecount].idaffectedinfra,
+            value: landslides[landslidecount].idaffectedcrops,
+            cause: landslides[landslidecount].cause,
+            typhoonname: landslides[landslidecount].typhoonname,
+            heavyrainfall: landslides[landslidecount].heavyrainfall,
+            reportedby: landslides[landslidecount].reportedby,
+            reporterpos: landslides[landslidecount].reporterpos,
+            author: landslides[landslidecount].author,
         });
         
     }   
@@ -153,12 +174,13 @@ function initMap() {
             position: data.latlng, 
             map:map, 
             icon:data.icon, 
-            title:data.location,
+            title:data.road_location,
+            date:data.date,
         });
         arrMarkerslandslide.id = landslidelocation[i].id;        
         arrMarkerslandslide.setVisible(false);
         landslidemarkers.push(arrMarkerslandslide); 
-        //icon info when clicked
+        
         (function (arrMarkerslandslide, data) {
             var monthNames = ["January", "February", "March", "April", "May", "June",
               "July", "August", "September", "October", "November", "December"
@@ -166,8 +188,33 @@ function initMap() {
             var d = new Date(data.date);
                 google.maps.event.addListener(arrMarkerslandslide, "click", function (e) {
                     infoWindow.setContent(
-                        "<div id='iw-container' class='landslidemarkerinfowindow'><div class='iw-title l-maptitle'>LANDSLIDE</div><div class='iw-content l-mapcontent'><span class='l-name'>" + data.name + "</span><span class='defsp l-date'>"+monthNames[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear()+"</span><span class='l-images'>"+data.images+"</span><span class='l-coordinates'>" + data.description + "</span><span class='l-source'>"+data.source+"</span></div><div class='iw-bottom-gradient'></div></div>"
-                        );
+                        `<div id='iw-container' class='landslidemarkerinfowindow text-center'>
+                            <div class='iw-title l-maptitle'>
+                                LANDSLIDE
+                            </div>
+                            <div class='iw-content l-mapcontent'>
+                                <span class='l-name'>
+                                    ${data.name}
+                                </span>
+                                <span class='defsp l-date'>
+                                    ${monthNames[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}
+                                </span>
+                                <span class='l-images'>
+                                    ${data.images}
+                                </span>
+                                <span class='l-coordinates'>
+                                    <p> The type of the landslide that occured is a ${data.type} landslide.
+                                    The landcover of the area is ${data.landcover}. The nearest landmark of the
+                                    incident is ${data.landmark}. This incident recorded ${data.casualty} casualties,
+                                    ${data.injured} people injured and ${data.missing} missing. This is caused by
+                                    ${data.cause} with a local typhoon name ${data.typhoonname}.    
+                                </span>
+                                <span class='l-source'>
+                                ${data.source}
+                                </span>
+                            </div>    
+                            <div class='iw-bottom-gradient'></div>
+                        </div>`);
                     infoWindow.open(map, arrMarkerslandslide);
                 });
         })(arrMarkerslandslide, data);                      
@@ -227,7 +274,7 @@ function initMap() {
          }
         floodlocation.push({
             id: floods[floodcount].id, 
-            name:floods[floodcount].location,                 
+            name:floods[floodcount].road_location,                 
             icon: floodicon, 
             date: floods[floodcount].date,
             images: images,
@@ -245,6 +292,7 @@ function initMap() {
             map:map, 
             icon:data.icon, 
             title:data.location,
+            date:data.date,
         });
         arrMarkersflood.id = data.id;        
         arrMarkersflood.setVisible(false);
@@ -304,13 +352,7 @@ function initMap() {
             displayfloodMarkers(this,v); 
         });
 
-    $.fn.toggleIconwithDatefilter = function(){
-        var isactive = $('#all-filteredmap').hasClass('showfiltered');
-        $('#all-filteredmap').toggleClass('showfiltered')
-        if (isactive){
-
-        }
-    }
+   
 
 //showing all loaded icons  
     $.fn.toggleIconsAll = function() {
@@ -336,21 +378,35 @@ function initMap() {
             {   
                 landslidemarkers[i].setVisible(true);       
             }
+            console.log(floodmarkers);
         }
         
     }
-        
-}
-window.onload = initMap;
-
-
-//Datepicker for incident view
-$(function() {
-        
-    var start = moment().subtract(29, 'days');
-    var end = moment();
+    
+    
+    $.fn.toggleIconWithDateFilter = function(){
+        //const isactive = $('#all-filteredmap').hasClass('showfiltered');
+        $('#all-filteredmap').toggleClass('showfiltered')
+            for (i = 0;i < floodmarkers.length; i++){
+                if (moment(floodmarkers[i].date).isBetween(formatedStart,formatedEnd)){
+                    floodmarkers[i].setVisible(true);
+                }else{
+                    floodmarkers[i].setVisible(false);
+                }    
+            }
+            for (i = 0;i < landslidemarkers.length; i++){
+                if (moment(landslidemarkers[i].date).isBetween(formatedStart,formatedEnd)){
+                    landslidemarkers[i].setVisible(true);
+                }else{
+                    landslidemarkers[i].setVisible(false);
+                }    
+            }
+    }
+  
 
     function cb(start, end) {
+        formatedStart = start.format('YYYY-MM-DD');
+        formatedEnd = end.format('YYYY-MM-DD');
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
     }
 
@@ -364,10 +420,13 @@ $(function() {
            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
            'This Month': [moment().startOf('month'), moment().endOf('month')],
            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+           
         }
     }, cb);
 
     cb(start, end);
-    
-});
-console.log(cb);
+}
+window.onload = initMap;
+
+
+

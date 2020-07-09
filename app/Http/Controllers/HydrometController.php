@@ -90,7 +90,7 @@ class HydrometController extends Controller
 		$sensors = DB::table('tbl_sensors')->whereIn('category_id', [1,2,3,4])->get();
 
         $mainarray = $this->getcsvdata->dashboardData();
-            
+           
 		JavaScript::put([
             'mainarray' => $mainarray
         ]);

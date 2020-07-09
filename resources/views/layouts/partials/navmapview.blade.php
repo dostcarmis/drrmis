@@ -70,19 +70,17 @@
                 </div>
             </li>
 
-            <div style="color: white; margin-bottom: 10px;">Select Incident:<br>
+           <!-- <div style="color: white; margin-bottom: 10px;">Select Incident:<br>
                 <input type="checkbox" name="Landslide" value="landslide"> Landslide<br>
                 <input type="checkbox" name="Flood" value="flood"> Floods<br>
-            </div>  
-
-            
+            </div>  -->
 
             <div class="col-xs-12 r-links">
                 <a href="#" id="all-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsAll();">View all incidents </a> 
             </div>
 
             <div class="col-xs-12 r-links">
-                <a href="#" id="all-viewmap" class="btn btn-default btn-block"> Proceed </a> 
+                <a href="#" id="all-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconWithDateFilter()"> Proceed </a> 
             </div>
 
         </ul>    
