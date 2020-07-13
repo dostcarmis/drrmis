@@ -830,7 +830,7 @@ h1.page-header{
 .loginwrap{
 	padding: 15px;
 	border-radius: 5px;
-	background:rgba(2,16,25,.8);
+	background: rgb(17, 54, 105)
 }
 .loginwrap h1{
 	text-align: center;
