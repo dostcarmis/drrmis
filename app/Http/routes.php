@@ -606,7 +606,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		]);
 
 
-	Route::match(['get', 'post'],'viewperlandslide/{location}', [
+	Route::match(['get', 'post'],'viewperlandslide/{id}', [
 		'uses' => 'LandslideController@viewperLandslide',
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']

@@ -61,6 +61,7 @@
           </div>
   
         <?php if($landslidecount >= 5){break;}?>
+        
         @endforeach
   
         <?php if (Auth::check()) : ?>

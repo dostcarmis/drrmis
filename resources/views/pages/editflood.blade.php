@@ -103,7 +103,7 @@
 
 		<div class="col-xs-12 col-sm-2 perinputwrap">
 			<label>Measured at:</label>
-			<input type="text" name="measuredat" id="measuredat" class="form-control" value="<?= $floods->measuredat ?>" placeholder="Enter description" required>
+			<input type="text" name="measuredat" id="measuredat" class="form-control" value="<?= $floods->measuredat ?>" placeholder="Enter description">
 		</div>
 
 		<div class="col-xs-12 col-sm-2 perinputwrap">
