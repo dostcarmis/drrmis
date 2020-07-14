@@ -4,6 +4,7 @@
       <nav class="navbar hidden-xs navbar-default" id="login-nav">        
       
       @if( !$currentUser )
+      
       <ul class="nav navbar-nav navbar-right"> 
         <li class="login">
         <a href="" data-toggle="modal" data-target="#modalLoginForm">Login</a>

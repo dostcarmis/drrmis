@@ -20,7 +20,7 @@ class LoginController extends Controller
     {
         return redirect('/dashboard');
     }
-    return redirect('/login')->withErrors([
+    return redirect()->back()->withErrors([
         'error' => 'These credentials do not match our records.',
     ]);
 	} 
