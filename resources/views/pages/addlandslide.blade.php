@@ -11,11 +11,11 @@
 
 <form id="userform" action="{{ action('LandslideController@saveLandslide') }}" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	<input type="hidden" id="myimages" name="myimages" value="myimages[]">
+	<input type="hidden" id="landslideimages" name="landslideimages" value="landslideimages[]">
 	
 	<div class="col-xs-12 np">
 			<div class="col-xs-12 col-sm-4 perinputwrap dates">
-					<label href="#" data-toggle="tooltip"  title="This is the date and time of occurence of the landslide">Date & Time  <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
+					<label href="#" data-toggle="tooltip"  title="This is the date and time of occurence of the landslide.">Date & Time  <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
 					<div class='input-group date' id="date">
 						<input type='text'  name="date" placeholder="Date & Time" class="form-control" />
 						<span class="input-group-addon">
@@ -26,17 +26,17 @@
 				</div>
 
 		<div class="col-xs-12 col-sm-4 perinputwrap">
-			<label>Barangay/Sitio/Road Location:</label>
+			<label href="#" data-toggle="tooltip"  title="Name of the barangay or sitio where the landslide happened.">Barangay/Sitio/Road Location:<i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
 			<input type="text" name="road_location" id="road_location" class="form-control" placeholder="Enter location" required>
 		</div>
 
 		<div class="col-xs-12 col-sm-4 perinputwrap">
-			<label>Building Location:</label>
+			<label  href="#" data-toggle="tooltip"  title="Building number if the landslide happened in urban setting">Building Location:<i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
 			<input type="text" name="house_location" id="house_location" class="form-control" placeholder="Enter location">
 		</div>
 		
 		<div class="col-xs-12 col-sm-4 perinputwrap">
-			<label>Province:</label>
+			<label href="#" data-toggle="tooltip"  title="Name of the province where the landslide happened">Province:<i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
 			<select name="province_id" id="province_id" class="form-control">				
 					<option>Select Province</option>
 				@foreach($provinces as $province)				
@@ -46,7 +46,7 @@
 		</div>
 
 		<div class="col-xs-12 col-sm-4 perinputwrap">
-			<label>Municipality:</label>
+			<label href="#" data-toggle="tooltip"  title="Name of the municipality where the landslide happened">Municipality:<i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
 			<select name="municipality_id" id="municipality_id" disabled="disabled" class="form-control">
 				<option>Select Municipality</option>
 			</select>
@@ -64,12 +64,12 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-5 perinputwrap">
-		<label href="#" data-toggle="tooltip"  title="Nearest landmark near the eroded area i.e sheds, school etc.">Prominent Landmark:  <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
+		<label href="#" data-toggle="tooltip"  title="Nearest noticeable landmark near the eroded area i.e sheds, school etc.">Prominent Landmark:  <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
 		<input type="text" name="landmark" id="landmark" class="form-control" placeholder="Enter landmark">
 	</div>
 
 	<div class="col-xs-12 col-sm-4 perinputwrap">
-		<label>Landslide Type:</label>
+		<label  href="#" data-toggle="tooltip"  title="Type of the landslide that occurred">Landslide Type: <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
 		<select name="landslidetype" id="landslidetype" class="form-control">
 			<option value="Fall">Fall</option>
 			<option value="Slide">Slide</option>
@@ -81,7 +81,7 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-3 perinputwrap">
-		<label>Recurring Landslide?</label>
+		<label  href="#" data-toggle="tooltip"  title="Is the landslide occurred is a repeating landslide?">Recurring Landslide? <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
 		<select name="landslidereccuring" id="landslidereccuring" class="form-control">
 			<option value="No">No</option>
 			<option value="Yes">Yes</option>
@@ -89,7 +89,7 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-4 perinputwrap">
-		<label>Landslide Length:</label>
+		<label >Landslide Length:</label>
 		<input type="number" name="lelength" id="lelength" class="form-control" placeholder="Meters (m)">
 	</div>
 
@@ -218,7 +218,7 @@ Dropzone.autoDiscover = false;
         this.on("success", function(file, response) { 
         	var imagefile = baseUrl + '/files/1/Landslide Images/'+file["name"] +'-@';
             images[counter] = imagefile;
-      		document.getElementById("myimages").value = images;
+      		document.getElementById("landslideimages").value = images;
       		counter++;
       		console.log(images);
         })

@@ -11,8 +11,6 @@ use File;
 use App\Models\User;
 class FileDownloadController extends Controller
 {
-    
-    
     public function viewFiledownload(Request $request){
         $filetype = strtolower($request->filetype);
 
@@ -31,10 +29,7 @@ class FileDownloadController extends Controller
         
         return view('pages.viewfiledownload')->with(['files' => $files ]);
     }
-    public function viewaddfiledownload(){
-        return view('503.blade.php');
-        //return view('pages.addfile')
-    }
+    
     public function deleteFile($id){
 
         $filename = DB::table('tbl_files')->where('id',$id)->first();

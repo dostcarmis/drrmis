@@ -53,9 +53,9 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'as' => 'home',
 		'uses' => 'PagesController@home'
 	]);
-	Route::get('mapview', [
+	Route::get('incicdentsmapview', [
 		'as' => 'mapview',
-		'uses' => 'PagesController@mapView'
+		'uses' => 'PagesController@incidentsMapView'
 	]);
 	Route::match(['get', 'post'],'dashboard',[
         'uses' => 'HydrometController@dashboard',
@@ -647,7 +647,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		]);
 
 
-	Route::match(['get', 'post'],'viewperlandslide/{location}', [
+	Route::match(['get', 'post'],'viewperlandslide/{id}', [
 		'uses' => 'LandslideController@viewperLandslide',
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
@@ -935,13 +935,12 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 		]);
 	
-
+//incidents (useless routes)
 	Route::match(['get', 'post'],'incidents',[
 		'uses' => 'IncidentsController@viewIncidents',
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
 		]);
-
 	Route::get('addincident',[
 		'uses' => 'IncidentsController@viewaddIncident',
 		'middleware' => 'roles',
@@ -1031,7 +1030,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'roles' => ['Developer']
 		]);
 
-	//
+//preparedness pages
 	Route::match(['get', 'post'],'preparedness',[
 		'uses' => 'PreparednessController@viewPreparedness',
 		'middleware' => 'roles',
@@ -1047,7 +1046,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 		]);
-	//
+//response pages
 	Route::match(['get', 'post'],'response',[
 		'uses' => 'ResponseController@viewResponse',
 		'middleware' => 'roles',
@@ -1064,7 +1063,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 		]);
 
-	//rehab
+//rehab pages
 	Route::match(['get', 'post'],'rehabilitationnrecovery',[
 		'uses' => 'RehabilitationController@viewRehabilitation',
 		'middleware' => 'roles',
@@ -1081,7 +1080,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 		]);
 
-		//fileDownload
+//DRRM fileDownload pages
 	Route::match(['get', 'post'],'filedownloadpage',[
 		'uses' => 'FileDownloadController@viewFiledownload',
 		'middleware' => 'roles',
@@ -1099,21 +1098,30 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		]);
 
 
-			//sitreps
-	Route::match(['get', 'post'],'sitreps',[
-		'uses' => 'SitrepController@viewsitreps',
+//sitreps
+Route::match(['get', 'post'],'sitreps',[
+	'uses' => 'SitrepController@viewallsitreps',
+	'middleware' => 'roles',
+	'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	]);
+	Route::match(['get', 'post'],'sitreps/{sitrep_level}',[
+		'uses' => 'SitrepController@mainviewsitreps',
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 		]);
-	
+	Route::match(['get', 'post'],'savesitrepfile',[
+		'uses' => 'SitrepController@savesitrepfile',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		]);
+	Route::match(['get', 'post'],'sitreps/deletesitrep/{id}',[
+		'uses' => 'SitrepController@deleteSitrep',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		]);	
 	
 
-	//risk assess
-	Route::match(['get', 'post'],'riskassessmentfiles',[
-		'uses' => 'RiskassessController@mainView',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM']
-		]);
+//risk assess pages
 	Route::match(['get', 'post'],'riskassessmentfiles/{province}',[
 		'uses' => 'RiskassessController@viewFiles',
 		'middleware' => 'roles',

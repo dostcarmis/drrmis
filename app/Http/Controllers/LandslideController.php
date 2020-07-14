@@ -83,11 +83,11 @@ class LandslideController extends Controller
     $input = Input::all();
     $reportstat = '';
     $landslideimages = "";
-    if($post['myimages'] == "myimages[]"){
+    if($post['landslideimages'] == "landslideimages[]"){
       $landslideimages = "";
     }
     else{
-      $landslideimages = explode('-@,', rtrim($post['myimages'], '-@,'));
+      $landslideimages = explode('-@,', rtrim($post['landslideimages'], '-@,'));
       $landslideimages = serialize($landslideimages);
     }
     $rules = [
@@ -98,7 +98,8 @@ class LandslideController extends Controller
     $messages = [
        'date.required' => 'Date and Time rquired',
        'road_location.required' => 'Road location field is required',
-       'province_id.required' => 'Province and Municipality is required',
+       'province_id.required' => 'Province is required',
+       'municipality_id.required' => 'Municipality is required'
     ];
     $v = \Validator::make($request->all(), $rules, $messages);
       if($v->fails()){
@@ -224,9 +225,13 @@ class LandslideController extends Controller
            );  
 
          $i = DB::table('tbl_landslides')->where('id',$post['id'])->update($row);
+         $id = $post['id'];
          if($i > 0){
             Session::flash('message', 'Landslide Report on successfully updated');
-            return redirect('viewlandslides');
+            return redirect('viewperlandslide/' .$id);
+         }else{
+            Session::flash('message', 'Landslide Report not updated');
+            return redirect()->back();
          }
       }
    }
@@ -256,7 +261,7 @@ class LandslideController extends Controller
             return Response::make($validation->errors()->all(), 400);
         }
         $destinationPath = 'files/1/Landslide Images'; // upload path
-        $destinthumb = 'files/1/Landslide Images/thumbs'; 
+        $destinthumb = 'files/1/Landslide Images'; 
         $extension = Input::file('file')->getClientOriginalExtension(); // getting file extension
         $name = Input::file('file')->getClientOriginalName();
         $img = Image::make(Input::file('file'));

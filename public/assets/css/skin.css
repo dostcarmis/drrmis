@@ -1,5 +1,58 @@
 @import url('../../css/bootstrap.min.css'); 
 
+/*MAPVIEW BUTTONs*/
+.mapviewbtn1{
+
+}
+.mapviewbtn2{
+
+}
+.mapviewbbtn3{
+
+}
+
+
+.mapviewbtn4 {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #ffffff;
+	border: none;
+	color: #000000;
+	text-align: center;
+	font-size: 15px;
+	width: 100%;
+	transition: all 0.3s;
+	cursor: pointer;
+  }
+  .mapviewbtn4 span {
+	cursor: pointer;
+	color: #000000;
+	display: inline-block;
+	position: relative;
+	transition: 0.3s;
+  }
+  .mapviewbtn4 span:after {
+	content: '\00bb';
+	position: absolute;
+	color: #000000;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.3s;
+  }
+  .mapviewbtn4:hover span {
+	color: #000000;
+	padding-right: 25px;
+  }
+  .mapviewbtn4:hover span:after {
+	opacity: 1;
+	color: #000000;
+	right: 0;
+  }
+.mapview-datepickertitle{
+	color: #fff;
+}
+
 .np{
 	padding-left: 0px;
 	padding-right: 0px;
@@ -33,6 +86,8 @@ a:hover,a:focus{
     float: left;
     width: 100%;
 }
+
+
 
 .logowrap{
 	padding-top: 15px;
@@ -374,8 +429,8 @@ th.headerSortUp {
 .deledit,.delcoords{
 	color:#ff0000;
 }
-.
-putwrap h3{
+
+.putwrap h3{
 	font-size: 18px;
     padding: 12px;
     margin: 0;
@@ -510,6 +565,7 @@ aside.map{
 aside.map .container-fluid{
 padding: 0;
 }
+
 .sensors{
 	position: absolute;
 	right: 0;
@@ -774,7 +830,7 @@ h1.page-header{
 .loginwrap{
 	padding: 15px;
 	border-radius: 5px;
-	background:rgba(2,16,25,.8);
+	background: rgb(17, 54, 105)
 }
 .loginwrap h1{
 	text-align: center;
@@ -1578,7 +1634,7 @@ input.faChkSqr:after {
 }
 #incidentmap #iw-container {
 	margin-bottom: 5px;
-	width: 650px;
+	width: auto;
 }
 #iw-container .iw-title {
 	font-family: 'open_sans_bold';
@@ -2445,6 +2501,7 @@ ul.sub-menu-bottom li  a{
 	width: 100%;
 	margin-top: 5px;
 	margin-bottom: 5px;
+	
 }
 .mapimages{
 	width: 19%;

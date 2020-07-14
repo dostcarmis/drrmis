@@ -17,6 +17,8 @@ use App\Models\Incidents;
 use App\Models\Roadnetwork;
 use App\Models\Municipality;
 use App\Models\User;
+use App\Models\Landslide;
+use App\Models\Floods;
 use App\Services\Getcsvdataapi;
 use JavaScript;
 class PagesController extends Controller
@@ -150,8 +152,8 @@ class PagesController extends Controller
         $provinces = Province::all();
         $sensors = Sensors::all(); 
         $municipality = Municipality::all();   
-        $landslides = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','1')->get();    
-        $floods = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','2')->get();
+        $landslides = Landslide::orderBy('created_at', 'desc')->get();    
+        $floods = Floods::orderBy('created_at', 'desc')->get();
         $roadnetworks = DB::table('tbl_roadnetworks')->orderBy('created_at', 'desc')->limit(3)->get();
         $users = User::all();   
 
@@ -213,5 +215,13 @@ class PagesController extends Controller
     }
     public function viewMedia(){
         return view('pages.media');
+    }
+
+    public function incidentsMapView(){
+        //$landslides = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','1')->get();    
+        //$floods = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','2')->get();
+        $landslides = Landslide::orderBy('created_at', 'desc')->get(); 
+        $floods = Floods::orderBy('created_at', 'desc')->get(); 
+        return view('pages.mapviewincidents')->with(['landslides' => $landslides,'floods' => $floods]);
     }
 }

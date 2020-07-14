@@ -16,9 +16,17 @@
         <div id="map"></div>      
     </div>    
 </div>
+
+@include('pages.loginmodal')
 @stop
 @section('page-js-files')
 
 <script src="{!! url('assets/js/map.js')!!}"></script>
 <script src="{!! url('assets/js/home.js') !!}"></script>
+
+@if ($errors->all && count($errors->all()) > 0)
+<script>$('#modalLoginForm').modal();</script>
+@endif
+  
+
 @stop

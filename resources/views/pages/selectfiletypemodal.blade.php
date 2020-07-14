@@ -1,4 +1,4 @@
-<div id="selectProvmodal" class="modal fade" role="dialog">
+<div id="selectfilemodal" class="modal fade" role="dialog">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     * {
@@ -112,7 +112,7 @@
 
 
         <div class="modal-footer">
-          <div class="col-xs-12 np"><a href="#" data-toggle="modal" data-target="#addModal" class="btn btn-viewupload">+ Add New File</a></div> 
+          <div class="col-xs-12 np"><a href="#" data-toggle="modal" data-target="#addfileModal" class="btn btn-viewupload">+ Add New File</a></div> 
           <a type="button" class="btn btn-danger" data-dismiss="modal">Cancel</a>  
              
         </div>

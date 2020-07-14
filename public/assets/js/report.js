@@ -10,15 +10,10 @@ $(function(){
     var tableFileTitle = "";
 
     $("#toggle-hydromet-data").click(function(){
-
     	$("#landslide-data").fadeOut(300, function(){
-
 			$("#flood-data").fadeOut(300, function(){
-
 				$("#road-data").fadeOut(300, function(){
-
 					$("#hydromet-data").fadeIn(300, function(){
-
 						$("#hydromet-data").show();
 						$("#text-hydromet").html("Selected");
 						$("#text-landslide").html("View");
@@ -50,13 +45,9 @@ $(function(){
 									 "</div>");
 
     	$("#hydromet-data").fadeOut(300, function(){
-
 			$("#flood-data").fadeOut(300, function(){
-
 				$("#road-data").fadeOut(300, function(){
-
 					$("#landslide-data").fadeIn(300, function(){
-
 						$("#landslide-data").show();
 						$("#text-hydromet").html("View");
 						$("#text-landslide").html("Selected");
@@ -148,9 +139,7 @@ $(function(){
 							});
 									      
 						}).fail(function(xhr, status, error) {
-
 							$("#landslide-display").fadeOut(200, function(){
-
 								$(this).html("<div id='landslide-table' style='overflow-y: auto;'>" +
 												"<center>" +
 							      	  				"<h3 style='color: #d9534f;'>There is an error occured in generating the data.</h3>" +
@@ -1115,21 +1104,13 @@ $(function(){
     $("#btn-generate").unbind("click").click(function(){
 
     	if (sensorID == ""){
-
     		if (generateAllSensors == "false"){
-
     			$("#error-report-modal").modal();
-
     		}else if (generateAllSensors == "true") {
-
     			initializeSensorData();
-
     		}
-
     	}else {
-
     		initializeSensorData();
-
     	}
 
     });

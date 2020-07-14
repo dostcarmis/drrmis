@@ -195,11 +195,12 @@ class FloodController extends Controller
           
 
          $i = DB::table('tbl_floods')->where('id',$post['id'])->update($row);
+         $id = $post['id'];
          if($i > 0){
             Session::flash('message', 'Flood Report successfully updated');
-            return redirect()->back();
+            return redirect('viewperflood/' .$id);
          }else{
-         	Session::flash('message', 'Flood Report successfully updated');
+         	Session::flash('message', 'Flood Report not updated');
             return redirect()->back();
          }
       }

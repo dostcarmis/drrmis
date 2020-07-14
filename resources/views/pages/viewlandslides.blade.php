@@ -53,7 +53,7 @@
 						<td>
 
 						@if(($currentUser->id == $landslide->created_by) || ($currentUser->role_id <= 3))
-						<a class="desctitle" href="<?php echo url('editlandslide'); ?>/<?php echo $landslide->id?>">{{ $landslide->road_location }}</a>
+						<a class="desctitle" href="<?php echo url('viewperlandslide'); ?>/<?php echo $landslide->id?>">{{ $landslide->road_location }}</a>
 						@else
 						<a class="desctitle" href="<?php echo url('viewperlandslide'); ?>/<?php echo $landslide->id?>">{{ $landslide->road_location }}</a>
 						@endif						

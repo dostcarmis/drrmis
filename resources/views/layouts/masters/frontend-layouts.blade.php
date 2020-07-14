@@ -30,7 +30,7 @@ if (Auth::check()) : ?>
     <div id="main" class="content-page">
         <aside class="top-wrap ">
             @include('layouts.partials.loginform')
-            @include('layouts.partials.banner')
+            <!--@include('layouts.partials.banner')-->
             @include('layouts.partials.homenavigation')
         </aside>
         <aside class="fpages">

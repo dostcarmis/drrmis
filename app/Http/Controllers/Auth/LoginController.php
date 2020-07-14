@@ -18,9 +18,9 @@ class LoginController extends Controller
     $request->merge([$field => $request->input('login')]);
     if (\Auth::attempt($request->only($field, 'password')))
     {
-        return redirect('/viewhydrometdata');
+        return redirect('/dashboard');
     }
-    return redirect('/login')->withErrors([
+    return redirect()->back()->withErrors([
         'error' => 'These credentials do not match our records.',
     ]);
 	} 
