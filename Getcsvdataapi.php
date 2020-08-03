@@ -655,10 +655,11 @@ class Getcsvdataapi
                     }
 
                     if ($sensorType == 'rain2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3]];
+                        $newKeys = [$keys[0], $keys[2], $keys[1]];
                        // dd($newKeys);
                     } elseif ($sensorType == 'waterlevel & rain 2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3], $keys[4]];
+                        $newKeys = [$keys[0], $keys[3], $keys[2], $keys[1]];
+                       
                     } else {
                             $newKeys = $keys;
                     }
@@ -675,12 +676,10 @@ class Getcsvdataapi
                         //ARG
                         if ($sensorType == 'rain2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                        'rain_cum' => $mydata['rain_cum'],
                                         'rain_value' => $mydata['rain_value'],
                                         'air_pressure' => $mydata['air_pressure']];
                         } else if($sensorType == 'waterlevel & rain 2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                       'rain_cum' => $mydata['rain_cum'],
                                        'rain_value' => $mydata['rain_value'],
                                        'waterlevel' => $mydata['waterlevel'],
                                        //'waterlevel_msl' => $mydata['waterlevel_msl'],
@@ -783,10 +782,10 @@ class Getcsvdataapi
                         $keys[$counter++] =  $key;           
                     }
                      if ($sensorType == 'rain2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3]];
+                        $newKeys = [$keys[0], $keys[2], $keys[1]];
                        // dd($newKeys);
                     } elseif ($sensorType == 'waterlevel & rain 2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3], $keys[4]];
+                        $newKeys = [$keys[0], $keys[3], $keys[2], $keys[1]];
                        
                     } else {
                             $newKeys = $keys;
@@ -804,12 +803,10 @@ class Getcsvdataapi
                     foreach($mydatas['data'] as $mydata){
                         if ($sensorType == 'rain2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                        'rain_cum' => $mydata['rain_cum'],
                                         'rain_value' => $mydata['rain_value'],
                                         'air_pressure' => $mydata['air_pressure']];
-                        } else if ($sensorType == 'waterlevel & rain 2') {
+                        } else if($sensorType == 'waterlevel & rain 2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                       'rain_cum' => $mydata['rain_cum'],
                                        'rain_value' => $mydata['rain_value'],
                                        'waterlevel' => $mydata['waterlevel'],
                                        //'waterlevel_msl' => $mydata['waterlevel_msl'],

@@ -9,9 +9,6 @@ use Illuminate\View\Middleware\ErrorBinder;
 
 use DB;
 use Session;
-use DateTime;
-use DateInterval;
-use DatePeriod;
 use App\Http\Requests;
 use App\Models\Category;
 use App\Models\Sensors;
@@ -203,38 +200,15 @@ class PagesController extends Controller
     }
     public function saveMiner(Request $request){
         set_time_limit(0);
-        ignore_user_abort(true);
-        //$post = $request->all();
+        ignore_user_abort(true);      
+        $post = $request->all();
+        $date = explode('/', $post['datemonth']);
+        $year = $date[2];
+        $month = $date[0];
+        $day = $date[1];
+        $this->getcsvdata->getapistocsvbydate($year,$month,$day); 
 
-        $dateStart = '2020/01/01';
-        $dateEnd = '2020/08/01';
-
-        $begin = new DateTime($dateStart);
-		$end = new DateTime($dateEnd);
-		$end = $end->modify( '+1 day' ); 
-        $interval = new DateInterval('P1D');
-        $period = new DatePeriod($begin, $interval, $end);
-    
-		foreach ($period as $key => $_dateList){
-			$dateList[] = $_dateList->format("Y/m/d");
-        }
-        
-		foreach ($dateList as $key => $dateDat){
-            
-            //$dateList[] = $_dateList->format("Y/m/d");
-            $date = explode('/', $dateDat);
-            $year = $date[0];
-            $month = $date[1];
-            $day = $date[2];
-            $this->getcsvdata->getapistocsvbydate($year,$month,$day);
-    
-            echo $dateDat. " - OK<br>";
-        }
-        
-        
-
-        //return redirect('minerpage');   
-             
+        return redirect('minerpage');        
     }
     public function viewTestsite(){
         return view('pages.testsite');
