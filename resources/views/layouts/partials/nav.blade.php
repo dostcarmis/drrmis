@@ -67,9 +67,7 @@
                             <i class="fa fa-bullhorn" aria-hidden="true"></i> Report <i class="fa fa-fw fa-caret-down"></i>
                         </a>
                         <ul id="report" class="collapse" aria-expanded="true">
-                            <li>
-                                <a href="{{ action("ReportController@showReport") }}"><i class="fa fa-line-chart"></i> Report Generation </a>
-                            </li>
+                            
 
                             <li class="dropside">
                                 <a href="#"><i class="demo-icon icon-flood">&#xe800;</i> Incidents</a>
@@ -78,7 +76,10 @@
                                     <li><a href="{{ action('FloodController@viewaddFlood') }}">+New Flood Report</a></li>
                                     <li><a href="{{ action('RoadController@viewaddRoadnetwork') }}">+New Road Closures Report</a></li>
                                  </ul>
-                            </li>                                                
+                            </li> 
+                            <li>
+                                <a href="{{ action("ReportController@showReport") }}"><i class="fa fa-line-chart"></i> Report Generation </a>
+                            </li>                                               
                         </ul>
                     </li>
             <!------------------------------------ Monitor Dropdown -------------------------------------------->
@@ -102,7 +103,7 @@
                                         <a>Tabular</a>
                                         <ul class="dropdown-menu">
                                             <!--<li><a value="Landslide" class="filterincident" href="{{action('IncidentsController@viewIncidents')}}?ftype=landslides">Landslides</a></li>-->
-                                            <li><a value="Flood" class="filterincident" href="{{action('LandslideController@viewLandslides')}}">Landslide Reports</a></li>
+                                            <li><a value="Landslide" class="filterincident" href="{{action('LandslideController@viewLandslides')}}">Landslide Reports</a></li>
                                             <li><a value="Flood" class="filterincident" href="{{action('FloodController@viewFloods')}}?ftype=floods">Floods Reports</a></li>
                                             <li><a href="{{ action("RoadController@viewRoadnetworks") }}">Road Closures Reports</a></li>
                                         </ul>
@@ -113,9 +114,21 @@
                                  </ul>
                             </li> 
                             <li><a href="http://bagong.pagasa.dost.gov.ph/flood#dam-information" target="_blank"><i class="demo-icon icon-dam">&#xe802;</i> Dam Status</a></li> 
-                            <li><a href="{{ action("PagesController@home") }}"><i class="fa fa-map" aria-hidden="true"></i> Hazard Maps</a></li>                   
+                            <!--<li><a href="{{ action("PagesController@home") }}"><i class="fa fa-map" aria-hidden="true"></i> Hazard Maps</a></li>-->                  
                         </ul>
                     </li>              
+
+            <!------------------------------------ Risk Assessment Dropdown -------------------------------------------->
+            <li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#riskassess" class="" aria-expanded="true">
+                    <i class="fa fa-flag"></i> Risk Assessment <i class="fa fa-fw fa-caret-down"></i>
+                </a>
+                <ul id="riskassess" class="collapse" aria-expanded="true">
+                <li><a href="https://hazardhunter.georisk.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> Link</a></li>
+                    <li><a data-toggle="modal" data-target="#selectProvmodal" href="#"><i class="fa fa-files-o"></i>Files</a></li>
+                </ul>
+            </li>   
+
 
             <!------------------------------------ Warn Dropdown -------------------------------------------->
                     
@@ -128,12 +141,9 @@
                         </ul>
                     </li>
 
-            <!------------------------------------ Risk Assesment Dropdown -------------------------------------------->
+          
             
-            <li>
-                <a data-toggle="modal" data-target="#selectProvmodal" href="#"><i class="fa fa-files-o"></i> Risk Assessment Files</a>
-              
-            </li>    
+             
                                        
             <!---------------------------------- Libraries Dropdown -------------------------------------------->
                     @if($currentUser->role_id == 1 || $currentUser->role_id == 2) 
@@ -150,7 +160,7 @@
                             <li><a href="{{action('HazardsController@viewHazards')}}"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Hazards</a></li>
                             <li><a href="{{action("FloodproneareasController@viewFloodproneAreas")}}"><i class="fa fa-files-o" aria-hidden="true"></i> Flood-prone Areas</a></li>
                             <li class="divider"><i class="fa fa-gear" aria-hidden="true"></i></li>
-                            <li><a href="{{ action("CategoriesController@viewCategories") }}"><i class="fa fa-list" aria-hidden="true"></i> Categories</a></li>
+                            <li><a href="{{ action("CategoriesController@viewCategories") }}"><i class="fa fa-list" aria-hidden="true"></i> Sensor Categories</a></li>
                         </ul>
                     </li>
                     @endif
