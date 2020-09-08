@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Logs;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,7 +29,24 @@ class User extends Model
     {
         $notification = new Notification;
         $notification->user()->associate($this);
-     
         return $notification;
     }
+
+    public function activityLogs($request, $msg){
+        $userid = $this->id;
+        $requestURL = $request->getRequestUrl();
+        $method = $request->getMethod();
+        $host = $request->header('host');
+        $userAgent = $request->header('useragent');
+
+        $instanceEmplog = new activityLogs;
+        $intanceEmplog->userid = $userid;
+        $intanceEmplog->request = $requestURL;
+        $intanceEmplog->method = $method;
+        $intanceEmplog->host = $host;
+        $intanceEmplog->useragent = $userAgent;
+        $intanceEmplog->remarks = $msg;
+        $intanceEmplog->save();
+    }
+
 }

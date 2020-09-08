@@ -298,7 +298,9 @@ class UserController extends Controller
          \Session::flash('message', 'Cannot delete own account!');
             return redirect('viewusers');
       }
-       
    }
 
+   public function viewactivitylogs(){
+      return redirect('activitylogs');
+   }
 }

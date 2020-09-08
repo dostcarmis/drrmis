@@ -50,6 +50,8 @@
         <script src="{!! url('assets/js/notification.js')!!}"></script>
         <script src="{!! url('js/jquery.mmenu.all.min.js')!!}"></script>
         <script src="{!! url('assets/js/responsive.js')!!}"></script>
+        <script type="text/javascript" src="{!! url('js/moment.js') !!}"></script>
+        <script type="text/javascript" src="{!! url('js/daterangepicker.js') !!}"></script>
         @yield('page-js-files')
         <script type="text/javasript">
          

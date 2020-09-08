@@ -125,7 +125,7 @@
                 </a>
                 <ul id="riskassess" class="collapse" aria-expanded="true">
                 <li><a href="https://hazardhunter.georisk.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> Link</a></li>
-                    <li><a data-toggle="modal" data-target="#selectProvmodal" href="#"><i class="fa fa-files-o"></i>Files</a></li>
+                    <li><a data-toggle="modal" data-target="#selectProvmodal" href="#"><i class="fa fa-files-o"></i> Files</a></li>
                 </ul>
             </li>   
 
@@ -172,6 +172,7 @@
                         <ul id="users" class="collapse" aria-expanded="true">
                             <li><a href="{{ action("UserController@viewusers") }}"><i class="fa fa-users"></i> View Users</a></li>
                             <li><a href="{{ action("UserController@viewadduser") }}"><i class="fa fa-user-plus"></i> Add Users</a></li>
+                            <li><a href="{{ action("UserController@viewactivitylogs") }}"><i class="fa fa-user-secret"></i> User Activity</a></li>
                         </ul>
                     </li>
                     @endif

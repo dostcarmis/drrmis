@@ -2,7 +2,8 @@
 <span class="defsp sptitleleftmenu">Maps</span>
 <div class="nav-side-menu">
   <div class="menu-list">
-    <ul id="menu-content" class="menu-content collapse out">               
+    <ul id="menu-content" class="menu-content collapse out">   
+      <!--SENSORS-->            
       <li class="collapsed prntli">
         <a  data-toggle="collapse" data-target="#sensorsnmb"  href="#" class="homepagetoogle sensortoggle" ><i class="fa-1x demo-icon"></i> Sensors <span class="arrow"></span></a>
         <ul class="sub-menu collapse ulsensorstop"  id="sensorsnmb">
@@ -12,10 +13,27 @@
           <li><a href="#" data-value="4" class="onclicksensor"><span>Weather Stations</span></a></li>
         </ul>
       </li>  
-        
+      <!--INCIDENTS-->
+      <li class="collapsed prntli">
+        <a  data-toggle="collapse" data-target="#incidentstoggle"  href="#" class="homepagetoogle sensortoggle" ><i class="fa-1x demo-icon"></i> Incidents <span class="arrow"></span></a>
+        <ul class="sub-menu collapse ulsensorstop"  id="incidentstoggle">
+          <div class="col-xs-12 r-links">
+            <a href="#" id="l-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsL();">View all Landslides</a> 
+            </div>
+           
+            <div class="col-xs-12 r-links">
+              <a href="#" id="f-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsF();">View all Floods</a> 
+            </div>
+            
+            <div class="col-xs-12 r-links">
+                <a href="#" id="all-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsAll();">View all incidents </a> 
+            </div>
+        </ul>
+
+
       <li  class="collapsed prntli">
-      <a data-toggle="collapse" data-target="#hazardsnmb" class="homepagetoogle"  href="#"><i class="fa fa-1x fa-map" aria-hidden="true"></i>  Hazard Maps <span class="arrow"></span></a>
-      <ul class="sub-menu ulsensorstop collapse" id="hazardsnmb"> 
+       <a data-toggle="collapse" data-target="#hazardsnmb" class="homepagetoogle"  href="#"><i class="fa fa-1x fa-map" aria-hidden="true"></i>  Hazard Maps <span class="arrow"></span></a>
+        <ul class="sub-menu ulsensorstop collapse" id="hazardsnmb"> 
           <li class="titleli"><a data-toggle="collapse" data-target=".mgb" href="#">MGB</a>
             <ul class="sub-menu-bottom collapse mgb" id="mgb">
               @foreach($provinces as $province)
