@@ -61,17 +61,17 @@
           </div>
   
         <?php if($landslidecount >= 5){break;}?>
+        
         @endforeach
   
         <?php if (Auth::check()) : ?>
-              <!--<input type='text' id='date-range-input' class='form-control'>-->
-              <div class="col-xs-12 r-links">
-                <a href="#" id="l-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsL();">View all Landslides</a> 
-              </div>
-              <div class="col-xs-12 r-links">
-                  <a href="#" id="all-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsAll();">View all incidents </a> 
-              </div>
-  
+          <!--<input type='text' id='date-range-input' class='form-control'>-->
+          <div class="col-xs-12 r-links">
+            <a href="#" id="l-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsL();">View all Landslides</a> 
+          </div>
+          <div class="col-xs-12 r-links">
+              <a href="#" id="all-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsAll();">View all incidents </a> 
+          </div>
           <div class="col-xs-12 np r-moreroadlink">
             <a href="{{ action("LandslideController@viewmultipleLandslides") }}" class="btn btn-primary">More Landslides</a>
           </div>   

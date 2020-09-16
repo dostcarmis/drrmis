@@ -68,6 +68,7 @@ class HydrometController extends Controller
 
 		$waterData = $this->getcsvdata->postWaterlevelvalue();	
 		return view('pages.viewhydrometdatawaterlevel')->with(['waterData' => $waterData]);
+		dd($waterData);
 	}
     public function viewHydrometdata()
 	{	
@@ -90,7 +91,7 @@ class HydrometController extends Controller
 		$sensors = DB::table('tbl_sensors')->whereIn('category_id', [1,2,3,4])->get();
 
         $mainarray = $this->getcsvdata->dashboardData();
-            
+           
 		JavaScript::put([
             'mainarray' => $mainarray
         ]);

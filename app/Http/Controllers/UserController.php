@@ -456,4 +456,7 @@ class UserController extends Controller
         return redirect('usergroups');
     }
 
+   public function viewactivitylogs(){
+      return redirect('activitylogs');
+   }
 }

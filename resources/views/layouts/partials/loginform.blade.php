@@ -4,14 +4,20 @@
       <nav class="navbar hidden-xs navbar-default" id="login-nav">        
       
       @if( !$currentUser )
-        <ul class="nav navbar-nav navbar-right">    
-          <li class="login">{!! link_to_route('get_login', 'Login') !!}</li>
-                   
-        </ul>
+      
+      <ul class="nav navbar-nav navbar-right"> 
+        <li class="login">
+        <a href="" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+        </li>
+      </ul> 
+      
+      <!--<ul class="nav navbar-nav navbar-right">    
+          <li class="login">{!! link_to_route('get_login', 'Login') !!}</li>   
+        </ul>-->
       @else
       <ul class="nav navbar-nav navbar-left"> 
        <li><a href="{{ action("HydrometController@dashboard") }}"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
-       <li><a data-toggle="modal" data-target="#selectfilemodal" href="#"><i class="fa fa-download"></i> Download DRRM Files </a></li>
+       <li><a data-toggle="modal" data-target="#selectfilemodal" href="#"><i class="fa fa-download"></i> DRRM Files Repo </a></li>
        <li><a data-toggle="modal" data-target="#selectsitreplevelmodal" href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> SitReps</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">    
@@ -35,4 +41,5 @@
 
 @include('pages.selectfiletypemodal')
 @include('pages.selectsitrepmodal')
+@include('pages.loginmodal')
 

@@ -56,35 +56,34 @@
                 <a href="{{action('HydrometController@dashboard')}}"><i class="fa fa-tachometer"></i> Dashboard</a>
             </li> 
             
-            <li>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><span class="glyphicon glyphicon-calendar"></span>Date:
-                            <div class="well" style="background-color: #262626; color: #FFFFFF;">
-                                <div id="reportrange" style="background: #fff;cursor: pointer; padding: 5px 10px; border: 2px solid #fff; width: 100%; color: black;">
-                                    <i class="fa fa-calendar"></i>&nbsp;
-                                    <span></span> <i class="fa fa-caret-down"></i>
-                                </div>
-                        </h4>   
-                    </div>
-                </div>
-            </li>
-
-            <div style="color: white; margin-bottom: 10px;">Select Incident:<br>
-                <input type="checkbox" name="Landslide" value="landslide"> Landslide<br>
-                <input type="checkbox" name="Flood" value="flood"> Floods<br>
-            </div>  
-
+            <div class="col-xs-12 r-links">
+            <a href="#" id="l-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsL();">View all Landslides</a> 
+            </div>
+           
+            <div class="col-xs-12 r-links">
+              <a href="#" id="f-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsF();">View all Floods</a> 
+            </div>
             
-
             <div class="col-xs-12 r-links">
                 <a href="#" id="all-viewmap" class="btn btn-default btn-block" onclick="$(this).toggleIconsAll();">View all incidents </a> 
             </div>
-
+            
+            <li>
+                <h4 class="mapview-datepickertitle"><span class="glyphicon glyphicon-calendar"></span> Sort by Date:
+                    <div class="well" style="background-color: #262626; color: #FFFFFF; margin-bottom: -20px;">
+                        <div id="reportrange" style="background: #fff;cursor: pointer; padding: 5px 10px; border: 2px solid #fff; width: 100%; color: black;">
+                            <i class="fa fa-calendar"></i>&nbsp;
+                            <span></span> <i class="fa fa-caret-down"></i>
+                        </div>
+                </h4>  
+            </li>
             <div class="col-xs-12 r-links">
-                <a href="#" id="all-viewmap" class="btn btn-default btn-block"> Proceed </a> 
-            </div>
-
+                <a href="#" id="all-viewmap" class="mapviewbtn4" style="vertical-align:middle" onclick="$(this).toggleIconWithDateFilter()"><span>Proceed </span></a> 
+            </div> 
+           <!-- <div style="color: white; margin-bottom: 10px;">Select Incident:<br>
+                <input type="checkbox" name="Landslide" value="landslide"> Landslide<br>
+                <input type="checkbox" name="Flood" value="flood"> Floods<br>
+            </div>  -->
         </ul>    
     </div>
 </nav>

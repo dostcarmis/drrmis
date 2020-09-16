@@ -1,4 +1,4 @@
-jQuery(function($){
+//jQuery(function($){
     $(document).ready(function(){
         var mainarray = frmCont.mainarray;
         var length = mainarray.length;
@@ -19,13 +19,11 @@ jQuery(function($){
                 moderate++;
             }else{
                 light++;
-            }
-            console.log(torrential);
+            }  
         }
-
         var colors_array= ["#ff0000","#FF9707", "#000292", "#0231FF", "#00CFC9"];
         Morris.Donut({
-            element: 'donut-chart',
+            element: 'morris-donut-chart',
             colors: colors_array,
             data: [{
                 label: "Torrential",
@@ -43,10 +41,10 @@ jQuery(function($){
                 label: "Moderate",
                 value: moderate
             }, {
-                label: "Light",
+                label: "Light / No Rain",
                 value: light
             }],
             resize: true
         });
     });
-});
+//});

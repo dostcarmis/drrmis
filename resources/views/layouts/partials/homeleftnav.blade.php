@@ -2,7 +2,8 @@
 <span class="defsp sptitleleftmenu">Maps</span>
 <div class="nav-side-menu">
   <div class="menu-list">
-    <ul id="menu-content" class="menu-content collapse out">               
+    <ul id="menu-content" class="menu-content collapse out">   
+      <!--SENSORS-->            
       <li class="collapsed prntli">
         <a  data-toggle="collapse" data-target="#sensorsnmb"  href="#" class="homepagetoogle sensortoggle" ><i class="fa-1x demo-icon"></i> Sensors <span class="arrow"></span></a>
         <ul class="sub-menu collapse ulsensorstop"  id="sensorsnmb">
@@ -12,10 +13,20 @@
           <li><a href="#" data-value="4" class="onclicksensor"><span>Weather Stations</span></a></li>
         </ul>
       </li>  
-        
+      <!--INCIDENTS-->
+      <li class="collapsed prntli">
+        <a  data-toggle="collapse" data-target="#incidentstoggle"  href="#" class="homepagetoogle sensortoggle" ><i class="fa fa-bullhorn"></i> Incidents <span class="arrow"></span></a>
+        <ul class="sub-menu collapse ulsensorstop"  id="incidentstoggle">
+            <li><a href="#" id="l-viewmap" onclick="$(this).toggleIconsL();">View all Landslides</a></li>
+            <li><a href="#" id="f-viewmap" onclick="$(this).toggleIconsF();">View all Floods</a></li>
+            <li><a href="#" id="all-viewmap" onclick="$(this).toggleIconsAll();">View all incidents</a></li>
+            <li><a href="#" id="calTggle" hidden>Date Picker</a></li>
+        </ul>
+
+
       <li  class="collapsed prntli">
-      <a data-toggle="collapse" data-target="#hazardsnmb" class="homepagetoogle"  href="#"><i class="fa fa-1x fa-map" aria-hidden="true"></i>  Hazard Maps <span class="arrow"></span></a>
-      <ul class="sub-menu ulsensorstop collapse" id="hazardsnmb"> 
+       <a data-toggle="collapse" data-target="#hazardsnmb" class="homepagetoogle"  href="#"><i class="fa fa-1x fa-map" aria-hidden="true"></i>  Hazard Maps <span class="arrow"></span></a>
+        <ul class="sub-menu ulsensorstop collapse" id="hazardsnmb"> 
           <li class="titleli"><a data-toggle="collapse" data-target=".mgb" href="#">MGB</a>
             <ul class="sub-menu-bottom collapse mgb" id="mgb">
               @foreach($provinces as $province)
@@ -61,8 +72,11 @@
             </ul>
           </li>
 
+          <li class="externallink">
+            <a href="http://bagong.pagasa.dost.gov.ph/tropical-cyclone/tropical-cyclone-advisory" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i> PHIVOLCS</a>
+          </li>
 
-          <li class="titleli">
+          <!--<li class="titleli">
             <a data-toggle="collapse" data-target=".phivolcs" href="#">Phivolcs</a>
               <ul class="sub-menu-bottom collapse phivolcs" id="phivolcs">
                @foreach($provinces as $province)
@@ -106,7 +120,7 @@
                   </li>            
                 @endforeach
               </ul>
-            </li>
+            </li>-->
            
 
              
@@ -131,7 +145,8 @@
             <li><a href="#" data-value="<?php echo $path.$files[5];?>" class="contourclick"><span>Mt. Province</span></a></li>
           </ul>
         </li>
-        @if($typhoonstatus[0]->typhoonstat == 1)
+       
+       <!-- @if($typhoonstatus[0]->typhoonstat == 1)
         <li  class="collapsed prntli">
           <a data-toggle="collapse"  class="homepagetoogle" data-target=".typhoontracks" href="#"><i class="fa fa-1x fa-road" aria-hidden="true"></i>  Typhoon Tracks<span class="arrow"></span></a>
           <ul class="sub-menu collapse ulsensorstop typhoontracks"  id="typhoontracks">
@@ -142,12 +157,16 @@
               @endforeach
           </ul>
         </li>
-        @endif
+        @endif-->
         <li class="externallink">
-          <a href="{{action('ChartController@viewmultipleCharts')}}"><i class="fa fa-eye" aria-hidden="true"></i> Charts</a>
+          <a href="http://bagong.pagasa.dost.gov.ph/tropical-cyclone/tropical-cyclone-advisory" target="_blank"><i class="fa fa-1x fa-road" aria-hidden="true"></i> Typhoon Tracks</a>
         </li>
+        <!--<li class="externallink">
+          <a href="{{action('ChartController@viewmultipleCharts')}}"><i class="fa fa-eye" aria-hidden="true"></i> Charts</a>
+        </li>-->
     </ul>
   </div>
 </div>
   </nav>
 <button class="btn btnleftmenu"><i class="fa fa-bars fa-2x toggle-btn"></i></button>
+

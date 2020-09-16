@@ -9,6 +9,9 @@ use Illuminate\View\Middleware\ErrorBinder;
 
 use DB;
 use Session;
+use DateTime;
+use DateInterval;
+use DatePeriod;
 use App\Http\Requests;
 use App\Models\Category;
 use App\Models\Sensors;
@@ -137,14 +140,23 @@ class PagesController extends Controller
             }
         }
 
-
+        $landslides = Landslide::orderBy('created_at', 'desc')->get(); 
+        $floods = Floods::orderBy('created_at', 'desc')->get(); 
 
         JavaScript::put([
             'arrtotals' => $arrtotals,
             'coordinates' => $sensors,
 
         ]);
-        return view('pages.home')->with(['typhoonstatus' => $typhoonstatus,'typhoontracks' => $typhoontracks,'hazardmaps' => $hazardmaps,'users' => $users,'sensors' => $sensors,'municipality' => $municipality,'provinces' => $provinces]);
+        return view('pages.home')->with(['typhoonstatus' => $typhoonstatus,
+                                         'typhoontracks' => $typhoontracks,
+                                         'hazardmaps' => $hazardmaps,
+                                         'users' => $users,
+                                         'sensors' => $sensors,
+                                         'municipality' => $municipality,
+                                         'provinces' => $provinces,
+                                         'landslides' => $landslides,
+                                         'floods' => $floods]);
     }
 
     public function mapView()
@@ -152,8 +164,8 @@ class PagesController extends Controller
         $provinces = Province::all();
         $sensors = Sensors::all(); 
         $municipality = Municipality::all();   
-        $landslides = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','1')->get();    
-        $floods = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','2')->get();
+        $landslides = Landslide::orderBy('created_at', 'desc')->get();    
+        $floods = Floods::orderBy('created_at', 'desc')->get();
         $roadnetworks = DB::table('tbl_roadnetworks')->orderBy('created_at', 'desc')->limit(3)->get();
         $users = User::all();   
 
@@ -189,10 +201,14 @@ class PagesController extends Controller
                 );
             }
         }
-
-        return view('pages.mapviewincidents')->with(['arrtotals' => $arrtotals,'users' => $users,'landslides' => $landslides,'floods' => $floods,'roadnetworks' => $roadnetworks,'sensors' => $sensors,'municipality' => $municipality,'provinces' => $provinces]);
+        return view('pages.mapviewincidents')->with(['arrtotals' => $arrtotals,
+                    'users' => $users,'landslides' => $landslides,
+                    'floods' => $floods,
+                    'roadnetworks' => $roadnetworks,
+                    'sensors' => $sensors,
+                    'municipality' => $municipality,
+                    'provinces' => $provinces]);
     }
-
     public function minerPage()
     {           
         $sensors = Sensors::all();
@@ -200,15 +216,38 @@ class PagesController extends Controller
     }
     public function saveMiner(Request $request){
         set_time_limit(0);
-        ignore_user_abort(true);      
-        $post = $request->all();
-        $date = explode('/', $post['datemonth']);
-        $year = $date[2];
-        $month = $date[0];
-        $day = $date[1];
-        $this->getcsvdata->getapistocsvbydate($year,$month,$day); 
+        ignore_user_abort(true);
+        //$post = $request->all();
 
-        return redirect('minerpage');        
+        $dateStart = '2020/01/01';
+        $dateEnd = '2020/30/02'; 
+
+        $begin = new DateTime($dateStart);
+		$end = new DateTime($dateEnd);
+		$end = $end->modify( '+1 day' ); 
+        $interval = new DateInterval('P1D');
+        $period = new DatePeriod($begin, $interval, $end);
+    
+		foreach ($period as $key => $_dateList){
+			$dateList[] = $_dateList->format("Y/m/d");
+        }
+        
+		foreach ($dateList as $key => $dateDat){
+            
+            //$dateList[] = $_dateList->format("Y/m/d");
+            $date = explode('/', $dateDat);
+            $year = $date[0];
+            $month = $date[1];
+            $day = $date[2];
+            $this->getcsvdata->getapistocsvbydate($year,$month,$day);
+    
+            echo $dateDat. " - OK<br>";
+        }
+        
+        
+
+        //return redirect('minerpage');   
+             
     }
     public function viewTestsite(){
         return view('pages.testsite');
@@ -218,10 +257,10 @@ class PagesController extends Controller
     }
 
     public function incidentsMapView(){
-        $landslides = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','1')->get();    
-        $floods = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','2')->get();
-        $landslide = Landslide::orderBy('created_at', 'desc')->get(); 
-        $flood = Floods::orderBy('created_at', 'desc')->get(); 
-        return view('pages.mapviewincidents')->with(['landslides' => $landslides,'floods' => $floods,'landslide' => $landslide, 'flood' => $flood]);
+        //$landslides = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','1')->get();    
+        //$floods = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','2')->get();
+        $landslides = Landslide::orderBy('created_at', 'desc')->get(); 
+        $floods = Floods::orderBy('created_at', 'desc')->get(); 
+        return view('pages.mapviewincidents')->with(['landslides' => $landslides,'floods' => $floods]);
     }
 }
