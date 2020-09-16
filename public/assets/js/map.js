@@ -947,6 +947,10 @@ jQuery(function($){
         }
         
     //showing all filtered by date icons 
+
+    
+      
+
         $.fn.toggleIconWithDateFilter = function(){
             //const isactive = $('#all-filteredmap').hasClass('showfiltered');
             $('#all-filteredmap').toggleClass('showfiltered')
