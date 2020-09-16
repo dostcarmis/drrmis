@@ -228,6 +228,11 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 		]);
+	Route::get('viewactivitylogs',[
+		'uses' => 'UserController@viewactivitylogs',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		]);
 	Route::get('edituser/{id}', [
 		'uses' => 'UserController@edituser',
 		'middleware' => 'roles',

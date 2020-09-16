@@ -52,23 +52,30 @@ class Getcsvdataapi
         return $sum;
     }   
     public function dashboardData(){
+        
         $sensors = DB::table('tbl_sensors')->whereIn('category_id', [1,2,3,4])->get();
         $todaypath = 'data'.'/'.date('Y').'/'.date('m').'/'.date('d').'/';
         $yesterdaypath = 'data'.'/'.date('Y/m/d',strtotime("-1 days")).'/';
         $lasttwodayspath = 'data'.'/'.date('Y/m/d',strtotime("-2 days")).'/';
         $count = 0;
-
+       
 		foreach ($sensors as $sensor) {
 			$sum1 = 0;
+			
 			$fname = $sensor->assoc_file."-".date('Ymd').".csv";
 			$lasttwodaysfile =  $sensor->assoc_file."-".date('Ymd',strtotime("-2 days")).".csv";
-            $filestatus = $this->getstatus($todaypath,$fname);	
-            	
+			$filestatus = $this->getstatus($todaypath,$fname);		
+			
 			if($sensor->category_id != 2){	
+			    
 				$currentreading = $this->getcurrentreading($todaypath,$fname);	
+				
 				$sum = $this->getaccum($todaypath,$fname);
+			    
 				$this->assocfile = $sensor->assoc_file;			
+				
 				$twoaccum = $this->displayaccumulatedtwodays($lasttwodayspath,$lasttwodaysfile);
+				
 				$this->arrtotals[$count++] = array(
 					'id' => $sensor->id,
 					'total' => $sum, 
@@ -76,19 +83,26 @@ class Getcsvdataapi
 					'filestatus' => $filestatus,	
 					'currentreading' => $currentreading,	
 					'province_id' => $sensor->province_id,	
+
 				);			
-			}else{$this->arrtotals[$count++] = array(
+			}else{
+				
+				$this->arrtotals[$count++] = array(
 					'id' => $sensor->id,
 					'total' => '-', 
 					'twoaccum' => '-',		
 					'filestatus' => $filestatus,	
 					'currentreading' => '-',
 					'province_id' => $sensor->province_id,	
+		
 					);
 			}
 		}
+	
 			$x = 0;
+
 			$arrtotals = $this->arrtotals;
+			
 			$mainarray = array();
 			$sortArray = array(); 
             foreach($arrtotals as $arrtotal){ 	               
@@ -99,6 +113,7 @@ class Getcsvdataapi
 					'filestatus' => $arrtotal['filestatus'],	
 					'currentreading' => $arrtotal['currentreading'],
 					'province_id' => $arrtotal['province_id'],
+
 	            );         
             } 
             foreach ($mainarray as $mr) {
@@ -109,8 +124,11 @@ class Getcsvdataapi
 	                $sortArray[$key][] = $value; 	                    
 		        } 
             }        
+
 	        $orderby = "total";
+	        
 			array_multisort($sortArray[$orderby],SORT_DESC,$mainarray);	
+			
 			return $mainarray;
     }
     
@@ -121,11 +139,13 @@ class Getcsvdataapi
         $count = 0;
        // $todayfile = $csv."-".date('Ymd').".csv";  
         $csvfile = $this->getcsv($path,$csv);   
+        
         // echo $path.'-'.$csv.'-'. $sum."\n";
         $perline = count($csvfile);
         
            for ($i=0; $i < $perline; $i++) { 
             $csvtime = explode(":",$csvfile[$i]['time']);  
+
             if($csvtime[0] >= 8){
                 $cat = $csvfile[$i]['category'];
                 if($cat == 2){
@@ -150,16 +170,21 @@ class Getcsvdataapi
                         );
                 }
             }
+
         }
 
         $sum = 0;
         $limit = count($counter);
+
         for ($i=0; $i < $limit; $i++) { 
             $sum+= $counter[$i]['value'];
-        }
-      return number_format((float)$sum, 2, '.', '');
-    }
 
+        }
+     
+      return number_format((float)$sum, 2, '.', '');
+
+
+    }
     public function getcurrentreading($path,$csv){
         $csvfile = $this->getcsv($path,$csv);
         $limit = count($csvfile);
@@ -169,19 +194,21 @@ class Getcsvdataapi
         }
         return $currentreading;
     }
-
     public function getcurrentwaterlevel($path,$csv){
         $csvfile = $this->getcsv($path,$csv);
         $limit = count($csvfile);
         $currentreading = 0;
         $error = 'ERR';    
         $fnal = 0;
+
+     
         for ($i=0; $i < $limit; $i++) { 
             if(trim($csvfile[$i]['waterlvl'])=='ERR' || !$csvfile[$i]['waterlvl']){
                 $currentreading = 0;
             }else{
                 $currentreading = $csvfile[$i]['waterlvl'];
             }    
+            
            // if(trim(!empty($csvfile[$i]['waterlvl']))){
            //    $currentreading = $csvfile[$i]['waterlvl']; 
            // }elseif($csvfile[$i]['waterlvl']=='ERR'){    
@@ -192,10 +219,11 @@ class Getcsvdataapi
            
            //echo ($csvfile[$i]['waterlvl']).'<br>';
         }
+       
         //$fnal = $currentreading / 100;
+        
         return $currentreading;
     }
-
     public function getcurrenttime($path,$csv){
         $csvfile = $this->getcsv($path,$csv);
         $limit = count($csvfile);
@@ -205,7 +233,6 @@ class Getcsvdataapi
         }
         return $currentreading;
     }
-
     public function getstatus($path,$csv){
         $filestat = '';
         $csvfile = $this->getcsv($path,$csv);
@@ -237,7 +264,6 @@ class Getcsvdataapi
         }
         return $filestat;
     }
-
     public function getcsv($rootpath, $csvfile){
         $counter = [];
         $count = 0;
@@ -245,19 +271,24 @@ class Getcsvdataapi
         $csvtime='';
         $sensors = DB::table('tbl_sensors')->whereIn('category_id', [1,2,3])->get();
         $mycsvFile = $rootpath.$csvfile;
+        
         $waterlvl = '-WATERLEVEL-';
         $tndem = 'WATERLEVEL_';
     
         if(file_exists($mycsvFile)){
             $csv = $this->getdata($mycsvFile);
+           
             for($x=0;$x<=6;$x++){
 				unset($csv[$x]);
             }
+
             $perlines = count($csv)+6;
+
             for ($i=7; $i < $perlines; $i++) { 
                 $csvdatetime = $csv[$i][0]; 
                 $csvdatetimearray = explode(" ", $csvdatetime);         
                 $csvtime = explode(":", $csvdatetimearray[1]);      
+                    
                     if (strpos($mycsvFile,$waterlvl) !== false) {
                         $counter[$count++] = array(
                             'date' =>  $csvdatetimearray[0],
@@ -281,21 +312,24 @@ class Getcsvdataapi
                             'category' => '1',
                         );
                     }
+                
             }   
         }
+        
         return $counter;
     }
-
     public function gettodaycsv($path,$assoc){
         $counter = [];
         $count = 0;
         $fname = $assoc."-".date('Ymd').".csv";
+
         $yestfile = $this->getcsv($path,$fname);
         $csvlimit = count($yestfile);
         for ($i=0; $i < $csvlimit; $i++) { 
             $time = $yestfile[$i]['time'];
             $cat = $yestfile[$i]['category'];
             $csvtime = explode(":", $time); 
+
             if($csvtime[0] >= 8){
                 if($cat == 2){
                     $counter[$count++] = array(
@@ -322,16 +356,18 @@ class Getcsvdataapi
                 }
             }
         }
+
         return $counter;
     }
-
     public function getyesterdaycsv($path,$assoc){
         $counter = [];
         $count = 0;
         $count1 = 0;
         $counter1 = [];
+
         $fnamey = $assoc."-".date('Ymd',strtotime("-1 days")).".csv";   
         $fname = $assoc."-".date('Ymd').".csv";
+
         $lower8 = $this->getcsv($this->todaypath,$fname);
         $yestfile = $this->getcsv($this->yesterday,$fnamey);
         $csvlimit = count($yestfile);
@@ -398,17 +434,19 @@ class Getcsvdataapi
                 }
             }
         }
+
         $mrgarray = array_merge($counter,$counter1);        
         return $mrgarray;
-    }      
-
+    }        
     public function getaccumyesterdayandtoday($path,$csv){
         $counter = [];
         $count = 0;
         $counter1 = [];
         $count1 = 0;
+
         $todayfile = $csv."-".date('Ymd').".csv";  
         $yesterdayfile =  $csv."-".date('Ymd',strtotime("-1 days")).".csv"; 
+        
         $tods = $this->getcsv($this->todaypath,$todayfile);
         $csvfile = $this->getcsv($path,$yesterdayfile);
         $todaypercount = count($tods);
@@ -440,6 +478,7 @@ class Getcsvdataapi
                         );
                 }
             }
+
         }
 
         for ($i=0; $i < $perline; $i++) { 
@@ -493,6 +532,7 @@ class Getcsvdataapi
         $count1 = 0;
         $yesterdayfile =  $csv."-".date('Ymd',strtotime("-1 days")).".csv"; 
         $csvfile = $this->getcsv($path,$yesterdayfile);
+
         $perline = count($csvfile);
 
         for ($i=0; $i < $perline; $i++) { 
@@ -615,10 +655,11 @@ class Getcsvdataapi
                     }
 
                     if ($sensorType == 'rain2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3]];
+                        $newKeys = [$keys[0], $keys[2], $keys[1]];
                        // dd($newKeys);
                     } elseif ($sensorType == 'waterlevel & rain 2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3], $keys[4]];
+                        $newKeys = [$keys[0], $keys[3], $keys[2], $keys[1]];
+                       
                     } else {
                             $newKeys = $keys;
                     }
@@ -635,12 +676,10 @@ class Getcsvdataapi
                         //ARG
                         if ($sensorType == 'rain2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                        'rain_cum' => $mydata['rain_cum'],
                                         'rain_value' => $mydata['rain_value'],
                                         'air_pressure' => $mydata['air_pressure']];
                         } else if($sensorType == 'waterlevel & rain 2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                       'rain_cum' => $mydata['rain_cum'],
                                        'rain_value' => $mydata['rain_value'],
                                        'waterlevel' => $mydata['waterlevel'],
                                        //'waterlevel_msl' => $mydata['waterlevel_msl'],
@@ -661,18 +700,19 @@ class Getcsvdataapi
         }
     }
  }
-
     public function getapistocsvbydate($year,$month,$day){
         set_time_limit(0);
         ignore_user_abort(true); 
         $sensors = DB::table('tbl_sensors')->get();   
         $username = 'dostregioncar';
         $password = 'dostCAR1116';
+        
         $context = stream_context_create(array(
         'http' => array(
             'header'  => "Authorization: Basic " . base64_encode("$username:$password")
         )
         ));
+
         $date=date_create($year.'-'.$month.'-'.$day);
         date_sub($date,date_interval_create_from_date_string("1 days"));
         $ystmonth = date_format($date,"m");
@@ -682,6 +722,7 @@ class Getcsvdataapi
         foreach ($sensors as $sensor) {
           if($sensor->dev_id != 0){
             $url = 'http://philsensors.asti.dost.gov.ph/api/data/'.$sensor->dev_id.'/from/'.$ystyear.'-'.$ystmonth.'-'.$ystday.'/to/'.$year.'-'.$month.'-'.$day;
+            
             //try {
             //    $data = file_get_contents($url, false, $context);
             //} catch (Exception $e) {
@@ -693,12 +734,15 @@ class Getcsvdataapi
                 echo "Something went wrong\n";
             continue;
             }
+
+
             $mydatas = json_decode($data, true);
             $counter = 0;    
             //$finalarray = [];
             //$filename = '';
             $sensorType = strtolower($mydatas['type_name']);
             if (!empty($mydatas['province'])) {
+
                 $finalarray = array(
                     array('region: CAR'),
                     array('province: '.$mydatas['province']),
@@ -707,6 +751,7 @@ class Getcsvdataapi
                     array('posy: '.$mydatas['longitude']),
                     //array('imei: '.$mydatas['imei_num']),
                     array('sensor_name: '.$mydatas['type_name']),
+
                 );
 
                 $province = strtoupper(str_replace(' ', '_', $mydatas['province']));
@@ -722,8 +767,8 @@ class Getcsvdataapi
                 {
                     mkdir($rootfile, 0777, true);
                 }
-                $file = fopen($rootfile.$filename,"w");   
 
+                $file = fopen($rootfile.$filename,"w");      
                 foreach ($finalarray as $fields) {
                     fputcsv($file, $fields);
                 }
@@ -731,15 +776,17 @@ class Getcsvdataapi
                 $counter = 0;
                 $counts = 0;
                 
+
                 if(!empty($mydatas['data'])){
                     foreach ($mydatas['data'][0] as $key => $value) {
                         $keys[$counter++] =  $key;           
                     }
                      if ($sensorType == 'rain2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3]];
+                        $newKeys = [$keys[0], $keys[2], $keys[1]];
                        // dd($newKeys);
                     } elseif ($sensorType == 'waterlevel & rain 2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3], $keys[4]];
+                        $newKeys = [$keys[0], $keys[3], $keys[2], $keys[1]];
+                       
                     } else {
                             $newKeys = $keys;
                     }
@@ -749,18 +796,17 @@ class Getcsvdataapi
                     foreach ($thiskeys as $fields) {
                         fputcsv($file, $fields);
                     }
+
                     sort($mydatas['data']);          
                     $date =  $year.'-'.$month.'-'.$day;
 
                     foreach($mydatas['data'] as $mydata){
                         if ($sensorType == 'rain2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                        'rain_cum' => $mydata['rain_cum'],
                                         'rain_value' => $mydata['rain_value'],
                                         'air_pressure' => $mydata['air_pressure']];
-                        } else if ($sensorType == 'waterlevel & rain 2') {
+                        } else if($sensorType == 'waterlevel & rain 2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                       'rain_cum' => $mydata['rain_cum'],
                                        'rain_value' => $mydata['rain_value'],
                                        'waterlevel' => $mydata['waterlevel'],
                                        //'waterlevel_msl' => $mydata['waterlevel_msl'],
@@ -777,25 +823,41 @@ class Getcsvdataapi
                 } 
                 fclose($file);                        
             }
+            
            }
+
         }//end loop sensor
     }      
     public function displayaccumulatedtwodays($path,$csv){
         $yesterdayfile = $this->assocfile."-".date('Ymd',strtotime("-1 days")).".csv";  
         $yesterdaypath = 'data'.'/'.date('Y/m/d',strtotime("-1 days")).'/';
         $todayfile = $this->assocfile."-".date('Ymd').".csv";
+        
+        
+        
         $lasttwodaysaccum = $this->getaccum($path,$csv);           
+        
+        
+        
         $yesterday = $this->getfullaccum($yesterdaypath,$yesterdayfile);
+        
+        
         $today = $this->getfullaccum($this->todaypath,$todayfile);
-        $total = $lasttwodaysaccum + $yesterday + $today;
-       // echo $lasttwodaysaccum;
-        return number_format((float)$total, 2, '.', '');
-    }   
 
+        $total = $lasttwodaysaccum + $yesterday + $today;
+        
+       // echo $lasttwodaysaccum;
+         
+       
+        return number_format((float)$total, 2, '.', '');
+
+    }   
     public function postRainvalue(){
+        
         $todaypath = 'data'.'/'.date('Y').'/'.date('m').'/'.date('d').'/';
        $yesterday = 'data'.'/'.date('Y/m/d',strtotime("-1 days")).'/';
        $lasttwodayspath = 'data'.'/'.date('Y/m/d',strtotime("-2 days")).'/';
+        
         $sensors = DB::table('tbl_sensors')->whereIn('category_id', [1,2,3,4])->get();
         $categories = DB::table('tbl_categories')->get();
         $thresholds = DB::table('tbl_threshold')->get();
@@ -803,21 +865,36 @@ class Getcsvdataapi
         $waterlvl = [];
         $dispcount = 0;
         $count = 0;            
+        
         $sensorcategory = '';
-
+        
+       
+       
         foreach ($sensors as $sensor) {
             $sum1 = 0;
             $fname = $sensor->assoc_file."-".date('Ymd').".csv";  
+            
             $lasttwodaysfile =  $sensor->assoc_file."-".date('Ymd',strtotime("-2 days")).".csv";
+            
             $filestatus = $this->getstatus($todaypath,$fname); 
-
+            
+            
+            
+            
             if(($sensor->category_id == 1) || ($sensor->category_id == 3) || ($sensor->category_id == 4)){
             //for rain and tandem  
+            
                 $currentreading = $this->getcurrentreading($todaypath,$fname);   
+                
                 $sum = $this->getaccum($todaypath,$fname);
+               
                 $this->assocfile = $sensor->assoc_file;         
                 $filepast2day = $lasttwodayspath.$lasttwodaysfile;
+                
                 $twoaccum = $this->displayaccumulatedtwodays($lasttwodayspath,$lasttwodaysfile);
+                
+                
+                
                 $this->arrtotals[$count++] = array(
                     'id' => $sensor->id,
                     'total' => $sum, 
@@ -825,10 +902,12 @@ class Getcsvdataapi
                     'filestatus' => $filestatus,    
                     'currentreading' => $currentreading,    
                     'province_id' => $sensor->province_id,  
+
                 );          
             }
         }    
-
+     
+        
         foreach ($sensors as $sensor) {
             foreach($this->arrtotals as $arrtotal){
                 foreach ($categories as $category) {
@@ -850,13 +929,16 @@ class Getcsvdataapi
                 }
             }
         }
+     
         return $rainData;
-    }
 
+    }
     public function postWaterlevelvalue(){
+        
         $todaypath = 'data'.'/'.date('Y').'/'.date('m').'/'.date('d').'/';
        $yesterday = 'data'.'/'.date('Y/m/d',strtotime("-1 days")).'/';
        $lasttwodayspath = 'data'.'/'.date('Y/m/d',strtotime("-2 days")).'/';
+       
         $sensors = DB::table('tbl_sensors')->whereIn('category_id', [1,2,3,4])->get();
         $categories = DB::table('tbl_categories')->get();
         $thresholds = DB::table('tbl_threshold')->get();
@@ -866,6 +948,7 @@ class Getcsvdataapi
         $watercount = 0;       
         $wcount = 0;
         $count = 0;                
+        
         $sensorcategory = '';
 
         foreach ($sensors as $sensor) {
@@ -875,7 +958,9 @@ class Getcsvdataapi
             $filestatus = $this->getstatus($todaypath,$fname); 
 
             if(($sensor->category_id == 2) || ($sensor->category_id == 3)){
+
                 $currentwater = $this->getcurrentwaterlevel($todaypath,$fname);  
+ 
                 $this->waterlvltotal[$wcount++] = array(
                     'id' => $sensor->id,
                     'total' => '-', 

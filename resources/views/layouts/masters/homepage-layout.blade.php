@@ -18,6 +18,7 @@
     <link href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ URL::asset('assets/fonts/allfonts/stylesheet.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/jquery.fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/daterangepicker.css') }}">
 </head>
 <body class="innerbody">   
 
@@ -32,7 +33,20 @@
             @yield('left-section')  
             @yield('legend-section')  
             @yield('page-content')
+            <div id="calendarDiv">
+                <div id="calendarDivHeader"><span class="glyphicon glyphicon-calendar"></span>Pick a date</div>
+                        <div class="well" style="background-color: #262626; color: #FFFFFF; margin-bottom: -20px;">
+                            <div id="reportrange" style="background: #fff;cursor: pointer; padding: 5px 10px; border: 2px solid #fff; width: 100%; color: black;">
+                                <i class="fa fa-calendar"></i>&nbsp;
+                                <span></span> <i class="fa fa-caret-down"></i>
+                        </div>
+                        <div>
+                            <br>
+                            <a href="#" id="all-viewmap" class="mapviewbtn4" style="vertical-align:middle" onclick="$(this).toggleIconWithDateFilter()"><span>Proceed </span></a>
+                        </div>
+                </div>
         </aside>
+        
 
         
     </div>
@@ -50,6 +64,8 @@
         <script src="{!! url('assets/js/notification.js')!!}"></script>
         <script src="{!! url('js/jquery.mmenu.all.min.js')!!}"></script>
         <script src="{!! url('assets/js/responsive.js')!!}"></script>
+        <script type="text/javascript" src="{!! url('js/moment.js') !!}"></script>
+        <script type="text/javascript" src="{!! url('js/daterangepicker.js') !!}"></script>
         @yield('page-js-files')
         <script type="text/javasript">
          

@@ -30,7 +30,7 @@
                         <th class="sorting">Status</th>
                         <th class="sorting">Address</th>
                         <th class="sorting">Sensor Type</th>
-                        <th>Current Reading</th>
+                        <th>Current Reading (Meters)</th>
                         <th>Normal Value</th>
                         <th>Level 1</th>
                         <th>Level 2</th> 

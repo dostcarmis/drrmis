@@ -48,8 +48,6 @@
                 </button>
                 <a class="navbar-brand"><span class="visible-xs hidden-sm hidden-md hidden-lg">DRRMIS</span><span class="hidden-xs visible-sm visible-md visible-lg"><span>M</span>onitoring & <span>E</span>arly Warning System for <span>L</span>andslides & Other Hazards</span></a>
             </div>
-
-
  <!------------------------------------ Vertical Menu Navbar ------------------------------------------------------------------------------------------------------------------------->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
@@ -67,8 +65,6 @@
                             <i class="fa fa-bullhorn" aria-hidden="true"></i> Report <i class="fa fa-fw fa-caret-down"></i>
                         </a>
                         <ul id="report" class="collapse" aria-expanded="true">
-                            
-
                             <li class="dropside">
                                 <a href="#"><i class="demo-icon icon-flood">&#xe800;</i> Incidents</a>
                                 <ul id="ul-incidents" class="dropdown-menu fslevel">
@@ -125,13 +121,10 @@
                 </a>
                 <ul id="riskassess" class="collapse" aria-expanded="true">
                 <li><a href="https://hazardhunter.georisk.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> Link</a></li>
-                    <li><a data-toggle="modal" data-target="#selectProvmodal" href="#"><i class="fa fa-files-o"></i> Files</a></li>
+                    <li><a data-toggle="modal" data-target="#selectProvmodal" href="#"><i class="fa fa-files-o"></i>Files</a></li>
                 </ul>
             </li>   
-
-
             <!------------------------------------ Warn Dropdown -------------------------------------------->
-                    
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#sms-module" class="" aria-expanded="true"><i class="fa fa-signal"></i> Warn <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="sms-module" class="collapse" aria-expanded="true">
@@ -139,12 +132,7 @@
                             <li><a href="{{ action("SMSController@viewManualSMS") }}"><i class="glyphicon glyphicon-comment" aria-hidden="true"></i> Send Manual SMS </a></li>
                             <li><a href="{{ action("SMSController@viewAllNotifications") }}"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> All Notifications </a></li>
                         </ul>
-                    </li>
-
-          
-            
-             
-                                       
+                    </li>                              
             <!---------------------------------- Libraries Dropdown -------------------------------------------->
                     @if($currentUser->role_id == 1 || $currentUser->role_id == 2) 
                     <li>
@@ -172,7 +160,6 @@
                         <ul id="users" class="collapse" aria-expanded="true">
                             <li><a href="{{ action("UserController@viewusers") }}"><i class="fa fa-users"></i> View Users</a></li>
                             <li><a href="{{ action("UserController@viewadduser") }}"><i class="fa fa-user-plus"></i> Add Users</a></li>
-                            <li><a href="{{ action("UserController@viewactivitylogs") }}"><i class="fa fa-user-secret"></i> User Activity</a></li>
                         </ul>
                     </li>
                     @endif
@@ -193,13 +180,9 @@
                             <li><a href="http://gdis.mgb.gov.ph/mgbgoogle/?fbclid=IwAR1PxiAnZfvPzbDR_-ursAeDCgP2troJRbOcg9u78cbT0iOCmzgjC_ucN2o" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> MGB gdis</a></li>
                             <li><a href="http://dews.asti.dost.gov.ph/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> DEWS</a></li>
                         </ul>
-                    </li>
-
-                    
+                    </li>                   
                 </ul>
-
             </div>
-
             <!-- /.navbar-collapse -->  
         </nav>
         @include('pages.mainviewriskassessfiles') 

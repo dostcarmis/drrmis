@@ -16,11 +16,35 @@
         <div id="map"></div>      
     </div>    
 </div>
+<?php 
 
+$floodimages = [];
+$landslideimages = [];
+$counter = 0;
+$slcounter = 0;
+
+foreach ($floods as $flood) {
+	$floodimage[$counter++] = array(
+		'id' => $flood->id,
+		'image' => unserialize($flood->incident_images),
+	);
+} 
+foreach ($landslides as $landslide) {
+	$landslideimages[$slcounter++] = array(
+		'id' => $landslide->id,
+		'image' => unserialize($landslide->incident_images),
+	);
+} 
+?>
 @include('pages.loginmodal')
 @stop
 @section('page-js-files')
-
+<script>
+    var landslides = {!! json_encode($landslides->toArray()) !!};
+    var floods = {!! json_encode($floods->toArray()) !!};
+    var floodimage = {!! json_encode($floodimage) !!};
+    var landslideimages = {!! json_encode($landslideimages) !!};
+</script>
 <script src="{!! url('assets/js/map.js')!!}"></script>
 <script src="{!! url('assets/js/home.js') !!}"></script>
 

@@ -1292,6 +1292,7 @@ col-sm-*/
 
 .well {
 	border: 1px solid rgba(0,0,0,.075);
+	padding: 10px;
 }
 .per-monitoring-blw{
 	margin-bottom: 15px;	
@@ -2125,6 +2126,45 @@ ul.sub-menu-bottom{
 ul.sub-menu-bottom li  a{
 	font-size: 14px;
 }
+/*Incident dropdown in home*/
+#calendarDiv{
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+  display: none;
+  left: 50%;
+  top: 0px;
+}
+#calendarDivHeader{
+  padding: 5px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+}
+
+#incidentstoggle li:before,.activehazardmapcategory ul li.activefolder ul li:before{
+	font-family: FontAwesome;
+    content: "\f06e";
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+    color:#333;
+}
+#incidentstoggle li.active:before{
+	color: #ccc;
+}
+#incidentstoggle li a{
+	color:#adadad;
+}
+#incidentstoggle li.active a{
+	color: #e1ffff;
+}
+/*End*/
+
 #sensorsnmb li:before,.activehazardmapcategory ul li.activefolder ul li:before{
 	font-family: FontAwesome;
     content: "\f06e";
@@ -2445,7 +2485,7 @@ ul.sub-menu-bottom li  a{
 	padding-left: 15px;
 	padding-right: 15px;
 }
-.activelandslide,.activeflood{
+.activelandslide,.activeflood,.activeall{
 	color: #ff0000 !important;
 }
 .landslideimageswrap{
