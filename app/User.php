@@ -74,18 +74,20 @@ class User extends Authenticatable
         }
         $fullName = $fname. " " .$lname;
         return $fullName;
-
-    
     }
 
     public function activityLogs($request, $msg){
-        $userid = $this->id;
+        $userid = $this->id ? $this->id : NULL;
         $requestURL = $request->getRequestUri();
         $method = $request->getMethod();
         $host = $request->header('host');
-        $userAgent = $request->header('useragent');
+        $userAgent = $request->header('User-Agent');
+
+        //dd([$userAgent, $requestURL, $method, $host, $userAgent, $msg]);
+
         //dd($this);
-        $instanceEmplog = new Logs;
+        //$instanceEmplog = new Logs;
+        $intanceEmplog = new Logs;
         $intanceEmplog->userid = $userid;
         $intanceEmplog->request = $requestURL;
         $intanceEmplog->method = $method;

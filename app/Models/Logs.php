@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Logs extends Model
 {
     /**
+     * The name of the "created at" column.
+     *
+     * @var string
+     */
+    const CREATED_AT = 'logged_at';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -36,4 +43,8 @@ class Logs extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function setUpdatedAt($value) {
+      return NULL;
+    }
 }
