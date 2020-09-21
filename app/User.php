@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Models\Logs;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -41,7 +42,15 @@ class User extends Authenticatable
     }
     
     protected $fillable = [
-        'first_name','last_name','username', 'accesslevel','municipality_id','profile_img','province_id','cellphone_num', 'email','password' ,
+        'first_name',
+        'last_name',
+        'username', 
+        'accesslevel',
+        'municipality_id',
+        'profile_img',
+        'province_id',
+        'cellphone_num', 
+        'email','password' ,
     ];
 
     /**
@@ -52,4 +61,38 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getFullName($userid = ''){
+        if (!$userid){
+            $fname = $this->first_name;
+            $lname = $this->last_name;
+            $fullName = $fname. " " .$lname;
+        } else {
+            $user = $this::find($userid);
+            $fname = $user->first_name;
+            $lname = $user->last_name;
+        }
+        $fullName = $fname. " " .$lname;
+        return $fullName;
+
+    
+    }
+
+    public function activityLogs($request, $msg){
+        $userid = $this->id;
+        $requestURL = $request->getRequestUri();
+        $method = $request->getMethod();
+        $host = $request->header('host');
+        $userAgent = $request->header('useragent');
+        //dd($this);
+        $instanceEmplog = new Logs;
+        $intanceEmplog->userid = $userid;
+        $intanceEmplog->request = $requestURL;
+        $intanceEmplog->method = $method;
+        $intanceEmplog->host = $host;
+        $intanceEmplog->useragent = $userAgent;
+        $intanceEmplog->remarks = $msg;
+        $intanceEmplog->save();
+    }
+
 }

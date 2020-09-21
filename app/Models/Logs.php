@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +18,17 @@ class Logs extends Model
      *
      * @var array
      */
-    protected $fillable = ['userid','request','method','host','useragent','userfullname','usermunicipality','userprovince','remarks','logged_at'];
+    protected $fillable = [
+        'userid',
+        'request',
+        'method',
+        'host',
+        'useragent',
+        'userfullname',
+        'usermunicipality',
+        'userprovince',
+        'remarks',
+        'logged_at'];
 
     /**
      * The attributes that should be hidden for arrays.
