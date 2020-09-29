@@ -20,19 +20,22 @@
 				<th></th>                                                                                 
 		</thead>
 		<tbody>
-			@foreach($logs as $log)
+			
+                  @foreach($logs as $log)     
 			<tr>
                 <td>{{$log->userid ? $log->userid : 'Null'}}</td>
                 <td>{{$log->userfullname ? $log->userfullname : 'Guest'}}</td>
                 <td>{{$log->request}}</td>
                 <td>{{$log->method}}</td>
                 <td>{{$log->useragent}}</td>
-                <td>{{$log->usermunicipality ? $log->usermunicipality : 'Guest'}}</td>
-                <td>{{$log->userprovince ? $log->userprovince : 'Guest'}}</td>
+                <td>{{$log['municipal']->municipal_name}}</td>
+                <td>{{$log['province']->province_name}}</td>        
                 <td>{{$log->remarks}}</td>
                 <td>{{$log->logged_at}}</td>
-			</tr>				
-			@endforeach
+			</tr>	
+                  @endforeach
+
+
 	</table>
 </div>
 

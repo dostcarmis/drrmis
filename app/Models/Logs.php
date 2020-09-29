@@ -47,4 +47,11 @@ class Logs extends Model
     public function setUpdatedAt($value) {
       return NULL;
     }
+
+    public function municipal(){
+      return $this->hasOne('App\Models\Municipality', 'id', 'municipal');
+    }
+    public function province(){
+      return $this->hasOne('App\Models\Province', 'id', 'province');
+    }
 }
