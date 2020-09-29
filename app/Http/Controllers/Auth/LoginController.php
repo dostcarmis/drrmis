@@ -13,28 +13,24 @@ class LoginController extends Controller
 
     public function login(Request $request)
 	{
-        //dd($request->login);
         $user = new User;
         $uname = $request->login;  
-        $msg = "Login successful";  
-        $msg1 = "Login failed";
+        $msg = "Login attempt failed!"; 
         $field = filter_var($request->input('login'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         $request->merge([$field => $request->input('login')]);
         
         if (\Auth::attempt($request->only($field, 'password')))
         {
-            $user->activityLogs($request, $msg);
+            //$fullname = Auth::user()->getFullname();
+            $msg = "Logged in!";  
+            Auth::user()->activityLogs($request, $msg);
             return redirect('/dashboard');
         }
-        //dd(Auth::user());
-        $user->activityLogs($request, $msg1);
+      
+        $user->activityLogs($request, $msg);
         
         return redirect()->back()->withErrors([
             'error' => 'These credentials do not match our records.',
         ]);
-    } 
-    
-    
-	 
-	
+    } 	
 }

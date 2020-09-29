@@ -229,7 +229,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 		]);
 	Route::get('viewactivitylogs',[
-		'uses' => 'UserController@viewactivitylogs',
+		'uses' => 'UserlogsController@viewactivitylogs',
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 		]);

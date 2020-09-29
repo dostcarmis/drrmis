@@ -300,7 +300,5 @@ class UserController extends Controller
       }
    }
 
-   public function viewactivitylogs(){
-      return redirect('activitylogs');
-   }
+   
 }

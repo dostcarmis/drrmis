@@ -73,7 +73,7 @@ class User extends Authenticatable
             $lname = $user->last_name;
         }
         $fullName = $fname. " " .$lname;
-        return $fullName;
+        return $fullName ? $fullName : NULL;
     }
 
     public function activityLogs($request, $msg){
@@ -82,15 +82,19 @@ class User extends Authenticatable
         $method = $request->getMethod();
         $host = $request->header('host');
         $userAgent = $request->header('User-Agent');
+        $fullname = $this->getFullName();
+        $usermunicipality = $this->municipality_id ? $this->municipality_id : NULL;
+        $userprovince = $this->province_id ? $this->province_id : NULL;
 
         //dd([$userAgent, $requestURL, $method, $host, $userAgent, $msg]);
 
-        //dd($this);
-        //$instanceEmplog = new Logs;
         $intanceEmplog = new Logs;
         $intanceEmplog->userid = $userid;
         $intanceEmplog->request = $requestURL;
         $intanceEmplog->method = $method;
+        $intanceEmplog->userfullname = $fullname;
+        $intanceEmplog->usermunicipality = $usermunicipality;
+        $intanceEmplog->userprovince = $userprovince;
         $intanceEmplog->host = $host;
         $intanceEmplog->useragent = $userAgent;
         $intanceEmplog->remarks = $msg;
