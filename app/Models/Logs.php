@@ -49,9 +49,9 @@ class Logs extends Model
     }
 
     public function municipal(){
-      return $this->hasOne('App\Models\Municipality', 'id', 'municipal');
+      return $this->hasOne('App\Models\Municipality', 'id', 'usermunicipality');
     }
     public function province(){
-      return $this->hasOne('App\Models\Province', 'id', 'province');
+      return $this->hasOne('App\Models\Province', 'id', 'userprovince');
     }
 }

@@ -28,8 +28,8 @@
                 <td>{{$log->request}}</td>
                 <td>{{$log->method}}</td>
                 <td>{{$log->useragent}}</td>
-                <td>{{$log['municipal']->municipal_name}}</td>
-                <td>{{$log['province']->province_name}}</td>        
+                <td>{{$log->municipal_name}}</td>
+                <td>{{$log->province_name}}</td>        
                 <td>{{$log->remarks}}</td>
                 <td>{{$log->logged_at}}</td>
 			</tr>	
