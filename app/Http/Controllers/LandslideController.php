@@ -79,6 +79,7 @@ class LandslideController extends Controller
 
    public function saveLandslide(Request $request){ 
     $cntUser = Auth::user();
+    $msg = "";
     $post = $request->all();
     $input = Input::all();
     $reportstat = '';
@@ -148,6 +149,7 @@ class LandslideController extends Controller
         );  
          $i = DB::table('tbl_landslides')->insert($row);
          if($i > 0){
+            $cntUser->activityLogs($request, $msg = "Added a landslide report");
             Session::flash('message', 'Landslide Report successfully added');
             return redirect('viewlandslides');
          }
@@ -155,7 +157,8 @@ class LandslideController extends Controller
    }
 
    public function updateLandslide(Request $request){
-   	$cntUser = Auth::user();
+      $cntUser = Auth::user();
+      $msg = "";
    	$post = $request->all();   
       $landslideimages = "";
       $roadloc = $post['road_location'];
@@ -227,6 +230,7 @@ class LandslideController extends Controller
          $i = DB::table('tbl_landslides')->where('id',$post['id'])->update($row);
          $id = $post['id'];
          if($i > 0){
+            $cntUser->activityLogs($request, $msg = "Edited a landslide report");
             Session::flash('message', 'Landslide Report on successfully updated');
             return redirect('viewperlandslide/' .$id);
          }else{
@@ -243,9 +247,12 @@ class LandslideController extends Controller
      return Response::json($items);      
    }
 
-   public function destroyLandslide($id){
+   public function destroyLandslide(Request $request, $id){
+      $cntUser = Auth::user();
+      $msg = "";
        $i = DB::table('tbl_landslides')->where('id',$id)->delete();
        if($i > 0){
+         $cntUser->activityLogs($request, $msg = "Deleted a landslide report");
          \Session::flash('message', 'Landslide report successfully deleted');
          return redirect('viewlandslides');
       }

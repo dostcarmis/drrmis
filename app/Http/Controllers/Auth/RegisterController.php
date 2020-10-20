@@ -2,52 +2,45 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Role;
 use App\User;
-use App\Models\Municipality;
-use Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use DB;
-use Illuminate\Support\Facades\Input;
-use Response;
-use App\Services\Checkfornotification;
-class AuthController extends Controller
+
+class RegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Registration & Login Controller
+    | Register Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
     |
     */
 
-    use AuthenticatesUsers, ThrottlesLogins;
+    use RegistersUsers;
 
     /**
-     * Where to redirect users after login / registration.
+     * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/profile';
+    protected $redirectTo = '/home';
 
     /**
-     * Create a new authentication controller instance.
+     * Create a new controller instance.
      *
      * @return void
      */
-    public $AppServiceCreatenewNotif;
-    public function __construct(Checkfornotification $AppServiceCreatenewNotif)
-    {   
-        $this->AppServiceCreatenewNotif = $AppServiceCreatenewNotif;
-        $this->middleware('guest', ['except' => 'logout']);
+    public function __construct()
+    {
+        $this->middleware('guest');
     }
+    
+    
 
     /**
      * Get a validator for an incoming registration request.

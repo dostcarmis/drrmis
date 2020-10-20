@@ -12,13 +12,13 @@
 */
 
 
-Route::auth();
+Auth::routes();
 
 Route::get('uploadpage','HomeController@uploadPage');
 
 
 Route::group(array('middleware' => 'auth'), function(){
-    Route::controller('filemanager', 'FilemanagerLaravelController');
+    Route::resource('filemanager', 'FilemanagerLaravelController');
 });
 	
 

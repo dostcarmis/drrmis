@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use DB;
 use Auth;
-use File;
 use App\Models\User;
+use File;
+
 class FileDownloadController extends Controller
 {
     public function viewFiledownload(Request $request){
@@ -41,7 +42,7 @@ class FileDownloadController extends Controller
         $i = DB::table('tbl_files')->where('id',$id)->delete();
             if($i > 0){
                 //$fullName = $cntUser->getFullname();
-                $cntUser->activityLogs($request, $msg = "Deleted a DRRM file!- $filename");
+                $cntUser->activityLogs($request, $msg = "Deleted a DRRM file-$filename->filename");
                 \Session::flash('success_delete', 'Report successfully deleted');
                 return back();
             }
@@ -105,7 +106,7 @@ class FileDownloadController extends Controller
             $i = DB::table('tbl_files')->insert($row);
                 if($i > 0){
                     //$fullName = $cntUser->getFullname();
-                    $cntUser->activityLogs($request, $msg = "Added a DRRM file - $fname");
+                    $cntUser->activityLogs($request, $msg = "Added a DRRM file-$fileToDisplay");
                     \Session::flash('success_upload', 'File successfully uploaded');
                     return redirect('filedownloadpage');
                 }

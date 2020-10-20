@@ -23,13 +23,13 @@
 			
                   @foreach($logs as $log)     
 			<tr>
-                <td>{{$log->userid ? $log->userid : 'Null'}}</td>
+                <td>{{$log->userid ? $log->userid : 'Guest'}}</td>
                 <td>{{$log->userfullname ? $log->userfullname : 'Guest'}}</td>
                 <td>{{$log->request}}</td>
                 <td>{{$log->method}}</td>
                 <td>{{$log->useragent}}</td>
-                <td>{{$log->municipal_name}}</td>
-                <td>{{$log->province_name}}</td>        
+                <td>{{$log['province'] ? json_decode($log['province'])->name : ''}}</td>
+                <td>{{$log['municipal'] ? json_decode($log['municipal'])->name : ''}}</td>        
                 <td>{{$log->remarks}}</td>
                 <td>{{$log->logged_at}}</td>
 			</tr>	

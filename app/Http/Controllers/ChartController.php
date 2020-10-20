@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use DB;
+use Auth;
+use App\Models\User;
 
 class ChartController extends Controller
 {
    
-   public function viewmultipleCharts(){
+   public function viewmultipleCharts(Request $request){
+		$cntUser = Auth::user();
+		$msg = "";
    		$sensors = DB::table('tbl_sensors')->get();
    		$provinces = DB::table('tbl_provinces')->get();      
-      	$municipalities = DB::table('tbl_municipality')->get();
+		$municipalities = DB::table('tbl_municipality')->get();
+		$cntUser->activityLogs($request, $msg = "Viewed graphical hrydromet data");
    		return view ('pages.viewmultiplecharts')->with(['sensors' => $sensors, 'provinces' => $provinces,'municipalities' => $municipalities]);
    }
 

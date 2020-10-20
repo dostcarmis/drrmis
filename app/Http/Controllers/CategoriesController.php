@@ -11,6 +11,8 @@ use Session;
 use App\Http\Requests;
 use App\Models\Category;
 use App\Models\Coordinates;
+use Auth;
+use App\Models\User;
 
 class CategoriesController extends Controller
 {
@@ -40,6 +42,8 @@ class CategoriesController extends Controller
    }
    public function saveCategory(Request $request)
    {
+      $cntUser = Auth::user();
+      $logmsg = "";
    	$post = $request->all();
        $rules = [
         'category_name' => 'required',
@@ -58,6 +62,7 @@ class CategoriesController extends Controller
 
          $i = DB::table('tbl_categories')->insert($categories);
          if($i > 0){
+            $cntUser->activityLogs($request, $msg = "Added a sensor category");
             Session::flash('message', 'Category successfully added');
             return redirect('viewcategories');
          }
@@ -90,10 +95,13 @@ class CategoriesController extends Controller
          }
       }
    }
-   public function destroyCategory($id){
+   public function destroyCategory(Request $request, $id){
+      $cntUser = Auth::user();
+      $logmsg = "";
        $i = DB::table('tbl_categories')->where('id',$id)->delete();
        if($i > 0)
       {
+         $cntUser->activityLogs($request, $msg = "Deleted a sensor category");
          \Session::flash('message', 'Category successfully deleted');
          return redirect('viewcategories');
       }
