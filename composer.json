@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.7",
         "laravel/framework": "5.4.*",
-        "laravelcollective/html": "5.4.*",
+        "laravelcollective/html":"^5.4.0",
         "illuminate/html": "5.*",
         "laracasts/utilities": "~2.0",
         "intervention/image": "^2.3",

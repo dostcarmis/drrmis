@@ -657,7 +657,7 @@ jQuery(function($){
                 if(landslideimages[xyz].id == landslides[landslidecount].id){
                     myimage = landslideimages[xyz].image;
                     for (var i = 0; i < myimage.length; i++) {
-                        images[i] = '<div class="mapimages"><a target="_blank" data-fancybox-group="landslideimages-'+xyz+'" href='+myimage[i].replace(/ /g,"%20") +' class="fancybox"><img src='+myimage[i].replace(/ /g,"%20") +' class="mres"/></a></div>';
+                        images[i] = '<div class="mapimages"><a data-fancybox-group="landslideimages-'+xyz+'" href='+myimage[i].replace(/ /g,"%20") +' class="fancybox thumbnail"><img src='+myimage[i].replace(/ /g,"%20") +' class="mres"/></a></div>';
                     }
                 }
              }   

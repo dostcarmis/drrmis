@@ -228,7 +228,7 @@
 <script type="text/javascript" src="{!! url('assets/dropzone/dropzone.js') !!}"></script>
 <script type="text/javascript">
 var baseUrl = "{{ url('/') }}";
-var token = "{{ Session::getToken() }}";
+var token = "{{ Session::token() }}";
 var images = [];
 var counter = 0;
 var mainimages = [];

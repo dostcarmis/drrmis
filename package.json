@@ -6,8 +6,15 @@
   },
   "devDependencies": {
     "bootstrap": "^4.5.3",
-    "bootstrap-sass": "^3.0.0",
     "gulp": "^3.9.1",
-    "laravel-elixir": "^5.0.0"
+    "gulp-sass": "^4.1.0",
+    "popper.js": "^1.16.1"
+  },
+  "dependencies": {
+    "core-util-is": "^1.0.2",
+    "laravel-elixir": "^6.0.0-18",
+    "mdbootstrap": "^4.19.1",
+    "node-sass": "^4.14.1",
+    "session": "^0.1.0"
   }
 }
