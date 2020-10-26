@@ -172,11 +172,15 @@
                         <ul id="users" class="collapse" aria-expanded="true">
                             <li><a href="{{ action("UserController@viewusers") }}"><i class="fa fa-users"></i> View Users</a></li>
                             <li><a href="{{ action("UserController@viewadduser") }}"><i class="fa fa-user-plus"></i> Add Users</a></li>
+<<<<<<< HEAD:resources/views/layouts/partials/__nav.blade.php
 <<<<<<< HEAD
                             <li><a href="{{ action("UserController@viewGroups") }}"><i class="fa fa-object-group"></i> View Groups</a></li>
 =======
                             <li><a href="{{ action("UserlogsController@viewactivitylogs") }}"><i class="fa fa-user-secret"></i> User Activity</a></li>
 >>>>>>> mac
+=======
+                            <li><a href="{{ action("UserController@viewactivitylogs") }}"><i class="fa fa-user-secret"></i> User Activity</a></li>
+>>>>>>> 5364ad092df76f8ca4ccde18b58a4ca68833add1:resources/views/layouts/partials/nav.blade.php
                         </ul>
                     </li>
                     @endif

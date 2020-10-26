@@ -363,6 +363,7 @@ class UserController extends Controller
         } else {
             Session::flash('message', 'Cannot delete own account!');
             return redirect('viewusers');
+<<<<<<< HEAD:app/Http/Controllers/_UserController.php
 <<<<<<< HEAD
         }
     }
@@ -460,6 +461,10 @@ class UserController extends Controller
       }
    }
 >>>>>>> mac
+=======
+      }
+   }
+>>>>>>> 5364ad092df76f8ca4ccde18b58a4ca68833add1:app/Http/Controllers/UserController.php
 
    
 }
