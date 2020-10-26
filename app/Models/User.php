@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+use App\Models\Logs;
+
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +15,18 @@ class User extends Model
      *
      * @var array
      */
-    protected $fillable = ['first_name','last_name','profile_img','role_id','municipality_id','province_id', 'email','password','position','designation','cellphone_num'];
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'profile_img',
+        'role_id',
+        'municipality_id',
+        'province_id', 
+        'email',
+        'password',
+        'position',
+        'designation',
+        'cellphone_num'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -28,7 +41,8 @@ class User extends Model
     {
         $notification = new Notification;
         $notification->user()->associate($this);
-     
         return $notification;
     }
+
+    
 }

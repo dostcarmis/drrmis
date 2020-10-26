@@ -12,13 +12,13 @@
 */
 
 
-Route::auth();
+Auth::routes();
 
 Route::get('uploadpage','HomeController@uploadPage');
 
 
 Route::group(array('middleware' => 'auth'), function(){
-    Route::controller('filemanager', 'FilemanagerLaravelController');
+    Route::resource('filemanager', 'FilemanagerLaravelController');
 });
 	
 
@@ -225,6 +225,11 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		]);
 	Route::post('addnewuser',[
 		'uses' => 'UserController@addnewuser',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		]);
+	Route::get('viewactivitylogs',[
+		'uses' => 'UserlogsController@viewactivitylogs',
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 		]);

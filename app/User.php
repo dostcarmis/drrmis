@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Models\Logs;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -41,7 +42,15 @@ class User extends Authenticatable
     }
     
     protected $fillable = [
-        'first_name','last_name','username', 'accesslevel','municipality_id','profile_img','province_id','cellphone_num', 'email','password' ,
+        'first_name',
+        'last_name',
+        'username', 
+        'accesslevel',
+        'municipality_id',
+        'profile_img',
+        'province_id',
+        'cellphone_num', 
+        'email','password' ,
     ];
 
     /**
@@ -52,4 +61,46 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getFullName($userid = ''){
+        if (!$userid){
+            $fname = $this->first_name;
+            $lname = $this->last_name;
+            $fullName = $fname. " " .$lname;
+        } else {
+            $user = $this::find($userid);
+            $fname = $user->first_name;
+            $lname = $user->last_name;
+        }
+        $fullName = $fname. " " .$lname;
+        return $fullName ? $fullName : NULL;
+    }
+
+
+
+    public function activityLogs($request, $msg){
+        $userid = $this->id ? $this->id : NULL;
+        $requestURL = $request->getRequestUri();
+        $method = $request->getMethod();
+        $host = $request->header('host');
+        $userAgent = $request->header('User-Agent');
+        $fullname = $this->getFullName();
+        $usermunicipality = $this->municipality_id ? $this->municipality_id : NULL;
+        $userprovince = $this->province_id ? $this->province_id : NULL;
+
+        //dd([$userAgent, $requestURL, $method, $host, $userAgent, $msg]);
+
+        $intanceEmplog = new Logs;
+        $intanceEmplog->userid = $userid;
+        $intanceEmplog->request = $requestURL;
+        $intanceEmplog->method = $method;
+        $intanceEmplog->userfullname = $fullname;
+        $intanceEmplog->usermunicipality = $usermunicipality;
+        $intanceEmplog->userprovince = $userprovince;
+        $intanceEmplog->host = $host;
+        $intanceEmplog->useragent = $userAgent;
+        $intanceEmplog->remarks = $msg;
+        $intanceEmplog->save();
+    }
+
 }

@@ -11,19 +11,13 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav nav-justified">
-        <li class="dropdown">
-        <a href="#" data-toggle="dropdown">Prevention & Mitigation <span class="caret"></span></a>
-        <ul class="dropdown-menu homedrp">
-        <li><a href="{{action('HydrometController@dashboard')}}">Monitors</a></li>
-        <li><a href="{{action('HydrometController@dashboard')}}">Report</a></li>
-        <li><a href="{{action('HydrometController@dashboard')}}">Warn</a></li>           
-        </ul>
-        </li>
-      <li><a href="{{action('PreparednessController@viewPreparedness')}}">Preparedness</a></li>
-      <li><a href="{{action('ResponseController@viewResponse')}}">Response</a></li>
-      <li><a href="{{action('RehabilitationController@viewRehabilitation')}}">Rehabilitation & Recovery</a></li>
+        <li><a href="{{ action("HydrometController@dashboard") }}">Prevention and Mitigation</a></li>
+        <li><a href="{{action('PreparednessController@viewPreparedness')}}">Preparedness</a></li>
+        <li><a href="{{action('ResponseController@viewResponse')}}">Response</a></li>
+        <li><a href="{{action('RehabilitationController@viewRehabilitation')}}">Rehabilitation & Recovery</a></li>
       </ul>
     </div><!--/.nav-collapse -->
     </nav>
   </div>
+  
 </div>

@@ -41,7 +41,7 @@
                 label: "Moderate",
                 value: moderate
             }, {
-                label: "Light",
+                label: "Light / No Rain",
                 value: light
             }],
             resize: true

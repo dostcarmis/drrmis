@@ -363,6 +363,7 @@ class UserController extends Controller
         } else {
             Session::flash('message', 'Cannot delete own account!');
             return redirect('viewusers');
+<<<<<<< HEAD
         }
     }
 
@@ -455,5 +456,10 @@ class UserController extends Controller
         Session::flash('message', 'Group successfully deleted');
         return redirect('usergroups');
     }
+=======
+      }
+   }
+>>>>>>> mac
 
+   
 }

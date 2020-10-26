@@ -9,7 +9,8 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use DB;
 use Illuminate\Support\Facades\Input;
 use Response;
@@ -27,7 +28,7 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesUsers, ThrottlesLogins;
 
     /**
      * Where to redirect users after login / registration.
@@ -45,7 +46,7 @@ class AuthController extends Controller
     public function __construct(Checkfornotification $AppServiceCreatenewNotif)
     {   
         $this->AppServiceCreatenewNotif = $AppServiceCreatenewNotif;
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware('guest', ['except' => 'logout']);
     }
 
     /**
