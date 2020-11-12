@@ -881,6 +881,7 @@ class Getcsvdataapi
         $thresholds = DB::table('tbl_threshold')->get();
         $disptotal = [];
         $waterlvl = [];
+        //$waterlvltotal = 0;
         $dispcount = 0;
         $watercount = 0;       
         $wcount = 0;
@@ -895,7 +896,7 @@ class Getcsvdataapi
 
             if(($sensor->category_id == 2) || ($sensor->category_id == 3)){
                 $currentwater = $this->getcurrentwaterlevel($todaypath,$fname);  
-                $this->$waterlvltotal[$wcount++] = array(
+                $this->waterlvltotal[$wcount++] = array(
                     'id' => $sensor->id,
                     'total' => '-', 
                     'twoaccum' => '-',      
@@ -906,7 +907,7 @@ class Getcsvdataapi
             }
         }
         foreach ($sensors as $sensor) {           
-            foreach ($this->$waterlvltotal as $water) {
+            foreach ($this->waterlvltotal as $water) {
                 foreach ($categories as $category) {
                     if ($category->id == $sensor->category_id) {
                         $sensorcategory = $category->name;
