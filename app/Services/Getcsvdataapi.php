@@ -116,7 +116,6 @@ class Getcsvdataapi
     
     
     public function getaccum($path,$csv){
-     
         $counter = [];
         $count = 0;
        // $todayfile = $csv."-".date('Ymd').".csv";  
@@ -133,7 +132,7 @@ class Getcsvdataapi
                             'time' =>  $csvfile[$i]['time'],
                             'waterlvl' => $csvfile[$i]['waterlvl'],
                             'category' => '2',
-                            'value' => '0'
+                            'value' => '0',
                         );
                 }else if($cat == 3){
                     $counter[$count++] = array(
@@ -148,6 +147,7 @@ class Getcsvdataapi
                             'value' => $csvfile[$i]['value'],
                             'category' => '1',
                         );
+                       
                 }
             }
         }
@@ -247,9 +247,29 @@ class Getcsvdataapi
         $mycsvFile = $rootpath.$csvfile;
         $waterlvl = '-WATERLEVEL-';
         $tndem = 'WATERLEVEL_';
-    
+       
+        $indexWtrlvl = 0;
+        $indexdateTime = 0;
+        $indexrain = 0;
+        $indexairpressure = 0;
+        $indexraincum = 0;
         if(file_exists($mycsvFile)){
             $csv = $this->getdata($mycsvFile);
+            if($csv[6]){
+              foreach($csv[6] as $indexctr => $arr){
+                if(strpos(strtolower($arr), 'datetimeread') !== false){
+                     $indexdateTime = $indexctr;
+                     
+                }
+                if(strpos(strtolower($arr), 'rain_value')){
+                     $indexrain = $indexctr;
+                     dd($csv[6]);
+                }
+                
+              }
+              
+            }
+            
             for($x=0;$x<=6;$x++){
 				unset($csv[$x]);
             }
@@ -269,15 +289,15 @@ class Getcsvdataapi
                         $counter[$count++] = array(
                             'date' =>  $csvdatetimearray[0],
                             'time' =>  $csvdatetimearray[1],
-                            'value' => $csv[$i][1],
-                            'waterlvl' => $csv[$i][2],
+                            'value' => $csv[$i][2],
+                            'waterlvl' => $csv[$i][3],
                             'category' => '3',
                         );
                     }else{
                         $counter[$count++] = array(
                             'date' =>  $csvdatetimearray[0],
                             'time' =>  $csvdatetimearray[1],
-                            'value' => $csv[$i][1],
+                            'value' => $csv[$i][2],
                             'category' => '1',
                         );
                     }
@@ -615,10 +635,10 @@ class Getcsvdataapi
                     }
 
                     if ($sensorType == 'rain2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3]];
+                        $newKeys = [$keys[0], $keys[2], $keys[3], $keys[1]];
                        // dd($newKeys);
-                    } elseif ($sensorType == 'waterlevel & rain 2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3], $keys[4]];
+                    } elseif ($sensorType == 'waterlvl & rain 2') {
+                        $newKeys = [$keys[0], $keys[3], $keys[4], $keys[1], $keys[2]];
                     } else {
                             $newKeys = $keys;
                     }
@@ -632,19 +652,18 @@ class Getcsvdataapi
                     $date = date('Y-m-d');
 
                     foreach($mydatas['data'] as $mydata){
-                        //ARG
                         if ($sensorType == 'rain2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
+                                        'rain_value' => $mydata['rain_value'],            
                                         'rain_cum' => $mydata['rain_cum'],
-                                        'rain_value' => $mydata['rain_value'],
                                         'air_pressure' => $mydata['air_pressure']];
-                        } else if($sensorType == 'waterlevel & rain 2') {
+                        } else if($sensorType == 'waterlvl & rain 2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                       'rain_cum' => $mydata['rain_cum'],
-                                       'rain_value' => $mydata['rain_value'],
-                                       'waterlevel' => $mydata['waterlevel'],
-                                       //'waterlevel_msl' => $mydata['waterlevel_msl'],
-                                       'air_pressure' => $mydata['air_pressure']];
+                                        'waterlvl' => $mydata['waterlvl'],
+                                        'rain_value' => $mydata['rain_value'],
+                                        'rain_cum' => $mydata['rain_cum'],
+                                        //'waterlevel_msl' => $mydata['waterlevel_msl'],
+                                        'air_pressure' => $mydata['air_pressure']];
                         } else {
                             $newData = $mydata;
                         }
@@ -736,10 +755,10 @@ class Getcsvdataapi
                         $keys[$counter++] =  $key;           
                     }
                      if ($sensorType == 'rain2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3]];
+                        $newKeys = [$keys[0], $keys[2], $keys[3], $keys[1]];
                        // dd($newKeys);
-                    } elseif ($sensorType == 'waterlevel & rain 2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3], $keys[4]];
+                    } elseif ($sensorType == 'waterlvl & rain 2') {
+                        $newKeys = [$keys[0], $keys[3], $keys[4], $keys[1], $keys[2]];
                     } else {
                             $newKeys = $keys;
                     }
@@ -755,16 +774,16 @@ class Getcsvdataapi
                     foreach($mydatas['data'] as $mydata){
                         if ($sensorType == 'rain2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
+                                        'rain_value' => $mydata['rain_value'],            
                                         'rain_cum' => $mydata['rain_cum'],
-                                        'rain_value' => $mydata['rain_value'],
                                         'air_pressure' => $mydata['air_pressure']];
-                        } else if ($sensorType == 'waterlevel & rain 2') {
+                        } else if($sensorType == 'waterlvl & rain 2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                       'rain_cum' => $mydata['rain_cum'],
-                                       'rain_value' => $mydata['rain_value'],
-                                       'waterlevel' => $mydata['waterlevel'],
-                                       //'waterlevel_msl' => $mydata['waterlevel_msl'],
-                                       'air_pressure' => $mydata['air_pressure']];
+                                        'waterlvl' => $mydata['waterlvl'],
+                                        'rain_value' => $mydata['rain_value'],
+                                        'rain_cum' => $mydata['rain_cum'],
+                                        //'waterlevel_msl' => $mydata['waterlevel_msl'],
+                                        'air_pressure' => $mydata['air_pressure']];
                         } else {
                             $newData = $mydata;
                         }
@@ -876,7 +895,7 @@ class Getcsvdataapi
 
             if(($sensor->category_id == 2) || ($sensor->category_id == 3)){
                 $currentwater = $this->getcurrentwaterlevel($todaypath,$fname);  
-                $this->waterlvltotal[$wcount++] = array(
+                $this->$waterlvltotal[$wcount++] = array(
                     'id' => $sensor->id,
                     'total' => '-', 
                     'twoaccum' => '-',      
@@ -887,7 +906,7 @@ class Getcsvdataapi
             }
         }
         foreach ($sensors as $sensor) {           
-            foreach ($this->waterlvltotal as $water) {
+            foreach ($this->$waterlvltotal as $water) {
                 foreach ($categories as $category) {
                     if ($category->id == $sensor->category_id) {
                         $sensorcategory = $category->name;

@@ -45,8 +45,11 @@ foreach ($landslides as $landslide) {
     var floodimage = {!! json_encode($floodimage) !!};
     var landslideimages = {!! json_encode($landslideimages) !!};
 </script>
+
 <script src="{!! url('assets/js/map.js')!!}"></script>
 <script src="{!! url('assets/js/home.js') !!}"></script>
+
+
 
 @if ($errors->all && count($errors->all()) > 0)
 <script>$('#modalLoginForm').modal();</script>

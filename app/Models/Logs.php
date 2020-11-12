@@ -1,11 +1,18 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Logs extends Model
 {
+    /**
+     * The name of the "created at" column.
+     *
+     * @var string
+     */
+    const CREATED_AT = 'logged_at';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -18,7 +25,17 @@ class Logs extends Model
      *
      * @var array
      */
-    protected $fillable = ['userid','request','method','host','useragent','userfullname','usermunicipality','userprovince','remarks','logged_at'];
+    protected $fillable = [
+        'userid',
+        'request',
+        'method',
+        'host',
+        'useragent',
+        'userfullname',
+        'usermunicipality',
+        'userprovince',
+        'remarks',
+        'logged_at'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -26,4 +43,15 @@ class Logs extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function setUpdatedAt($value) {
+      return NULL;
+    }
+
+    public function municipal(){
+      return $this->hasOne('App\Models\Municipality', 'id', 'usermunicipality');
+    }
+    public function province(){
+      return $this->hasOne('App\Models\Province', 'id', 'userprovince');
+    }
 }

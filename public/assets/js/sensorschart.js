@@ -27,7 +27,7 @@ if(cat != 1){
 
 for(x = 0;x<csvcontents.length;x++){
     time[x] = csvcontents[x].time;
-    var wlvlvalue = parseFloat(csvcontents[x].waterlvl) / 100;
+    var wlvlvalue = parseFloat(csvcontents[x].waterlvl);
     points.push({
             y: parseFloat(csvcontents[x].value),
             date: (new Date(csvcontents[x].date)).toDateString(),

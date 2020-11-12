@@ -56,6 +56,7 @@ class FloodController extends Controller
 
     public function saveFlood(Request $request){          
       $cntUser = Auth::user();
+      $msg="";
       $post = $request->all();
       $floodimages = "";
         if($post['floodimages'] == "floodimages[]"){
@@ -121,6 +122,7 @@ class FloodController extends Controller
           
            $i = DB::table('tbl_floods')->insert($row);
            if($i > 0){
+              $cntUser->activityLogs($request, $msg = "Added a flood report");
               Session::flash('message', 'Flood Report successfully added');
               return redirect('viewfloods');
            }
@@ -129,7 +131,8 @@ class FloodController extends Controller
 
 
     public function updateFlood(Request $request){
-   	$cntUser = Auth::user();
+    $cntUser = Auth::user();
+    $msg ="";
     $post = $request->all();
     if(($post['floodimages'] == "floodimages[]") || ($post['floodimages'] == "")){
       $floodimages = "";
@@ -197,6 +200,7 @@ class FloodController extends Controller
          $i = DB::table('tbl_floods')->where('id',$post['id'])->update($row);
          $id = $post['id'];
          if($i > 0){
+            $cntUser->activityLogs($request, $msg = "Edited a flood report");
             Session::flash('message', 'Flood Report successfully updated');
             return redirect('viewperflood/' .$id);
          }else{
@@ -206,10 +210,13 @@ class FloodController extends Controller
       }
    } 
 
-   public function destroyFlood($id){
+   public function destroyFlood(Request $request, $id){
+        $cntUser = Auth::user();
+        $msg = "";
        $i = DB::table('tbl_floods')->where('id',$id)->delete();
        if($i > 0)
       {
+         $cntUser->activityLogs($request, $msg = "Deleted a flood report");
          \Session::flash('message', 'Flood report successfully deleted');
          return redirect('viewfloods');
       }
@@ -315,51 +322,51 @@ class FloodController extends Controller
       return view('pages.floodreports')->with('datadate',$datadate)->with(['users' => $users,'provinces' => $provinces,'floods' => $floods]);
    }
 
-   public function syncDataFromIncidentToFlood(){
-      $datIncident = DB::table('tbl_incidents')
-                       ->where('incident_type', 2)
-                       ->get();
-      //dd($datIncident);
-      
-      foreach($datIncident as $cnt => $incident){
-        echo $cnt . "<br>";
-         DB::table('tbl_floods')->insert(
-            [
-               'id' => $incident->id,
-               'date' => $incident->date,
-               'road_location' => $incident->location,
-               'municipality' => '',
-               'province_id' => $incident->province_id,
-               'river_system' => 'Not recorded',
-               'flood_type' => 'River Flooding',
-               'flood_reccuring' => 'Not recorded',
-               'flood_waterlvl' => 'Not recorded',
-               'measuredat' =>'',
-               'flood_killed' => '',
-               'flood_injured' => '',
-               'flood_missing' => '',
-               'flood_affectedcrops' => '',
-               'flood_affectedinfra' => '',
-               'reported_by' => 'Not recorded',
-               'reporter_pos' => 'Not recorded',
-               'cause' => 'n/a',
-               'typhoon_name' => 'n/a',
-               'heavy_rainfall' => 'n/a',
-               'incident_images' => $incident->incident_images,
-               'latitude' => $incident->latitude,
-               'longitude' => $incident->longitude,
-               'created_by' => $incident->created_by,
-               'updated_by' => $incident->updated_by,
-               'author' => $incident->author,
-               'user_municipality' => $incident->user_municipality,
-               'report_status' => $incident->report_status,
-               'created_at' => $incident->created_at,
-               'updated_at' => $incident->updated_at,
-            ]
-         );
-            
-      }
+   //public function syncDataFromIncidentToFlood(){
+      //$datIncident = DB::table('tbl_incidents')
+      //                 ->where('incident_type', 2)
+      //                 ->get();
+      ////dd($datIncident);
+      //
+      //foreach($datIncident as $cnt => $incident){
+      //  echo $cnt . "<br>";
+      //   DB::table('tbl_floods')->insert(
+      //      [
+      //         'id' => $incident->id,
+      //         'date' => $incident->date,
+      //         'road_location' => $incident->location,
+      //         'municipality' => '',
+      //         'province_id' => $incident->province_id,
+      //         'river_system' => 'Not recorded',
+      //         'flood_type' => 'River Flooding',
+      //         'flood_reccuring' => 'Not recorded',
+      //         'flood_waterlvl' => 'Not recorded',
+      //         'measuredat' =>'',
+      //         'flood_killed' => '',
+      //         'flood_injured' => '',
+      //         'flood_missing' => '',
+      //         'flood_affectedcrops' => '',
+      //         'flood_affectedinfra' => '',
+      //         'reported_by' => 'Not recorded',
+      //         'reporter_pos' => 'Not recorded',
+      //         'cause' => 'n/a',
+      //         'typhoon_name' => 'n/a',
+      //         'heavy_rainfall' => 'n/a',
+      //         'incident_images' => $incident->incident_images,
+      //         'latitude' => $incident->latitude,
+      //         'longitude' => $incident->longitude,
+      //         'created_by' => $incident->created_by,
+      //         'updated_by' => $incident->updated_by,
+      //         'author' => $incident->author,
+      //         'user_municipality' => $incident->user_municipality,
+      //         'report_status' => $incident->report_status,
+      //         'created_at' => $incident->created_at,
+      //         'updated_at' => $incident->updated_at,
+      //      ]
+      //   );
+      //      
+      //}
     }
 
-}
+
 
