@@ -130,7 +130,7 @@ class Getcsvdataapi
                 if($cat == 2){
                     $counter[$count++] = array(
                             'time' =>  $csvfile[$i]['time'],
-                            'waterlevel' => $csvfile[$i]['waterlevel'],
+                            'waterlvl' => $csvfile[$i]['waterlvl'],
                             'category' => '2',
                             'value' => '0',
                         );
@@ -138,7 +138,7 @@ class Getcsvdataapi
                     $counter[$count++] = array(
                             'time' =>   $csvfile[$i]['time'],
                             'value' => $csvfile[$i]['value'],
-                            'waterlevel' => $csvfile[$i]['waterlevel'],
+                            'waterlvl' => $csvfile[$i]['waterlvl'],
                             'category' => '3',
                         );
                 }else{
@@ -177,20 +177,20 @@ class Getcsvdataapi
         $error = 'ERR';    
         $fnal = 0;
         for ($i=0; $i < $limit; $i++) { 
-            if(trim($csvfile[$i]['waterlevel'])=='ERR' || !$csvfile[$i]['waterlevel']){
+            if(trim($csvfile[$i]['waterlvl'])=='ERR' || !$csvfile[$i]['waterlvl']){
                 $currentreading = 0;
             }else{
-                $currentreading = $csvfile[$i]['waterlevel'];
+                $currentreading = $csvfile[$i]['waterlvl'];
             }    
-           // if(trim(!empty($csvfile[$i]['waterlevel']))){
-           //    $currentreading = $csvfile[$i]['waterlevel']; 
-           // }elseif($csvfile[$i]['waterlevel']=='ERR'){    
+           // if(trim(!empty($csvfile[$i]['waterlvl']))){
+           //    $currentreading = $csvfile[$i]['waterlvl']; 
+           // }elseif($csvfile[$i]['waterlvl']=='ERR'){    
            //     $currentreading = 0;
            //}else{
            //     $currentreading = 0;
            //}
            
-           //echo ($csvfile[$i]['waterlevel']).'<br>';
+           //echo ($csvfile[$i]['waterlvl']).'<br>';
         }
         //$fnal = $currentreading / 100;
         return $currentreading;
@@ -245,7 +245,7 @@ class Getcsvdataapi
         $csvtime='';
         $sensors = DB::table('tbl_sensors')->whereIn('category_id', [1,2,3])->get();
         $mycsvFile = $rootpath.$csvfile;
-        $waterlevel = '-WATERLEVEL-';
+        $waterlvl = '-WATERLEVEL-';
         $tndem = 'WATERLEVEL_';
        
         $indexWtrlvl = 0;
@@ -278,24 +278,19 @@ class Getcsvdataapi
                 $csvdatetime = $csv[$i][0]; 
                 $csvdatetimearray = explode(" ", $csvdatetime);         
                 $csvtime = explode(":", $csvdatetimearray[1]);      
-                    if (strpos($mycsvFile,$waterlevel) !== false) {
+                    if (strpos($mycsvFile,$waterlvl) !== false) {
                         $counter[$count++] = array(
                             'date' =>  $csvdatetimearray[0],
                             'time' =>  $csvdatetimearray[1],
-                            'waterlevel' => $csv[$i][1],
+                            'waterlvl' => $csv[$i][1],
                             'category' => '2',
                         );
                     }else if (strpos($mycsvFile,$tndem) !== false){
                         $counter[$count++] = array(
                             'date' =>  $csvdatetimearray[0],
                             'time' =>  $csvdatetimearray[1],
-<<<<<<< HEAD
                             'value' => $csv[$i][2],
                             'waterlvl' => $csv[$i][3],
-=======
-                            'value' => $csv[$i][1],
-                            'waterlevel' => $csv[$i][2],
->>>>>>> 80a021fe0e7584041826d85458a513a8b49a33d0
                             'category' => '3',
                         );
                     }else{
@@ -326,7 +321,7 @@ class Getcsvdataapi
                     $counter[$count++] = array(
                             'date' =>  $yestfile[$i]['date'],
                             'time' =>  $time,
-                            'waterlevel' => $yestfile[$i]['waterlevel'],
+                            'waterlvl' => $yestfile[$i]['waterlvl'],
                             'category' => '2',
                         );
                 }else if($cat == 3){
@@ -334,7 +329,7 @@ class Getcsvdataapi
                             'date' =>  $yestfile[$i]['date'],
                             'time' =>  $time,
                             'value' => $yestfile[$i]['value'],
-                            'waterlevel' => $yestfile[$i]['waterlevel'],
+                            'waterlvl' => $yestfile[$i]['waterlvl'],
                             'category' => '3',
                         );
                 }else{
@@ -371,7 +366,7 @@ class Getcsvdataapi
                     $counter1[$count++] = array(
                             'date' =>  $lower8[$i]['date'],
                             'time' =>  $time,
-                            'waterlevel' => $lower8[$i]['waterlevel'],
+                            'waterlvl' => $lower8[$i]['waterlvl'],
                             'category' => '2',
                         );
                 }else if($cat == 3){
@@ -379,7 +374,7 @@ class Getcsvdataapi
                             'date' =>  $lower8[$i]['date'],
                             'time' =>  $time,
                             'value' => $lower8[$i]['value'],
-                            'waterlevel' => $lower8[$i]['waterlevel'],
+                            'waterlvl' => $lower8[$i]['waterlvl'],
                             'category' => '3',
                         );
                 }else{
@@ -402,7 +397,7 @@ class Getcsvdataapi
                     $counter[$count++] = array(
                             'date' =>  $yestfile[$i]['date'],
                             'time' =>  $time,
-                            'waterlevel' => $yestfile[$i]['waterlevel'],
+                            'waterlvl' => $yestfile[$i]['waterlvl'],
                             'category' => '2',
                         );
                 }else if($cat == 3){
@@ -410,7 +405,7 @@ class Getcsvdataapi
                             'date' =>  $yestfile[$i]['date'],
                             'time' =>  $time,
                             'value' => $yestfile[$i]['value'],
-                            'waterlevel' => $yestfile[$i]['waterlevel'],
+                            'waterlvl' => $yestfile[$i]['waterlvl'],
                             'category' => '3',
                         );
                 }else{
@@ -446,7 +441,7 @@ class Getcsvdataapi
                 if($cat == 2){
                     $counter1[$count1++] = array(
                             'time' =>  $tods[$i]['time'],
-                            'waterlevel' => $tods[$i]['waterlevel'],
+                            'waterlvl' => $tods[$i]['waterlvl'],
                             'value' => 0,
                             'category' => '2',
                         );
@@ -454,7 +449,7 @@ class Getcsvdataapi
                     $counter1[$count1++] = array(
                             'time' =>   $tods[$i]['time'],
                             'value' => $tods[$i]['value'],
-                            'waterlevel' => $tods[$i]['waterlevel'],
+                            'waterlvl' => $tods[$i]['waterlvl'],
                             'category' => '3',
                         );
                 }else{
@@ -474,7 +469,7 @@ class Getcsvdataapi
                 if($cat == 2){
                     $counter[$count++] = array(
                             'time' =>  $csvfile[$i]['time'],
-                            'waterlevel' => $csvfile[$i]['waterlevel'],
+                            'waterlvl' => $csvfile[$i]['waterlvl'],
                             'category' => '2',
                             'value' => 0,
                         );
@@ -482,7 +477,7 @@ class Getcsvdataapi
                     $counter[$count++] = array(
                             'time' =>   $csvfile[$i]['time'],
                             'value' => $csvfile[$i]['value'],
-                            'waterlevel' => $csvfile[$i]['waterlevel'],
+                            'waterlvl' => $csvfile[$i]['waterlvl'],
                             'category' => '3',
                         );
                 }else{
@@ -527,7 +522,7 @@ class Getcsvdataapi
                 if($cat == 2){
                     $counter[$count++] = array(
                             'time' =>  $csvfile[$i]['time'],
-                            'waterlevel' => $csvfile[$i]['waterlevel'],
+                            'waterlvl' => $csvfile[$i]['waterlvl'],
                             'category' => '2',
                             'value' => 0,
                         );
@@ -535,7 +530,7 @@ class Getcsvdataapi
                     $counter[$count++] = array(
                             'time' =>   $csvfile[$i]['time'],
                             'value' => $csvfile[$i]['value'],
-                            'waterlevel' => $csvfile[$i]['waterlevel'],
+                            'waterlvl' => $csvfile[$i]['waterlvl'],
                             'category' => '3',
                         );
                 }else{
@@ -642,7 +637,7 @@ class Getcsvdataapi
                     if ($sensorType == 'rain2') {
                         $newKeys = [$keys[0], $keys[2], $keys[3], $keys[1]];
                        // dd($newKeys);
-                    } elseif ($sensorType == 'waterlevel & rain 2') {
+                    } elseif ($sensorType == 'waterlvl & rain 2') {
                         $newKeys = [$keys[0], $keys[3], $keys[4], $keys[1], $keys[2]];
                     } else {
                             $newKeys = $keys;
@@ -662,9 +657,9 @@ class Getcsvdataapi
                                         'rain_value' => $mydata['rain_value'],            
                                         'rain_cum' => $mydata['rain_cum'],
                                         'air_pressure' => $mydata['air_pressure']];
-                        } else if($sensorType == 'waterlevel & rain 2') {
+                        } else if($sensorType == 'waterlvl & rain 2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                        'waterlevel' => $mydata['waterlevel'],
+                                        'waterlvl' => $mydata['waterlvl'],
                                         'rain_value' => $mydata['rain_value'],
                                         'rain_cum' => $mydata['rain_cum'],
                                         //'waterlevel_msl' => $mydata['waterlevel_msl'],
@@ -762,7 +757,7 @@ class Getcsvdataapi
                      if ($sensorType == 'rain2') {
                         $newKeys = [$keys[0], $keys[2], $keys[3], $keys[1]];
                        // dd($newKeys);
-                    } elseif ($sensorType == 'waterlevel & rain 2') {
+                    } elseif ($sensorType == 'waterlvl & rain 2') {
                         $newKeys = [$keys[0], $keys[3], $keys[4], $keys[1], $keys[2]];
                     } else {
                             $newKeys = $keys;
@@ -782,9 +777,9 @@ class Getcsvdataapi
                                         'rain_value' => $mydata['rain_value'],            
                                         'rain_cum' => $mydata['rain_cum'],
                                         'air_pressure' => $mydata['air_pressure']];
-                        } else if($sensorType == 'waterlevel & rain 2') {
+                        } else if($sensorType == 'waterlvl & rain 2') {
                             $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                        'waterlevel' => $mydata['waterlevel'],
+                                        'waterlvl' => $mydata['waterlvl'],
                                         'rain_value' => $mydata['rain_value'],
                                         'rain_cum' => $mydata['rain_cum'],
                                         //'waterlevel_msl' => $mydata['waterlevel_msl'],
@@ -824,7 +819,7 @@ class Getcsvdataapi
         $categories = DB::table('tbl_categories')->get();
         $thresholds = DB::table('tbl_threshold')->get();
         $rainData = [];
-        $waterlevel = [];
+        $waterlvl = [];
         $dispcount = 0;
         $count = 0;            
         $sensorcategory = '';
@@ -885,7 +880,7 @@ class Getcsvdataapi
         $categories = DB::table('tbl_categories')->get();
         $thresholds = DB::table('tbl_threshold')->get();
         $disptotal = [];
-        $waterlevel = [];
+        $waterlvl = [];
         $dispcount = 0;
         $watercount = 0;       
         $wcount = 0;
@@ -920,7 +915,7 @@ class Getcsvdataapi
                 foreach ($thresholds as $threshold) {
                     if ($threshold->address_id == $sensor->id) {
                        if($water['id'] == $sensor->id){                        
-                            $waterlevel['data'][$watercount++] = array(
+                            $waterlvl['data'][$watercount++] = array(
                                 'id' => $sensor->id,
                                 'status' => $water['filestatus'],                             
                                 'address' => $sensor->address,
@@ -937,7 +932,7 @@ class Getcsvdataapi
                 }                
             }
         }
-        return $waterlevel;
+        return $waterlvl;
     }
     public function savetextFile(){
     }
