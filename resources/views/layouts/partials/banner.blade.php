@@ -7,7 +7,7 @@
       <div class="col-xs-12 col-sm-6 logos">
         <ul>
           <li class="hidden-sm hidden-md hidden-lg visible-xs">
-            <a href="#" title="Cordillera Disaster Risk Reduction and Management Council" target="_blank"><img src="http://drrmis.dostcar.ph/assets/images/CRDRRMC.png" class="mres"/></a>
+            <a href="#" title="Cordillera Disaster Risk Reduction and Management Council" target="_blank"><img src="/public/assets/images/CRDRRMC.png" class="mres"/></a>
           </li>
           <li>
             <a href="http://car.dost.gov.ph/" title="Department of Science and Technology CAR" target="_blank"><img src="http://drrmis.dostcar.ph/assets/images/logodost.png" class="mres"/></a>

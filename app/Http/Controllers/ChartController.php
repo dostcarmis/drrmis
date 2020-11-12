@@ -76,8 +76,8 @@ class ChartController extends Controller
 
 							'dev_id' => $devid,
 							'time' =>  $csvdatetimearray[1],
-							'value' => $line_of_text[$i][1],
-							'waterlvl' => $line_of_text[$i][2],
+							'value' => $line_of_text[$i][2],
+							'waterlvl' => $line_of_text[$i][3],
 							'category' => '3',
 						);
 					}else{
@@ -85,7 +85,7 @@ class ChartController extends Controller
 
 							'dev_id' => $devid,
 							'time' =>  $csvdatetimearray[1],
-							'value' => $line_of_text[$i][1],
+							'value' => $line_of_text[$i][2],
 							'category' => '1',
 						);
 					}

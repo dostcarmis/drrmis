@@ -58,7 +58,7 @@ for (var arrcount = 0; arrcount < csvcontents.length; arrcount++) {
   var time = [];
 
   for(x = 0;x<csvcontents[arrcount].length;x++){
-      var wlvlvalue = parseFloat(csvcontents[arrcount][x].waterlvl) / 100;
+      var wlvlvalue = parseFloat(csvcontents[arrcount][x].waterlvl);
       time[x] = csvcontents[arrcount][x].time;
       points[x] = parseFloat(csvcontents[arrcount][x].value);
       wlvl[x] = wlvlvalue;

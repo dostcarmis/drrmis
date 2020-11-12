@@ -269,15 +269,15 @@ class Getcsvdataapi
                         $counter[$count++] = array(
                             'date' =>  $csvdatetimearray[0],
                             'time' =>  $csvdatetimearray[1],
-                            'value' => $csv[$i][1],
-                            'waterlvl' => $csv[$i][2],
+                            'value' => $csv[$i][2],
+                            'waterlvl' => $csv[$i][3],
                             'category' => '3',
                         );
                     }else{
                         $counter[$count++] = array(
                             'date' =>  $csvdatetimearray[0],
                             'time' =>  $csvdatetimearray[1],
-                            'value' => $csv[$i][1],
+                            'value' => $csv[$i][2],
                             'category' => '1',
                         );
                     }
@@ -615,10 +615,10 @@ class Getcsvdataapi
                     }
 
                     if ($sensorType == 'rain2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3]];
+                        $newKeys = [$keys[0], $keys[2], $keys[3], $keys[1]];
                        // dd($newKeys);
                     } elseif ($sensorType == 'waterlevel & rain 2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3], $keys[4]];
+                        $newKeys = [$keys[0], $keys[3], $keys[4], $keys[1], $keys[2]];
                     } else {
                             $newKeys = $keys;
                     }
@@ -736,10 +736,10 @@ class Getcsvdataapi
                         $keys[$counter++] =  $key;           
                     }
                      if ($sensorType == 'rain2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3]];
+                        $newKeys = [$keys[0], $keys[2], $keys[3], $keys[1]];
                        // dd($newKeys);
                     } elseif ($sensorType == 'waterlevel & rain 2') {
-                        $newKeys = [$keys[0], $keys[1], $keys[2], $keys[3], $keys[4]];
+                        $newKeys = [$keys[0], $keys[3], $keys[4], $keys[1], $keys[2]];
                     } else {
                             $newKeys = $keys;
                     }
