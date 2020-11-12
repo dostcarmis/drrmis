@@ -363,6 +363,11 @@ class UserController extends Controller
         } else {
             Session::flash('message', 'Cannot delete own account!');
             return redirect('viewusers');
+<<<<<<< HEAD:app/Http/Controllers/UserController.php
+=======
+<<<<<<< HEAD:app/Http/Controllers/_UserController.php
+<<<<<<< HEAD
+>>>>>>> 63e6e7114b85138e7ee6267c571373a55f07ef2e:app/Http/Controllers/_UserController_.php
         }
     }
 
@@ -455,6 +460,17 @@ class UserController extends Controller
         Session::flash('message', 'Group successfully deleted');
         return redirect('usergroups');
     }
+<<<<<<< HEAD:app/Http/Controllers/UserController.php
+=======
+=======
+      }
+   }
+>>>>>>> mac
+=======
+      }
+   }
+>>>>>>> 5364ad092df76f8ca4ccde18b58a4ca68833add1:app/Http/Controllers/UserController.php
+>>>>>>> 63e6e7114b85138e7ee6267c571373a55f07ef2e:app/Http/Controllers/_UserController_.php
 
    
 }
