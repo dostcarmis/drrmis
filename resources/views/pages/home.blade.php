@@ -49,6 +49,8 @@ foreach ($landslides as $landslide) {
 <script src="{!! url('assets/js/map.js')!!}"></script>
 <script src="{!! url('assets/js/home.js') !!}"></script>
 
+
+
 @if ($errors->all && count($errors->all()) > 0)
 <script>$('#modalLoginForm').modal();</script>
 @endif

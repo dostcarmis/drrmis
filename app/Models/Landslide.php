@@ -20,7 +20,37 @@ class Landslide extends Model
      *
      * @var array
      */
-    protected $fillable = ['date','location','latitude','longitude','description','user_id','updated_by','updated'];
+    protected $fillable = [
+        'date',
+        'road_location',
+        'house_location',
+        'municipality',
+        'province_id',
+        'landcover',
+        'landmark',
+        'landslidetype',
+        'landslidereccuring',
+        'lewidth',
+        'lelength',
+        'ledepth',
+        'idkilled',
+        'idinjured',
+        'idmissing',
+        'idaffectedcrops',
+        'cause',
+        'typhooname',
+        'heavyrainfall',
+        'reportedby',
+        'reporterpos',
+        'incident_images',
+        'pastrainvalue',
+        'latitude',
+        'longitude',
+        'created_by',
+        'updated_by',
+        'author',
+        'user_municipality',
+        'report_status'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -28,4 +58,12 @@ class Landslide extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function municipal(){
+        return $this->hasOne('App\Models\Municipality', 'id', 'municipality');
+      }
+      public function province(){
+        return $this->hasOne('App\Models\Province', 'id', 'province_id');
+      }
+    
 }

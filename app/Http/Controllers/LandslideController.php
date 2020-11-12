@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Session;
 use App\Http\Requests;
 use App\Models\User;
-use App\Models\Landslides;
+use App\Models\Landslide;
 use App\Models\Municipality;
 use DB;
 use Carbon\Carbon;
@@ -44,7 +44,7 @@ class LandslideController extends Controller
       $cntUser = Auth::user(); 
       $users = DB::table('users')->get();
       $provinces = DB::table('tbl_provinces')->get();
-      $landslides = DB::table('tbl_landslides')
+      $landslides = Landslide::with(['province','municipal'])
                       ->orderBy('created_at', 'desc')->get();
     	return view('pages.viewlandslides')->with(['users' => $users,'provinces' => $provinces,'landslides' => $landslides]);
     }
@@ -342,7 +342,6 @@ class LandslideController extends Controller
                        ->where('incident_type', 1)
                        ->get();
       //dd($datIncident);
-      
       foreach($datIncident as $cnt => $incident){
         echo $cnt . "<br>";
          DB::table('tbl_landslides')->insert(
@@ -380,8 +379,7 @@ class LandslideController extends Controller
                'created_at' => $incident->created_at,
                'updated_at' => $incident->updated_at,
             ]
-         );
-            
+         ); 
       }
     }
 }
