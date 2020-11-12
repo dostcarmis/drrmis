@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "daad6d86185f7db010ef02a65caa265c",
+    "content-hash": "f20f4388ab6e6f7996e0982ae9cb5de3",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -775,6 +775,7 @@
                 }
             ],
             "description": "Mime-type detection for Flysystem",
+<<<<<<< HEAD
             "funding": [
                 {
                     "url": "https://github.com/frankdejonge",
@@ -785,6 +786,8 @@
                     "type": "tidelift"
                 }
             ],
+=======
+>>>>>>> 80a021fe0e7584041826d85458a513a8b49a33d0
             "time": "2020-10-18T11:50:25+00:00"
         },
         {

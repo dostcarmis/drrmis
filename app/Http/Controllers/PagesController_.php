@@ -219,8 +219,13 @@ class PagesController extends Controller
         ignore_user_abort(true);
         //$post = $request->all();
 
+<<<<<<< HEAD
         $dateStart = '2020/11/11';
         $dateEnd = '2020/11/12'; 
+=======
+        $dateStart = '2020/11/03';
+        $dateEnd = '2020/11/03'; 
+>>>>>>> 80a021fe0e7584041826d85458a513a8b49a33d0
 
         $begin = new DateTime($dateStart);
 		$end = new DateTime($dateEnd);

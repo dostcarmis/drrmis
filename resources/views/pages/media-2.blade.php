@@ -14,7 +14,7 @@
 <script type="text/javascript" src="{!! url('assets/dropzone/dropzone.js') !!}"></script>
 <script type="text/javascript">
             var baseUrl = "{{ url('/') }}";
-            var token = "{{ Session::getToken() }}";
+            var token = "{{ Session::token() }}";
             Dropzone.autoDiscover = false;
              var myDropzone = new Dropzone("div#dZUpload", { 
                  url: "upload-2",

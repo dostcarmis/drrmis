@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "scripts": {
+    "prod": "gulp --production",
+    "dev": "gulp watch"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.5.3",
+    "gulp": "^3.9.1",
+<<<<<<< HEAD
+    "laravel-elixir": "^5.0.0"
+  },
+  "dependencies": {
+    "laravel-mix": "^5.0.7"
+=======
+    "gulp-sass": "^4.1.0",
+    "popper.js": "^1.16.1"
+  },
+  "dependencies": {
+    "core-util-is": "^1.0.2",
+    "laravel-elixir": "^6.0.0-18",
+    "mdbootstrap": "^4.19.1",
+    "node-sass": "^4.14.1",
+    "session": "^0.1.0"
+>>>>>>> 80a021fe0e7584041826d85458a513a8b49a33d0
+  }
+}
