@@ -499,8 +499,8 @@ class Getcsvdataapi
             $sum += ($counter[$i]['value'] !== 'ERR' ? $counter[$i]['value'] : NULL);
         }
 
-        for ($x=0; $x < $limit1; $x++) {
-            $sum1 += ($counter1[$i]['value'] !== 'ERR' ? $counter1[$i]['value'] : NULL);
+        for ($x=0; $x < $limit1; $x++) { 
+            $sum1 += isset($counter1[$x]['value']) ? $counter1[$x]['value'] : NULL;
         }
         $totalyesterday = $sum1 + $sum;
         
