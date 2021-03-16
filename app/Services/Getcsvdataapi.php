@@ -155,7 +155,7 @@ class Getcsvdataapi
         $sum = 0;
         $limit = count($counter);
         for ($i=0; $i < $limit; $i++) {
-            $sum += ($counter[$i]['value'] !== 'ERR' ? $counter[$i]['value'] : NULL);
+            $sum += isset($counter[$i]['value']) ? (float) $counter[$i]['value'] : 0;
         }
       return number_format((float)$sum, 2, '.', '');
     }
@@ -496,11 +496,11 @@ class Getcsvdataapi
         $limit1 = count($counter1);
 
         for ($i=0; $i < $limit; $i++) {
-            $sum += ($counter[$i]['value'] !== 'ERR' ? $counter[$i]['value'] : NULL);
+            $sum += isset($counter[$i]['value']) ? (float) $counter[$i]['value'] : 0;
         }
 
         for ($x=0; $x < $limit1; $x++) { 
-            $sum1 += isset($counter1[$x]['value']) ? $counter1[$x]['value'] : NULL;
+            $sum1 += isset($counter1[$x]['value']) ? (float) $counter1[$x]['value'] : 0;
         }
         $totalyesterday = $sum1 + $sum;
         
@@ -546,7 +546,7 @@ class Getcsvdataapi
         $sum = 0;
         $limit = count($counter);
         for ($i=0; $i < $limit; $i++) {
-            $sum += ($counter[$i]['value'] !== 'ERR' ? $counter[$i]['value'] : NULL);
+            $sum += isset($counter[$i]['value']) ? (float) $counter[$i]['value'] : 0;
         }
 
         return number_format((float)$sum, 2, '.', '');
