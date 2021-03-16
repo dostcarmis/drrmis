@@ -496,11 +496,11 @@ class Getcsvdataapi
         $limit1 = count($counter1);
 
         for ($i=0; $i < $limit; $i++) {
-            $sum+= $counter[$i]['value'];
+            $sum += ($counter[$i]['value'] !== 'ERR' ? $counter[$i]['value'] : NULL);
         }
 
-        for ($x=0; $x < $limit1; $x++) { 
-            $sum1 += $counter1[$x]['value'];
+        for ($x=0; $x < $limit1; $x++) {
+            $sum1 += ($counter1[$i]['value'] !== 'ERR' ? $counter1[$i]['value'] : NULL);
         }
         $totalyesterday = $sum1 + $sum;
         
@@ -546,7 +546,7 @@ class Getcsvdataapi
         $sum = 0;
         $limit = count($counter);
         for ($i=0; $i < $limit; $i++) {
-            $sum+= $counter[$i]['value'];
+            $sum += ($counter[$i]['value'] !== 'ERR' ? $counter[$i]['value'] : NULL);
         }
 
         return number_format((float)$sum, 2, '.', '');
