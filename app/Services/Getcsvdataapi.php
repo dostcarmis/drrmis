@@ -154,8 +154,8 @@ class Getcsvdataapi
 
         $sum = 0;
         $limit = count($counter);
-        for ($i=0; $i < $limit; $i++) { 
-            $sum+= $counter[$i]['value'];
+        for ($i=0; $i < $limit; $i++) {
+            $sum += ($counter[$i]['value'] !== 'ERR' ? $counter[$i]['value'] : NULL);
         }
       return number_format((float)$sum, 2, '.', '');
     }
