@@ -46,8 +46,8 @@ class Getcsvdataapi
         $csvfile = $this->getcsv($path,$csv);
         $perline = count($csvfile);
         $sum = 0;
-        for ($i=0; $i < $perline; $i++) { 
-            $sum+= $csvfile[$i]['value'];
+        for ($i=0; $i < $perline; $i++) {
+            $sum += isset($csvfile[$i]['value']) ? (float) $csvfile[$i]['value'] : 0;
         }
         return $sum;
     }   
