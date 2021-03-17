@@ -171,216 +171,222 @@
                 </ul>
             </li>      
 
-        <!------------------------------------ Risk Assessment Dropdown -------------------------------------------->
+            <!------------------------------------ Risk Assessment Dropdown -------------------------------------------->
 
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#riskassess" class="" aria-expanded="true">
-                <i class="fa fa-flag"></i> Risk Assessment <i class="fa fa-fw fa-caret-down"></i>
-            </a>
-            <ul id="riskassess" class="collapse" aria-expanded="true">
-                <li>
-                    <a href="https://hazardhunter.georisk.gov.ph/" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> Link
-                    </a>
-                </li>
-                <li>
-                    <a data-toggle="modal" data-target="#selectProvmodal" href="#">
-                        <i class="fa fa-files-o"></i> Files
-                    </a>
-                </li>
-            </ul>
-        </li>  
+            <li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#riskassess" class="" aria-expanded="true">
+                    <i class="fa fa-flag"></i> Risk Assessment <i class="fa fa-fw fa-caret-down"></i>
+                </a>
+                <ul id="riskassess" class="collapse" aria-expanded="true">
+                    <li>
+                        <a href="https://hazardhunter.georisk.gov.ph/" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> Link
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="modal" data-target="#selectProvmodal" href="#">
+                            <i class="fa fa-files-o"></i> Files
+                        </a>
+                    </li>
+                </ul>
+            </li>  
 
-        <!------------------------------------ Warn Dropdown -------------------------------------------->
+            <!------------------------------------ Warn Dropdown -------------------------------------------->
+                
+            <li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#sms-module" class="" aria-expanded="true">
+                    <i class="fa fa-signal"></i> Warn <i class="fa fa-fw fa-caret-down"></i>
+                </a>
+                <ul id="sms-module" class="collapse" aria-expanded="true">
+                    <li class="divider"><i class="fa fa-flag"></i></li>
+                    <li>
+                        <a href="{{ action("SMSController@viewRegisteredContacts") }}">
+                            <i class="fa fa-users"></i> Notification Subscribers 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ action("SMSController@viewAllNotifications") }}">
+                            <i class="fa fa-flag"></i> All Notifications 
+                        </a>
+                    </li>
+                    <li class="divider"><i class="fa fa-comment"></i> </li>
+                    <li>
+                        <a href="{{ action("SMSController@viewRegisteredContacts") }}">
+                            <i class="fa fa-address-book" ></i> Phonebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ action("SMSController@viewManualSMS") }}">
+                            <i class="fa fa-comment"></i> Compose Message
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ action("SMSController@viewManualSMS") }}">
+                            <i class="fa fa-paper-plane"></i> Sent
+                        </a>
+                    </li>
+                </ul>
+            </li>
+                    
+            <!---------------------------------- Libraries Dropdown -------------------------------------------->
+
+            @if($currentUser->role_id == 1 || $currentUser->role_id == 2) 
+            <li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#data" class="" aria-expanded="true">
+                    <i class="fa fa-book" aria-hidden="true"></i> Libraries <i class="fa fa-fw fa-caret-down"></i>
+                </a>
+                <ul id="data" class="collapse" aria-expanded="true">
+                    <li>
+                        <a href="{{ action("SensorsController@viewSensor") }}">
+                            <i class="fa fa-lg  fa-map-marker" aria-hidden="true"></i> Sensors
+                        </a>
+                    </li>
+                    <li class="dropside">
+                        <a href="{{ action("ThresholdController@viewThreshold") }}">
+                            <i class="fa fa-linode" aria-hidden="true"></i> Threshold
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="{{ action("SusceptibilityController@viewSusceptibility") }}">
+                            <i class="fa fa-linode" aria-hidden="true"></i> Susceptibility
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="{{ action('TyphoontrackController@viewTyphoonTracks') }}">
+                            <i class="fa fa-road" aria-hidden="true"></i> Typhoon Tracks
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="{{ action('HazardmapsController@viewHazardmaps')}}">
+                            <i class="fa fa-map" aria-hidden="true"></i> Hazard Maps
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="{{ action('HazardsController@viewHazards') }}">
+                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Hazards
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ action("FloodproneareasController@viewFloodproneAreas")}}">
+                            <i class="fa fa-files-o" aria-hidden="true"></i> Flood-prone Areas
+                        </a>
+                    </li>
+                    <li class="divider"><i class="fa fa-gear" aria-hidden="true"></i></li>
+                    <li>
+                        <a href="{{ action("CategoriesController@viewCategories") }}">
+                            <i class="fa fa-list" aria-hidden="true"></i> Sensor Categories
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
+
+            <!---------------------------------- Users Dropdown -------------------------------------------->
+
+            @if($currentUser->role_id == 1 || $currentUser->role_id == 2)
+            <li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#users" class="" aria-expanded="true">
+                    <i class="fa fa-user"></i> Users <i class="fa fa-fw fa-caret-down"></i>
+                </a>
+                <ul id="users" class="collapse" aria-expanded="true">
+                    <li>
+                        <a href="{{ action("UserController@viewusers") }}">
+                            <i class="fa fa-users"></i> View Users
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ action("UserController@viewadduser") }}">
+                            <i class="fa fa-user-plus"></i> Add Users
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ action("UserController@viewGroups") }}">
+                            <i class="fa fa-object-group"></i> View User Group
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ action("UserController@viewCreateGroup") }}">
+                            <i class="fa fa-plus-square-o"></i> Add User Group
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ action("UserlogsController@viewactivitylogs") }}">
+                            <i class="fa fa-user-secret"></i> User Activity
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            @endif
+
+            <!---------------------------------- DRRMLinks Dropdown -------------------------------------------->
             
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#sms-module" class="" aria-expanded="true">
-                <i class="fa fa-signal"></i> Warn <i class="fa fa-fw fa-caret-down"></i>
-            </a>
-            <ul id="sms-module" class="collapse" aria-expanded="true">
-                <li>
-                    <a href="{{ action("SMSController@viewRegisteredContacts") }}">
-                        <i class="glyphicon glyphicon-user" aria-hidden="true"></i> Notification Subscribers 
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ action("SMSController@viewRegisteredContacts") }}">
-                        <i class="fa fa-address-book" aria-hidden="true"></i> Phonebook
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ action("SMSController@viewManualSMS") }}">
-                        <i class="glyphicon glyphicon-comment" aria-hidden="true"></i> Send Manual SMS 
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ action("SMSController@viewAllNotifications") }}">
-                        <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> All Notifications 
-                    </a>
-                </li>
-            </ul>
-        </li>
-                  
-        <!---------------------------------- Libraries Dropdown -------------------------------------------->
-
-        @if($currentUser->role_id == 1 || $currentUser->role_id == 2) 
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#data" class="" aria-expanded="true">
-                <i class="fa fa-book" aria-hidden="true"></i> Libraries <i class="fa fa-fw fa-caret-down"></i>
-            </a>
-            <ul id="data" class="collapse" aria-expanded="true">
-                <li>
-                    <a href="{{ action("SensorsController@viewSensor") }}">
-                        <i class="fa fa-lg  fa-map-marker" aria-hidden="true"></i> Sensors
-                    </a>
-                </li>
-                <li class="dropside">
-                    <a href="{{ action("ThresholdController@viewThreshold") }}">
-                        <i class="fa fa-linode" aria-hidden="true"></i> Threshold
-                    </a>
-                </li> 
-                <li>
-                    <a href="{{ action("SusceptibilityController@viewSusceptibility") }}">
-                        <i class="fa fa-linode" aria-hidden="true"></i> Susceptibility
-                    </a>
-                </li> 
-                <li>
-                    <a href="{{ action('TyphoontrackController@viewTyphoonTracks') }}">
-                        <i class="fa fa-road" aria-hidden="true"></i> Typhoon Tracks
-                    </a>
-                </li> 
-                <li>
-                    <a href="{{ action('HazardmapsController@viewHazardmaps')}}">
-                        <i class="fa fa-map" aria-hidden="true"></i> Hazard Maps
-                    </a>
-                </li> 
-                <li>
-                    <a href="{{ action('HazardsController@viewHazards') }}">
-                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Hazards
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ action("FloodproneareasController@viewFloodproneAreas")}}">
-                        <i class="fa fa-files-o" aria-hidden="true"></i> Flood-prone Areas
-                    </a>
-                </li>
-                <li class="divider"><i class="fa fa-gear" aria-hidden="true"></i></li>
-                <li>
-                    <a href="{{ action("CategoriesController@viewCategories") }}">
-                        <i class="fa fa-list" aria-hidden="true"></i> Sensor Categories
-                    </a>
-                </li>
-            </ul>
-        </li>
-        @endif
-
-        <!---------------------------------- Users Dropdown -------------------------------------------->
-
-        @if($currentUser->role_id == 1 || $currentUser->role_id == 2)
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#users" class="" aria-expanded="true">
-                <i class="fa fa-user"></i> Users <i class="fa fa-fw fa-caret-down"></i>
-            </a>
-            <ul id="users" class="collapse" aria-expanded="true">
-                <li>
-                    <a href="{{ action("UserController@viewusers") }}">
-                        <i class="fa fa-users"></i> View Users
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ action("UserController@viewadduser") }}">
-                        <i class="fa fa-user-plus"></i> Add Users
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ action("UserController@viewGroups") }}">
-                        <i class="fa fa-object-group"></i> View User Group
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ action("UserController@viewCreateGroup") }}">
-                        <i class="fa fa-plus-square-o"></i> Add User Group
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ action("UserlogsController@viewactivitylogs") }}">
-                        <i class="fa fa-user-secret"></i> User Activity
-                    </a>
-                </li>
-            </ul>
-        </li>
-        @endif
-
-        <!---------------------------------- DRRMLinks Dropdown -------------------------------------------->
-        
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#links" class="" aria-expanded="true">
-                <i class="fa fa-external-link-square" aria-hidden="true"></i> DRRM Links <i class="fa fa-fw fa-caret-down"></i>
-            </a>
-            <ul id="links" class="collapse" aria-expanded="true">
-                <li>
-                    <a href="http://www.pagasa.dost.gov.ph/" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> PAGASA
-                    </a>
-                </li>
-                <li>
-                    <a href="http://www.phivolcs.dost.gov.ph/" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> PHIVOLCS
-                    </a>
-                </li>
-                <li>
-                    <a href="http://fmon.asti.dost.gov.ph/" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> PREDICT
-                    </a>
-                </li>
-                <li>
-                    <a href="http://climatex.dost.gov.ph/" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> ClimateX
-                    </a>
-                </li>
-                <li>
-                    <a href="http://noah.dost.gov.ph/" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> NOAH
-                    </a>
-                </li>
-                <li>
-                    <a href="https://dream.upd.edu.ph/" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> DREAM
-                    </a>
-                </li>   
-                <li>
-                    <a href="https://lipad.dream.upd.edu.ph/" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> LIPAD
-                    </a>
-                </li>
-                <li>
-                    <a href="https://hazardhunter.georisk.gov.ph/" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> HazardhunterPH
-                    </a>
-                </li>   
-                <li>
-                    <a href="https://v2-cloud.meteopilipinas.gov.ph/" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> MDSI
-                    </a>
-                </li>   
-                <li>
-                    <a href="http://www.geoportal.gov.ph/?fbclid=IwAR0RX5o20shREypitmacKXnGAe6IBjhHnnkZzTzZqJLAKaNpMlqwS8Wf4Vc" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> Geoportal
-                    </a>
-                </li>
-                <li>
-                    <a href="http://gdis.mgb.gov.ph/mgbgoogle/?fbclid=IwAR1PxiAnZfvPzbDR_-ursAeDCgP2troJRbOcg9u78cbT0iOCmzgjC_ucN2o" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> MGB gdis
-                    </a>
-                </li>
-                <li>
-                    <a href="http://dews.asti.dost.gov.ph/" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> DEWS
-                    </a>
-                </li>
-            </ul>
-        </li>
-            
+            <li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#links" class="" aria-expanded="true">
+                    <i class="fa fa-external-link-square" aria-hidden="true"></i> DRRM Links <i class="fa fa-fw fa-caret-down"></i>
+                </a>
+                <ul id="links" class="collapse" aria-expanded="true">
+                    <li>
+                        <a href="http://www.pagasa.dost.gov.ph/" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> PAGASA
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.phivolcs.dost.gov.ph/" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> PHIVOLCS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://fmon.asti.dost.gov.ph/" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> PREDICT
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://climatex.dost.gov.ph/" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> ClimateX
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://noah.dost.gov.ph/" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> NOAH
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://dream.upd.edu.ph/" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> DREAM
+                        </a>
+                    </li>   
+                    <li>
+                        <a href="https://lipad.dream.upd.edu.ph/" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> LIPAD
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://hazardhunter.georisk.gov.ph/" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> HazardhunterPH
+                        </a>
+                    </li>   
+                    <li>
+                        <a href="https://v2-cloud.meteopilipinas.gov.ph/" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> MDSI
+                        </a>
+                    </li>   
+                    <li>
+                        <a href="http://www.geoportal.gov.ph/?fbclid=IwAR0RX5o20shREypitmacKXnGAe6IBjhHnnkZzTzZqJLAKaNpMlqwS8Wf4Vc" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> Geoportal
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://gdis.mgb.gov.ph/mgbgoogle/?fbclid=IwAR1PxiAnZfvPzbDR_-ursAeDCgP2troJRbOcg9u78cbT0iOCmzgjC_ucN2o" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> MGB gdis
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://dews.asti.dost.gov.ph/" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> DEWS
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 
