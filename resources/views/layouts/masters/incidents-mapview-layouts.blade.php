@@ -34,6 +34,9 @@ if (Auth::check()) : ?>
             @yield('page-content')
         </aside>
     </div>
+        <script>
+            const baseURL = "{{ url('/') }}/";
+        </script>
         <script type="text/javascript" src="{!! url('js/jquery-2.2.0.js') !!}"></script>
         <script type="text/javascript" src="{!! url('js/corejs.min.js') !!}"></script>
         <script type="text/javascript" src="{!! url('js/jqueryui.min.js') !!}"></script>

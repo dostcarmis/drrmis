@@ -43,6 +43,9 @@
             </div>
         </aside>
     </div>
+    <script>
+        const baseURL = "{{ url('/') }}/";
+    </script>
     <script src="{!! url('js/jquery1-11-3.min.js')!!}"></script>   
     <script src="{!! url('js/code-jquery-1.12.3.min.js')!!}"></script>
     <script src="{!! url('js/code-jquery-ui.1.11.4.min.js')!!}"></script>

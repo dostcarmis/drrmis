@@ -38,6 +38,9 @@ if (Auth::check()) : ?>
     </div>
         
 
+        <script>
+            const baseURL = "{{ url('/') }}/";
+        </script>
         <script src="{!! url('js/jquery1-11-3.min.js')!!}"></script> 
         <script type="text/javascript" src="{{ URL::asset('js/jquery-2.2.0.js') }}"></script>
         

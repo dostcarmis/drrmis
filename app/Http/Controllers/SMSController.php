@@ -8,6 +8,8 @@ use DB;
 use Auth;
 use App\Models\Subscribers;
 use App\Models\Contact;
+use App\Models\ContactNumber;
+use App\Models\SentMessage;
 use App\Models\User;
 use Globe\Connect\Oauth;
 use Globe\Connect\Sms;
@@ -331,40 +333,57 @@ class SMSController extends Controller
     }*/
 
     public function sendMessage(Request $request) {
-        $userID = Auth::user()->id;
-        $userDat = DB::table('tbl_groups as grp')
-                    ->select('grp.sms_api_key')
-                    ->join('users as user', 'user.group', '=', 'grp.grp_id')
-                    ->where('user.id', $userID)
-                    ->first();
-        $recipients = $request->phone_number;
-        $msg = $request->msg;
+        try {
+            $userID = Auth::user()->id;
+            $groupID = Auth::user()->group;
+            $userDat = DB::table('tbl_groups as grp')
+                        ->select('grp.sms_api_key')
+                        ->join('users as user', 'user.group', '=', 'grp.id')
+                        ->where('user.id', $userID)
+                        ->first();
+            $sentMessageInstance = new SentMessage;
+            $recipients = $request->contact_numbers;
+            $msg = $request->msg;
+            $status = [];
 
-        foreach ($recipients as $recipient) {
-            $subscriberNumber = str_replace('+63', '0', $recipient);
+            foreach ($recipients as $recipient) {
+                $subscriberNumber = str_replace('+63', '0', $recipient);
+
+                if ($userDat) {
+                    $ch = curl_init();
+                    $parameters = array(
+                        'apikey' => $userDat->sms_api_key, //Your API KEY
+                        'number' => $subscriberNumber,
+                        'message' => $msg,
+                        'sendername' => 'SEMAPHORE'
+                    );
+                    curl_setopt( $ch, CURLOPT_URL,'https://semaphore.co/api/v4/messages' );
+                    curl_setopt( $ch, CURLOPT_POST, 1 );
+
+                    //Send the parameters set above with the request
+                    curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $parameters ) );
+
+                    // Receive response from server
+                    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+                    $output = curl_exec( $ch );
+                    curl_close ($ch);
+
+                    //Show the server response
+                    echo $output;
+                    $status[] = $output;
+                }
+            }
 
             if ($userDat) {
-                $ch = curl_init();
-                $parameters = array(
-                    'apikey' => $userDat->sms_api_key, //Your API KEY
-                    'number' => $subscriberNumber,
-                    'message' => $msg,
-                    'sendername' => 'SEMAPHORE'
-                );
-                curl_setopt( $ch, CURLOPT_URL,'https://semaphore.co/api/v4/messages' );
-                curl_setopt( $ch, CURLOPT_POST, 1 );
-
-                //Send the parameters set above with the request
-                curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $parameters ) );
-
-                // Receive response from server
-                curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-                $output = curl_exec( $ch );
-                curl_close ($ch);
-
-                //Show the server response
-                echo $output;
+                $sentMessageInstance->user_id = $userID;
+                $sentMessageInstance->group_id = $groupID;
+                $sentMessageInstance->recipients = serialize($recipients);
+                $sentMessageInstance->message = $msg;
+                $sentMessageInstance->status = serialize($status);
+                $sentMessageInstance->save();
             }
+        } catch (\Throwable $th) {
+            echo 'Unknown error occured. Try again!';
         }
     }
 

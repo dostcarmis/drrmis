@@ -1,9 +1,7 @@
 const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
 $(function(){
-    var searchInput;
 	var recipients = [];
-    var _recipients = [];
     var segmentCount = 0;
     var textSegmentCount = 0;
     let recipientsData = {};
@@ -15,7 +13,7 @@ $(function(){
 
     function initializeContacts() {
         $('#recipients').select2({
-            tokenSeparators: [','],
+            tokenSeparators: [',', ' '],
             tags: true,
             placeholder: "Enter or select recipient/s here...",
             width: '100%',
@@ -57,28 +55,24 @@ $(function(){
             const _contactNumber = e.params.data.id,
                   numberLength = _contactNumber.length,
                   contactNumber = proccessNumber(_contactNumber, numberLength);
+
             if (contactNumber) {
-                const option = new Option(contactNumber, contactNumber, true, true);
-                $(this).append(option).trigger('change');
                 recipients.push(contactNumber);
             }
 
-            $(this).val(recipients);
-        }).on('change', function (e) {
-            /*
-            const contactNumbers = $(this).val();
-            recipients = contactNumbers;*/
-
-            //console.log(recipients);
+            $(this).val(null).trigger('change');
+            $.each(recipients, function (i, recipient) {
+                let option = new Option(recipient, recipient, true, true);
+                $('#recipients').append(option).trigger('change');
+            });
+        }).on('select2:unselect', function (e) {
+            const _contactNumber = e.params.data.id;
+            recipients = $.grep(recipients, function(recipient) {
+                return recipient != _contactNumber;
+            });
+        }).on('select2:clear', function(e) {
+            recipients = [];
         });
-    }
-
-    function setEnable_Disable_MsgBody(textCount, recipientsLength){
-        if (textCount > 0 && recipientsLength > 0){
-            $("#send-msg").removeAttr("disabled");
-        } else {
-            $("#send-msg").attr("disabled", "disabled");
-        }
     }
 
     function proccessNumber(contactNumber, numberLength){
@@ -95,16 +89,27 @@ $(function(){
             if (isValidNumber) {
                 if (contactNumber.substring(0, 2) != "09" && numberLength === 11){
                     isValidNumber = false;
-                }else if (contactNumber.substring(0, 4) != "+639" && numberLength === 13){
+                } else if (contactNumber.substring(0, 4) != "+639" && numberLength === 13){
                     isValidNumber = false;
                 }
             }
 
             if (isValidNumber) {
+                let hasDuplicate = false;
+
                 if (firstChar == "0" && numberLength === 11){
                     contactNumber = contactNumber.slice(1, numberLength);
                     contactNumber = "+63" + contactNumber;
+                }
 
+                for (var i = 0; i < recipients.length; i++) {
+                    if (recipients[i] == contactNumber) {
+                        hasDuplicate = true;
+                        break;
+                    }
+                }
+
+                if (!hasDuplicate) {
                     return contactNumber;
                 }
             }
@@ -164,21 +169,18 @@ $(function(){
         msgBodyCounter(textCount);
     });
 
-    
-
     $("#send-msg").click(function(){
         const msg = $("#msg").val();
 
         $(".overlay").fadeIn(500);
         $(this).html("Sending...");
 
-        $.post('send', {
+        $.post(`${baseURL}/warn/send`, {
             _token: CSRF_TOKEN,
             msg: msg,
-            phone_number: recipients
+            contact_numbers: recipients
 
         }).done(function(response) {
-
             $("#send-msg").attr("disabled", "disabled");
             $("#character-count").html("0/160");
             $("#send-msg").html("Send");
@@ -190,10 +192,9 @@ $(function(){
             });
 
             recipients = [];
-            _recipients = [];
 
             $("#recipient-count").html(recipients.length);
-                          
+            $('#recipients').val(null).trigger('change');
         }).fail(function(xhr, status, error) {
 
             //$("#send-msg").attr("disabled", "disabled");
