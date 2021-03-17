@@ -5,7 +5,7 @@
 	<div class="col-xs-12">
 		<h1 class="page-header">
 			<span class="glyphicon glyphicon-user"></span> 
-			Phonebook
+			Subscribers
 		</h1>
 		<div id="user-id" class="hidden">{{$currentUser->id}}</div>
 	</div>
