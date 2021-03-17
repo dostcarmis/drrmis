@@ -14,7 +14,7 @@
 <div>
 	<div id="main-body" class="well">
 		<div id="input-contact">
-            <label style="color: orange;">
+            <label style="color: #93e3f0;">
                 *Use comma [ "," ] and whitespace [ " " ] to separate additional contact numbers.
             </label>
             <select id="recipients" name="recipients[]" multiple="multiple"></select>
