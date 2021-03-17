@@ -58,17 +58,18 @@ $(function(){
                   numberLength = _contactNumber.length,
                   contactNumber = proccessNumber(_contactNumber, numberLength);
             if (contactNumber) {
+                const option = new Option(contactNumber, contactNumber, true, true);
+                $(this).append(option).trigger('change');
                 recipients.push(contactNumber);
             }
 
             $(this).val(recipients);
-            console.log(contactNumber);
         }).on('change', function (e) {
             /*
             const contactNumbers = $(this).val();
             recipients = contactNumbers;*/
 
-            console.log(recipients);
+            //console.log(recipients);
         });
     }
 
