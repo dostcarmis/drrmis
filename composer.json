@@ -15,7 +15,8 @@
         "unisharp/laravel-filemanager": "^1.9",
         "twilio/sdk": "^5.4",
         "globelabs/globe-connect-php": "dev-master",
-        "webpatser/laravel-uuid": "^4.0"
+        "webpatser/laravel-uuid": "^4.0",
+        "doctrine/dbal": "^2.12.1"
         
     },
     "require-dev": {
