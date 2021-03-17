@@ -21,7 +21,7 @@ use App\Models\Landslide;
 use App\Models\Floods;
 use App\Services\Getcsvdataapi;
 use JavaScript;
-class PagesController extends Controller
+class _PagesController extends Controller
 {   
     private $getcsvdata;
     function __construct(Getcsvdataapi $getcsvdata){
