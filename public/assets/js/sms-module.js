@@ -34,13 +34,14 @@ $(function(){
                     return {
                         results: $.map(data, function(item) {
                             let jsonData = {};
-                            jsonData['contact_name'] = item.contact_name;
-                            jsonData['contact_number'] = item.contact_number;
+                            const recipientName = `${item.firstname} ${item.lastname}`;
+                            jsonData['contact_name'] = recipientName;
+                            jsonData['phone_number'] = item.phone_number;
                             recipientsData[item.id] = jsonData;
 
                             return {
-                                text: `${item.contact_name} - ${item.contact_number}`,
-                                id: item.contact_number
+                                text: `${recipientName} - ${item.phone_number}`,
+                                id: item.phone_number
                             }
                         }),
                         pagination: {

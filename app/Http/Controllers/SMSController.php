@@ -62,39 +62,25 @@ class SMSController extends Controller
     }
 
     public function getRecipients(Request $request){
-        $data = [];
-        $recipients = json_encode(0);
+        $keyword = trim($request->search);
+        $contacts = DB::table('tbl_contacts as contact')
+                      ->select('contact.firstname', 'contact.middlename', 'contact.lastname',
+                               'num.phone_number')
+                      ->join('tbl_contact_numbers as num', 'num.contact_id', '=', 'contact.id');
 
-        try {
-            $contacts = Contact::orderBy('firstname')->get();
-
-            foreach ($contacts as $contact) {
-                $contactID = $contact->id;
-                $contactNumbers = ContactNumber::where('contact_id', $contactID)
-                                               ->orderBy('phone_number')
-                                               ->get();
-
-                foreach ($contactNumbers as $contactNumber) {
-                    $firstname = $contact->firstname;
-                    $middlename = $contact->middlename;
-                    $lastname = $contact->lastname;
-                    $phoneNumber = $contactNumber;
-                
-                    $data[] = [
-                        "contact_name" => "$firstName $lastname",
-                        "firstname" => $firstName,
-                        "middlename" => $middlename,
-                        "lastname" => $lastname,
-                        "contact_number" => $phoneNumber
-                    ];
-                }
-            }
-        } catch (\Throwable $th) {
-            return 'There is an error occured!';
+        if ($keyword) {
+            $contacts = $contacts->where(function($qry) use ($keyword) {
+                $qry->where('contact.firstname', 'like', "%$keyword%")
+                    ->orWhere('contact.middlename', 'like', "%$keyword%")
+                    ->orWhere('contact.lastname', 'like', "%$keyword%")
+                    ->orWhere('num.phone_number', 'like', "%$keyword%");
+            });
         }
 
-        $recipents = json_encode($data);
-        return $recipents;
+        $contacts = $contacts->orderBy('contact.firstname')
+                             ->get();
+
+        return response()->json($contacts);
     }
 
     public function getNotifications(Request $request){

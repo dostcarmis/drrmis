@@ -20,7 +20,7 @@ class CreateTblContactsTable extends Migration
             $table->uuid('group_id');
             $table->foreign('group_id')->references('id')->on('tbl_groups');
             $table->string('firstname');
-            $table->string('middletname')->nullable();
+            $table->string('middlename')->nullable();
             $table->string('lastname');
             $table->timestamps();
         });
