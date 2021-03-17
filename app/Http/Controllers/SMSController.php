@@ -7,6 +7,7 @@ use App\Http\Requests;
 use DB;
 use Auth;
 use App\Models\Subscribers;
+use App\Models\Contact;
 use App\Models\User;
 use Globe\Connect\Oauth;
 use Globe\Connect\Sms;
@@ -18,20 +19,14 @@ class SMSController extends Controller
     	$this->middleware('auth');
     }
     
-    public function viewRegisteredContacts(){
-    	return view('pages.phonebook');
-    }
+    // Automatated SMS Notification Module
 
-    public function viewManualSMS(){
-        $users = DB::table('users')->orderBy('first_name', 'asc')->get();
-        $subscribers = DB::table('tbl_subscribers')->get();
-
-    	return view('pages.compose')->with(['users' => $users,
-                                            'subscribers' => $subscribers]);
+    public function viewNotificationSubscribers(){
+    	return view('pages.subscribers');
     }
 
     public function viewAllNotifications(){
-    	return view('pages.inbox');
+    	return view('pages.notifications');
     }
 
     public function viewSubscribe(){
@@ -65,98 +60,39 @@ class SMSController extends Controller
     }
 
     public function getRecipients(Request $request){
-        $users = DB::table('users')->orderBy('first_name', 'asc')->get();
-        $provinces = DB::table('tbl_provinces')->get();
-        $subscribers = DB::table('tbl_subscribers')->get();
-
-        $data = array();
+        $data = [];
         $recipients = json_encode(0);
-        $firstName = "";
-        $lastName = "";
-        $province = "";
-        $picture = "";
-        $phoneNumber = "";
 
-        /*
-        foreach ($users as $user) {
+        try {
+            $contacts = Contact::orderBy('firstname')->get();
 
-            $tempID = $user->province_id;
-            $tempName = $user->first_name . " " . $user->last_name;
-            $tempNumber = $user->cellphone_num;
-            $picture = $user->profile_img;
+            foreach ($contacts as $contact) {
+                $contactID = $contact->id;
+                $contactNumbers = ContactNumber::where('contact_id', $contactID)
+                                               ->orderBy('phone_number')
+                                               ->get();
 
-            foreach ($provinces as $_province) {
+                foreach ($contactNumbers as $contactNumber) {
+                    $firstname = $contact->firstname;
+                    $middlename = $contact->middlename;
+                    $lastname = $contact->lastname;
+                    $phoneNumber = $contactNumber;
                 
-                if ($tempID == $_province->id) {
-
-                    $province = $_province->name;
-                    break;
-
+                    $data[] = [
+                        "contact_name" => "$firstName $lastname",
+                        "firstname" => $firstName,
+                        "middlename" => $middlename,
+                        "lastname" => $lastname,
+                        "contact_number" => $phoneNumber
+                    ];
                 }
-
             }
-            
-            if ($tempNumber != ""){
-
-                $firstname = $user->first_name;
-                $lastname = $user->last_name;
-                
-                //$tempNumber = substr_replace($tempNumber, "+63", 0, 1);
-
-                $data[] = array("firstname" => $firstname,
-                                "lastname" => $lastname,
-                                "province" => $province,
-                                "picture" => $picture,
-                                "contact_name" => $tempName,
-                                "contact_number" => $tempNumber);
-
-            }
-
-        }*/
-
-        foreach ($subscribers as $subscriber) {
-
-            $firstName = "";
-            $lastName = "";
-            $province = "";
-            $picture = "";
-            $phoneNumber = "";
-            
-            foreach ($users as $user) {
-                
-                if ($user->id == $subscriber->user_id) {
-
-                    $firstName = $user->first_name;
-                    $lastName = $user->last_name;
-                    $phoneNumber = $subscriber->subscriber_number;
-                    $tempName = $user->first_name . " " . $user->last_name;
-                    $picture = $user->profile_img;
-
-                    foreach ($provinces as $_province) {
-                        if ($user->province_id == $_province->id) {
-
-                            $province = $_province->name;
-                            break;
-
-                        }
-                    }
-
-                    $data[] = array("firstname" => $firstName,
-                                    "lastname" => $lastName,
-                                    "province" => $province,
-                                    "picture" => $picture,
-                                    "contact_name" => $tempName,
-                                    "contact_number" => $phoneNumber);
-
-                }
-
-            }
-
+        } catch (\Throwable $th) {
+            return 'There is an error occured!';
         }
 
         $recipents = json_encode($data);
         return $recipents;
-
     }
 
     public function getNotifications(Request $request){
@@ -207,16 +143,31 @@ class SMSController extends Controller
                         break;
                     }
                 }
-
-             
             }
         }
 
         $notificationData = json_encode($data);
-
         return $notificationData;
-
     }
+
+    // SMS Module
+
+    public function viewRegisteredContacts(){
+    	return view('pages.contacts');
+    }
+
+    public function viewComposeMessage(){
+        $users = DB::table('users')->orderBy('first_name', 'asc')->get();
+        $subscribers = DB::table('tbl_subscribers')->get();
+
+    	return view('pages.compose')->with(['users' => $users,
+                                            'subscribers' => $subscribers]);
+    }
+
+    public function viewSentMessages(){
+        return view('pages.sent');
+    }
+    
 
     #=======================================================================================#
     #=================================== SMS GLOBE API =====================================#

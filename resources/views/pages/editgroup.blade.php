@@ -12,7 +12,7 @@
 
 <form id="editform" action="{{ action('UserController@updateGroup') }}" method="post">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">	
-	<input type="hidden" name="id" value="<?= $group->grp_id ?>">	
+	<input type="hidden" name="id" value="<?= $group->id ?>">	
 	<div class="col-xs-12 col-sm-6 perinputwrap">
 		<label>Group Name</label>
         <input type="text" name="group_name" id="group_name" class="form-control" 

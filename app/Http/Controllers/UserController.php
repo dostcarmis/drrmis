@@ -377,12 +377,12 @@ class UserController extends Controller
         return view('pages.addgroup');
     }
 
-    public function viewUpdateGroup($grpID) {
+    public function viewUpdateGroup($id) {
         $grpData = DB::table('tbl_groups as grp')
                      ->select(DB::raw('CONCAT(user.first_name, " ", user.last_name) AS created_by'),
-                             'grp.grp_id', 'grp.group_name', 'grp.sms_api_key', 'grp.description')
+                             'grp.id', 'grp.group_name', 'grp.sms_api_key', 'grp.description')
                      ->join('users as user', 'user.id', '=', 'grp.created_by')
-                     ->where('grp.grp_id', $grpID)
+                     ->where('grp.id', $id)
                      ->first();
         
         return view('pages.editgroup', ['group' => $grpData]);
@@ -436,13 +436,12 @@ class UserController extends Controller
         }
     }
 
-    public function deleteGroup($grpID) {
+    public function deleteGroup($id) {
         try {
-            $grpData = Groups::find($grpID);
+            $grpData = Groups::find($id);
 
-            if (!empty($grpData->deleted_at)) {
-                $grpData->deleted_at = Carbon::now();
-                $grpData->save();
+            if (empty($grpData->deleted_at)) {
+                $grpData->delete();
             } else {
                 Session::flash('message', 'Group already deleted!');
                 return redirect('usergroups');

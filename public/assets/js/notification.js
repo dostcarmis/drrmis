@@ -27,7 +27,7 @@ $(document).ready(function(){
       $val = $(this).find('#notifid').val();    
       $.ajax({
         type: 'post',
-        url: base_url+'readnotifications',
+        url: baseURL+'readnotifications',
         data: {
           'readnotifications' : $val
         }
@@ -39,7 +39,7 @@ $(document).ready(function(){
 //========================================//
  	$.ajax({
       type: 'GET',
-      url: base_url+'cn',
+      url: baseURL+'cn',
       dataType:"json",
       success:function(data){
 

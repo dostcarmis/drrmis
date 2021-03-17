@@ -266,7 +266,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
-	Route::get('viewupdategroup/{grp_id}', [
+	Route::get('viewupdategroup/{id}', [
 		'uses' => 'UserController@viewUpdateGroup',
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
@@ -281,7 +281,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
-	Route::get('deletegroup/{grp_id}',[
+	Route::get('deletegroup/{id}',[
 		'uses' => 'UserController@deleteGroup',
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
@@ -468,18 +468,14 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	]);
 
 	//SMS Module Routes
+	/*
 	Route::get('warn/test-semaphore',[
 		'uses' => 'SMSController@testSemaphore',
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
-	]);
-	Route::get('warn/registered-contacts',[
-		'uses' => 'SMSController@viewRegisteredContacts',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
-	]);
-	Route::get('warn/manual-send',[
-		'uses' => 'SMSController@viewManualSMS',
+	]);*/
+	Route::get('warn/notification-subscribers',[
+		'uses' => 'SMSController@viewNotificationSubscribers',
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
 	]);
@@ -488,6 +484,23 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
 	]);
+
+	Route::get('warn/contacts',[
+		'uses' => 'SMSController@viewRegisteredContacts',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+	]);
+	Route::get('warn/compose-message',[
+		'uses' => 'SMSController@viewComposeMessage',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+	]);
+	Route::get('warn/sent-messages',[
+		'uses' => 'SMSController@viewSentMessages',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+	]);
+	
 	Route::get('warn/subscribe',[
 		'uses' => 'SMSController@viewSubscribe',
 		'middleware' => 'roles',

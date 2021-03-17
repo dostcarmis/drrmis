@@ -4,8 +4,9 @@
 <div class="row">
 	<div class="col-xs-12">
 		<h1 class="page-header">
-			<span class="glyphicon glyphicon-user"></span> 
-			Phonebook
+			<i class="fa fa-paper-plane"></i>
+			Sent
+			<hr>
 		</h1>
 		<div id="user-id" class="hidden">{{$currentUser->id}}</div>
 	</div>

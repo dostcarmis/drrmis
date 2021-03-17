@@ -41,15 +41,15 @@
                 <tbody>					
                     @foreach($groups as $group)
                     <tr>
-                        <td><input class="chbox" name="chks[]" value="{{$group->grp_id}}" type="checkbox"></td>
+                        <td><input class="chbox" name="chks[]" value="{{$group->id}}" type="checkbox"></td>
                         <td>
-                            <a class="desctitle" href="{{ url('viewupdategroup/' . $group->grp_id) }}">
+                            <a class="desctitle" href="{{ url('viewupdategroup/' . $group->id) }}">
                                 {{ $group->group_name }}
                             </a>
                             <span class="defsp spactions">
                                 <div class="inneractions">
-                                    <a href="{{ url('viewupdategroup/' . $group->grp_id) }}">Edit</a> | 
-                                    <a class="deletepost" href="#" id="{{$group->grp_id}}" value="{{$group->grp_id}}" title="Delete">Delete</a>
+                                    <a href="{{ url('viewupdategroup/' . $group->id) }}">Edit</a> | 
+                                    <a class="deletepost" href="#" id="{{$group->id}}" value="{{$group->id}}" title="Delete">Delete</a>
                                 </div>								
                             </span>
                         </td>

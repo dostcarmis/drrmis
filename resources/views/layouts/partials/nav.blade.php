@@ -200,7 +200,7 @@
                 <ul id="sms-module" class="collapse" aria-expanded="true">
                     <li class="divider"><i class="fa fa-flag"></i></li>
                     <li>
-                        <a href="{{ action("SMSController@viewRegisteredContacts") }}">
+                        <a href="{{ action("SMSController@viewNotificationSubscribers") }}">
                             <i class="fa fa-users"></i> Notification Subscribers 
                         </a>
                     </li>
@@ -212,16 +212,16 @@
                     <li class="divider"><i class="fa fa-comment"></i> </li>
                     <li>
                         <a href="{{ action("SMSController@viewRegisteredContacts") }}">
-                            <i class="fa fa-address-book" ></i> Phonebook
+                            <i class="fa fa-address-book"></i> Contacts
                         </a>
                     </li>
                     <li>
-                        <a href="{{ action("SMSController@viewManualSMS") }}">
+                        <a href="{{ action("SMSController@viewComposeMessage") }}">
                             <i class="fa fa-comment"></i> Compose Message
                         </a>
                     </li>
                     <li>
-                        <a href="{{ action("SMSController@viewManualSMS") }}">
+                        <a href="{{ action("SMSController@viewSentMessages") }}">
                             <i class="fa fa-paper-plane"></i> Sent
                         </a>
                     </li>

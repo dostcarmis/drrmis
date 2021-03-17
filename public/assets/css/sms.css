@@ -229,3 +229,11 @@ col-sm-*/
 	list-style: none;
 	margin-left: -39px;
 }
+
+.recipient-dropdown span {
+	font-size: 15pt;
+}
+
+.select2-selection__choice, .select2-selection__rendered {
+	font-size: 14pt;
+}

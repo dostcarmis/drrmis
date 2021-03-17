@@ -27,7 +27,7 @@ $oid='';
       <div class="modal-body">
         <p>Are you sure you want to {{ $title }} 
           @foreach($groups as $group)
-            @if($snsid === $group->grp_id)
+            @if($snsid === $group->id)
             {{ $group->group_name }}
             @endif
           @endforeach

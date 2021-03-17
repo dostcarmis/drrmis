@@ -68,12 +68,12 @@
 		<select name="group" id="group" class="form-control">
 			<option>None</option>
 			@foreach($groups as $group)
-				@if($group->grp_id === $users->group)
-					<option selected="selected" value="{{ $group->grp_id }}">
+				@if($group->id === $users->group)
+					<option selected="selected" value="{{ $group->id }}">
 						{{ $group->group_name }}
 					</option>
 				@else
-					<option value="{{ $group->grp_id }}">
+					<option value="{{ $group->id }}">
 						{{ $group->group_name }}
 					</option>
 				@endif

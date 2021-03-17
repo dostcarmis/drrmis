@@ -19,12 +19,12 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/fonts/allfonts/stylesheet.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/dropzone/dropzone.css') }}">
 
-	
 	<link rel="stylesheet" href="{!! url('css/plugins/kendo-ui/kendo.common.min.css') !!}">
     <link rel="stylesheet" href="{!! url('css/plugins/kendo-ui/kendo.flat.min.css') !!}">
     <link rel="stylesheet" href="{!! url('css/plugins/kendo-ui/kendo.flat.mobile.min.css') !!}">
     <link rel="stylesheet" href="{!! url('css/plugins/kendo-ui/kendo.dataviz.flat.min.css') !!}">
 	<link rel="stylesheet" href="{!! url('assets/css/sms.css') !!}">
+    <link rel="stylesheet" href="{!! url('css/select2.min.css') !!}">
 
 </head>
 <body class="bckclass">
@@ -40,15 +40,15 @@
         </div>
     </aside>
 
-    <script src="{!! url('js/jquery1-11-3.min.js')!!}"></script> 
-    <script>window.jQuery || document.write('<script src="{!!url('../../assets/js/vendor/jquery.min.js') !!}"><\/script>')</script>
-    <script src="//code.jquery.com/jquery-1.12.3.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
-    <script src="{!! url('js/jquery.js') !!}"></script>
+    <script>
+        const baseURL = "{{ url('/') }}/";
+    </script>
+    <script src="{!! url('js/jquery-1.12.3.js')!!}"></script>
+    <script src="{!! url('js/jquery-ui.min.js')!!}"></script>
     <script src="{!! url('js/bootstrap.min.js') !!}"></script>
 	<script src="{!! url('js/moment.js') !!}"></script>
     <script src="{!! url('assets/js/notification.js')!!}"></script>
+    <script src="{!! url('js/select2.full.min.js') !!}"></script>
     <script type="text/javascript" src="{!! url('js/plugins/kendo-ui/kendo.all.min.js') !!}"></script>
     <script type="text/javascript" src="{!! url('js/plugins/kendo-ui/jszip.min.js') !!}"></script>
     <script type="text/javascript" src="{!! url('js/plugins/kendo-ui/pako_deflate.min.js') !!}"></script>
