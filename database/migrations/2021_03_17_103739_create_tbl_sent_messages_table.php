@@ -26,6 +26,9 @@ class CreateTblSentMessagesTable extends Migration
             $table->binary('status');
             $table->timestamps('created_at');
         });
+
+        DB::statement("ALTER TABLE tbl_sent_messages CHANGE `recipients` `recipients` MEDIUMBLOB");
+        DB::statement("ALTER TABLE tbl_sent_messages CHANGE `status` `status` MEDIUMBLOB");
     }
 
     /**

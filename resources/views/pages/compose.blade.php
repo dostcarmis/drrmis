@@ -15,13 +15,13 @@
 	<div id="main-body" class="well">
 		<div id="input-contact">
             <label style="color: orange;">
-                *Use comma [ , ] to separate additional contact numbers.
+                *Use comma [ "," ] and whitespace [ " " ] to separate additional contact numbers.
             </label>
             <select id="recipients" name="recipients[]" multiple="multiple"></select>
 		</div>
 
 		<label class="char-count"><span id="character-count">0/160</span></label>
-		<textarea id="msg" name="msg" class="form-control" rows="15"
+		<textarea id="msg" name="msg" class="form-control" rows="8"
 				  placeholder="Type message"></textarea>
 		<div class="button-container">
 			<button id="send-msg" class="btn btn-primary btn-block btn-lg" 
