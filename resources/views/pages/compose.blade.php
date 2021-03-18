@@ -32,23 +32,37 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div><br><br>
 
 <hr>
-<h3 class="text-center">OR<br>Send via CSV & Excel Upload</h3>
+<h3 class="text-center">Send via CSV File Upload</h3>
 <hr>
 
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-body text-center text-danger">
-					Under Development
+	<div class="panel panel-default">
+        <div class="panel-heading"><strong>Upload Files</strong> <small>here</small></div>
+        <div class="panel-body text-center">
+
+			<!-- Standar Form -->
+			<h4>Select files from your computer</h4>
+			<hr>
+			<form action="#" method="post" enctype="multipart/form-data" id="form-upload-csv">
+				{{ csrf_field() }}
+
+				<input type="hidden" name="send_type" value="file">
+				<div class="form-inline">
+					<div class="form-group">
+						<input type="file" name="csv_file" id="csv_file" accept=".csv" 
+							   oninvalid="setCustomValidity('Please select a valid CSV file.')">
+					</div>
+					<button type="submit" class="btn btn-primary" id="upload-submit">
+						<i class="fa fa-paper-plane" aria-hidden="true"></i> Upload file & Send
+					</button>
 				</div>
-			</div>
-		</div>
-	</div>
-</div>
+			</form>
+        </div>
+    </div>
+</div><br><br>
 
 <div class="overlay">
     <div id="sending">
@@ -108,6 +122,6 @@
 
 @stop
 @section('page-js-files')
-	<script src="{!! url('assets/js/sms-module.js') !!}"></script>
 	<script src="{!! url('js/typeahead.bundle.js') !!}"></script>
+	<script src="{!! url('assets/js/sms-module.js') !!}"></script>
 @stop

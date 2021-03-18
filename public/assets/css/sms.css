@@ -237,3 +237,23 @@ col-sm-*/
 .select2-selection__choice, .select2-selection__rendered {
 	font-size: 14pt;
 }
+
+/* layout.css Style */
+.upload-drop-zone {
+	height: 200px;
+	border-width: 2px;
+	margin-bottom: 20px;
+}
+  
+/* skin.css Style*/
+.upload-drop-zone {
+	color: #ccc;
+	border-style: dashed;
+	border-color: #ccc;
+	line-height: 200px;
+	text-align: center
+}
+.upload-drop-zone.drop {
+	color: #222;
+	border-color: #222;
+}

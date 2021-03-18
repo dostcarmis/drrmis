@@ -318,7 +318,25 @@ class SMSController extends Controller
         return $response;
     }*/
 
+    private function readFileCSV($file) {
+        $csvRow = [];
+        $csv = fopen($file, 'r');
+
+        while (!feof($csv)) {
+            $csvRow[] = fgetcsv($csv, 0, ',');
+        }
+
+        fclose($csv);
+        
+        dd($csvRow);
+    }
+
     public function sendMessage(Request $request) {
+        $sendType = $request->send_type;
+        $file = $request->file('csv_file');
+        $recipients = $this->readFileCSV($file);
+        
+        /*
         try {
             $userID = Auth::user()->id;
             $groupID = Auth::user()->group;
@@ -370,7 +388,7 @@ class SMSController extends Controller
             }
         } catch (\Throwable $th) {
             echo 'Unknown error occured. Try again!';
-        }
+        }*/
     }
 
     #=======================================================================================#

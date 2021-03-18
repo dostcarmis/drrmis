@@ -1,10 +1,13 @@
 const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
+/* ============ Message Composer Module ============
+*/
+
 $(function(){
-	var recipients = [];
-    var segmentCount = 0;
-    var textSegmentCount = 0;
-    let recipientsData = {};
+    let recipientsData = {},
+	    recipients = [],
+        segmentCount = 0,
+        textSegmentCount = 0;
 
     $("#recipient-count").html(recipients.length);
     $(".overlay").fadeOut(500);
@@ -179,8 +182,8 @@ $(function(){
         $.post(`${baseURL}/warn/send`, {
             _token: CSRF_TOKEN,
             msg: msg,
+            send_type: 'compose',
             contact_numbers: recipients
-
         }).done(function(response) {
             $("#send-msg").attr("disabled", "disabled");
             $("#character-count").html("0/160");
@@ -197,17 +200,59 @@ $(function(){
             $("#recipient-count").html(recipients.length);
             $('#recipients').val(null).trigger('change');
         }).fail(function(xhr, status, error) {
-
-            //$("#send-msg").attr("disabled", "disabled");
-            //$("#character-count").html("0");
             $("#send-msg").html("Send");
-            //$("#msg").val("");
-            
             $(".overlay").fadeOut(500, function(){
                 $("#modal-failed").modal();
             });
 
         });
     });
+});
 
+$(function($) {
+    const startUpload = function(uploadFormData) {
+        const formData = new FormData(uploadFormData);
+
+        $.ajax({
+            url: `${baseURL}/warn/send`,
+            type: 'POST',              
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(result) {
+                //location.reload();
+            },
+            error: function(data) {
+                //console.log(data);
+            },
+        });
+    }
+
+    $('#form-upload-csv').on('submit', function(e) {
+        e.preventDefault();
+
+        const uploadFormData = $('#form-upload-csv')[0];
+
+        startUpload(uploadFormData);
+
+        /*
+        $('#form-upload-csv').validate({
+            rules: {
+                csv_file: {
+                    required: true,
+                    accept: ".csv"
+                }
+            }, messages: {
+                csv_file: {
+                    required: "Please select a valid CSV file.",
+                    accept: "Please select a valid CSV file."
+                }
+            }, submitHandler: function(form) {
+                startUpload(form);
+            }
+        });*/
+
+        
+    });
 });

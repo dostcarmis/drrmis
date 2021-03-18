@@ -46,6 +46,8 @@
     </script>
     <script src="{!! url('js/jquery-1.12.3.js')!!}"></script>
     <script src="{!! url('js/jquery-ui.min.js')!!}"></script>
+    <script src="{!! url('js/jquery.validate.min.js') !!}"></script>
+    <script src="{!! url('js/additional-methods.min.js') !!}"></script>
     <script src="{!! url('js/bootstrap.min.js') !!}"></script>
 	<script src="{!! url('js/moment.js') !!}"></script>
     <script src="{!! url('assets/js/notification.js')!!}"></script>
