@@ -11,23 +11,41 @@
 	</div>
 </div>
 
-<div>
-	<div id="main-body" class="well">
-		<div id="input-contact">
-            <label style="color: #93e3f0;">
-                *Use comma [ "," ] and whitespace [ " " ] to separate additional contact numbers.
-            </label>
-            <select id="recipients" name="recipients[]" multiple="multiple"></select>
-		</div>
+<div class="row">
+	<div class="col-md-12">
+		<div id="main-body" class="well">
+			<div id="input-contact">
+				<label style="color: #93e3f0;">
+					*Use comma [ "," ] and whitespace [ " " ] to separate additional contact numbers.
+				</label>
+				<select id="recipients" name="recipients[]" multiple="multiple"></select>
+			</div>
 
-		<label class="char-count"><span id="character-count">0/160</span></label>
-		<textarea id="msg" name="msg" class="form-control" rows="8"
-				  placeholder="Type message"></textarea>
-		<div class="button-container">
-			<button id="send-msg" class="btn btn-primary btn-block btn-lg" 
-					disabled="disabled">
-					Send <span class="glyphicon glyphicon-send"></span>
-			</button>
+			<label class="char-count"><span id="character-count">0/160</span></label>
+			<textarea id="msg" name="msg" class="form-control" rows="8"
+					placeholder="Type message"></textarea>
+			<div class="button-container">
+				<button id="send-msg" class="btn btn-primary btn-block btn-lg" 
+						disabled="disabled">
+						Send <span class="glyphicon glyphicon-send"></span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<hr>
+<h3 class="text-center">OR<br>Send via CSV & Excel Upload</h3>
+<hr>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-body text-center text-danger">
+					Under Development
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

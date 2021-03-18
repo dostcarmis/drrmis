@@ -39,7 +39,7 @@ $(document).ready(function(){
 //========================================//
  	$.ajax({
       type: 'GET',
-      url: baseURL+'cn',
+      url: `baseURL/${cn}`,
       dataType:"json",
       success:function(data){
 
@@ -62,7 +62,7 @@ $(document).ready(function(){
     setInterval(function(){    
       $.ajax({
         type: 'GET',
-        url: base_url+'cn',
+        url: `baseURL/${cn}`,
         dataType:"json",
         success:function(data){
 

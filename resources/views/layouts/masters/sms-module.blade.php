@@ -11,6 +11,7 @@
     <link rel="icon" href="{{ URL::asset('assets/images/favicon.png') }}" type="image/x-icon" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />  
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{!! url('css/bootstrap.min.css') !!}">
     <link  href="{{ URL::asset('css/sb-admin.css') }}" rel="stylesheet">   
     <link href="{{ URL::asset('assets/css/skin.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/css/responsive.css') }}" rel="stylesheet">
