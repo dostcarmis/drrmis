@@ -93,7 +93,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: 'GET',
-      url: base_url+'ajax-subcat?cat_id=' + cat_id,
+      url: `${baseURL}/ajax-subcat?cat_id=${cat_id}`,
       success:function(municipalities){
         var item = $('#municipality_id');
         item.empty();
@@ -115,7 +115,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "GET",
-      url: base_url+"/ajax-subcat?cat_id=" + cat_id,
+      url: `${baseURL}/ajax-subcat?cat_id=${cat_id}`,
       success:function(municipalities){
         var item = $('#message-preview');
         item.empty();
@@ -157,7 +157,7 @@ $(document).ready(function(){
   $.ajax({
     type: 'GET',
     dataType: 'json',
-    url:base_url+'incidents',
+    url: `${baseURL}/incidents`,
     success:function(data){        
        $('#incidenttable').dataTable({
               data: data.data, 
@@ -232,7 +232,7 @@ $(document).ready(function(){
     $.ajax({
       type: 'GET',
       dataType: 'json',
-      url: base_url+'ajaxhydromet?sensortype='+sensortype,
+      url: `${baseURL}/ajaxhydromet?sensortype=${sensortype}`,
       success: function(data){
         $('#hydromettable').empty();
         
@@ -267,7 +267,7 @@ $(document).ready(function(){
       sessionStorage.setItem('sensortype', currentSensortype);
       $.ajax({
           type: 'get',
-          url: base_url+'viewhydrometdata',
+          url: `${baseURL}/viewhydrometdata`,
           data: {
               'sensorid' : $value
           },success:function(){
