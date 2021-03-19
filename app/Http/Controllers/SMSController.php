@@ -318,25 +318,93 @@ class SMSController extends Controller
         return $response;
     }*/
 
-    private function readFileCSV($file) {
-        $csvRow = [];
+    private function proccessContactNumber($contactNo) {
+        $contactNo = strtolower(preg_replace('/[^+0-9]/', '', $contactNo));
+        $digitCount = strlen($contactNo);
+
+        
+
+        if ($digitCount !== 11 && $digitCount !== 13) {
+            return false;
+        }
+
+        if ($digitCount === 13) {
+            $contactNo = str_replace('+63', '0', $contactNo);
+        }
+
+        return $contactNo;
+    }   
+
+    private function proccessCSV($file) {
+        $_csvRows = [];
+        $csvRows = [];
+        $newColumnHeaders = [];
+        $columnHeaders = ['numbers', 'message', 'sendername'];
+        $numbersKey = 0;
+        $messageKey = 1;
+        $sendernameKey = 2;
         $csv = fopen($file, 'r');
 
         while (!feof($csv)) {
-            $csvRow[] = fgetcsv($csv, 0, ',');
+            $_csvRows[] = fgetcsv($csv, 0, ',');
         }
 
         fclose($csv);
-        
-        dd($csvRow);
+
+        if (count($_csvRows[0]) !== 3) {
+            return false;
+        } else if (count($_csvRows[0]) === 3) {
+            foreach ($_csvRows[0] as $column) {
+                $column = strtolower(preg_replace('/\s+/', '', $column));
+                $newColumnHeaders[] = $column;
+
+                if (!in_array($column, $columnHeaders)) {
+                    return false;
+                }
+            }
+        } else {
+            return false;
+        }
+
+        $_numbersKey = array_keys($newColumnHeaders, 'numbers');
+        $numbersKey = $_numbersKey[0];
+
+        $_messageKey = array_keys($newColumnHeaders, 'message');
+        $messageKey = $_messageKey[0];
+
+        $_sendernameKey = array_keys($newColumnHeaders, 'sendername');
+        $sendernameKey = $_sendernameKey[0];
+
+        foreach ($_csvRows as $key => $column) {
+            $contactNo = $this->proccessContactNumber($column[$numbersKey]);
+            $message = $column[$messageKey];
+            $senderName = $column[$sendernameKey];
+
+            if ($key == 0) {
+                continue;
+            }
+
+            if (!$column) {
+                continue;
+            }
+
+            if (!$contactNo) {
+                continue;
+            }
+
+            $csvRows[] = (object) [
+                'recipient' => $contactNo,
+                'msg' => $message,
+                'sender_name' => $senderName,
+            ];
+        }
+
+        return $csvRows;
     }
 
     public function sendMessage(Request $request) {
         $sendType = $request->send_type;
-        $file = $request->file('csv_file');
-        $recipients = $this->readFileCSV($file);
-        
-        /*
+
         try {
             $userID = Auth::user()->id;
             $groupID = Auth::user()->group;
@@ -345,21 +413,31 @@ class SMSController extends Controller
                         ->join('users as user', 'user.group', '=', 'grp.id')
                         ->where('user.id', $userID)
                         ->first();
+
             $sentMessageInstance = new SentMessage;
-            $recipients = $request->contact_numbers;
-            $msg = $request->msg;
             $status = [];
 
-            foreach ($recipients as $recipient) {
-                $subscriberNumber = str_replace('+63', '0', $recipient);
+            if ($sendType == 'file') {
+                $file = $request->file('csv_file');
+                $recipients = $this->proccessCSV($file);
+            } else {
+                $recipients = $request->contact_numbers;
+                $msg = $request->msg;
+            }
 
+            foreach ($recipients as $recipient) {
+                $subscriberNumber = $sendType == 'file' ? $recipient->recipient : 
+                                    $this->proccessContactNumber($recipient);
+                $msg = $sendType == 'file' ? $recipient->msg : $msg;
+                $senderName = $sendType == 'file' ? $recipient->sender_name : 'DRRMIS';
+                
                 if ($userDat) {
                     $ch = curl_init();
                     $parameters = array(
                         'apikey' => $userDat->sms_api_key, //Your API KEY
                         'number' => $subscriberNumber,
                         'message' => $msg,
-                        'sendername' => 'SEMAPHORE'
+                        'sendername' => $senderName
                     );
                     curl_setopt( $ch, CURLOPT_URL,'https://semaphore.co/api/v4/messages' );
                     curl_setopt( $ch, CURLOPT_POST, 1 );
@@ -375,6 +453,9 @@ class SMSController extends Controller
                     //Show the server response
                     echo $output;
                     $status[] = $output;
+                } else {
+                    echo 'Not subscribed to SMS API.';
+                    $status[] = 'Not subscribed to SMS API.';
                 }
             }
 
@@ -387,8 +468,12 @@ class SMSController extends Controller
                 $sentMessageInstance->save();
             }
         } catch (\Throwable $th) {
-            echo 'Unknown error occured. Try again!';
-        }*/
+            if ($sendType == 'file') {
+                echo 'No file selected or invalid CSV file and format.';
+            } else {
+                echo 'Unknown error occured. Try again!';
+            }
+        }
     }
 
     #=======================================================================================#

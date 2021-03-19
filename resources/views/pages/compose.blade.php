@@ -45,6 +45,12 @@
 
 			<!-- Standar Form -->
 			<h4>Select files from your computer</h4>
+			<a href="{{ asset('assets/sms-template.csv') }}" class="btn btn-link btn-block">
+				<i class="fa fa-file-excel-o" aria-hidden="true"></i> Download CSV Template
+			</a>
+			<small class="text-danger">
+				<i>*The format for the contact number/s should be "+639123456789" or "09123456789".</i>
+			</small>
 			<hr>
 			<form action="#" method="post" enctype="multipart/form-data" id="form-upload-csv">
 				{{ csrf_field() }}
@@ -85,7 +91,7 @@
     	  	<div class="modal-body">
 				<div class="alert alert-success">
 					<h3>Message Logs</h3>
-					<textarea class="form-control" id="success-count" readonly="readonly" 
+					<textarea class="form-control" id="success-logs" readonly="readonly" 
 							  style="resize: none;" rows="10"></textarea>
 				</div>
     	  	</div>
@@ -109,7 +115,7 @@
     	  	<div class="modal-body">
 				<div class="alert alert-danger">
 					<h3>
-						<strong>Sending Failed!</strong>
+						<strong>Sending failed! Invalid file or columns in CSV file.</strong>
 					</h3>
 				</div>
     	  	</div>

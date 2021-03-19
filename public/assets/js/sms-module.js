@@ -191,7 +191,7 @@ $(function(){
             $("#msg").val("");
             
             $(".overlay").fadeOut(500, function(){
-                $("#success-count").html(response);
+                $("#success-logs").html(response);
                 $("#modal-success").modal();
             });
 
@@ -223,17 +223,20 @@ $(function($) {
             cache: false,
             contentType: false,
             processData: false,
-            success: function(result) {
+            success: function(response) {
                 $('#upload-submit').html(`
                     <i class="fa fa-paper-plane" aria-hidden="true"></i> Upload file &amp; Send
                 `);
+                $('#success-logs').html(response);
                 $('#modal-success').modal();
+                $('#csv_file').val(null);
             },
             error: function(data) {
                 $('#upload-submit').html(`
                     <i class="fa fa-paper-plane" aria-hidden="true"></i> Upload file &amp; Send
                 `);
                 $('#modal-failed').modal();
+                $('#csv_file').val(null);
             },
         });
     }
@@ -242,7 +245,6 @@ $(function($) {
         e.preventDefault();
 
         const uploadFormData = $('#form-upload-csv')[0];
-
         startUpload(uploadFormData);
 
         /*
@@ -261,7 +263,5 @@ $(function($) {
                 startUpload(form);
             }
         });*/
-
-        
     });
 });
