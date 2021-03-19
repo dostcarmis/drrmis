@@ -53,7 +53,8 @@
 				<div class="form-inline">
 					<div class="form-group">
 						<input type="file" name="csv_file" id="csv_file" accept=".csv" 
-							   oninvalid="setCustomValidity('Please select a valid CSV file.')">
+							   oninvalid="setCustomValidity('Please select a valid CSV file.')"
+							   class="btn btn-info">
 					</div>
 					<button type="submit" class="btn btn-primary" id="upload-submit">
 						<i class="fa fa-paper-plane" aria-hidden="true"></i> Upload file & Send

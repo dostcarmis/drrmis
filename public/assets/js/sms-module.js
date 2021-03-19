@@ -213,6 +213,9 @@ $(function($) {
     const startUpload = function(uploadFormData) {
         const formData = new FormData(uploadFormData);
 
+        $('#upload-submit').html(`
+            <i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Sending...
+        `);
         $.ajax({
             url: `${baseURL}/warn/send`,
             type: 'POST',              
@@ -221,10 +224,16 @@ $(function($) {
             contentType: false,
             processData: false,
             success: function(result) {
-                //location.reload();
+                $('#upload-submit').html(`
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i> Upload file &amp; Send
+                `);
+                $('#modal-success').modal();
             },
             error: function(data) {
-                //console.log(data);
+                $('#upload-submit').html(`
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i> Upload file &amp; Send
+                `);
+                $('#modal-failed').modal();
             },
         });
     }
