@@ -13,12 +13,20 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<div id="main-body" class="well">
+		<div id="main-body">
 			<div id="input-contact">
-				<label style="color: #93e3f0;">
-					*Use comma [ "," ] and whitespace [ " " ] to separate additional contact numbers.
-				</label>
-				<select id="recipients" name="recipients[]" multiple="multiple"></select>
+				<div class="form-group">
+					<label style="color: #93e3f0;">
+						*Use comma [ "," ] and whitespace [ " " ] to separate additional contact numbers.
+					</label>
+					<select id="recipients" name="recipients[]" multiple="multiple"></select>
+				</div>
+				<div class="form-group">
+					<label for="sender-names" style="color: #fff;">
+						Sender Name
+					</label>
+					<select name="sender_name" id="sender-names" class="form-control"></select>
+				</div>
 			</div>
 
 			<label class="char-count"><span id="character-count">0/160</span></label>

@@ -14,6 +14,28 @@ $(function(){
 
     initializeContacts();
 
+    function getSenderNames() {
+        $.get(`${baseURL}/warn/get-sender-names`, function(data) {
+            const senderNames = JSON.parse(data);
+            let htmlSenderNames = '';
+
+            htmlSenderNames += `<option value="" disabled>Select a sender name</option>`;
+
+            $.each(senderNames, function(index, senderName) {
+                if (senderName.status === 'Active') {
+                    htmlSenderNames += `<option value="${senderName.name}">${senderName.name}</option>`;
+                }
+            });
+
+            htmlSenderNames += `<option value="Semaphore">Semaphore</option>`;
+
+            $('#sender-names').html(htmlSenderNames);
+        }).fail(function() {
+            console.log('Re-fetching sender names.');
+            getSenderNames();
+        });  
+    }
+
     function initializeContacts() {
         $('#recipients').select2({
             tokenSeparators: [',', ' '],
@@ -77,6 +99,8 @@ $(function(){
         }).on('select2:clear', function(e) {
             recipients = [];
         });
+
+        getSenderNames();
     }
 
     function proccessNumber(contactNumber, numberLength){
@@ -85,13 +109,16 @@ $(function(){
 
         firstChar = contactNumber.charAt(0);
 
-        if (numberLength === 13 || numberLength === 11 || numberLength === 10){
+        if (numberLength === 13 || numberLength === 12 || numberLength === 11 || 
+            numberLength === 10){
             if (!contactNumber.match(/[a-z]/i)) {
                 isValidNumber = true;
             }
 
             if (isValidNumber) {
                 if (contactNumber.substring(0, 2) != "09" && numberLength === 11){
+                    isValidNumber = false;
+                } else if (contactNumber.substring(0, 3) != "639" && numberLength === 12){
                     isValidNumber = false;
                 } else if (contactNumber.substring(0, 4) != "+639" && numberLength === 13){
                     isValidNumber = false;
@@ -108,6 +135,8 @@ $(function(){
                     contactNumber = "+63" + contactNumber;
                 } else if (firstChar == "9" && numberLength === 10) {
                     contactNumber = `+63${contactNumber}`;
+                } else if (firstChar == "6" && numberLength === 12) {
+                    contactNumber = `+${contactNumber}`;
                 }
 
                 for (var i = 0; i < recipients.length; i++) {
@@ -162,9 +191,10 @@ $(function(){
     }
 
     function setSendButton(textCount) {
-        if (textCount > 0 && recipients.length > 0){
+        const senderName = $('#sender-names').val();
+        if (textCount > 0 && recipients.length > 0 && senderName){
             $("#send-msg").removeAttr("disabled");
-        } else if (textCount == 0 || recipients.length == 0){
+        } else if (textCount == 0 || recipients.length == 0 || !senderName){
             $("#send-msg").attr("disabled", "disabled");
         }
     }
@@ -187,12 +217,14 @@ $(function(){
             _token: CSRF_TOKEN,
             msg: msg,
             send_type: 'compose',
-            contact_numbers: recipients
+            contact_numbers: recipients,
+            sender_name: $('#sender-names').val()
         }).done(function(response) {
             $("#send-msg").attr("disabled", "disabled");
             $("#character-count").html("0/160");
             $("#send-msg").html("Send");
             $("#msg").val("");
+            $('#sender-names').val('')
             
             $(".overlay").fadeOut(500, function(){
                 $("#success-logs").html(response);

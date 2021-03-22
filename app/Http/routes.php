@@ -505,6 +505,11 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
+	Route::get('warn/get-sender-names',[
+		'uses' => 'SMSController@getSenderNames',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+	]);
 	
 	Route::get('warn/subscribe',[
 		'uses' => 'SMSController@viewSubscribe',
