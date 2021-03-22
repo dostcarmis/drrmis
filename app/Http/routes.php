@@ -500,6 +500,11 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
 	]);
+	Route::any('destroymultiplesentmessages', [
+		'uses' => 'SMSController@destroymultipleSentMsgs',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	]);
 	
 	Route::get('warn/subscribe',[
 		'uses' => 'SMSController@viewSubscribe',

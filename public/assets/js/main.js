@@ -297,6 +297,85 @@ $(document).ready(function(){
       // getdata(currentSensortype);
     }, 600000 );   
 
+
+//====================DISPLAY SENT MESSAGES =====================//
+
+$.ajax({
+  type: 'GET',
+  dataType: 'json',
+  url: `${baseURL}/warn/sent-messages`,
+  success: function(data) {      
+    const checkedValue = $('.chbox:checked').val();
+
+    $('#sentmsgstable').dataTable({
+      data: data.data, 
+      paging: false,
+    });
+    $('#searchall').keyup(function(){
+      sentmessageTable.search($(this).val()).draw();
+    });
+
+    //let sentmessageTable = $('#sentmsgstable').DataTable();
+
+    $('.optFilterIncident').change(function () {
+      sentmessageTable.columns(2)
+                      .search($(this).val())
+                      .draw();
+    });
+
+    $('.chbox').on('click', function(e) {
+      if($(".chbox").length == $(".chbox:checked").length) {
+        $(".headcheckbox").prop("checked", true);
+      } else {
+        $(".headcheckbox").prop("checked", false);
+      }
+
+      if($(".chbox:checked").length == 0){
+        $(this).parent()
+               .parent()
+               .parent()
+               .parent()
+               .parent()
+               .parent()
+               .parent()
+               .parent()
+               .find('.btn-deleteselected')
+               .attr('disabled','disabled'); 
+      }else{
+        $(this).parent()
+               .parent()
+               .parent()
+               .parent()
+               .parent()
+               .parent()
+               .parent()
+               .parent()
+               .find('.btn-deleteselected')
+               .removeAttr('disabled'); 
+      }
+    });
+
+    $('.deletepost').on('click', function(e) {
+      const btnid = $(this).attr("id");   
+      const title = $(this).attr("title");
+      const oid = $(this).attr("value");
+
+      e.preventDefault();
+      
+      if (window.location.href.indexOf("page") != -1) {
+        window.location.href =`${window.location.href}&snsid=${btnid}&title=${title}&oid=${oid}`;
+      } else {
+        window.location = `?snsid=${btnid}&title=${title}&oid=${oid}`;
+      }
+    });
+
+    $("#mymodal").on("hidden.bs.modal", function (e) {
+      e.preventDefault();
+      window.location = 'sent-messages';
+    });
+  } 
+});
+
 //===============================OTHER TABLES==========================//
     
 

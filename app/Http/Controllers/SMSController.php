@@ -152,9 +152,78 @@ class SMSController extends Controller
                                             'subscribers' => $subscribers]);
     }
 
-    public function viewSentMessages(){
-        return view('pages.sent');
+    public function viewSentMessages(Request $request){
+        $cntUser = Auth::user();
+        $users = DB::table('users')->get();
+        $sentMessages = DB::table('tbl_sent_messages')
+                          ->orderBy('created_at', 'desc')
+                          ->get();
+        $sentMsgcontent = [];
+        $sentMsgCount = 0;
+        $headcheckbox = '<input type="checkbox" class="headcheckbox">';
+
+        foreach ($sentMessages as $sent) {
+            $chkbx = '';
+			$message = '';
+            $sender = '';
+            $recipients = $sent->recipients;
+            $status = $sent->status;
+			$belowtitle = '';
+			$belowtitle1 = '';
+
+            if (($cntUser->id == $sent->user_id) || ($cntUser->role_id <= 3)) {
+				$chkbx = '<input class="chbox" name="chks[]" value="'.$sent->id.'"  type="checkbox">';
+				$message = '<a class="desctitle" href="'.url("sent-messages/$sent->id").'">'.$sent->message.'</a>';
+			} else {
+				$chkbx = '<input type="checkbox" disabled>';
+				$message = '<a class="desctitle" href="'.url("sent-messages/$sent->id").'">'.$sent->message.'</a>';
+			}
+
+            foreach ($users as $user) {
+                if ($user->id === $sent->user_id) {
+                    $sender = "$user->first_name $user->last_name";
+                    break;
+                }
+            }
+
+            $belowtitle = 
+            '<span class="defsp spactions"><div class="inneractions">'.
+                $belowtitle1.'<a href="'.url("sent-messages/$sent->id").'">Preview</a></div></span>';
+			$fnaltitle = $message.$belowtitle;
+            $sentMsgcontent['data'][$sentMsgCount++] = [
+				$chkbx,
+                $fnaltitle,
+                $sender,
+                $recipients,
+                $status,
+                date("F j, Y g:i A", strtotime($sent->created_at))
+            ];
+        }
+
+        $jsonIncident = json_encode($sentMsgcontent);
+
+        if ($request->ajax()) {
+            return response()->json($sentMsgcontent);
+        }
+
+        return view('pages.sent', [
+            'sentMessages' => $sentMessages,
+        ]);
     }
+
+    public function destroymultipleSentMsgs(Request $request){
+        SentMessage::destroy($request->chks);
+        $chk = count($request->chks);
+
+        if ($chk == 1) {
+           $delmsg = 'Sent messages successfully deleted.';
+        } else {
+           $delmsg = $chk .' sent messages successfully deleted.';
+        }
+        
+        \Session::flash('message',  $delmsg);
+        return redirect()->back();
+     }
     
 
     #=======================================================================================#
