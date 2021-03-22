@@ -49,7 +49,7 @@
 				<i class="fa fa-file-excel-o" aria-hidden="true"></i> Download CSV Template
 			</a>
 			<small class="text-danger">
-				<i>*The format for the contact number/s: "+639123456789" or "09123456789" or "9123456789".</i>
+				<i>*Allowed format for the contact number/s: "+639123456789" or "09123456789" or "9123456789".</i>
 			</small>
 			<hr>
 			<form action="#" method="post" enctype="multipart/form-data" id="form-upload-csv">
