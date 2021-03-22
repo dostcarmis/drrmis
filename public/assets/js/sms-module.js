@@ -85,7 +85,7 @@ $(function(){
 
         firstChar = contactNumber.charAt(0);
 
-        if (numberLength === 13 || numberLength === 11){
+        if (numberLength === 13 || numberLength === 11 || numberLength === 10){
             if (!contactNumber.match(/[a-z]/i)) {
                 isValidNumber = true;
             }
@@ -94,6 +94,8 @@ $(function(){
                 if (contactNumber.substring(0, 2) != "09" && numberLength === 11){
                     isValidNumber = false;
                 } else if (contactNumber.substring(0, 4) != "+639" && numberLength === 13){
+                    isValidNumber = false;
+                } else if (contactNumber.substring(0, 1) != "9" && numberLength === 10) {
                     isValidNumber = false;
                 }
             }
@@ -104,6 +106,8 @@ $(function(){
                 if (firstChar == "0" && numberLength === 11){
                     contactNumber = contactNumber.slice(1, numberLength);
                     contactNumber = "+63" + contactNumber;
+                } else if (firstChar == "9" && numberLength === 10) {
+                    contactNumber = `+63${contactNumber}`;
                 }
 
                 for (var i = 0; i < recipients.length; i++) {

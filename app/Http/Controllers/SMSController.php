@@ -390,15 +390,39 @@ class SMSController extends Controller
     private function proccessContactNumber($contactNo) {
         $contactNo = strtolower(preg_replace('/[^+0-9]/', '', $contactNo));
         $digitCount = strlen($contactNo);
+        $isValidNumber = false;
 
-        
-
-        if ($digitCount !== 11 && $digitCount !== 13) {
+        if ($digitCount !== 10 && $digitCount !== 11 && 
+            $digitCount !== 12 && $digitCount !== 13) {
             return false;
         }
 
-        if ($digitCount === 13) {
+        if (!$digitCount) {
+            return false;
+        }
+
+        if (substr($contactNo, 0, 1) === '9' && $digitCount === 10) {
+            $contactNo = "0$contactNo";
+            $isValidNumber = true;
+        }
+
+        if (substr($contactNo, 0, 2) === '09' && $digitCount === 11) {
+            $isValidNumber = true;
+        }
+
+        if (substr($contactNo, 0, 3) === '639' && $digitCount === 12) {
+            $contactNo = "+$contactNo";
             $contactNo = str_replace('+63', '0', $contactNo);
+            $isValidNumber = true;
+        }
+
+        if (substr($contactNo, 0, 4) === '+639' && $digitCount === 13) {
+            $contactNo = str_replace('+63', '0', $contactNo);
+            $isValidNumber = true;
+        }
+
+        if (!$isValidNumber) {
+            return false;
         }
 
         return $contactNo;
