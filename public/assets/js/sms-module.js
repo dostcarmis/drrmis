@@ -27,7 +27,7 @@ $(function(){
                 }
             });
 
-            htmlSenderNames += `<option value="Semaphore">Semaphore</option>`;
+            htmlSenderNames += `<option value="SEMAPHORE">SEMAPHORE</option>`;
 
             $('#sender-names').html(htmlSenderNames);
         }).fail(function() {
