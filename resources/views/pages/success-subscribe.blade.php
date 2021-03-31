@@ -8,7 +8,7 @@
             Subscribe
         </h1>
     </div>
-    <div id="user-id" class="hidden">{{$currentUser->id}}</div>
+    <div id="user-id" class="hidden">{{Auth::user()->id}}</div>
 </div>
 
 <div id="frmmain">

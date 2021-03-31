@@ -37,14 +37,14 @@
 				@foreach($roadnetworks as $roadnetwork)
 					<tr>						
 						<td>
-						@if(($currentUser->id == $roadnetwork->user_id) || ($currentUser->role_id <= 3))
+						@if((Auth::user()->id == $roadnetwork->user_id) || (Auth::user()->role_id <= 3))
 						<input class="chbox" name="chks[]" value="{{$roadnetwork->id}}"  type="checkbox">
 						@else
 						<input disabled type="checkbox">
 						@endif
 						</td>
 						<td>
-						@if(($currentUser->id == $roadnetwork->user_id) || ($currentUser->role_id <= 3))
+						@if((Auth::user()->id == $roadnetwork->user_id) || (Auth::user()->role_id <= 3))
 						<a class="desctitle" href="<?php echo url('editroadnetwork'); ?>/<?php echo $roadnetwork->id?>">{{ $roadnetwork->location }}</a>
 						@else
 						{{ $roadnetwork->location }}
@@ -52,7 +52,7 @@
 						@if($roadnetwork->latest_status == "Open")
 							<span class="repcleared">— Cleared <span><?php echo date("F j, Y g:i A", strtotime($roadnetwork->recent_date));?></span></span>
 						@endif
-						@if(($currentUser->id == $roadnetwork->user_id) || ($currentUser->role_id <= 3))
+						@if((Auth::user()->id == $roadnetwork->user_id) || (Auth::user()->role_id <= 3))
 						<span class="defsp spactions">
 							<div class="inneractions">
 								<a href="<?php echo url('editroadnetwork'); ?>/<?php echo $roadnetwork->id; ?>">Edit</a> | 

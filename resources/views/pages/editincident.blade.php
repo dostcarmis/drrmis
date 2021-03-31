@@ -1,6 +1,6 @@
 @extends('layouts.masters.backend-layout')
 @section('page-content')
-@if(($currentUser->id == $incidents->created_by) || ($currentUser->role_id <= 3))
+@if((Auth::user()->id == $incidents->created_by) || (Auth::user()->role_id <= 3))
 <div class="row">
 	<div class="col-xs-12">
 		<h1 class="page-header">Edit Incident Report</h1>

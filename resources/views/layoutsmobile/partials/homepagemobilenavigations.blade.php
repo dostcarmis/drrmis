@@ -3,7 +3,7 @@
 </div>
 <nav id="menumobile" class="mobilenav hidden-sm hidden-lg hidden-md">
   <ul>
-    @if( $currentUser )
+    @if( Auth::user() )
         <li><a href="{{ action("HydrometController@dashboard") }}">Dashboard</a></li>         
          <li><span>Prevention & Mitigation</span>
         <ul>
@@ -134,7 +134,7 @@
             <li><a href="#" data-value="<?php echo $path.$files[5];?>" class="contourclick"><span>Mt. Province</span></a></li>
           </ul>
         </li>
-     @if( !$currentUser )
+     @if( !Auth::user() )
           <li class="login">{!! link_to_route('get_login', 'Login') !!}</li>
           <li class="register">{!! link_to_route('get_register', 'Register') !!}</li>          
     @else

@@ -8,7 +8,7 @@
 			Contacts
 			<hr>
 		</h1>
-		<div id="user-id" class="hidden">{{$currentUser->id}}</div>
+		<div id="user-id" class="hidden">{{Auth::user()->id}}</div>
 	</div>
 
 	<div id="frmmain" class="form-group col-xs-12 col-md-12 col-lg-12">

@@ -19,7 +19,7 @@
 			</center>
 		</div>	
 
-		@if(($currentUser->id == $floods->created_by) || ($currentUser->role_id <= 3))
+		@if((Auth::user()->id == $floods->created_by) || (Auth::user()->role_id <= 3))
 		<div class="col-xs-12 np text-right editlink">
 			<a href="<?php echo url('editflood')?>/{{$floods->id }}" style="margin-right:5px">Edit This Report</a> 
 		</div>
@@ -75,7 +75,7 @@ He/she is a {!! $floods->reporter_pos !!} of the office of {!! $floods->author !
 			</div>
 		</div>	
 
-		@if(($currentUser->id == $floods->created_by) || ($currentUser->role_id <= 3))
+		@if((Auth::user()->id == $floods->created_by) || (Auth::user()->role_id <= 3))
 		<div class="col-xs-12 np text-right editlink">
 			 
 				<a href="<?php echo url('viewfloods')?>">Go back to flood report list</a> 

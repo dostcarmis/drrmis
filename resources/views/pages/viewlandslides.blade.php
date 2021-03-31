@@ -1,4 +1,4 @@
-@extends('layouts.masters.backend-layout')
+ @extends('layouts.masters.backend-layout')
 @section('page-content')
 
 <div class="row">
@@ -45,7 +45,7 @@
 					<tr>						
 						<td>
 
-						@if(($currentUser->id == $landslide->created_by) || ($currentUser->role_id <= 3))
+						@if((Auth::user()->id == $landslide->created_by) || (Auth::user()->role_id <= 3))
 						<input class="chbox" name="chks[]" value="{{$landslide->id}}"  type="checkbox">
 						@else
 						<input  type="checkbox" disabled>
@@ -55,7 +55,7 @@
 
 						<td>
 
-						@if(($currentUser->id == $landslide->created_by) || ($currentUser->role_id <= 3))
+						@if((Auth::user()->id == $landslide->created_by) || (Auth::user()->role_id <= 3))
 						<a class="desctitle" href="<?php echo url('viewperlandslide'); ?>/<?php echo $landslide->id?>">
 							{{ $landslide->road_location }} {{$landslide['municipal'] ? json_decode($landslide['municipal'])->name : ''}}, 
 							{{$landslide['province'] ? json_decode($landslide['province'])->name : ''}}</a>
@@ -71,7 +71,7 @@
 
 						<span class="defsp spactions">
 							<div class="inneractions">
-								@if(($currentUser->id == $landslide->created_by) || ($currentUser->role_id <= 3))
+								@if((Auth::user()->id == $landslide->created_by) || (Auth::user()->role_id <= 3))
 								<a href="<?php echo url('editlandslide'); ?>/<?php echo $landslide->id; ?>">Edit</a> | 
 								<a class="deletepost" href="#" id="{{$landslide->id}}" value="{{$landslide->id}}" title="Delete">Delete</a> |
 								@endif

@@ -27,7 +27,7 @@
 							<div class="text_holder">Filename : <a href="{{$prepared->fileurl}}/{{$prepared->file}}">{{$prepared->filename}}</a>	
 								<div class="btn-group pull-right">
 
-									@if($prepared->uploadedby == $currentUser->id)									
+									@if($prepared->uploadedby == Auth::user()->id)									
 									<a class="delete btn btn-danger" href="<?php echo url('deletepreparedness'); ?>/<?php echo $prepared->id?>">Delete</a>
 									@endif
 

@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="col-xs-12 dashboardpanel">
-                <h2>Welcome {{$currentUser->first_name}} {{$currentUser->last_name}}</h2>
+                <h2>Welcome {{Auth::user()->first_name}} {{Auth::user()->last_name}}</h2>
                 <div class="col-xs-12 np">
                     <div class="col-xs-12 col-sm-4 dashboard-3-column">
                         <h3>Get Started</h3>

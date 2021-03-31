@@ -135,12 +135,12 @@
 </nav>
 <nav id="mainmenumobile" class="mobilenav hidden-sm hidden-lg hidden-md" role="navigation">
 <ul class="top-nav">
-     @if( !$currentUser )
+     @if( !Auth::user() )
         <li class="login">{!! link_to_route('get_login', 'Login') !!}</li>
         <li class="register">{!! link_to_route('get_register', 'Register') !!}</li>         
     @else  
     
-    <li><a href="{{ action("UserController@profile") }}"><img class="smimg" src="{{ $currentUser->profile_img }}"> {{ $currentUser->first_name }} {{ $currentUser->last_name }}</a></li>
+    <li><a href="{{ action("UserController@profile") }}"><img class="smimg" src="{{ Auth::user()->profile_img }}"> {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</a></li>
     <li>{!! link_to_route('get_logout', 'Log out',array() ,array('class' => 'btn')) !!}</li>
                    
         @endif                   

@@ -27,7 +27,7 @@
 							<div class="text_holder">Filename : <a href="{{$resp->fileurl}}/{{$resp->file}}">{{$resp->filename}}</a>	
 								<div class="btn-group pull-right">
 
-									@if($resp->uploadedby == $currentUser->id)									
+									@if($resp->uploadedby == Auth::user()->id)									
 									<a class="delete btn btn-danger" href="<?php echo url('deleteresponse'); ?>/<?php echo $resp->id?>">Delete</a>
 									@endif
 

@@ -1,57 +1,21 @@
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
-        Options -MultiViews
+        Options -MultiViews -Indexes
     </IfModule>
 
     RewriteEngine On
 
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)/$ /$1 [L,R=301]
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
 
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
-
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>
-    AddType application/vnd.google-earth.kml+xml kml
-    AddType application/vnd.google-earth.kmz kmz
-
-<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
-Header set Cache-Control "max-age=2592000, public"
-</FilesMatch>
-<IfModule mod_expires.c>
-ExpiresActive On
-AddType application/vnd.ms-fontobject .eot 
-AddType application/x-font-ttf .ttf
-AddType application/x-font-opentype .otf
-AddType application/x-font-woff .woff
-AddType image/svg+xml .svg
-ExpiresByType application/vnd.ms-fontobject "access 1 year"
-ExpiresByType application/x-font-ttf "access 1 year"
-ExpiresByType application/x-font-opentype "access 1 year"
-ExpiresByType application/x-font-woff "access 1 year"
-ExpiresByType image/svg+xml "access 1 year"
-ExpiresByType text/html "access 1 hour"
-ExpiresByType text/css "access 14 days"
-ExpiresByType text/x-javascript "access 3 weeks"
-ExpiresByType application/javascript "access 1 month"  
-ExpiresByType application/x-javascript "access 1 month"
-ExpiresByType image/gif "access 2 months"
-ExpiresByType image/png "access 2 months"
-ExpiresByType image/jpg "access 2 months"
-ExpiresByType image/jpeg "access 2 months"
-ExpiresByType image/gif "access 2 months"
-ExpiresByType application/pdf "access 1 year"
-ExpiresByType application/x-shockwave-flash "access 1 year"
-ExpiresByType image/x-icon "access 1 year"
-ExpiresDefault "access 2 days"
-</IfModule>
-
-
-FileETag none
-
