@@ -2,7 +2,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top hidden-xs" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <ul class="nav navbar-right top-nav">
-                 @if( !$currentUser )
+                 @if( !Auth::user() )
                     <li class="login">{!! link_to_route('get_login', 'Login') !!}</li>
                       <li class="divider">|</li>
                       <li class="register">{!! link_to_route('get_register', 'Register') !!}</li>         
@@ -12,9 +12,9 @@
                     @include('pages.navnotification')
                 </li>
                 <li class="dropdown">
-                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="smimg" src="{{ $currentUser->profile_img }}"> {{ $currentUser->first_name }} {{ $currentUser->last_name }}  <b class="caret"></b></a>
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="smimg" src="{{ Auth::user()->profile_img }}"> {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}  <b class="caret"></b></a>
                       <ul class="dropdown-menu drpinner">
-                          <div class="col-xs-6 np leftsideinner"><li class="left"><img src="{{ $currentUser->profile_img }}"></li></div>
+                          <div class="col-xs-6 np leftsideinner"><li class="left"><img src="{{ Auth::user()->profile_img }}"></li></div>
                           <div class="col-xs-6 rightsideinner" style="padding-right:0px;">
                             <li>
                               <a class="btn" href="{{ action("UserController@profile") }}">Profile</a>

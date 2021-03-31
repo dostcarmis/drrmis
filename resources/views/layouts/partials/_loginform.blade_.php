@@ -3,7 +3,7 @@
   <div class="container-fluid">
       <nav class="navbar hidden-xs navbar-default" id="login-nav">        
       
-      @if( !$currentUser )
+      @if( !Auth::user() )
       <!--<ul class="nav navbar-nav navbar-right"> 
         <li class="login">
         <a href="" data-toggle="modal" data-target="#modalLoginForm">Login</a>
@@ -21,7 +21,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">    
       <li class="dropdown">
-        <a href="#" data-toggle="dropdown"><img class="smimg" src="{{ $currentUser->profile_img }}"> {{ $currentUser->first_name }} {{ $currentUser->last_name }}  <b class="caret"></b></a>
+        <a href="#" data-toggle="dropdown"><img class="smimg" src="{{ Auth::user()->profile_img }}"> {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}  <b class="caret"></b></a>
         <ul class="dropdown-menu homedrp">
               <li>
                 <a href="{{ action("UserController@profile") }}">Profile</a>

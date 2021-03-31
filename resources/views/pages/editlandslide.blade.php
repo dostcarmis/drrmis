@@ -1,6 +1,6 @@
 @extends('layouts.masters.backend-layout')
 @section('page-content')
-@if(($currentUser->id == $landslides->created_by) || ($currentUser->role_id <= 3))
+@if((Auth::user()->id == $landslides->created_by) || (Auth::user()->role_id <= 3))
 <div class="row">
 	<div class="col-xs-12">
 		<h1 class="page-header">Edit Landslide Report</h1>
@@ -242,7 +242,7 @@
 @endif
 @endsection
  @section('page-js-files')
-@if(($currentUser->id == $landslides->created_by) || ($currentUser->role_id <= 3))
+@if((Auth::user()->id == $landslides->created_by) || (Auth::user()->role_id <= 3))
 <script type="text/javascript" src="{!! url('assets/dropzone/dropzone.js') !!}"></script>
 <script type="text/javascript">
 var baseUrl = "{{ url('/') }}";

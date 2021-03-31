@@ -8,7 +8,7 @@
 <div class="row">
 	<div class="col-xs-12 notifications-wrap">
 		@foreach($notifications as $notification)
-			@if($currentUser->id == $notification->user_id)
+			@if(Auth::user()->id == $notification->user_id)
 			@if($notification->is_read != 0)
 				<div class="col-xs-12 notifications-row">
 				@else

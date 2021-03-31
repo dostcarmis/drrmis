@@ -26,7 +26,7 @@
 				<td><p><span>{{$riskf->filetype}}</span></p></td>
 				<td><span>{{$riskf->name}}</span>
 					<td><div class="btn-group pull-right">
-						@if($riskf->uploadedby == $currentUser->id)
+						@if($riskf->uploadedby == Auth::user()->id)
 						<a class="delete btn btn-danger" onclick="$(this).filedel({{ $riskf->id }});">Delete</a>
 						@endif
 						<a class="btn btn-primary btn-success"  target="_self" href="{{ url($riskf->fileurl) }}" download><span class="fa fa-cloud-download"></span>Download File</a>		

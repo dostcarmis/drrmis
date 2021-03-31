@@ -19,7 +19,7 @@
 						<li class="list-group-item">
 							<div class="text_holder">Filename : <a href="{{$rehab->fileurl}}/{{$rehab->file}}">{{$rehab->filename}}</a>	
 								<div class="btn-group pull-right">
-									@if($rehab->uploadedby == $currentUser->id)
+									@if($rehab->uploadedby == Auth::user()->id)
 
 									
 									<a class="delete btn btn-danger" href="<?php echo url('deleterehab'); ?>/<?php echo $rehab->id?>">Delete</a>

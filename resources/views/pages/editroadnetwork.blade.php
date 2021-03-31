@@ -1,6 +1,6 @@
 @extends('layouts.masters.backend-layout')
 @section('page-content')
-@if(($currentUser->id == $roadnetworks->user_id) || ($currentUser->role_id <= 3))
+@if((Auth::user()->id == $roadnetworks->user_id) || (Auth::user()->role_id <= 3))
 <div class="row">
 	<div class="col-xs-12">
 		<h1 class="page-header">Edit Road Report</h1>
@@ -14,7 +14,7 @@
 <form id="userform" action="{{ action('RoadController@updateRoadnetwork') }}" method="post">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<input type="hidden" name="id" value="<?= $roadnetworks->id ?>">	
-	@if($currentUser->role_id != 5)
+	@if(Auth::user()->role_id != 5)
 		<div class="col-xs-12 perinputwrap">
 			<div class="col-xs-6 npl">
 				<label>Report Status:</label>

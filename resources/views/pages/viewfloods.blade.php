@@ -39,14 +39,14 @@
 				@foreach($floods as $flood)
 					<tr>						
 						<td>
-						@if(($currentUser->id == $flood->created_by) || ($currentUser->role_id <= 3))
+						@if((Auth::user()->id == $flood->created_by) || (Auth::user()->role_id <= 3))
 						<input class="chbox" name="chks[]" value="{{$flood->id}}"  type="checkbox"></td>
 						@else
 						<input type="checkbox" disabled></td>
 						@endif
 						<td>
 
-						@if(($currentUser->id == $flood->created_by) || ($currentUser->role_id <= 3))
+						@if((Auth::user()->id == $flood->created_by) || (Auth::user()->role_id <= 3))
 							<a class="desctitle" href="<?php echo url('viewperflood'); ?>/<?php echo $flood->id?>">{{ $flood->road_location }}</a>
 						@else
 						<a class="desctitle" href="<?php echo url('editflood'); ?>/<?php echo $flood->id?>">{{ $flood->road_location }}</a>
@@ -57,7 +57,7 @@
 							@endif
 							<span class="defsp spactions">
 								<div class="inneractions">
-								@if(($currentUser->id == $flood->created_by) || ($currentUser->role_id <= 3))
+								@if((Auth::user()->id == $flood->created_by) || (Auth::user()->role_id <= 3))
 									<a href="<?php echo url('editflood'); ?>/<?php echo $flood->id; ?>">Edit</a> | 
 									<a class="deletepost" href="#" id="{{$flood->id}}" value="{{$flood->id}}" title="Delete">Delete</a> | 
 								@endif

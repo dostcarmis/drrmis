@@ -9,7 +9,7 @@
 <ul>
 <li>
     @foreach($allnotifications as $bynotification)
-        @if($bynotification->user_id == $currentUser->id)
+        @if($bynotification->user_id == Auth::user()->id)
             @if($bynotification->nc_id == 3)                                        
                 @if($bynotification->is_read != 1)
                     <a href="<?php echo url('viewnotification'); ?>/<?php echo $bynotification->id; ?>" class="readnotifications unread">

@@ -846,7 +846,7 @@ h1.page-header{
 	display: none;
 }
 .side-nav {
-	overflow-y: auto !important;
+	/*overflow-y: auto !important;*/
 	height: 100% !important;
 }
 .side-nav .divider{

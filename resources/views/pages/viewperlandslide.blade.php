@@ -21,7 +21,7 @@
 		</center>
 	</div>
 
-	@if(($currentUser->id == $landslides->created_by) || ($currentUser->role_id <= 3))
+	@if((Auth::user()->id == $landslides->created_by) || (Auth::user()->role_id <= 3))
 		<div class="col-xs-12 np text-right editlink">
 			<a href="<?php echo url('editlandslide')?>/{{$landslides->id }}" style="margin-right:5px">Edit This Report</a> 
 		</div>
@@ -81,7 +81,7 @@ He/she is a {!! $landslides->reporterpos !!} of the office of {!! $landslides->a
 		</div>
 	</div>
 
-	@if(($currentUser->id == $landslides->created_by) || ($currentUser->role_id <= 3))
+	@if((Auth::user()->id == $landslides->created_by) || (Auth::user()->role_id <= 3))
 		<div class="col-xs-12 np text-right editlink">
 			 
 			<a href="<?php echo url('viewlandslides')?>">Go back to lanslide report list</a> 

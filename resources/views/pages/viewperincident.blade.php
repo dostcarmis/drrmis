@@ -49,7 +49,7 @@
 			@endforeach
 		</div>
 	</div>
-	@if(($currentUser->id == $incidents->created_by) || ($currentUser->role_id <= 3))
+	@if((Auth::user()->id == $incidents->created_by) || (Auth::user()->role_id <= 3))
 		<div class="col-xs-12 np text-right editlink">
 			<a href="<?php echo url('editincident')?>/{{$incidents->slug }}">Edit Report</a>
 		</div>

@@ -2,7 +2,7 @@
 <!------------------------------------ Horizontal Navbar ---------------------------------------------------------------------------------------------->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="innerNav">
             <ul class="nav navbar-right top-nav">
-                 @if(!$currentUser)
+                 @if(!Auth::user())
                     <li class="login">{!! link_to_route('get_login', 'Login') !!}</li>
                       <li class="divider">|</li>
                       <li class="register">{!! link_to_route('get_register', 'Register') !!}</li>         
@@ -26,9 +26,9 @@
                 </li>
 
                 <li class="dropdown">
-                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="smimg" src="{{ $currentUser->profile_img }}"> {{ $currentUser->first_name }} {{ $currentUser->last_name }}  <b class="caret"></b></a>
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="smimg" src="{{ Auth::user()->profile_img }}"> {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}  <b class="caret"></b></a>
                       <ul class="dropdown-menu drpinner">
-                          <div class="col-xs-6 np leftsideinner"><li class="left"><img src="{{ $currentUser->profile_img }}"></li></div>
+                          <div class="col-xs-6 np leftsideinner"><li class="left"><img src="{{ Auth::user()->profile_img }}"></li></div>
                           <div class="col-xs-6 rightsideinner" style="padding-right:0px;">
                             <li>
                               <a class="btn" href="{{ action("UserController@profile") }}">Profile</a>
@@ -134,7 +134,7 @@
                         </ul>
                     </li>                              
             <!---------------------------------- Libraries Dropdown -------------------------------------------->
-                    @if($currentUser->role_id == 1 || $currentUser->role_id == 2) 
+                    @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2) 
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#data" class="" aria-expanded="true"><i class="fa fa-book" aria-hidden="true"></i> Libraries <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="data" class="collapse" aria-expanded="true">
@@ -153,7 +153,7 @@
                     </li>
                     @endif
                     <!---------------------------------- Users Dropdown -------------------------------------------->
-                    @if($currentUser->role_id == 1 || $currentUser->role_id == 2)
+                    @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#users" class="" aria-expanded="true"><i class="fa fa-user"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
 

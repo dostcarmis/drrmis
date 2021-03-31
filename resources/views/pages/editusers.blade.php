@@ -34,7 +34,7 @@
 		<input type="text" name="cellphone_num" id="cellphone_num" class="form-control" placeholder="Cellphone Number" value="<?= $users->cellphone_num ?>">
 		@if ($errors->has('cellphone_num')) <span class="reqsymbol">*</span> @endif
 	</div>
-	@if($currentUser->role_id == 1)
+	@if(Auth::user()->role_id == 1)
 	<div class="col-xs-12 col-sm-6 perinputwrap">
 		<label>Province:</label>
 		<select name="province_idedit" id="province_idedit" class="form-control">

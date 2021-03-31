@@ -29,7 +29,7 @@
 				<td><p><span>{{$file->filetype}}</span></p></td>
 				<td><span>{{$file->name}}</span>
 					<td><div class="btn-group pull-right">
-						@if($file->uploadedby == $currentUser->id)
+						@if($file->uploadedby == Auth::user()->id)
 						<a class="delete btn btn-danger" onclick="$(this).delfile({{ $file->id }});">Delete</a>
 						@endif
 						<a class="btn btn-primary btn-success"  target="_self" href="{{ url($file->fileurl) }}" download><span class="fa fa-cloud-download"></span>Download File</a>		
