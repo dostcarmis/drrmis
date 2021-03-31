@@ -47,7 +47,12 @@ class Getcsvdataapi
         $perline = count($csvfile);
         $sum = 0;
         for ($i=0; $i < $perline; $i++) { 
-            $sum+= $csvfile[$i]['value'];
+            try {
+                $sum = (float)trim($csvfile[$i]['value']);
+            } catch (\Throwable $th) {
+                $sum+= (float)$csvfile[$i]['value'];
+            }
+            
         }
         return $sum;
     }   
@@ -155,7 +160,18 @@ class Getcsvdataapi
         $sum = 0;
         $limit = count($counter);
         for ($i=0; $i < $limit; $i++) { 
-            $sum+= $counter[$i]['value'];
+           
+            //if(trim($csvfile[$i]['value'])== 'ERR' || !$csvfile[$i]['value']){
+            //    $sum = 0;
+            //}else{
+            //    $sum+= $counter[$i]['value']; 
+            //}   
+            try {
+                $sum = (float)trim($csvfile[$i]['value']);
+            } catch (\Throwable $th) {
+                $sum+= (float)$counter[$i]['value'];
+            }
+            //dd($sum);
         }
       return number_format((float)$sum, 2, '.', '');
     }
@@ -167,6 +183,7 @@ class Getcsvdataapi
         for ($i=0; $i < $limit; $i++) { 
             $currentreading = $csvfile[$i]['value'];
         }
+        
         return $currentreading;
     }
 
