@@ -167,6 +167,7 @@ class Getcsvdataapi
         for ($i=0; $i < $limit; $i++) { 
             $currentreading = $csvfile[$i]['value'];
         }
+        
         return $currentreading;
     }
 
