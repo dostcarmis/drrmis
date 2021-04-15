@@ -23,6 +23,11 @@
 		<input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name">
 		@if ($errors->has('last_name')) <span class="reqsymbol">*</span> @endif
 	</div>	
+	<div class="col-xs-12  perinputwrap">
+		<label>Username</label>
+		<input type="text" name="username" id="username" class="form-control" placeholder="Username">
+		@if ($errors->has('username')) <span class="reqsymbol">*</span> @endif
+	</div>	
 	<div class="col-xs-12 col-sm-6 perinputwrap">
 		<label>Email</label>
 		<input type="text" name="email" id="email" class="form-control" placeholder="Email Address">
@@ -32,6 +37,11 @@
 	<label>Contact Number</label>
 		<input type="text" name="cellphone_num" id="email" class="form-control" placeholder="Contact Number">
 		@if ($errors->has('cellphone_num')) <span class="reqsymbol">*</span> @endif
+	</div>
+	<div class="col-xs-12  perinputwrap">
+		<label>Position/Designation</label>
+		<input type="text" name="position" id="position" class="form-control" placeholder="Position/Designation">
+		@if ($errors->has('position')) <span class="reqsymbol">*</span> @endif
 	</div>
 	@if(Auth::user()->role_id == 1)
 	<div class="col-xs-12 col-sm-6 perinputwrap">

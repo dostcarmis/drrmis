@@ -307,10 +307,12 @@ class UserController extends Controller
             if ($cntUser->role_id == 1) {
                 $user->first_name = $post['first_name'];
                 $user->last_name = $post['last_name'];
+                $user->username = $post['username'];
                 $user->cellphone_num = $post['cellphone_num'];
                 $user->municipality_id = $post['municipality_id'];
                 $user->province_id = $post['province_id'];
                 $user->email = $post['email'];
+                $user->position = $post['position'];
                 $user->password = bcrypt('password');
                 $user->role_id = $post['role'];
                 $user->profile_img = url('assets/images/default.jpg');
@@ -320,7 +322,9 @@ class UserController extends Controller
             } else if (($cntUser->role_id == 2) || ($cntUser->role_id == 3)) {
                 $user->first_name = $post['first_name'];
                 $user->last_name = $post['last_name'];
+                $user->username = $post['username'];
                 $user->email = $post['email'];
+                $user->position = $post['position'];
                 $user->cellphone_num = $post['cellphone_num'];
                 $user->province_id = $cntUser->province_id;
                 $user->municipality_id = $cntUser->municipality_id;
@@ -332,7 +336,9 @@ class UserController extends Controller
             } else if($cntUser->role_id == 4) {
                 $user->first_name = $post['first_name'];
                 $user->last_name = $post['last_name'];
+                $user->username = $post['username'];
                 $user->email = $post['email'];
+                $user->position = $post['position'];
                 $user->cellphone_num = $post['cellphone_num'];
                 $user->province_id = $cntUser->province_id;
                 $user->municipality_id = $cntUser->municipality_id;
