@@ -11,16 +11,15 @@
 |
 */
 
-
-Auth::routes();
-
-Route::get('uploadpage','HomeController@uploadPage');
-
-Route::group(array('middleware' => 'auth'), function(){
-    Route::resource('filemanager', 'FilemanagerLaravelController');
-});
-	
 Route::group(['middlewareGroups' => 'web'], function () {	
+	Auth::routes();
+
+	Route::get('uploadpage','HomeController@uploadPage');
+
+	Route::group(array('middleware' => 'auth'), function(){
+		Route::resource('filemanager', 'FilemanagerLaravelController');
+	});
+	
 	Route::group(['prefix' => 'auth'], function() {
 		Route::get('register', [
 			'as' => 'get_register',
