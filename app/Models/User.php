@@ -2,14 +2,13 @@
 
 namespace App\Models;
 use App\Models\Logs;
-
-
 use Illuminate\Database\Eloquent\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-
-class User extends Model
-{
+class User extends Model implements JWTSubject {
+    
     protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,23 +25,29 @@ class User extends Model
         'password',
         'position',
         'designation',
-        'cellphone_num'];
+        'cellphone_num'
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    public function notifications()
-    {
+    public function notifications() {
         return $this->hasMany('App\Models\Notification');
     }
-    public function newNotification()
-    {
+
+    public function newNotification() {
         $notification = new Notification;
         $notification->user()->associate($this);
         return $notification;
     }
 
-    
+    public function getJWTIdentifier() {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims() {
+        return [];
+    }
 }

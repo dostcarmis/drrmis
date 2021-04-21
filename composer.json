@@ -14,6 +14,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "pqb/filemanager-laravel": "2.*",
+        "tymon/jwt-auth": "^1.0",
         "unisharp/laravel-filemanager": "^1.9",
         "webpatser/laravel-uuid": "^4.0"
     },
