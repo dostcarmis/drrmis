@@ -80,8 +80,6 @@ class User extends Authenticatable {
         return $fullName ? $fullName : NULL;
     }
 
-
-
     public function activityLogs($request, $msg){
         $userid = $this->id ? $this->id : NULL;
         $requestURL = $request->getRequestUri();
@@ -105,5 +103,9 @@ class User extends Authenticatable {
         $intanceEmplog->useragent = $userAgent;
         $intanceEmplog->remarks = $msg;
         $intanceEmplog->save();
+    }
+
+    public function AauthAcessToken(){
+        return $this->hasMany('\App\OauthAccessToken');
     }
 }

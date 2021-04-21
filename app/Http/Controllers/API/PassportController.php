@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use Lcobucci\JWT\Parser;
 
 class PassportController extends Controller {
 
@@ -32,26 +33,19 @@ class PassportController extends Controller {
     }
 
     /**
-     * Register api
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function register(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'c_password' => 'required|same:password',
-        ]);
-        if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()], 401);            
+    * logout api
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function logout(Request $request, $id) { 
+        $user = User::find($id);
+        
+        if ($user) {
+            $user->AauthAcessToken()->delete();
+            return response()->json(['success' =>'logout_success'],200); 
+        } else {
+            return response()->json(['error' =>'api.something_went_wrong'], 500);
         }
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-        $user = User::create($input);
-        $success['token'] =  $user->createToken('MyApp')->accessToken;
-        $success['name'] =  $user->name;
-        return response()->json(['success'=>$success], $this->successStatus);
     }
 
     /**

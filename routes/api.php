@@ -23,8 +23,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('login', 'API\PassportController@login');
-Route::post('register', 'API\PassportController@register');
+Route::post('logout/{id}','API\PassportController@logout');
 
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::post('get-details', 'API\PassportController@getDetails');
+    Route::post('user-info', 'API\PassportController@getDetails');
 });
