@@ -60,5 +60,6 @@ class Kernel extends HttpKernel
         
         'admin' => App\Http\Middleware\AdminAuth::class,
         'roles' => \App\Http\Middleware\CheckRole::class,
+        'jwt.verify' => \App\Http\Middleware\JwtMiddleware::class,
     ];
 }

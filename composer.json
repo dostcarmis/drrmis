@@ -11,9 +11,12 @@
         "intervention/image": "^2.5",
         "laracasts/utilities": "~2.0",
         "laravel/framework": "5.5.*",
+        "laravel/passport": "~4.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
+        "paragonie/random_compat": "2.*",
         "pqb/filemanager-laravel": "2.*",
+        "tymon/jwt-auth": "^1.0",
         "unisharp/laravel-filemanager": "^1.9",
         "webpatser/laravel-uuid": "^4.0"
     },
