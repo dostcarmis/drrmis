@@ -427,9 +427,8 @@ class SMSController extends Controller
     private function gsmModuleSendSMS($userID, $contactNumber, $message) {
         $status = "";
         $directory = "public/queued-messages/$userID/";
-        $contactNumbers = explode(',', $contactNumber);
         $sendData = (object) [
-            'phone_numbers' => $contactNumbers,
+            'phone_numbers' => $contactNumber,
             'message' => $message
         ];
         $sendJsonData = json_encode($sendData);
@@ -461,19 +460,24 @@ class SMSController extends Controller
 
         try {
             $userID = Auth::user()->id;
-            $groupID = Auth::user()->group;
-            $userDat = DB::table('tbl_groups as grp')
-                        ->select('grp.sms_api_key')
-                        ->join('users as user', 'user.group', '=', 'grp.id')
-                        ->where('user.id', $userID)
-                        ->first();
-            $apiKey = $userDat->sms_api_key;
+
+            if ($smsMedium == "semaphore") {
+                $groupID = Auth::user()->group;
+                $userDat = DB::table('tbl_groups as grp')
+                            ->select('grp.sms_api_key')
+                            ->join('users as user', 'user.group', '=', 'grp.id')
+                            ->where('user.id', $userID)
+                            ->first();
+                $apiKey = $userDat->sms_api_key;
+            }
 
             $sentMessageInstance = new SentMessage;
             $status = [];
 
-            if (!$userDat) {
-                return 'Not subscribed to SMS API.';
+            if ($smsMedium == "semaphore") {
+                if (!$userDat) {
+                    return 'Not subscribed to SMS API.';
+                }
             }
 
             if ($sendType == 'file') {
@@ -519,13 +523,15 @@ class SMSController extends Controller
                 }
             }
             
-            if ($userDat && $smsMedium == "semaphore") {
-                $sentMessageInstance->user_id = $userID;
-                $sentMessageInstance->group_id = $groupID;
-                $sentMessageInstance->recipients = serialize($contactNumber);
-                $sentMessageInstance->message = implode(", \n", $messages);
-                $sentMessageInstance->status = serialize($status);
-                $sentMessageInstance->save();
+            if ($smsMedium == "semaphore") {
+                if ($userDat) {
+                    $sentMessageInstance->user_id = $userID;
+                    $sentMessageInstance->group_id = $groupID;
+                    $sentMessageInstance->recipients = serialize($contactNumber);
+                    $sentMessageInstance->message = implode(", \n", $messages);
+                    $sentMessageInstance->status = serialize($status);
+                    $sentMessageInstance->save();
+                }
             }
 
             return implode(", \n", $status);

@@ -16,24 +16,26 @@ class GsmModuleController extends Controller {
         $userID = $user->id;
         $publicDirectory = public_path("storage/queued-messages/$userID");
 
-        if (!File::exists($publicDirectory)) {
-            Storage::makeDirectory($publicDirectory);
-        }
+        if (File::exists($publicDirectory)) {
+            $files = File::files($publicDirectory);
+            $countFiles = count($files);
+            
+            if ($countFiles > 0) {
+                $file = $files[0];
 
-        $files = File::files($publicDirectory);
-        $countFiles = count($files);
-        
-        if ($countFiles > 0) {
-            $file = $files[0];
-
-            return response()->json(
-                ['success' => json_decode(file_get_contents($file), true)], 200
-            );
+                return response()->json(
+                    ['success' => json_decode(file_get_contents($file), true)], 200
+                );
+            } else {
+                return response()->json(
+                    ['error' => "no-pending"], 404
+                );
+            }
         } else {
             return response()->json(
                 ['error' => "no-pending"], 404
             );
-        }
+        } 
     }
 
     public function respondMessageSent(Request $request) {
