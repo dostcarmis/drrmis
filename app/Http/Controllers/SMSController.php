@@ -426,7 +426,7 @@ class SMSController extends Controller
 
     private function gsmModuleSendSMS($userID, $contactNumber, $message) {
         $status = "";
-        $directory = "queued-messages/$userID/";
+        $directory = "public/queued-messages/$userID/";
         $contactNumbers = explode(',', $contactNumber);
         $sendData = (object) [
             'phone_numbers' => $contactNumbers,

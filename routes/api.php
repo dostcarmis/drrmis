@@ -27,5 +27,6 @@ Route::post('logout/{id}','API\UserController@logout');
 
 Route::group(['middleware' => 'auth:api'], function() {
     Route::post('user-info', 'API\UserController@getUserInfo');
-    Route::post('get-queue-sms', 'API\GsmModuleController@checkQueueSMS');
+    Route::post('get-queue-sms', 'API\GsmModuleController@getQueueSMS');
+    Route::post('respond-message-sent', 'API\GsmModuleController@respondSuccessSent');
 });

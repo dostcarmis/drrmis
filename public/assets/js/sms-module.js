@@ -193,10 +193,19 @@ $(function(){
 
     function setSendButton(textCount) {
         const senderName = $('#sender-names').val();
-        if (textCount > 0 && recipients.length > 0 && senderName){
-            $("#send-msg").removeAttr("disabled");
-        } else if (textCount == 0 || recipients.length == 0 || !senderName){
-            $("#send-msg").attr("disabled", "disabled");
+        
+        if (smsMedium == "semaphore") {
+            if (textCount > 0 && recipients.length > 0 && senderName){
+                $("#send-msg").removeAttr("disabled");
+            } else if (textCount == 0 || recipients.length == 0 || !senderName){
+                $("#send-msg").attr("disabled", "disabled");
+            }
+        } else if (smsMedium == "gsm-module") {
+            if (textCount > 0 && recipients.length > 0){
+                $("#send-msg").removeAttr("disabled");
+            } else if (textCount == 0 || recipients.length == 0 ){
+                $("#send-msg").attr("disabled", "disabled");
+            }
         }
     }
 
