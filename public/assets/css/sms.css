@@ -3,7 +3,6 @@
 		height: 30px;
 	}
 	#main-body {
-		margin-top: 57px;
 		width: 100%;
 	}
 	.twitter-typeahead{
@@ -23,7 +22,6 @@
 		height: 30px;
 	}
 	#main-body {
-		margin-top: 57px;
 		width: 100%;
 	}
 	.twitter-typeahead{
@@ -43,7 +41,6 @@
 		height: 30px;
 	}
 	#main-body {
-		margin-top: 57px;
 		width: 80%;
 	}
 	.twitter-typeahead{
@@ -64,7 +61,6 @@ col-sm-*/
 		height: 40px;
 	}
 	#main-body {
-		margin-top: 57px;
 		width: 70%;
 	}
 	.twitter-typeahead{
@@ -84,7 +80,6 @@ col-sm-*/
 		height: 40px;
 	}
 	#main-body {
-		margin-top: 57px;
 		width: 60%;
 	}
 	.twitter-typeahead{
@@ -103,7 +98,6 @@ col-sm-*/
 		height: 40px;
 	}
 	#main-body {
-		margin-top: 40px;
 		width: 50%;
 	}
 	.twitter-typeahead{
@@ -159,19 +153,24 @@ col-sm-*/
 	margin: 0;
 }
 #main-body {
-	border-radius: 0.5em;
+	border-radius: 0.3em;
     background-color: #363940;
     border: 2px solid #363940;
-    padding: 0;
-    margin: 0;
 	width: 100%;
+	/*color: #fff;*/
+}
+#main-body h3 {
+	color: #fff;
+}
+#main-body div>label {
+	color: #fff;
 }
 #send-msg {
 	margin-top: 15px;
 	border-radius: 20px;
 }
 #input-contact {
-	padding: 19px;
+	padding: 19px 19px 1px 19px;
 }
 .button-container {
 	padding: 19px;
@@ -205,8 +204,8 @@ col-sm-*/
 .char-count {
 	float: right;
 	margin-right: 19px;
-	margin-top: 19px;
-	    color: #FFF;
+	margin-top: 10px;
+	color: #FFF;
 }
 #receiver-list {
 	float: left;
@@ -261,4 +260,9 @@ col-sm-*/
 #sender-names {
 	padding: 0 5px;
     font-size: 14pt;
+}
+
+#sms-medium {
+	font-size: 14pt;
+	padding: 0 5px;
 }
