@@ -34,6 +34,7 @@
 					<th>Message</th>
 					<th class="desc">Sender</th>	
 					<th>Recipient/s</th>
+					<th>SMS Medium</th>
 					<th>Logs</th>
 					<th>Sent At</th>
 				</thead>

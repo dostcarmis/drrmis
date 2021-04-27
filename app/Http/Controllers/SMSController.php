@@ -169,6 +169,7 @@ class SMSController extends Controller
 			$message = '';
             $sender = '';
             $recipients = $sent->recipients;
+            $smsMedium = $sent->sms_medium;
             $status = $sent->status;
 			$belowtitle = '';
 			$belowtitle1 = '';
@@ -197,6 +198,7 @@ class SMSController extends Controller
                 $fnaltitle,
                 $sender,
                 $recipients,
+                $smsMedium,
                 $status,
                 date("F j, Y g:i A", strtotime($sent->created_at))
             ];
@@ -427,11 +429,6 @@ class SMSController extends Controller
     private function gsmModuleSendSMS($userID, $contactNumber, $message) {
         $status = "";
         $directory = "public/queued-messages/$userID/";
-        $sendData = (object) [
-            'phone_numbers' => $contactNumber,
-            'message' => $message
-        ];
-        $sendJsonData = json_encode($sendData);
 
         if (!File::exists($directory)) {
             Storage::makeDirectory($directory);
@@ -441,6 +438,12 @@ class SMSController extends Controller
         $countFiles = count($files);
 
         $filename = ($countFiles + 1)."-batch.json";
+        $sendData = (object) [
+            'phone_numbers' => $contactNumber,
+            'message' => $message,
+            'filename' => $filename
+        ];
+        $sendJsonData = json_encode($sendData);
 
         try {
             Storage::put("$directory$filename", $sendJsonData);
@@ -529,6 +532,7 @@ class SMSController extends Controller
                     $sentMessageInstance->group_id = $groupID;
                     $sentMessageInstance->recipients = serialize($contactNumber);
                     $sentMessageInstance->message = implode(", \n", $messages);
+                    $sentMessageInstance->sms_medium = "Semaphore API";
                     $sentMessageInstance->status = serialize($status);
                     $sentMessageInstance->save();
                 }
