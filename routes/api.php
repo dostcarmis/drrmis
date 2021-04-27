@@ -22,9 +22,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('login', 'API\PassportController@login');
-Route::post('logout/{id}','API\PassportController@logout');
+Route::post('login', 'API\UserController@login');
+Route::post('logout/{id}','API\UserController@logout');
 
-Route::group(['middleware' => 'auth:api'], function(){
-    Route::post('user-info', 'API\PassportController@getDetails');
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::post('user-info', 'API\UserController@getUserInfo');
+    Route::post('get-queue-sms', 'API\GsmModuleController@getQueueSMS');
+    Route::post('dispose-sent-msgs', 'API\GsmModuleController@disposeSentJsonFile');
+    Route::post('store-sent-msgs', 'API\GsmModuleController@storeSentMessages');
 });

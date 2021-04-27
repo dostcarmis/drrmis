@@ -1,4 +1,5 @@
 const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+let smsMedium = "semaphore";
 
 /* ============ Message Composer Module ============
 */
@@ -192,10 +193,19 @@ $(function(){
 
     function setSendButton(textCount) {
         const senderName = $('#sender-names').val();
-        if (textCount > 0 && recipients.length > 0 && senderName){
-            $("#send-msg").removeAttr("disabled");
-        } else if (textCount == 0 || recipients.length == 0 || !senderName){
-            $("#send-msg").attr("disabled", "disabled");
+        
+        if (smsMedium == "semaphore") {
+            if (textCount > 0 && recipients.length > 0 && senderName){
+                $("#send-msg").removeAttr("disabled");
+            } else if (textCount == 0 || recipients.length == 0 || !senderName){
+                $("#send-msg").attr("disabled", "disabled");
+            }
+        } else if (smsMedium == "gsm-module") {
+            if (textCount > 0 && recipients.length > 0){
+                $("#send-msg").removeAttr("disabled");
+            } else if (textCount == 0 || recipients.length == 0 ){
+                $("#send-msg").attr("disabled", "disabled");
+            }
         }
     }
 
@@ -218,7 +228,8 @@ $(function(){
             msg: msg,
             send_type: 'compose',
             contact_numbers: recipients,
-            sender_name: $('#sender-names').val()
+            sender_name: $('#sender-names').val(),
+            sms_medium: smsMedium
         }).done(function(response) {
             $("#send-msg").attr("disabled", "disabled");
             $("#character-count").html("0/160");
@@ -248,6 +259,7 @@ $(function(){
 $(function($) {
     const startUpload = function(uploadFormData) {
         const formData = new FormData(uploadFormData);
+        formData.append('sms_medium', smsMedium);
 
         $('#upload-submit').html(`
             <i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Sending...
@@ -299,5 +311,23 @@ $(function($) {
                 startUpload(form);
             }
         });*/
+    });
+
+    $('#sms-medium').change(function() {
+        smsMedium = $(this).val();
+        
+        if (smsMedium == "gsm-module") {
+            $('#drrmis-gsm-client').fadeIn(300);
+            $('#sender-names-group').fadeOut(300);
+            $('#sms-semaphore-template').fadeOut(300, function() {
+                $('#gsm-module-template').fadeIn(300);
+            });
+        } else {
+            $('#drrmis-gsm-client').fadeOut(300);
+            $('#sender-names-group').fadeIn(300);
+            $('#gsm-module-template').fadeOut(300, function() {
+                $('#sms-semaphore-template').fadeIn(300);
+            });
+        }
     });
 });
