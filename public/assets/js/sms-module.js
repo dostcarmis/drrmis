@@ -10,8 +10,18 @@ $(function(){
         segmentCount = 0,
         textSegmentCount = 0;
 
+    setInterval(function() { 
+        $.get(`${baseURL}/warn/queued-msg/count`, function(countQueued) {
+			if (countQueued > 0) {
+                
+            } else {
+                $(".overlay").fadeOut(500);
+            }
+		});
+	}, 3000);
+	
+
     $("#recipient-count").html(recipients.length);
-    $(".overlay").fadeOut(500);
 
     initializeContacts();
 
@@ -235,12 +245,16 @@ $(function(){
             $("#character-count").html("0/160");
             $("#send-msg").html("Send");
             $("#msg").val("");
-            $('#sender-names').val('')
+            $('#sender-names').val('');
+
+            $("#success-logs").html(response);
+            $("#modal-success").modal();
             
+            /*
             $(".overlay").fadeOut(500, function(){
                 $("#success-logs").html(response);
                 $("#modal-success").modal();
-            });
+            });*/
 
             recipients = [];
 
@@ -248,10 +262,10 @@ $(function(){
             $('#recipients').val(null).trigger('change');
         }).fail(function(xhr, status, error) {
             $("#send-msg").html("Send");
+
             $(".overlay").fadeOut(500, function(){
                 $("#modal-failed").modal();
             });
-
         });
     });
 });
@@ -329,5 +343,22 @@ $(function($) {
                 $('#sms-semaphore-template').fadeIn(300);
             });
         }
+    });
+
+    $('#btn-cancel-sending').click(function() {
+        $('#btn-cancel-sending').html(`<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>`);
+
+        $.post(`${baseURL}/warn/queued-msg/delete`, {
+            _token: CSRF_TOKEN
+        }).done(function(response) {
+            $('.overlay').fadeOut(500, function() {
+                $('#btn-cancel-sending').html(`<b>
+                    <i class="fa fa-ban" aria-hidden="true"></i>
+                    Cancel
+                </b>`);
+            });
+        }).fail(function(xhr, status, error) {
+            alert("Cancel sending failed.");
+        });
     });
 });
