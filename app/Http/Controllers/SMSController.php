@@ -149,9 +149,58 @@ class SMSController extends Controller
     public function viewComposeMessage(){
         $users = DB::table('users')->orderBy('first_name', 'asc')->get();
         $subscribers = DB::table('tbl_subscribers')->get();
+        $user = Auth::user();
+        $userID = $user->id;
+        $publicDirectory = public_path("storage/queued-messages/$userID");
+        $countFiles = 0;
 
-    	return view('pages.compose')->with(['users' => $users,
-                                            'subscribers' => $subscribers]);
+        if (File::exists($publicDirectory)) {
+            $files = File::files($publicDirectory);
+            $countFiles = count($files);
+        }
+
+    	return view('pages.compose')->with([
+            'users' => $users,
+            'subscribers' => $subscribers,
+            'queuedMsgCount' => $countFiles
+        ]);
+    }
+
+    public function getQueuedMsgCount() {
+        $user = Auth::user();
+        $countFiles = 0;
+
+        if ($user) {
+            $userID = $user->id;
+            $publicDirectory = public_path("storage/queued-messages/$userID");
+
+            if (File::exists($publicDirectory)) {
+                $files = File::files($publicDirectory);
+                $countFiles = count($files);
+            }
+        }
+
+        return $countFiles;
+    }
+
+    public function deleteQueuedMsg() {
+        $user = Auth::user();
+
+        if ($user) {
+            $userID = $user->id;
+            $publicDirectory = public_path("storage/queued-messages/$userID");
+
+            if (File::exists($publicDirectory)) {
+                $files = File::files($publicDirectory);
+                $countFiles = count($files);
+
+                foreach ($files as $file) {
+                    if (File::exists($file->getPathname())) {
+                        File::delete($file->getPathname());
+                    }
+                }
+            }
+        }
     }
 
     public function viewSentMessages(Request $request){

@@ -119,10 +119,20 @@
 	</div>
 </div>
 
-<div class="overlay">
+<div class="overlay" style="{{ $queuedMsgCount == 0 ? 'display: none;' : '' }}">
     <div id="sending">
     	<div id="progress-send" class='progress-bar progress-bar-striped active' role='progressbar'
 			aria-valuenow='100 aria-valuemin='0' aria-valuemax='100' style="width: 100%;">
+			<h1 style="margin: 5em;">
+				Sending... 
+				<button id="btn-cancel-sending" class="btn btn-danger btn-lg">
+					<b>
+						<i class="fa fa-ban" aria-hidden="true"></i>
+						Cancel
+					</b>
+				</button>
+			</h1>
+			
 		</div>
     </div>
 </div>
@@ -177,6 +187,9 @@
 
 @stop
 @section('page-js-files')
+	<script>
+		const queuedMsgCount = "{!! $queuedMsgCount !!}";
+	</script>
 	<script src="{!! url('js/typeahead.bundle.js') !!}"></script>
 	<script src="{!! url('assets/js/sms-module.js') !!}"></script>
 @stop

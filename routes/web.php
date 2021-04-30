@@ -494,6 +494,16 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
 	]);
+	Route::get('warn/queued-msg/count',[
+		'uses' => 'SMSController@getQueuedMsgCount',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+	]);
+	Route::post('warn/queued-msg/delete',[
+		'uses' => 'SMSController@deleteQueuedMsg',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+	]);
 	Route::get('warn/sent-messages',[
 		'uses' => 'SMSController@viewSentMessages',
 		'middleware' => 'roles',
