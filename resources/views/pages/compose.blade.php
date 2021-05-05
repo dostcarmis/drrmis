@@ -12,7 +12,7 @@
 				<label for="sms-medium">
 					<small>
 						SMS Medium:
-						<a href="{{ asset('assets/drrmis-gsm-client-setup.zip') }}" 
+						<a href="{{ asset('assets/GSM-Client-Setup-1.1.0.zip') }}" 
 						   class="btn btn-link" id="drrmis-gsm-client"
 						   style="display: none;">
 							<i class="fa fa-file-zip-o" aria-hidden="true"></i>
