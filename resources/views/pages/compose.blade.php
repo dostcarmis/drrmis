@@ -12,11 +12,11 @@
 				<label for="sms-medium">
 					<small>
 						SMS Medium:
-						<a href="{{ asset('assets/drrmis-gsm-client-setup.zip') }}" 
+						<a href="https://github.com/lowildlr10/drrmis_gsmclient/releases" 
 						   class="btn btn-link" id="drrmis-gsm-client"
 						   style="display: none;">
-							<i class="fa fa-file-zip-o" aria-hidden="true"></i>
-							Download DRRMIS GSM Client Setup
+						    <i class="fa fa-github" aria-hidden="true"></i>
+							Download Latest DRRMIS GSM Client
 						</a>
 					</small>
 					
