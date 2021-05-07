@@ -12,7 +12,7 @@
 				<label for="sms-medium">
 					<small>
 						SMS Medium:
-						<a href="https://github.com/lowildlr10/drrmis_gsmclient/releases" 
+						<a href="{{ asset('assets/GSM-Client-Setup-1.1.0.zip') }}" 
 						   class="btn btn-link" id="drrmis-gsm-client"
 						   style="display: none;">
 						    <i class="fa fa-github" aria-hidden="true"></i>
