@@ -275,6 +275,9 @@ $(function($) {
         const formData = new FormData(uploadFormData);
         formData.append('sms_medium', smsMedium);
 
+        $(".overlay").fadeIn(500);
+        $(this).html("Sending...");
+
         $('#upload-submit').html(`
             <i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Sending...
         `);
@@ -294,6 +297,11 @@ $(function($) {
                 $('#csv_file').val(null);
             },
             error: function(data) {
+                $("#send-msg").html("Send");
+
+                $(".overlay").fadeOut(500, function(){
+                    $("#modal-failed").modal();
+                });
                 $('#upload-submit').html(`
                     <i class="fa fa-paper-plane" aria-hidden="true"></i> Upload file &amp; Send
                 `);
