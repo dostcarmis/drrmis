@@ -214,14 +214,27 @@ class SMSController extends Controller
         $headcheckbox = '<input type="checkbox" class="headcheckbox">';
 
         foreach ($sentMessages as $sent) {
+            $recipients = '';
+            $status = '';
+
+            if ($sent->recipients && is_array(unserialize($sent->recipients))) {
+                $recipients = implode('<br>', unserialize($sent->recipients));
+                $status = implode('<br>', unserialize($sent->status));
+            } else if ($sent->recipients && unserialize($sent->recipients)) {
+                $recipients = $sent->recipients;
+                $status = NULL;
+            }
+
             $chkbx = '';
 			$message = '';
             $sender = '';
-            $recipients = $sent->recipients;
+            $recipients = $recipients;
             $smsMedium = $sent->sms_medium;
-            $status = $sent->status;
+            $status = $status;
 			$belowtitle = '';
 			$belowtitle1 = '';
+
+            $sent->message = strlen($sent->message) > 80 ? substr($sent->message, 0, 80) . '...' : $sent->message;
 
             if (($cntUser->id == $sent->user_id) || ($cntUser->role_id <= 3)) {
 				$chkbx = '<input class="chbox" name="chks[]" value="'.$sent->id.'"  type="checkbox">';
@@ -244,8 +257,8 @@ class SMSController extends Controller
 			$fnaltitle = $message.$belowtitle;
             $sentMsgcontent['data'][$sentMsgCount++] = [
 				$chkbx,
-                $fnaltitle,
                 $sender,
+                $fnaltitle,
                 $recipients,
                 $smsMedium,
                 $status,

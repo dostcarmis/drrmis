@@ -31,8 +31,8 @@
 			<table class="table table-hover table-striped tblcontents tbl-sent-messages" id="sentmsgstable">
 				<thead>
 					<th class="no-sort"><input type="checkbox" class="headcheckbox"></th>
-					<th>Message</th>
-					<th class="desc">Sender</th>	
+					<th>Sender</th>
+					<th class="desc">Message</th>	
 					<th>Recipient/s</th>
 					<th>SMS Medium</th>
 					<th>Logs</th>
