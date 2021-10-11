@@ -90,7 +90,7 @@
 					</div>
 				</div>
 			</div>	
-			@if($currentUser->id != 1)
+			@if($user->id != 1)
 			<div class="col-xs-12 col-sm-12 per-labels">
 				<div class="col-xs-12 col-sm-2 spprofileslabel">
 					<label>Province :</label>
@@ -98,7 +98,7 @@
 				<div class="col-xs-12 col-sm-9">
 					<span class="defsp spprofile">
 						@foreach($provinces as $province)
-							@if($currentUser->province_id === $province->id)
+							@if($user->province_id === $province->id)
 							{{ $province->name }}
 							@endif
 						@endforeach
@@ -112,7 +112,7 @@
 				<div class="col-xs-12 col-sm-9">
 					<span class="defsp spprofile">
 						@foreach($municipalities as $municipality)
-							@if($currentUser->municipality_id === $municipality->id)
+							@if($user->municipality_id === $municipality->id)
 							{{ $municipality->name }}
 							@endif
 						@endforeach
@@ -183,7 +183,7 @@
 				<div class="col-xs-12 col-sm-9">
 					<span class="defsp spprofile">
 						@foreach($roles as $role)
-							@if($currentUser->role_id === $role->id)
+							@if($user->role_id === $role->id)
 							{{ $role->name }}
 							@endif
 							@endforeach
@@ -199,8 +199,9 @@
 				</div>
 				<div class="col-xs-12 col-sm-9">
 					<span class="defsp spprofile">
-						<input type="password" name="password" placeholder="New Password" class="proformtext form-control">
+						<input type="password" name="password" id= "myInput" placeholder="New Password" class="proformtext form-control">
 					</span>
+					<input type="checkbox" onclick="myFunction()">Show Password
 				</div>
 			</div>
 			<div class="col-xs-12 perinputwrap text-left">
@@ -209,6 +210,18 @@
 		</form>
 	</div>
 </div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+
 
  @stop
  @section('page-js-files')
