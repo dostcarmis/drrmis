@@ -1,4 +1,5 @@
 const CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+let smsMedium = "semaphore";
 
 /* ============ Message Composer Module ============
 */
@@ -9,8 +10,18 @@ $(function(){
         segmentCount = 0,
         textSegmentCount = 0;
 
+    setInterval(function() { 
+        $.get(`${baseURL}/warn/queued-msg/count`, function(countQueued) {
+			if (countQueued > 0) {
+                
+            } else {
+                $(".overlay").fadeOut(500);
+            }
+		});
+	}, 3000);
+	
+
     $("#recipient-count").html(recipients.length);
-    $(".overlay").fadeOut(500);
 
     initializeContacts();
 
@@ -192,10 +203,19 @@ $(function(){
 
     function setSendButton(textCount) {
         const senderName = $('#sender-names').val();
-        if (textCount > 0 && recipients.length > 0 && senderName){
-            $("#send-msg").removeAttr("disabled");
-        } else if (textCount == 0 || recipients.length == 0 || !senderName){
-            $("#send-msg").attr("disabled", "disabled");
+        
+        if (smsMedium == "semaphore") {
+            if (textCount > 0 && recipients.length > 0 && senderName){
+                $("#send-msg").removeAttr("disabled");
+            } else if (textCount == 0 || recipients.length == 0 || !senderName){
+                $("#send-msg").attr("disabled", "disabled");
+            }
+        } else if (smsMedium == "gsm-module") {
+            if (textCount > 0 && recipients.length > 0){
+                $("#send-msg").removeAttr("disabled");
+            } else if (textCount == 0 || recipients.length == 0 ){
+                $("#send-msg").attr("disabled", "disabled");
+            }
         }
     }
 
@@ -218,18 +238,23 @@ $(function(){
             msg: msg,
             send_type: 'compose',
             contact_numbers: recipients,
-            sender_name: $('#sender-names').val()
+            sender_name: $('#sender-names').val(),
+            sms_medium: smsMedium
         }).done(function(response) {
             $("#send-msg").attr("disabled", "disabled");
             $("#character-count").html("0/160");
             $("#send-msg").html("Send");
             $("#msg").val("");
-            $('#sender-names').val('')
+            $('#sender-names').val('');
+
+            $("#success-logs").html(response);
+            $("#modal-success").modal();
             
+            /*
             $(".overlay").fadeOut(500, function(){
                 $("#success-logs").html(response);
                 $("#modal-success").modal();
-            });
+            });*/
 
             recipients = [];
 
@@ -237,10 +262,10 @@ $(function(){
             $('#recipients').val(null).trigger('change');
         }).fail(function(xhr, status, error) {
             $("#send-msg").html("Send");
+
             $(".overlay").fadeOut(500, function(){
                 $("#modal-failed").modal();
             });
-
         });
     });
 });
@@ -248,6 +273,10 @@ $(function(){
 $(function($) {
     const startUpload = function(uploadFormData) {
         const formData = new FormData(uploadFormData);
+        formData.append('sms_medium', smsMedium);
+
+        $(".overlay").fadeIn(500);
+        $(this).html("Sending...");
 
         $('#upload-submit').html(`
             <i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Sending...
@@ -268,6 +297,11 @@ $(function($) {
                 $('#csv_file').val(null);
             },
             error: function(data) {
+                $("#send-msg").html("Send");
+
+                $(".overlay").fadeOut(500, function(){
+                    $("#modal-failed").modal();
+                });
                 $('#upload-submit').html(`
                     <i class="fa fa-paper-plane" aria-hidden="true"></i> Upload file &amp; Send
                 `);
@@ -299,5 +333,40 @@ $(function($) {
                 startUpload(form);
             }
         });*/
+    });
+
+    $('#sms-medium').change(function() {
+        smsMedium = $(this).val();
+        
+        if (smsMedium == "gsm-module") {
+            $('#drrmis-gsm-client').fadeIn(300);
+            $('#sender-names-group').fadeOut(300);
+            $('#sms-semaphore-template').fadeOut(300, function() {
+                $('#gsm-module-template').fadeIn(300);
+            });
+        } else {
+            $('#drrmis-gsm-client').fadeOut(300);
+            $('#sender-names-group').fadeIn(300);
+            $('#gsm-module-template').fadeOut(300, function() {
+                $('#sms-semaphore-template').fadeIn(300);
+            });
+        }
+    });
+
+    $('#btn-cancel-sending').click(function() {
+        $('#btn-cancel-sending').html(`<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>`);
+
+        $.post(`${baseURL}/warn/queued-msg/delete`, {
+            _token: CSRF_TOKEN
+        }).done(function(response) {
+            $('.overlay').fadeOut(500, function() {
+                $('#btn-cancel-sending').html(`<b>
+                    <i class="fa fa-ban" aria-hidden="true"></i>
+                    Cancel
+                </b>`);
+            });
+        }).fail(function(xhr, status, error) {
+            alert("Cancel sending failed.");
+        });
     });
 });

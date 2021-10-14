@@ -11,16 +11,15 @@
 |
 */
 
-
-Auth::routes();
-
-Route::get('uploadpage','HomeController@uploadPage');
-
-Route::group(array('middleware' => 'auth'), function(){
-    Route::resource('filemanager', 'FilemanagerLaravelController');
-});
-	
 Route::group(['middlewareGroups' => 'web'], function () {	
+	Auth::routes();
+
+	Route::get('uploadpage','HomeController@uploadPage');
+
+	Route::group(array('middleware' => 'auth'), function(){
+		Route::resource('filemanager', 'FilemanagerLaravelController');
+	});
+	
 	Route::group(['prefix' => 'auth'], function() {
 		Route::get('register', [
 			'as' => 'get_register',
@@ -492,6 +491,16 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	]);
 	Route::get('warn/compose-message',[
 		'uses' => 'SMSController@viewComposeMessage',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+	]);
+	Route::get('warn/queued-msg/count',[
+		'uses' => 'SMSController@getQueuedMsgCount',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+	]);
+	Route::post('warn/queued-msg/delete',[
+		'uses' => 'SMSController@deleteQueuedMsg',
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
 	]);

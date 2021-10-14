@@ -1,12 +1,16 @@
 <?php
 
 namespace App;
-use App\Models\Logs;
 
+use App\Models\Logs;
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
+
+    use HasApiTokens, Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -76,8 +80,6 @@ class User extends Authenticatable
         return $fullName ? $fullName : NULL;
     }
 
-
-
     public function activityLogs($request, $msg){
         $userid = $this->id ? $this->id : NULL;
         $requestURL = $request->getRequestUri();
@@ -103,4 +105,7 @@ class User extends Authenticatable
         $intanceEmplog->save();
     }
 
+    public function AauthAcessToken(){
+        return $this->hasMany('\App\OauthAccessToken');
+    }
 }

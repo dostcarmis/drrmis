@@ -14,6 +14,8 @@ use App\Models\User;
 use Globe\Connect\Oauth;
 use Globe\Connect\Sms;
 use Semaphore\SemaphoreClient as SMSClient;
+use Illuminate\Support\Facades\Storage;
+use File;
 
 class SMSController extends Controller
 {
@@ -147,9 +149,58 @@ class SMSController extends Controller
     public function viewComposeMessage(){
         $users = DB::table('users')->orderBy('first_name', 'asc')->get();
         $subscribers = DB::table('tbl_subscribers')->get();
+        $user = Auth::user();
+        $userID = $user->id;
+        $publicDirectory = public_path("storage/queued-messages/$userID");
+        $countFiles = 0;
 
-    	return view('pages.compose')->with(['users' => $users,
-                                            'subscribers' => $subscribers]);
+        if (File::exists($publicDirectory)) {
+            $files = File::files($publicDirectory);
+            $countFiles = count($files);
+        }
+
+    	return view('pages.compose')->with([
+            'users' => $users,
+            'subscribers' => $subscribers,
+            'queuedMsgCount' => $countFiles
+        ]);
+    }
+
+    public function getQueuedMsgCount() {
+        $user = Auth::user();
+        $countFiles = 0;
+
+        if ($user) {
+            $userID = $user->id;
+            $publicDirectory = public_path("storage/queued-messages/$userID");
+
+            if (File::exists($publicDirectory)) {
+                $files = File::files($publicDirectory);
+                $countFiles = count($files);
+            }
+        }
+
+        return $countFiles;
+    }
+
+    public function deleteQueuedMsg() {
+        $user = Auth::user();
+
+        if ($user) {
+            $userID = $user->id;
+            $publicDirectory = public_path("storage/queued-messages/$userID");
+
+            if (File::exists($publicDirectory)) {
+                $files = File::files($publicDirectory);
+                $countFiles = count($files);
+
+                foreach ($files as $file) {
+                    if (File::exists($file->getPathname())) {
+                        File::delete($file->getPathname());
+                    }
+                }
+            }
+        }
     }
 
     public function viewSentMessages(Request $request){
@@ -163,13 +214,27 @@ class SMSController extends Controller
         $headcheckbox = '<input type="checkbox" class="headcheckbox">';
 
         foreach ($sentMessages as $sent) {
+            $recipients = '';
+            $status = '';
+
+            if ($sent->recipients && is_array(unserialize($sent->recipients))) {
+                $recipients = implode('<br>', unserialize($sent->recipients));
+                $status = implode('<br>', unserialize($sent->status));
+            } else if ($sent->recipients && unserialize($sent->recipients)) {
+                $recipients = $sent->recipients;
+                $status = NULL;
+            }
+
             $chkbx = '';
 			$message = '';
             $sender = '';
-            $recipients = $sent->recipients;
-            $status = $sent->status;
+            $recipients = $recipients;
+            $smsMedium = $sent->sms_medium;
+            $status = $status;
 			$belowtitle = '';
 			$belowtitle1 = '';
+
+            $sent->message = strlen($sent->message) > 80 ? substr($sent->message, 0, 80) . '...' : $sent->message;
 
             if (($cntUser->id == $sent->user_id) || ($cntUser->role_id <= 3)) {
 				$chkbx = '<input class="chbox" name="chks[]" value="'.$sent->id.'"  type="checkbox">';
@@ -192,9 +257,10 @@ class SMSController extends Controller
 			$fnaltitle = $message.$belowtitle;
             $sentMsgcontent['data'][$sentMsgCount++] = [
 				$chkbx,
-                $fnaltitle,
                 $sender,
+                $fnaltitle,
                 $recipients,
+                $smsMedium,
                 $status,
                 date("F j, Y g:i A", strtotime($sent->created_at))
             ];
@@ -266,7 +332,7 @@ class SMSController extends Controller
         return $contactNo;
     }
 
-    private function groupContactByMessages($csvRows) {
+    private function groupContactByMessages($csvRows, $columnCount) {
         $groupedList = [];
         $messages = [];
 
@@ -278,20 +344,35 @@ class SMSController extends Controller
 
         foreach ($messages as $message) {
             $contactNumbers = [];
-            $senderNames = [];
+            
+            if ($columnCount === 3) {
+                $senderNames = [];
 
-            foreach ($csvRows as $row) {
-                if ($row->message == $message) {
-                    $contactNumbers[] = $row->contact_number;
-                    $senderNames[] = $row->sender_name;
+                foreach ($csvRows as $row) {
+                    if ($row->message == $message) {
+                        $contactNumbers[] = $row->contact_number;
+                        $senderNames[] = $row->sender_name;
+                    }
                 }
-            }
 
-            $groupedList[] = (object) [
-                'message' => $message,
-                'contact_number' => implode(',', $contactNumbers),
-                'sender_name' => $senderNames[0]
-            ];
+                $groupedList[] = (object) [
+                    'message' => $message,
+                    'contact_number' => implode(',', $contactNumbers),
+                    'sender_name' => $senderNames[0]
+                ];
+            } else if ($columnCount === 2) {
+                foreach ($csvRows as $row) {
+                    if ($row->message == $message) {
+                        $contactNumbers[] = $row->contact_number;
+                    }
+                }
+
+                $groupedList[] = (object) [
+                    'message' => $message,
+                    'contact_number' => implode(',', $contactNumbers)
+                ];
+            }
+                
         }
 
         return $groupedList;
@@ -313,8 +394,21 @@ class SMSController extends Controller
 
         fclose($csv);
 
-        if (count($_csvRows[0]) !== 3) {
-            return false;
+        if (count($_csvRows[0]) === 2) {
+            foreach ($_csvRows[0] as $column) {
+                $column = strtolower(preg_replace('/\s+/', '', $column));
+                $newColumnHeaders[] = $column;
+
+                if (!in_array($column, $columnHeaders)) {
+                    return false;
+                }
+            }
+
+            $_numbersKey = array_keys($newColumnHeaders, 'numbers');
+            $numbersKey = $_numbersKey[0];
+
+            $_messageKey = array_keys($newColumnHeaders, 'message');
+            $messageKey = $_messageKey[0];
         } else if (count($_csvRows[0]) === 3) {
             foreach ($_csvRows[0] as $column) {
                 $column = strtolower(preg_replace('/\s+/', '', $column));
@@ -324,23 +418,22 @@ class SMSController extends Controller
                     return false;
                 }
             }
+
+            $_numbersKey = array_keys($newColumnHeaders, 'numbers');
+            $numbersKey = $_numbersKey[0];
+
+            $_messageKey = array_keys($newColumnHeaders, 'message');
+            $messageKey = $_messageKey[0];
+
+            $_sendernameKey = array_keys($newColumnHeaders, 'sendername');
+            $sendernameKey = $_sendernameKey[0];
         } else {
             return false;
         }
 
-        $_numbersKey = array_keys($newColumnHeaders, 'numbers');
-        $numbersKey = $_numbersKey[0];
-
-        $_messageKey = array_keys($newColumnHeaders, 'message');
-        $messageKey = $_messageKey[0];
-
-        $_sendernameKey = array_keys($newColumnHeaders, 'sendername');
-        $sendernameKey = $_sendernameKey[0];
-
         foreach ($_csvRows as $key => $column) {
             $contactNo = $this->proccessContactNumber($column[$numbersKey]);
             $message = $column[$messageKey];
-            $senderName = $column[$sendernameKey];
 
             if ($key == 0) {
                 continue;
@@ -354,14 +447,22 @@ class SMSController extends Controller
                 continue;
             }
 
-            $csvRows[] = (object) [
-                'contact_number' => $contactNo,
-                'message' => $message,
-                'sender_name' => $senderName,
-            ];
+            if (count($_csvRows[0]) === 2) {
+                $csvRows[] = (object) [
+                    'contact_number' => $contactNo,
+                    'message' => $message,
+                ];
+            } else if (count($_csvRows[0]) === 3) {
+                $senderName = $column[$sendernameKey];
+                $csvRows[] = (object) [
+                    'contact_number' => $contactNo,
+                    'message' => $message,
+                    'sender_name' => $senderName,
+                ];
+            }
         }
 
-        return $this->groupContactByMessages($csvRows);
+        return $this->groupContactByMessages($csvRows, count($_csvRows[0]));
     }
 
     private function apiSendSMS($apiKey, $contactNumber, $message, $senderName) {
@@ -387,66 +488,116 @@ class SMSController extends Controller
         return $output;
     }
 
+    private function gsmModuleSendSMS($userID, $contactNumber, $message) {
+        $status = "";
+        $directory = "public/queued-messages/$userID/";
+
+        if (!File::exists($directory)) {
+            Storage::makeDirectory($directory);
+        }
+
+        $files = Storage::files($directory);
+        $countFiles = count($files);
+
+        $filename = ($countFiles + 1)."-batch.json";
+        $sendData = (object) [
+            'phone_numbers' => $contactNumber,
+            'message' => $message,
+            'filename' => $filename
+        ];
+        $sendJsonData = json_encode($sendData);
+
+        try {
+            Storage::put("$directory$filename", $sendJsonData);
+            $status = "'$directory$filename' is sent to queued.";
+        } catch (\Throwable $th) {
+            $status = "There is an error on sending this '$directory$filename' to queued.";
+        }
+        
+        return $status;
+    }
+
     public function sendMessage(Request $request) {
+        $smsMedium = $request->sms_medium;
         $sendType = $request->send_type;
         $contactNumbers = [];
         $messages = [];
 
         try {
             $userID = Auth::user()->id;
-            $groupID = Auth::user()->group;
-            $userDat = DB::table('tbl_groups as grp')
-                        ->select('grp.sms_api_key')
-                        ->join('users as user', 'user.group', '=', 'grp.id')
-                        ->where('user.id', $userID)
-                        ->first();
-            $apiKey = $userDat->sms_api_key;
+
+            if ($smsMedium == "semaphore") {
+                $groupID = Auth::user()->group;
+                $userDat = DB::table('tbl_groups as grp')
+                            ->select('grp.sms_api_key')
+                            ->join('users as user', 'user.group', '=', 'grp.id')
+                            ->where('user.id', $userID)
+                            ->first();
+                $apiKey = $userDat->sms_api_key;
+            }
 
             $sentMessageInstance = new SentMessage;
             $status = [];
 
-            if ($userDat) {
-                if ($sendType == 'file') {
-                    $file = $request->file('csv_file');
-                    $recipients = $this->proccessCSV($file);
-
-                    foreach ($recipients as $ctr => $recipient) {
-                        $contactNumber = $recipient->contact_number;
-                        $message = $recipient->message;
-                        $senderName = $recipient->sender_name;
-
-                        $contactNumbers[] = $contactNumber;
-                        $messages[] = "[$ctr : $message]";
-                        $status[] = $this->apiSendSMS($apiKey, $contactNumber, $message, $senderName);
-                    }
-                } else {
-                    $senderName = $request->sender_name;
-                    $__contactNumbers = $request->contact_numbers;
-                    $message = $request->msg;
-                    $_contactNumbers = [];
-
-                    foreach ($__contactNumbers as $contactNumber) {
-                        $_contactNumbers[] = $this->proccessContactNumber($contactNumber);
-                    }
-
-                    $contactNumber = implode(',', $_contactNumbers);
-
-                    $contactNumbers[] = $contactNumber;
-                    $messages[] = "[1 : $message]";
-                    $status[] = $this->apiSendSMS($apiKey, $contactNumber, $message, $senderName);
+            if ($smsMedium == "semaphore") {
+                if (!$userDat) {
+                    return 'Not subscribed to SMS API.';
                 }
-            } else {
-                $status[] = 'Not subscribed to SMS API.';
-                return 'Not subscribed to SMS API.';
             }
 
-            if ($userDat) {
-                $sentMessageInstance->user_id = $userID;
-                $sentMessageInstance->group_id = $groupID;
-                $sentMessageInstance->recipients = serialize($contactNumber);
-                $sentMessageInstance->message = implode(", \n", $messages);
-                $sentMessageInstance->status = serialize($status);
-                $sentMessageInstance->save();
+            if ($sendType == 'file') {
+                $file = $request->file('csv_file');
+                $recipients = $this->proccessCSV($file);
+
+                foreach ($recipients as $ctr => $recipient) {
+                    $contactNumber = $recipient->contact_number;
+                    $message = $recipient->message;
+                    $contactNumbers[] = $contactNumber;
+                    $messages[] = "[$ctr : $message]";
+                    
+                    if ($smsMedium == "semaphore") {
+                        $senderName = $recipient->sender_name;
+                        $status[] = $this->apiSendSMS(
+                            $apiKey, $contactNumber, $message, $senderName
+                        );
+                    } else if ($smsMedium == "gsm-module") {
+                        $status[] = $this->gsmModuleSendSMS($userID, $contactNumber, $message);
+                    }
+                }
+            } else {
+                $senderName = $request->sender_name;
+                $__contactNumbers = $request->contact_numbers;
+                $message = $request->msg;
+                $_contactNumbers = [];
+
+                foreach ($__contactNumbers as $contactNumber) {
+                    $_contactNumbers[] = $this->proccessContactNumber($contactNumber);
+                }
+
+                $contactNumber = implode(',', $_contactNumbers);
+
+                $contactNumbers[] = $contactNumber;
+                $messages[] = "[1 : $message]";
+
+                if ($smsMedium == "semaphore") {
+                    $status[] = $this->apiSendSMS(
+                        $apiKey, $contactNumber, $message, $senderName
+                    );
+                } else if ($smsMedium == "gsm-module") {
+                    $status[] = $this->gsmModuleSendSMS($userID, $contactNumber, $message);
+                }
+            }
+            
+            if ($smsMedium == "semaphore") {
+                if ($userDat) {
+                    $sentMessageInstance->user_id = $userID;
+                    $sentMessageInstance->group_id = $groupID;
+                    $sentMessageInstance->recipients = serialize($contactNumber);
+                    $sentMessageInstance->message = implode(", \n", $messages);
+                    $sentMessageInstance->sms_medium = "Semaphore API";
+                    $sentMessageInstance->status = serialize($status);
+                    $sentMessageInstance->save();
+                }
             }
 
             return implode(", \n", $status);
