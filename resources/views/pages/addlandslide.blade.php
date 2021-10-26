@@ -11,7 +11,7 @@
 
 <form id="userform" action="{{ action('LandslideController@saveLandslide') }}" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	<input type="hidden" id="landslideimages" name="landslideimages" value="landslideimages[]">
+	<input type="hidden" id="land slideimages" name="landslideimages" value="landslideimages[]">
 	
 	<div class="col-xs-12 np">
 			<div class="col-xs-12 col-sm-4 perinputwrap dates">
@@ -27,7 +27,8 @@
 
 		<div class="col-xs-12 col-sm-4 perinputwrap">
 			<label href="#" data-toggle="tooltip"  title="Name of the barangay or sitio where the landslide happened.">Barangay/Sitio/Road Location:<i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></label>
-			<input type="text" name="road_location" id="road_location" class="form-control" placeholder="Enter location" required>
+			<input type="text" name="road_location" id="road_location" class="form-control" placeholder="Enter location">
+			@if ($errors->has('road_location')) <span class="reqsymbol">*</span> @endif
 		</div>
 
 		<div class="col-xs-12 col-sm-4 perinputwrap">
@@ -43,6 +44,7 @@
 					<option value="{{ $province->id }}">{{ $province->name }}</option>			
 				@endforeach
 			</select>
+			
 		</div>
 
 		<div class="col-xs-12 col-sm-4 perinputwrap">
@@ -90,42 +92,42 @@
 
 	<div class="col-xs-12 col-sm-4 perinputwrap">
 		<label >Landslide Length:</label>
-		<input type="number" name="lelength" id="lelength" class="form-control" placeholder="Meters (m)">
+		<input type="number" name="lelength" min=0 oninput="validity.valid||(value='');" id="lelength" class="form-control" placeholder="Meters (m)">
 	</div>
 
 	<div class="col-xs-12 col-sm-4 perinputwrap">
 		<label>Landslide Width:</label>
-		<input type="number" name="lewidth" id="lewidth" class="form-control" placeholder="Meters (m)">
+		<input type="number" name="lewidth" min=0 oninput="validity.valid||(value='');" id="lewidth" class="form-control" placeholder="Meters (m)">
 	</div>
 
 	<div class="col-xs-12 col-sm-4 perinputwrap">
 		<label>Landslide Depth:</label>
-		<input type="number" name="ledepth" id="ledepth" class="form-control" placeholder="Meters (m)">
+		<input type="number" name="ledepth" min=0 oninput="validity.valid||(value='');" id="ledepth" class="form-control" placeholder="Meters (m)">
 	</div>
 
 	<div class="col-xs-12 col-sm-2 perinputwrap" style="top: 28px">
 		<label>No. of Deaths:</label>
-		<input type="number" value="0" name="idkilled" id="idkilled" class="form-control">
+		<input type="number" value="0" min=0 oninput="validity.valid||(value='');" name="idkilled" id="idkilled" class="form-control">
 	</div>
 
 	<div class="col-xs-12 col-sm-2 perinputwrap" style="top: 28px">
 		<label>No. of People Injured:</label>
-		<input type="number" value="0" name="idinjured" id="idinjured" class="form-control">
+		<input type="number" value="0" min=0 oninput="validity.valid||(value='');" name="idinjured" id="idinjured" class="form-control">
 	</div>
 
 	<div class="col-xs-12 col-sm-2 perinputwrap" style="top: 28px">
 		<label>No. of People Missing:</label>
-		<input type="number" value="0" name="idmissing" id="idmissing" class="form-control">
+		<input type="number" value="0" min=0 oninput="validity.valid||(value='');" name="idmissing" id="idmissing" class="form-control">
 	</div>
 
 	<div class="col-xs-12 col-sm-2 perinputwrap">
 		<label>No. of Affected Infrastructure:</label>
-		<input type="number" value="0" name="idaffectedinfra" id="idaffectedinfra" class="form-control">
+		<input type="number" value="0" min=0 oninput="validity.valid||(value='');" name="idaffectedinfra" id="idaffectedinfra" class="form-control">
 	</div>
 
 	<div class="col-xs-12 col-sm-4 perinputwrap">
 		<label><br>Value of Affected Crops:</label>
-		<input type="number" name="idaffectedcrops" id="idaffectedcrops" class="form-control" placeholder="Pesos (php)">
+		<input type="number" name="idaffectedcrops" min=0 oninput="validity.valid||(value='');" id="idaffectedcrops" class="form-control" placeholder="Pesos (php)">
 	</div>
 
 	<div class="col-xs-12 col-sm-4 perinputwrap">

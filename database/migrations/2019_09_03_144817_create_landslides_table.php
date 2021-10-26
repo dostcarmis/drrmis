@@ -27,10 +27,10 @@ class CreateLandslidesTable extends Migration
             $table->float('lelength')->nullable();
             $table->float('ledepth')->nullable();
             $table->integer('idkilled')->default(0);
-            $table->integer('idinjured')->dafault(0);
-            $table->integer('idmissing')->dafault(0);
-            $table->float('idaffectedcrops')->dafault(0);
-            $table->integer('idaffectedinfra')->dafault(0);
+            $table->integer('idinjured')->default(0);
+            $table->integer('idmissing')->default(0);
+            $table->float('idaffectedcrops')->default(0);
+            $table->integer('idaffectedinfra')->default(0);
             $table->string('cause');
             $table->string('typhoonname');
             $table->string('heavyrainfall');

@@ -7,7 +7,12 @@
 </div>
 @foreach ($errors->all() as $message)
     <p style="color:red">{{ $message }}</p>
+	<p class="alert alert-{{$message}}">{{ Session::get('alert-' . $message) }}</p>
 @endforeach
+
+
+
+
 <form id="editform" action="{{ action('SensorsController@updateSensor') }}" method="post">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">	
 	<input type="hidden" name="id" value="<?= $sensors->id ?>">	
@@ -80,6 +85,7 @@
 	<div class="col-xs-12 col-sm-12 perinputwrap">
 	{!! Form::label('remarks','Remarks:') !!}
 		<textarea  id="remarks" type="text" placeholder="Sensor remarks" class="form-control" name="remarks"><?= $sensors->remarks ?></textarea>
+		@if ($errors->has('remarks')) <span class="reqsymbol">*</span> @endif
 	</div>
 	<div class="col-xs-12 perinputwrap text-right">
 	<a class ="btn btn-update" title="Update" data-toggle="modal" data-target="#mymodal">Update Sensor</a>

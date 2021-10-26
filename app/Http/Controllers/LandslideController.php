@@ -95,12 +95,13 @@ class LandslideController extends Controller
       'date' => 'required',  
       'road_location' => 'required',
       'province_id' => 'required',
+      'municipality_id' => 'required',
     ];
     $messages = [
        'date.required' => 'Date and Time rquired',
        'road_location.required' => 'Road location field is required',
        'province_id.required' => 'Province is required',
-       'municipality_id.required' => 'Municipality is required'
+       'municipality_id.required' => 'Province and Municipality is required'
     ];
     $v = \Validator::make($request->all(), $rules, $messages);
       if($v->fails()){
@@ -175,12 +176,14 @@ class LandslideController extends Controller
     $rules = [
       'date' => 'required',  
       'road_location' => 'required',
-        'province_id' => 'required', 
+      'province_id' => 'required',
+      'municipality_id' => 'required',
     ];
     $messages = [
-      'date.required' => 'Date and Time rquired',
-      'road_location.required' => 'Road location field is required',
-      'province_id.required' => 'Province and Municipality is required',  
+       'date.required' => 'Date and Time rquired',
+       'road_location.required' => 'Road location field is required',
+       'province_id.required' => 'Province is required',
+       'municipality_id.required' => 'Province and municipality is required'
     ];
     $v = \Validator::make($request->all(), $rules, $messages);
       if($v->fails()){

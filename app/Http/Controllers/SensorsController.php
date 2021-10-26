@@ -113,6 +113,7 @@ class SensorsController extends Controller
         'municipality_idedit' => 'required',
         'latitude' => 'required',
         'longitude' => 'required',
+        'remarks' => 'required',
        ];
        $messages = [
            'dev_id.required' => 'Device ID is required',
@@ -121,6 +122,7 @@ class SensorsController extends Controller
            'municipality_idedit.required'  => 'Please Select Municipality',
            'latitude.required' => 'Latitude field is required',
            'longitude.required'  => 'Longitude field is required',
+           'remarks.required'  => 'Remarks field is required',
        ];
        $v = \Validator::make($request->all(), $rules, $messages);
 
@@ -160,6 +162,7 @@ class SensorsController extends Controller
         'municipality_id' => 'required',
         'latitude' => 'required',
         'longitude' => 'required',
+        'remarks' => 'required',
        ];
        $messages = [
            'address.required' => 'Address field is required',
@@ -167,6 +170,7 @@ class SensorsController extends Controller
            'municipality_id.required'  => 'Please Select Municipality',
            'latitude.required' => 'Latitude field is required',
            'longitude.required'  => 'Longitude field is required',
+           'remarks.required'  => 'Remarks field is required',
        ];
        $v = \Validator::make($request->all(), $rules, $messages);
       if($v->fails())

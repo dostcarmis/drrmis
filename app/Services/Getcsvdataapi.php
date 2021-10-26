@@ -307,6 +307,8 @@ class Getcsvdataapi
         return $counter;
     }
 
+    //Convert
+
     public function gettodaycsv($path,$assoc){
         $counter = [];
         $count = 0;
@@ -629,47 +631,49 @@ class Getcsvdataapi
                 foreach ($finalarray as $fields) {
                     fputcsv($file, $fields);
                 }
-                $keys = array();        
-                $counter = 0;
-                $counts = 0;
-
-                if (!empty($mydatas['data'])) {
-                    foreach ($mydatas['data'][0] as $key => $value) {
-                        $keys[$counter++] =  $key;           
-                    }
-
-                    if ($sensorType == 'rain2') {
-                        $newKeys = [$keys[0], $keys[2], $keys[3], $keys[1]];
-                       // dd($newKeys);
-                    } elseif ($sensorType == 'waterlvl & rain 2') {
-                        $newKeys = [$keys[0], $keys[3], $keys[4], $keys[1], $keys[2]];
-                    } else {
-                            $newKeys = $keys;
-                    }
-                    //$thiskeys = array($keys);
-                    $thiskeys = [$newKeys];
-
-                    foreach ($thiskeys as $fields) {
-                        fputcsv($file, $fields);
-                    }
+                $datetimeread = 'dateTimeRead';
+                $waterlevel = 'waterlevel';
+                $rainvalue = 'rain_value';
+                $raincum = 'rain_cum';
+                $airpressure = 'air_pressure';
+           
+                if(!empty($mydatas['data'])){
+                   if (stripos($sensorType, 'Rain') !== false && stripos($sensorType, 'Water') !== false) {
+                        $csvfield = [$datetimeread,
+                                   $rainvalue,
+                                   $raincum,
+                                   $waterlevel,
+                                   $airpressure,];        
+                   } elseif (stripos($sensorType, 'Rain') !== false && !(stripos($sensorType, 'Water') !== false)) {
+                        $csvfield = [$datetimeread,
+                                    $rainvalue,            
+                                    $raincum,
+                                    $airpressure];
+                   } elseif (!(stripos($sensorType, 'Rain') !== false) && stripos($sensorType, 'Water') !== false) {
+                        $csvfield = [$datetimeread,
+                                     $waterlevel];   
+                 }
+                $csvfields = [$csvfield];
+                foreach ($csvfields as $fields) {
+                    fputcsv($file, $fields);
+                }
                     sort($mydatas['data']);          
-                    $date = date('Y-m-d');
-
+                    $date =  $year.'-'.$month.'-'.$day;
                     foreach($mydatas['data'] as $mydata){
-                        if ($sensorType == 'rain2') {
-                            $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                        'rain_value' => $mydata['rain_value'],            
-                                        'rain_cum' => $mydata['rain_cum'],
-                                        'air_pressure' => $mydata['air_pressure']];
-                        } else if($sensorType == 'waterlvl & rain 2') {
-                            $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                        'waterlvl' => $mydata['waterlvl'],
-                                        'rain_value' => $mydata['rain_value'],
-                                        'rain_cum' => $mydata['rain_cum'],
-                                        //'waterlevel_msl' => $mydata['waterlevel_msl'],
-                                        'air_pressure' => $mydata['air_pressure']];
-                        } else {
-                            $newData = $mydata;
+                        if (stripos($sensorType, 'Rain') !== false && stripos($sensorType, 'Water') !== false) {
+                            $newData = [$datetimeread => $mydata['dateTimeRead'],
+                                        $rainvalue => $mydata['rain_value'],
+                                        $raincum => $mydata['rain_cum'],
+                                        $waterlevel => $mydata['waterlevel'],
+                                        $airpressure => $mydata['air_pressure']];        
+                        } elseif (stripos($sensorType, 'Rain') !== false && !(stripos($sensorType, 'Water') !== false)) {
+                            $newData = [$datetimeread => $mydata['dateTimeRead'],
+                                        $rainvalue => $mydata['rain_value'],            
+                                        $raincum => $mydata['rain_cum'],
+                                        $airpressure => $mydata['air_pressure']];
+                        } elseif (!(stripos($sensorType, 'Rain') !== false) && stripos($sensorType, 'Water') !== false) {
+                            $newData = [$datetimeread => $mydata['dateTimeRead'],
+                                        $waterlevel => $mydata['waterlevel']];
                         }
                         $csvdatetimearray = explode(" ", $newData['dateTimeRead']); 
 
@@ -721,11 +725,12 @@ class Getcsvdataapi
                 echo "Something went wrong\n";
             continue;
             }
+        
             $mydatas = json_decode($data, true);
             $counter = 0;    
             $finalarray = [];
             //$filename = '';
-            $sensorType = strtolower($mydatas['type_name']);
+            $sensorType = $mydatas['type_name'];
             if (!empty($mydatas['province'])) {
                 $finalarray = array(
                     array('region: CAR'),
@@ -755,46 +760,50 @@ class Getcsvdataapi
                 foreach ($finalarray as $fields) {
                     fputcsv($file, $fields);
                 }
-                $keys = array();        
-                $counter = 0;
-                $counts = 0;
                 
+                $datetimeread = 'dateTimeRead';
+                $waterlevel = 'waterlevel';
+                $rainvalue = 'rain_value';
+                $raincum = 'rain_cum';
+                $airpressure = 'air_pressure';
+           
                 if(!empty($mydatas['data'])){
-                    foreach ($mydatas['data'][0] as $key => $value) {
-                        $keys[$counter++] =  $key;           
-                    }
-                     if ($sensorType == 'rain2') {
-                        $newKeys = [$keys[0], $keys[2], $keys[3], $keys[1]];
-                       // dd($newKeys);
-                    } elseif ($sensorType == 'waterlvl & rain 2') {
-                        $newKeys = [$keys[0], $keys[3], $keys[4], $keys[1], $keys[2]];
-                    } else {
-                            $newKeys = $keys;
-                    }
-                    //$thiskeys = array($keys);
-                    $thiskeys = [$newKeys];
-                    //$thiskeys = array($keys);
-                    foreach ($thiskeys as $fields) {
-                        fputcsv($file, $fields);
-                    }
+                   if (stripos($sensorType, 'Rain') !== false && stripos($sensorType, 'Water') !== false) {
+                        $csvfield = [$datetimeread,
+                                   $rainvalue,
+                                   $raincum,
+                                   $waterlevel,
+                                   $airpressure,];        
+                   } elseif (stripos($sensorType, 'Rain') !== false && !(stripos($sensorType, 'Water') !== false)) {
+                        $csvfield = [$datetimeread,
+                                    $rainvalue,            
+                                    $raincum,
+                                    $airpressure];
+                   } elseif (!(stripos($sensorType, 'Rain') !== false) && stripos($sensorType, 'Water') !== false) {
+                        $csvfield = [$datetimeread,
+                                     $waterlevel];   
+                 }
+                $csvfields = [$csvfield];
+                foreach ($csvfields as $fields) {
+                    fputcsv($file, $fields);
+                }
                     sort($mydatas['data']);          
                     $date =  $year.'-'.$month.'-'.$day;
-
                     foreach($mydatas['data'] as $mydata){
-                        if ($sensorType == 'rain2') {
-                            $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                        'rain_value' => $mydata['rain_value'],            
-                                        'rain_cum' => $mydata['rain_cum'],
-                                        'air_pressure' => $mydata['air_pressure']];
-                        } else if($sensorType == 'waterlvl & rain 2') {
-                            $newData = ['dateTimeRead' => $mydata['dateTimeRead'],
-                                        'waterlvl' => $mydata['waterlvl'],
-                                        'rain_value' => $mydata['rain_value'],
-                                        'rain_cum' => $mydata['rain_cum'],
-                                        //'waterlevel_msl' => $mydata['waterlevel_msl'],
-                                        'air_pressure' => $mydata['air_pressure']];
-                        } else {
-                            $newData = $mydata;
+                        if (stripos($sensorType, 'Rain') !== false && stripos($sensorType, 'Water') !== false) {
+                            $newData = [$datetimeread => $mydata['dateTimeRead'],
+                                        $rainvalue => $mydata['rain_value'],
+                                        $raincum => $mydata['rain_cum'],
+                                        $waterlevel => $mydata['waterlevel'],
+                                        $airpressure => $mydata['air_pressure']];        
+                        } elseif (stripos($sensorType, 'Rain') !== false && !(stripos($sensorType, 'Water') !== false)) {
+                            $newData = [$datetimeread => $mydata['dateTimeRead'],
+                                        $rainvalue => $mydata['rain_value'],            
+                                        $raincum => $mydata['rain_cum'],
+                                        $airpressure => $mydata['air_pressure']];
+                        } elseif (!(stripos($sensorType, 'Rain') !== false) && stripos($sensorType, 'Water') !== false) {
+                            $newData = [$datetimeread => $mydata['dateTimeRead'],
+                                        $waterlevel => $mydata['waterlevel']];
                         }
                         $csvdatetimearray = explode(" ", $newData['dateTimeRead']); 
                         if($csvdatetimearray[0] == $date){
