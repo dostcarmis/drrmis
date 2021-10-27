@@ -597,6 +597,7 @@ class Getcsvdataapi
 
             $mydatas = json_decode($data, true);          
             $counter = 0; 
+            $finalarray = [];
             $sensorType = strtolower($mydatas['type_name']);   
             if (!empty($mydatas['province'])) { 
                 //Variables
@@ -619,8 +620,7 @@ class Getcsvdataapi
                 $ftype = str_replace('&_','', $type);
                 $rootfile = public_path() . '/data/'.date('Y').'/'.date('m').'/'.date('d').'/';
                 $filename = $province.'-'.$finallocation.'-'.$ftype.'-'.date('Ymd').'.csv';
-		
-				//dd($rootfile);
+	
 		
                 if (is_dir($rootfile) == false) {
                     mkdir($rootfile, 0777, true);
