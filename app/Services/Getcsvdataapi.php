@@ -594,7 +594,9 @@ class Getcsvdataapi
                 echo "Something went wrong\n";
             continue;
             }
-
+            $year = date('Y');
+            $month = date('m');
+            $day = date('d');
             $mydatas = json_decode($data, true);          
             $counter = 0; 
             $finalarray = [];
