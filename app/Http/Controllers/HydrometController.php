@@ -68,11 +68,12 @@ class HydrometController extends Controller
 
 		$waterData = $this->getcsvdata->postWaterlevelvalue();	
 		return view('pages.viewhydrometdatawaterlevel')->with(['waterData' => $waterData]);
-		dd($waterData);
+		
 	}
     public function viewHydrometdata()
 	{	
-		$rainData = $this->getcsvdata->postRainvalue();		
+		$rainData = $this->getcsvdata->postRainvalue();	
+	
 		return view('pages.viewhydrometdata')->with(['rainData' => $rainData]);
 	}
 
