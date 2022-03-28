@@ -219,7 +219,7 @@ class PagesController extends Controller
         ignore_user_abort(true);
         //$post = $request->all();
 
-        $dateStart = '2022/03/28';
+        $dateStart = '2022/02/11';
         $dateEnd = '2022/03/28'; 
 
         $begin = new DateTime($dateStart);
