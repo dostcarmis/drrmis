@@ -332,7 +332,7 @@ class Getcsvdataapi
                     $counter[$count++] = array(
                             'date' =>  $yestfile[$i]['date'],
                             'time' =>  $time,
-                            'value' => $yestfile[$i]['rain_value'],
+                            'rain_value' => $yestfile[$i]['rain_value'],
                             'waterlvl' => $yestfile[$i]['waterlvl'],
                             'category' => '3',
                         );
@@ -340,7 +340,7 @@ class Getcsvdataapi
                     $counter[$count++] = array(
                             'date' =>  $yestfile[$i]['date'],
                             'time' =>  $time,
-                            'value' => $yestfile[$i]['rain_value'],
+                            'rain_value' => $yestfile[$i]['rain_value'],
                             'category' => '1',
                         );
                 }
@@ -377,7 +377,7 @@ class Getcsvdataapi
                     $counter1[$count++] = array(
                             'date' =>  $lower8[$i]['date'],
                             'time' =>  $time,
-                            'value' => $lower8[$i]['value'],
+                            'rain_value' => $lower8[$i]['rain_value'],
                             'waterlvl' => $lower8[$i]['waterlvl'],
                             'category' => '3',
                         );
@@ -385,7 +385,7 @@ class Getcsvdataapi
                     $counter1[$count++] = array(
                             'date' =>  $lower8[$i]['date'],
                             'time' =>  $time,
-                            'value' => $lower8[$i]['value'],
+                            'rain_value' => $lower8[$i]['rain_value'],
                             'category' => '1',
                         );
                 }
@@ -408,7 +408,7 @@ class Getcsvdataapi
                     $counter[$count++] = array(
                             'date' =>  $yestfile[$i]['date'],
                             'time' =>  $time,
-                            'value' => $yestfile[$i]['value'],
+                            'rain_value' => $yestfile[$i]['rain_value'],
                             'waterlvl' => $yestfile[$i]['waterlvl'],
                             'category' => '3',
                         );
@@ -416,7 +416,7 @@ class Getcsvdataapi
                     $counter[$count++] = array(
                             'date' =>  $yestfile[$i]['date'],
                             'time' =>  $time,
-                            'value' => $yestfile[$i]['value'],
+                            'rain_value' => $yestfile[$i]['rain_value'],
                             'category' => '1',
                         );
                 }
@@ -446,20 +446,20 @@ class Getcsvdataapi
                     $counter1[$count1++] = array(
                             'time' =>  $tods[$i]['time'],
                             'waterlvl' => $tods[$i]['waterlvl'],
-                            'value' => 0,
+                            'rain_value' => 0,
                             'category' => '2',
                         );
                 }else if($cat == 3){
                     $counter1[$count1++] = array(
                             'time' =>   $tods[$i]['time'],
-                            'value' => $tods[$i]['value'],
+                            'rain_value' => $tods[$i]['rain_value'],
                             'waterlvl' => $tods[$i]['waterlvl'],
                             'category' => '3',
                         );
                 }else{
                     $counter1[$count1++] = array(                        
                             'time' =>  $tods[$i]['time'],
-                            'value' => $tods[$i]['value'],
+                            'rain_value' => $tods[$i]['rain_value'],
                             'category' => '1',
                         );
                 }
@@ -475,19 +475,19 @@ class Getcsvdataapi
                             'time' =>  $csvfile[$i]['time'],
                             'waterlvl' => $csvfile[$i]['waterlvl'],
                             'category' => '2',
-                            'value' => 0,
+                            'rain_value' => 0,
                         );
                 }else if($cat == 3){
                     $counter[$count++] = array(
                             'time' =>   $csvfile[$i]['time'],
-                            'value' => $csvfile[$i]['value'],
+                            'rain_value' => $csvfile[$i]['rain_value'],
                             'waterlvl' => $csvfile[$i]['waterlvl'],
                             'category' => '3',
                         );
                 }else{
                     $counter[$count++] = array(                        
                             'time' =>  $csvfile[$i]['time'],
-                            'value' => $csvfile[$i]['value'],
+                            'rain_value' => $csvfile[$i]['rain_value'],
                             'category' => '1',
                         );
                 }
@@ -500,11 +500,11 @@ class Getcsvdataapi
         $limit1 = count($counter1);
 
         for ($i=0; $i < $limit; $i++) {
-            $sum += isset($counter[$i]['value']) ? (float) $counter[$i]['value'] : 0;
+            $sum += isset($counter[$i]['rain_value']) ? (float) $counter[$i]['rain_value'] : 0;
         }
 
         for ($x=0; $x < $limit1; $x++) { 
-            $sum1 += isset($counter1[$x]['value']) ? (float) $counter1[$x]['value'] : 0;
+            $sum1 += isset($counter1[$x]['rain_value']) ? (float) $counter1[$x]['rain_value'] : 0;
         }
         $totalyesterday = $sum1 + $sum;
         
@@ -528,12 +528,12 @@ class Getcsvdataapi
                             'time' =>  $csvfile[$i]['time'],
                             'waterlvl' => $csvfile[$i]['waterlvl'],
                             'category' => '2',
-                            'value' => 0,
+                            'rain_value' => 0,
                         );
                 }else if($cat == 3){
                     $counter[$count++] = array(
                             'time' =>   $csvfile[$i]['time'],
-                            'value' => $csvfile[$i]['value'],
+                            'rain_value' => $csvfile[$i]['rain_value'],
                             'waterlvl' => $csvfile[$i]['waterlvl'],
                             'category' => '3',
                         );
@@ -541,7 +541,7 @@ class Getcsvdataapi
                     $counter[$count++] = array(
                         
                             'time' =>  $csvfile[$i]['time'],
-                            'value' => $csvfile[$i]['value'],
+                            'rain_value' => $csvfile[$i]['rain_value'],
                             'category' => '1',
                         );
                 }
@@ -550,7 +550,7 @@ class Getcsvdataapi
         $sum = 0;
         $limit = count($counter);
         for ($i=0; $i < $limit; $i++) {
-            $sum += isset($counter[$i]['value']) ? (float) $counter[$i]['value'] : 0;
+            $sum += isset($counter[$i]['rain_value']) ? (float) $counter[$i]['rain_value'] : 0;
         }
 
         return number_format((float)$sum, 2, '.', '');
