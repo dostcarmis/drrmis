@@ -219,8 +219,8 @@ class PagesController extends Controller
         ignore_user_abort(true);
         //$post = $request->all();
 
-        $dateStart = '2010/01/01';
-        $dateEnd = '2010/12/31'; 
+        $dateStart = '2011/01/01';
+        $dateEnd = '2011/12/31'; 
 
         $begin = new DateTime($dateStart);
 		$end = new DateTime($dateEnd);

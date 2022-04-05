@@ -637,21 +637,19 @@ class Getcsvdataapi
                 $datetimeread = 'datetime_read';
                 $waterlevel = 'waterlevel';
                 $rainvalue = 'rain_value';
-                $raincum = 'rain_cum';
+               // $raincum = 'rain_cum';
                 $airpressure = 'air_pressure';
            
                 if(!empty($mydatas['data'])){
                    if (stripos($sensorType, 'Rain') !== false && stripos($sensorType, 'Water') !== false) {
                         $csvfield = [$datetimeread,          
                                      $rainvalue, 
-                                   $waterlevel,
-                                   $raincum, 
-                                   $airpressure,];        
+                                     $waterlevel,
+                                     $airpressure,];        
                    } elseif (stripos($sensorType, 'Rain') !== false && !(stripos($sensorType, 'Water') !== false)) {
-                        $csvfield = [$datetimeread,
-                                     $raincum,           
-                                     $rainvalue,            
-                                    $airpressure];
+                        $csvfield = [$datetimeread,          
+                                     $rainvalue,         
+                                     $airpressure];
                    } elseif (!(stripos($sensorType, 'Rain') !== false) && stripos($sensorType, 'Water') !== false) {
                         $csvfield = [$datetimeread,
                                      $waterlevel];   
@@ -667,12 +665,12 @@ class Getcsvdataapi
                             $newData = [$datetimeread => $mydata['datetime_read'],
                                         $rainvalue => $mydata['rainfall_amount'],
                                         $waterlevel => $mydata['waterlevel'],
-                                        $raincum => $mydata['rain_cumulative'],
+                                        //$raincum => $mydata['rain_cumulative'],
                                         $airpressure => $mydata['air_pressure']];        
                         } elseif (stripos($sensorType, 'Rain') !== false && !(stripos($sensorType, 'Water') !== false)) {
                             $newData = [$datetimeread => $mydata['datetime_read'],
                                         $rainvalue => $mydata['rainfall_amount'],            
-                                        $raincum => $mydata['rain_cumulative'],
+                                        //$raincum => $mydata['rain_cumulative'],
                                         $airpressure => $mydata['air_pressure']];
                         } elseif (!(stripos($sensorType, 'Rain') !== false) && stripos($sensorType, 'Water') !== false) {
                             $newData = [$datetimeread => $mydata['datetime_read'],
@@ -775,12 +773,12 @@ class Getcsvdataapi
                         $csvfield = [$datetimeread,
                                    $rainvalue,
                                    $waterlevel,
-                                   $raincum,
+                                   //$raincum,
                                    $airpressure,];        
                    } elseif (stripos($sensorType, 'Rain') !== false && !(stripos($sensorType, 'Water') !== false)) {
                         $csvfield = [$datetimeread,
                                     $rainvalue,            
-                                    $raincum,
+                                    //$raincum,
                                     $airpressure];
                    } elseif (!(stripos($sensorType, 'Rain') !== false) && stripos($sensorType, 'Water') !== false) {
                         $csvfield = [$datetimeread,
@@ -797,12 +795,12 @@ class Getcsvdataapi
                             $newData = [$datetimeread => $mydata['datetime_read'],
                                         $rainvalue => $mydata['rainfall_amount'],
                                         $waterlevel => $mydata['waterlevel'],
-                                        $raincum => $mydata['rain_cumulative'],
+                                       // $raincum => $mydata['rain_cumulative'],
                                         $airpressure => $mydata['air_pressure']];        
                         } elseif (stripos($sensorType, 'Rain') !== false && !(stripos($sensorType, 'Water') !== false)) {
                             $newData = [$datetimeread => $mydata['datetime_read'],
                                         $rainvalue => $mydata['rainfall_amount'],            
-                                        $raincum => $mydata['rain_cumulative'],
+                                        //$raincum => $mydata['rain_cumulative'],
                                         $airpressure => $mydata['air_pressure']];
                         } elseif (!(stripos($sensorType, 'Rain') !== false) && stripos($sensorType, 'Water') !== false) {
                             $newData = [$datetimeread => $mydata['datetime_read'],
