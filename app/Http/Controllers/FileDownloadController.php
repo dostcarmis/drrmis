@@ -14,7 +14,7 @@ class FileDownloadController extends Controller
 {
     public function viewFiledownload(Request $request){
         $filetype = strtolower($request->filetype);
-
+        $filename = strtolower($request->filename);
         $files = DB::table('tbl_files as file')
                 ->select('file.*',
                          DB::Raw('CONCAT(user.first_name, " ", user.last_name) as name'))
@@ -23,6 +23,9 @@ class FileDownloadController extends Controller
         if (!empty($filetype)) {
 
             $files = $files->where('file.filetype', $filetype);
+        }
+        if (!empty($filename)){
+            $files = $files->where('file.filename','like', '%'.$filename.'%');
         }
 
         $files = $files->orderBy('file.created_at', 'desc')

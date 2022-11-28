@@ -28,4 +28,8 @@ class Municipality extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function province(){
+        return $this->belongsTo(Province::class);
+    }
 }

@@ -30,3 +30,23 @@ if(stat == 1){
     $('.with_data').addClass('hidden');
     $('.no_data').addClass('hidden');
 }
+
+$(document).on('submit','#hydrometsearchform',function(e){
+    e.preventDefault();
+    let search = ($('#hydrometsearch').val()).trim();
+    let url = window.location.href;
+    let cols = $('#hydromettable tbody tr td').length;
+    $.ajax({
+        type:"POST",
+        url:url,
+        data: {search:search},
+        beforeSend:function(){
+            $('#hydromettable tbody').html("<tr><td colspan="+cols+" style='text-align:center'>Loading... Please Wait</td></tr>");
+        },
+        success:function(res){
+            $('#hydromettable tbody').html(res);
+            let rows = $('#hydromettable tbody tr').length;
+            $('#hydromettable_info').text("Showing 1 to "+rows+" of "+rows+" entries")
+        }
+    })
+})

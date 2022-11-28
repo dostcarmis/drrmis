@@ -8,26 +8,24 @@
         <form id="savesitrepfile" method="post" action="{{action('SitrepController@savesitrepfile')}}" enctype="multipart/form-data">   
         
           <div class="modal-body">
-            <div class="row">
-              <div class="column">
-                <div class="form-group">
-                  <label for="radio">Select risk:</label>
-                  <div class="row">
-                  <input type="radio" id="risk_type" name="risk" value="Typhoon"> Typhoon<br>
-                  <input type="radio" id="risk_type" name="risk"  value="Earthquake"> Earthquake<br>
-                  <input type="radio" id="risk_type" name="risk"  value="Volcanic Eruption"> Volcanic Eruption<br>
-                  <input type="radio" id="risk_type" name="risk"  value="Disease Outbreak"> Disease Outbreak<br> 
-                  <input type="radio" id="risk_type" name="risk"  value="Drought"> Drought<br>    
-                  </div>
-                </div>
+            <div class="form-group">
+              <label>Select risk:</label><br>
+              <input type="checkbox" id="risk_type1" name="risk_check" value="Typhoon"> <label for="risk_type1">Typhoon</label><br>
+              <div id="typhoon_hidden" style="display: none" class="ms-3 w-50">
+                <input type="text" name="typhoon_name" class="form-control" id="typhoon_name" placeholder="Typhoon name" disabled>
               </div>
-
-              <div class="column">
-                  <label for="text">Typhoon Name:</label>
-                  <input type="text" name="typhoon_name" class="form-control" id="typhoon_name" disabled>
-                </div>
+              <input type="checkbox" id="risk_type2" name="risk_check" value="Earthquake"> <label for="risk_type2">Earthquake</label><br>
+              <input type="checkbox" id="risk_type3" name="risk_check" value="Volcanic Eruption"> <label for="risk_type3">Volcanic Eruption</label><br>
+              <input type="checkbox" id="risk_type4" name="risk_check" value="Disease Outbreak"> <label for="risk_type4">Disease Outbreak</label><br> 
+              <input type="checkbox" id="risk_type5" name="risk_check" value="Drought"> <label for="risk_type5">Drought</label><br>
+              <input type="checkbox" id="risk_type6" name="risk_check" value="Fire"> <label for="risk_type6">Fire</label><br>
+              <input type="checkbox" id="risk_type7" name="risk_check" value="Vehicular"> <label for="risk_type7">Vehicular</label><br>
+              <input type="checkbox" id="risk_type8" name="risk_check" value="Other"> <label for="risk_type8">Other</label><br>
+              <div id="other_hidden" style="display: none" class="ms-3 w-50">
+                <input type="text" name="other_risk" class="form-control" id="other_risk" placeholder="Risk Type" disabled>
               </div>
-              
+            </div>
+            <input type="hidden" name="risk" id="risk_">
             <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
               <div class="form-group">
                 <label for="text">File Name to Display:</label>

@@ -1,4 +1,8 @@
 <!-- Navigation -->
+<style>
+    .navbar-nav>li>a{padding: 10px 10px;}
+    .navbar-nav>li>a>.fa,.navbar-nav>li>a>.fas{max-width: 14px;}
+</style>
 
 <!------------------------------------ Horizontal Navbar ---------------------------------------------------------------------------------------------->
 
@@ -67,24 +71,27 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
             <li>
-                <a href="{{action('HydrometController@dashboard')}}"><i class="fa fa-tachometer"></i> Dashboard</a>
-                <ul id="dashboard" class="in" aria-expanded="true">
-                    <li>
-                        <a href="{{ action("PagesController@home") }}">View Site</a>
-                    </li>
-                </ul>
+                <a href="{{ action("PagesController@home") }}"><i class="fa fa-eye" aria-hidden="true"></i> View Site</a>
             </li>
-
+            <li>
+                <a href="{{action('HydrometController@dashboard')}}"><i class="fa fa-tachometer"></i> Dashboard</a>
+            </li>
+            <li>
+                <a data-toggle="modal" data-target="#selectfilemodal" href="#"><i class="fa fa-download"></i> DRRM KM Resources </a>
+            </li>
+            <li>
+                <a data-toggle="modal" data-target="#selectsitreplevelmodal" href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Sit Reps</a>
+            </li>
             <!------------------------------------ Report Dropdown -------------------------------------------->
 
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#report" class="" aria-expanded="true">
-                    <i class="fa fa-bullhorn" aria-hidden="true"></i> Report <i class="fa fa-fw fa-caret-down"></i>
+                    <i class="fa fa-bullhorn" aria-hidden="true"></i> Report <i class="fa fa-fw fa-caret-down float-end"></i>
                 </a>
                 <ul id="report" class="collapse" aria-expanded="true">
                     
                     <li class="dropside">
-                        <a href="#"><i class="demo-icon icon-flood">&#xe800;</i> Incidents</a>
+                        <a href="#"><i class="demo-icon icon-flood">&#xe800;</i> Add Incident</a>
                         <ul id="ul-incidents" class="dropdown-menu fslevel">
                             <li>
                                 <a href="{{ action('LandslideController@viewaddLandslide') }}">+New Landslide Report</a>
@@ -94,6 +101,12 @@
                             </li>
                             <li>
                                 <a href="{{ action('RoadController@viewaddRoadnetwork') }}">+New Road Closures Report</a>
+                            </li>
+                            <li>
+                                <a href="{{ action('FiresController@viewaddFire') }}">+New Fire Report</a>
+                            </li>
+                            <li>
+                                <a href="{{ action('VehicularController@viewaddvehicular') }}">+New Vehicular Report</a>
                             </li>
                         </ul>
                     </li> 
@@ -109,7 +122,7 @@
     
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#monitor" class="" aria-expanded="true">
-                    <i class="demo-icon">&#xe804;</i> Monitor <i class="fa fa-fw fa-caret-down"></i>
+                    <i class="fa fa-desktop" aria-hidden="true"></i> View Incidents <i class="fa fa-fw fa-caret-down float-end"></i>
                 </a>
                 <ul id="monitor" class="collapse" aria-expanded="true">
                     <li class="dropside">
@@ -148,6 +161,16 @@
                                             Road Closures Reports
                                         </a>
                                     </li>
+                                    <li>
+                                        <a value="Fire" class="filterincident" href="{{action('LandslideController@viewLandslides')}}">
+                                            Fire Reports
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a value="Vehicular" class="filterincident" href="{{action('LandslideController@viewLandslides')}}">
+                                            Vehicular Reports
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>                                   
                             <li>
@@ -175,27 +198,44 @@
 
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#riskassess" class="" aria-expanded="true">
-                    <i class="fa fa-flag"></i> Risk Assessment <i class="fa fa-fw fa-caret-down"></i>
+                    <i class="fa fa-flag"></i> Risk Assessment <i class="fa fa-fw fa-caret-down float-end"></i>
                 </a>
                 <ul id="riskassess" class="collapse" aria-expanded="true">
-                    <li>
-                        <a href="https://hazardhunter.georisk.gov.ph/" target="_blank">
-                            <i class="fa fa-link" aria-hidden="true"></i> Link
+                    <li id="nav-clears">
+                        <a href="#">
+                            <i class="fa fa-files-o"></i> CLEARS
                         </a>
                     </li>
                     <li>
                         <a data-toggle="modal" data-target="#selectProvmodal" href="#">
-                            <i class="fa fa-files-o"></i> Files
+                            <i class="fa fa-files-o"></i> PDRA
                         </a>
                     </li>
+                    <li>
+                        <a href="https://hazardhunter.georisk.gov.ph/" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i> Others
+                        </a>
+                    </li>
+                    <li>
+                        @if(Auth::check() && Auth::user()->role_id < 3)
+                        <a data-toggle="modal" data-target="#selectProvmodal" href="#">
+                            <i class="fa fa-files-o"></i> Files
+                        </a>
+                        @else
+                        <a href="{{ url("riskassessmentfiles/".Auth::user()->province->name) }}">
+                            <i class="fa fa-files-o"></i> Files
+                        </a>
+                        @endif
+
+                    </li>
                 </ul>
-            </li>  
+            </li>
 
             <!------------------------------------ Warn Dropdown -------------------------------------------->
                 
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#sms-module" class="" aria-expanded="true">
-                    <i class="fa fa-signal"></i> Warn <i class="fa fa-fw fa-caret-down"></i>
+                    <i class="fa fa-signal"></i> Warn <i class="fa fa-fw fa-caret-down float-end"></i>
                 </a>
                 <ul id="sms-module" class="collapse" aria-expanded="true">
                     <li class="divider"><i class="fa fa-flag"></i></li>
@@ -233,7 +273,7 @@
             @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2) 
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#data" class="" aria-expanded="true">
-                    <i class="fa fa-book" aria-hidden="true"></i> Libraries <i class="fa fa-fw fa-caret-down"></i>
+                    <i class="fa fa-book" aria-hidden="true"></i> Libraries <i class="fa fa-fw fa-caret-down float-end"></i>
                 </a>
                 <ul id="data" class="collapse" aria-expanded="true">
                     <li>
@@ -283,7 +323,7 @@
 
             <!---------------------------------- Users Dropdown -------------------------------------------->
 
-            @if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+            @if(Auth::user()->role_id <= 2 )
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#users" class="" aria-expanded="true">
                     <i class="fa fa-user"></i> Users <i class="fa fa-fw fa-caret-down"></i>
@@ -322,7 +362,7 @@
             
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#links" class="" aria-expanded="true">
-                    <i class="fa fa-external-link-square" aria-hidden="true"></i> DRRM Links <i class="fa fa-fw fa-caret-down"></i>
+                    <i class="fa fa-external-link-square" aria-hidden="true"></i> DRRM Links <i class="fa fa-fw fa-caret-down float-end"></i>
                 </a>
                 <ul id="links" class="collapse" aria-expanded="true">
                     <li>
@@ -395,4 +435,40 @@
 </nav>
 
 @include('pages.mainviewriskassessfiles') 
-       
+@include('pages.selectsitrepmodal')
+@include('pages.selectfiletypemodal')
+
+<script>
+    $(document)
+    .on('click','#innerNav .navbar-ex1-collapse a[data-toggle=collapse]',function(e){
+        $('#innerNav .navbar-ex1-collapse a[data-toggle=collapse]').not($(e.currentTarget)).toggleClass('collapsed').attr('aria-expanded','false').next('.collapse').removeClass('in').attr('aria-expanded','false');
+    })
+    .on('click','#nav-clears',function(){
+        let url = baseURL+"clears-show";
+        $.ajax({
+            type:"POST",
+            data:{},
+            url: url,
+            success:function(r){
+                $('#page-wrapper').html(r)
+                $('#clears-table').DataTable();
+                $('[data-toggle="tooltip"]').tooltip();
+                /* var map = new google.maps.Map(document.getElementById('addcoords'),{
+                    center:{
+                        lat:17.351324,
+                        lng:121.17500399999994
+                    },
+                    zoom:9
+                });
+                var marker = new google.maps.Marker({
+                    position:{
+                        lat:17.351324,
+                        lng:121.17500399999994
+                    },
+                    map:map,
+                    draggable:false
+                }); */
+            }
+        })
+    })
+</script>

@@ -17,20 +17,24 @@
 				<th>Filename</th>
 				<th>Filetype</th>
 				<th>Uploader</th>
+				<th>Province</th>
+				<th>Municipality</th>
 				<th></th>                                                                                 
 		</thead>
 		<tbody>
 			@foreach($riskfile as $riskf)
 			<tr>
 				<td><div class="text_holder"><a target="_blank" href="{{ url($riskf->fileurl) }}">{{$riskf->filename}}</a></div></td>
-				<td><p><span>{{$riskf->filetype}}</span></p></td>
-				<td><span>{{$riskf->name}}</span>
-					<td><div class="btn-group pull-right">
-						@if($riskf->uploadedby == Auth::user()->id)
-						<a class="delete btn btn-danger" onclick="$(this).filedel({{ $riskf->id }});">Delete</a>
-						@endif
-						<a class="btn btn-primary btn-success"  target="_self" href="{{ url($riskf->fileurl) }}" download><span class="fa fa-cloud-download"></span>Download File</a>		
-					 	</div></td>
+				<td>{{$riskf->filetype}}</td>
+				<td>{{$riskf->name}}</td>
+				<td>{{$riskf->province}}</td>
+				<td>{{$riskf->municipality}}</td>
+				<td><div class="btn-group pull-right">
+					@if($riskf->uploadedby == Auth::user()->id)
+					<a class="delete btn btn-danger" onclick="$(this).filedel({{ $riskf->id }});">Delete</a>
+					@endif
+					<a class="btn btn-primary btn-success"  target="_self" href="{{ url($riskf->fileurl) }}" download><span class="fa fa-cloud-download"></span>Download File</a>		
+					</div></td>
 			</tr>				
 			@endforeach
 	</table>

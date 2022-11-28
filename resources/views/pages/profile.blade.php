@@ -53,7 +53,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-9">
 					<span class="defsp spprofile">
-						<input type="text" name="email" value="{{ $user->email }}" class="proformtext form-control">
+						<input type="text" name="email" value="{{ $user->email }}" class="proformtext form-control" required>
 					</span>
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-9">
 					<span class="defsp spprofile">
-						<input type="text" name="cellphone_num" value="{{ $user->cellphone_num }}" class="proformtext form-control">
+						<input type="text" name="cellphone_num" value="{{ $user->cellphone_num }}" class="proformtext form-control" required>
 					</span></div>
 			</div>	
 			<div class="col-xs-12 profheadtitle">
@@ -167,7 +167,7 @@
 						<input type="text" name="position" placeholder="Position" value="{{ $user->position }}" class="proformtext form-control">
 					</span></div>
 			</div>
-			<div class="col-xs-12 col-sm-12 per-labels">
+			{{-- <div class="col-xs-12 col-sm-12 per-labels">
 				<div class="col-xs-12 col-sm-2 spprofileslabel">
 					<label>Designation :</label>
 				</div>
@@ -175,7 +175,7 @@
 					<span class="defsp spprofile">
 						<input type="text" placeholder="Designation" name="designation" value="{{ $user->designation }}" class="proformtext form-control">
 					</span></div>
-			</div>	
+			</div>	 --}}
 			<div class="col-xs-12 col-sm-12 per-labels">
 				<div class="col-xs-12 col-sm-2 spprofileslabel">
 					<label>Role :</label>

@@ -16,9 +16,16 @@
     <link href="{{ URL::asset('assets/css/responsive.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ URL::asset('assets/fonts/allfonts/stylesheet.css') }}">
-     <link rel="stylesheet" href="{!! url('css/buttons.dataTables.css') !!}">
-     <link rel="stylesheet" href="{{ URL::asset('css/jquery.fancybox.min.css') }}">
-
+    <link rel="stylesheet" href="{!! url('css/buttons.dataTables.css') !!}">
+    <link rel="stylesheet" href="{{ URL::asset('css/jquery.fancybox.min.css') }}">
+    <script>
+        const baseURL = "{{ url('/') }}/";
+    </script>
+    <script src="{!! url('js/jquery1-11-3.min.js')!!}"></script> 
+    <script>window.jQuery || document.write('<script src="{!!url('../../js/jquery.min.js') !!}"><\/script>')</script>
+    <script src="{!! url('js/code-jquery-1.12.3.min.js')!!}"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="{!! url('js/jquery.js')!!}"></script>
 </head>
 <?php
 if (Auth::check()) : ?>
@@ -39,14 +46,7 @@ if (Auth::check()) : ?>
             </div>
         </aside>
     </div>
-        <script>
-            const baseURL = "{{ url('/') }}/";
-        </script>
-        <script src="{!! url('js/jquery1-11-3.min.js')!!}"></script> 
-        <script>window.jQuery || document.write('<script src="{!!url('../../js/jquery.min.js') !!}"><\/script>')</script>
-        <script src="{!! url('js/code-jquery-1.12.3.min.js')!!}"></script>
-        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script src="{!! url('js/jquery.js')!!}"></script>
+        
         <script src="{!! url('js/bootstrap.min.js') !!}"></script>
         <script src="{!! url('assets/js/notification.js')!!}"></script>
         <script src="{!! url('assets/js/search.js')!!}"></script>

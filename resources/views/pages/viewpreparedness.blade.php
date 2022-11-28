@@ -3,9 +3,16 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<h1 class="page-header">Preparedness</h1>			
-			<div class="col-xs-12 np"><a href="#" data-toggle="modal" data-target="#addModal" class="btn btn-viewupload">+ Add Report</a></div>
-
+			<h1 class="page-header">Preparedness</h1>
+		</div>
+	</div>
+	<div class="row"  style="margin-top:1rem">
+		<div class="col-xs-12 col-sm-12">
+			<a href="#" data-toggle="modal" data-target="#addModal" class="btn btn-viewupload" style="float: right;">+ Add<span class="xs-d-none sm-d-none md-d-inline"> Report</span></a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12">
 			<p style="color:green"><?php echo Session::get('message'); ?></p>
 
 			@foreach ($errors->all() as $message)

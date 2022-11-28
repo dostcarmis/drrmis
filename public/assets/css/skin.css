@@ -69,8 +69,10 @@
 	display: block;
 }
 .mres{
-	max-width: 100%;
-	height: auto;
+	/* max-width: 100%;
+	height: auto; */
+	max-height: 12vh !important;
+	width: unset !important;
 }
 .checkbox{
 	margin:0px;
@@ -114,7 +116,8 @@ a:hover,a:focus{
 	display: inline-block;
 }
 .logos ul li img{
-	width: 7vw;
+	
+	max-height: 12vh;
 }
 .homenavwrap,.login-nav{
 	background: #111111;
@@ -1635,7 +1638,7 @@ input.faChkSqr:after {
 }
 #map #iw-container {
 	margin-bottom: 5px;
-	width: 350px;
+	/* width: 350px; */
 }
 #incidentmap #iw-container {
 	margin-bottom: 5px;
@@ -2555,10 +2558,7 @@ ul.sub-menu-bottom li  a{
 .mapimages{
 	max-width: 100% !important;
 }
-.mres{
-	width: 100%;
-	height: auto;
-}
+
 .editlink{
 	margin-top: 15px;
 	margin-bottom: 15px;

@@ -28,4 +28,13 @@
       </div>
     </div>
   </div>
+  <div class="little-toggler">
+    <i class="fa fa-chevron-up" aria-hidden="true"></i>
+  </div>
+  @section('page-js-files')
+  <script src="{{asset('assets/js/mobileview.js')}}">
+    
+  </script>
+  @stop
+  
 </div>

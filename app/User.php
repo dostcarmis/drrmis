@@ -3,6 +3,9 @@
 namespace App;
 
 use App\Models\Logs;
+use App\Models\Municipality;
+use App\Models\Province;
+use App\Role;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,6 +19,15 @@ class User extends Authenticatable {
      *
      * @var array
      */
+    public function municipality(){
+        return $this->belongsTo(Municipality::class);
+    }
+    public function province(){
+        return $this->belongsTo(Province::class);
+    }
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
     public function roles()
     {
         return $this->belongsToMany('App\Role', 'user_role', 'user_id', 'role_id');

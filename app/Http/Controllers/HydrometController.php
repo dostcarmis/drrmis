@@ -64,17 +64,39 @@ class HydrometController extends Controller
 		return response()->file($pathToFile);		
 		
 	}
-	public function viewHydrometdatawaterlevel(){
-
-		$waterData = $this->getcsvdata->postWaterlevelvalue();	
-		return view('pages.viewhydrometdatawaterlevel')->with(['waterData' => $waterData]);
+	public function viewHydrometdatawaterlevel(Request $request){
+		
+		$waterData = $this->getcsvdata->postWaterlevelvalue();
+		$data_=$waterData['data'];
+		return $this->filterData($request,"waterData",$waterData,$data_,"viewhydrometdatawaterlevel");
 		
 	}
-    public function viewHydrometdata()
+    public function viewHydrometdata(Request $request)
 	{	
 		$rainData = $this->getcsvdata->postRainvalue();	
-	
-		return view('pages.viewhydrometdata')->with(['rainData' => $rainData]);
+		$data_=$rainData['data'];
+		return $this->filterData($request,"rainData",$rainData,$data_,"viewhydrometdata");
+	}
+	public function filterData($request,$type,$data, $data_=[],$page){
+		if(!empty($data_)){
+			if($request->has('search') && trim($request->input('search')) != ''){
+				$new_data = [];
+				$term = strtolower(strip_tags(trim($request->input('search'))));
+				foreach($data_ as $key=>$d){
+					$address = strtolower($d['address']);
+					$sensortype = strtolower($d['sensortype']);
+					if(strpos($address,$term) !== false || strpos($sensortype,$term) !== false){
+						$new_data[] = $d;
+					}
+				}
+				$data['data'] = $new_data;
+				return view('pages.'.$page.'_filtered')->with(["$type" => $data]);
+			}else if($request->has('search') && trim($request->input('search')) == ''){
+				$waterData['data'] = $data_;
+				return view('pages.'.$page.'_filtered')->with(["$type" => $data]);
+			}else
+				return view('pages.'.$page)->with(["$type" => $data]);
+		}
 	}
 
 

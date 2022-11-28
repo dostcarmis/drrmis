@@ -1,0 +1,35 @@
+E-commerce
+Company - Roles
+1. Customer Service
+	- Reporting of Users
+	- Returns / Refunds
+---------
+2. Billing
+3. Audit
+4. Marketing
+5. T&C
+---------
+Partnership with Delivery Service
+
+*-------*
+Artist - Features
+1. Listing of items, pics, item description, commision rates
+2. Accept / Decline commision requests
+
+
+*-------*
+Buyer - Features
+1. View items
+2. Buy items
+3. Comment / Rate items
+4. Comment / Rate artists
+5. Place commission
+
+
+*-------*
+Platform Reqs
+1. Payment method API
+2. Search by category, artist, title
+3. Sorting by price, rating, title
+4. Messaging
+5. Push notifications

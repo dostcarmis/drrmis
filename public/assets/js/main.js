@@ -393,6 +393,7 @@ $.ajax({
     $('#searchall').keyup(function(){
       mytable.search($(this).val()).draw() ;
     });
+    
 
 
 //=========================//

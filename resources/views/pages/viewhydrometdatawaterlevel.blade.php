@@ -17,8 +17,10 @@
         	</div>
         	<div class="col-xs-12 col-sm-4 searchhydro">
 				<div class="input-group">				  
-				  <input class="form-control" id="hydrometsearch" type="text" name="searchall" placeholder="Search">
-				  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
+                    <form action="" id="hydrometsearchform">
+                        <input class="form-control" id="hydrometsearch" type="text" name="searchall" placeholder="Search">
+                    </form>
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
 				</div>
 			</div>
         </div>

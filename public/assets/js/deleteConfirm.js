@@ -20,7 +20,12 @@ $(function(){
         
         var r = confirm("Are you sure you want to delete this sitrep?");
         if (r == true){
-            var url = "sitreps/deletesitrep/" + id;
+            // alert($('#delete-sitrep').attr('url'))
+            let cur = $('#delete-sitrep').attr('url');
+            if(cur.search("provincial") == -1 && cur.search('regional') == -1 && cur.search('municipal') == -1)
+                var url = "sitreps/deletesitrep/" + id;
+            else
+                var url = "deletesitrep/" + id;
             $('#delete-sitrep').attr('action' , url).submit();
             //console.log(url);
         } else {   

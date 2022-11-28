@@ -17,7 +17,7 @@ class RehabilitationController extends Controller
     public function viewaddRehabilitation(){
     	return view('pages.addrehabilitation');
     }
-    public function deletRehab($id){
+    public function deleteRehab($id){
 
         $filename = DB::table('tbl_rehabilitation')->where('id',$id)->first();
         $fileurl = public_path('fileuploads/rehabilitation'); 
@@ -44,7 +44,8 @@ class RehabilitationController extends Controller
             $v = \Validator::make($request->all(), $rules);
 
             if($v->fails()){
-               return redirect()->back()->withErrors($v->errors());
+                // return response()->json(["somethingwrong"=>true]);
+                return redirect()->back()->withErrors($v->errors());
             }else{
                 $fileurl = asset('fileuploads/rehabilitation');
 
@@ -97,8 +98,12 @@ class RehabilitationController extends Controller
                 if($i > 0){
                     \Session::flash('message', 'Report successfully uploaded');
                     return redirect('rehabilitationnrecovery');
+                    // return response()->json(["message"=>'Report successfully uploaded']);
                 }
                 return redirect('rehabilitationnrecovery');
             }      
     }
+    /* public function saveRehabilitation(Request $request){
+        return response()->json(["req"=>$request]);
+    } */
 }

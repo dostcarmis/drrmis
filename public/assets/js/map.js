@@ -58,6 +58,7 @@ jQuery(function($){
   var locations = []; 
   var landslidelocation = [];
   var floodlocation = [];
+  var clearslocation = [];
   var historicalOverlay = new google.maps.KmlLayer();
   var kmlfnalmt = [];
   var kmlfnalk = [];
@@ -916,7 +917,128 @@ jQuery(function($){
             }
             var v = parseInt($(this).attr('id'));  
                 displayfloodMarkers(this,v); 
-            });
+        });
+
+        for( var clearscount = 0;clearscount<clears.length;clearscount++){
+          var clearsicon = {
+              url: 'assets/images/landslideicon.png'
+          };                
+          var images = [];    
+          for (var xyz = 0; xyz < clearsimages.length; xyz++) {
+              if(clearsimages[xyz].id == clears[clearscount].id){
+                  myimage = clearsimages[xyz].image;
+                  for (var i = 0; i < myimage.length; i++) {
+                      images[i] = '<div class="mapimages"><a data-fancybox-group="clearsimages-'+xyz+'" href='+myimage[i].replace(/ /g,"%20") +' class="fancybox thumbnail"><img src='+myimage[i].replace(/ /g,"%20") +' class="mres"/></a></div>';
+                  }
+              }
+          }
+          
+          clearslocation.push({
+              id: clears[clearscount].id, 
+              province: clears[clearscount].province_id,                
+              icon: clearsicon, 
+              images: images,
+              date: clears[clearscount].survey_date,
+              latlng: new google.maps.LatLng(clears[clearscount].survey_latitude,clears[clearscount].survey_longitude),
+              lat:clears[clearscount].survey_latitude,
+              lang:clears[clearscount].survey_longitude,
+              source:clears[clearscount].source,
+              fs: clears[clearscount].Fs,
+          });
+          
+      }   
+  //Icon info when clicked
+      var clearsmarkers = [];
+      var i, arrMarkersclears;
+      for(i=0;i<clearslocation.length;i++){
+        
+          var data = clearslocation[i];
+          var arrMarkersclears = new google.maps.Marker({
+              position: data.latlng, 
+              map:map, 
+              icon:data.icon, 
+              title:data.road_location,
+              date:data.date,
+          });
+          arrMarkersclears.id = clearslocation[i].id;        
+          arrMarkersclears.setVisible(false);
+          clearsmarkers.push(arrMarkersclears); 
+          
+          (function (arrMarkersclears, data) {
+              var monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+              ];
+              var d = new Date(data.date);
+                  google.maps.event.addListener(arrMarkersclears, "click", function (e) {
+                      infoWindow.setContent(
+                          `<div id='iw-container' class='clearsmarkerinfowindow'>
+                              <div class='iw-title l-maptitle'>
+                                  Landslide Susceptibility
+                              </div>
+                              <div class='iw-content l-mapcontent'>
+                                  <span class='l-name'>
+                                      ${data.lang}
+                                  </span>
+                                  <span class='defsp l-date'>
+                                      ${monthNames[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}
+                                  </span>
+                                  <span class='l-images'>
+                                      ${data.images}
+                                  </span>
+                                  <span class='l-coordinates'>
+                                      <p>This slope has a Stability Factor of ${data.fs}, which means it is ${data.fs >= 1? 'stable':'susceptible to landslides'}.
+                                      </p>    
+                                  </span>
+                                  <span class='l-source'>
+                                  Source: ${data.source}
+                                  </span>
+                              </div>    
+                              <div class='iw-bottom-gradient'></div>
+                          </div>`);
+                      infoWindow.open(map, arrMarkersclears);
+                  });
+          })(arrMarkersclears, data);                      
+      }
+      $('.c-viewmap').on('click',function(){
+          $(this).toggleClass('activeClears');
+          if($(this).hasClass('activeClears')){
+              $(this).text('Remove on Map');
+          }else{
+              $(this).text('View on Map');
+          }
+          var v = parseInt($(this).attr('id'));  
+              displayclearsMarkers(this,v); 
+          }); 
+      $.fn.toggleIconsC = function() {
+          var isActive = $('#c-viewmap').hasClass("activeClears");
+          $('#c-viewmap').toggleClass('activeClears');
+          if (isActive) {
+              $('#c-viewmap').text('CLEARS');
+              for (i = 0; i < clearsmarkers.length; i++)
+              {   
+                  clearsmarkers[i].setVisible(false);       
+              }
+          } else {
+              $('#c-viewmap').text('Remove on Map');
+              for (i = 0; i < clearsmarkers.length; i++)
+              {   
+                  clearsmarkers[i].setVisible(true);       
+              }
+          }
+      }
+      function displayclearsMarkers(obj,id) {
+        
+          for (var i = 0; i < clearsmarkers.length; i++)
+          {   
+              if (clearsmarkers[i].id == id) {
+                  if ($(obj).hasClass("activeClears")) {
+                      clearsmarkers[i].setVisible(true);
+                  } else {
+                      clearsmarkers[i].setVisible(false);    
+                  }      
+              }          
+          }
+      }
     //showing all loaded icons  
         $.fn.toggleIconsAll = function() {
             var isActive = $('#all-viewmap').hasClass("activeall");

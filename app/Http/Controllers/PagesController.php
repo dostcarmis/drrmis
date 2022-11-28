@@ -22,6 +22,7 @@ use App\Models\Municipality;
 use App\Models\User;
 use App\Models\Landslide;
 use App\Models\Floods;
+use App\Clears;
 use App\Services\Getcsvdataapi;
 use JavaScript;
 class PagesController extends Controller
@@ -142,7 +143,19 @@ class PagesController extends Controller
 
         $landslides = Landslide::orderBy('created_at', 'desc')->get(); 
         $floods = Floods::orderBy('created_at', 'desc')->get(); 
-
+        $clears = Clears::orderBy('created_at', 'desc')->get(); 
+        foreach($clears as $key=>$c){
+            $clears[$key]['province_id'] = $c->province->id;
+            $role = $c->user->role;
+            $role_id = $role->id;
+            $source = $role->name;
+            if($role_id >= 4 ){
+                $source .=" ".$c->user->municipality->name;
+            }else{
+                $source .= " ".$c->user->province->name;
+            }
+            $clears[$key]['source'] = $source;
+        }
         JavaScript::put([
             'arrtotals' => $arrtotals,
             'coordinates' => $sensors,
@@ -156,7 +169,9 @@ class PagesController extends Controller
                                          'municipality' => $municipality,
                                          'provinces' => $provinces,
                                          'landslides' => $landslides,
-                                         'floods' => $floods]);
+                                         'floods' => $floods,
+                                         'clears' => $clears
+                                        ]);
     }
 
     public function mapView()

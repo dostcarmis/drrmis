@@ -224,8 +224,8 @@ class FloodController extends Controller
 
 
    public function viewaddFlood(){
-	    $users = DB::table('users')->get();
-		  $floods = DB::table('tbl_floods')->get();
+      $users = DB::table('users')->get();
+      $floods = DB::table('tbl_floods')->get();
       $provinces = DB::table('tbl_provinces')->get();
 		return view('pages.addflood')->with(['provinces' => $provinces,'users' => $users,'floods' => $floods]);
    }

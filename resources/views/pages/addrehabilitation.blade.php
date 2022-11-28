@@ -27,3 +27,24 @@
     </div>
   </div>
 </div>
+<script>
+/*   $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $(document).on('submit','#saveRehab',function(e){
+    e.preventDefault();
+    let data = new FormData(document.getElementById('saveRehab'));
+    let url = $(this).attr("action")
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      processData: false, contentType: false,
+      success:function(response){
+        console.log(response)
+      }
+    })
+  })
+</script> */

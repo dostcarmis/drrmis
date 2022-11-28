@@ -8,6 +8,8 @@
 		    <p style="color:red">{{ $message }}</p>
 		@endforeach
 		
+
+
 		{!! Form::open(['route' => 'post_login', 'id' => 'login-form'])!!}
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			{!! Form::text('login',null,['id' => 'email', 'class' => 'form-control txtlogin', 'placeholder' => 'Email Address or Username', 'required']) !!}

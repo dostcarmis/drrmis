@@ -44,40 +44,99 @@
           <h4  data-toggle="tooltip"  title="Note: Select the level where you want to download sitrep" class="modal-title">Select Sitrep Level <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></h4>
         </div>
           <div class="modal-body">
-            <div class="row">
-                <div class="column">
-                <div class="card">
-                  <div></div>
-                      <a href="{{ url("sitreps/provincial") }}"><img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" width="100" height="100" ></a>
-                      <p>Provincial Sitreps</p>
-                  </div>
-              </div> 
-                
+            <ul class="custom-list action">
+              <a href="{{ url("sitreps/regional") }}" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspRegional Sitreps</li></a>
+              @if(Auth::check() && Auth::user()->role_id <= 3)
+              <a href="{{ url("sitreps/provincial") }}" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspProvincial Sitreps</li></a>
+              @endif
+              <a href="{{ url("sitreps/municipal") }}" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspMunicipal Sitreps</li></a>
+              <a href="{{ url("sitreps") }}" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspAll Sitreps</li></a>
+            </ul>
+            {{-- <div class="row xs-d-none sm-d-none md-d-block">
               <div class="column">
-                <div class="card">
-                  <div></div>
-                      <a href="{{ url("sitreps/regional") }}"><img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" width="100" height="100" ></a>
+                <a href="{{ url("sitreps/regional") }}" class="clearformat">
+                  <div class="card">
+                      <img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" width="100" height="100" >
                       <p>Regional Sitreps</p>
                   </div>
+                </a>
               </div>
-
+              @if(Auth::check() && Auth::user()->role_id <= 3)
+                <div class="column">
+                  <a href="{{ url("sitreps/provincial") }}" class="clearformat">
+                    <div class="card">
+                      <img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" width="100" height="100" >
+                      <p>Provincial Sitreps</p>
+                    </div>
+                  </a>
+                </div> 
+              @endif
               <div class="column">
-                <div class="card">
-                  <div></div>
-                      <a href="{{ url("sitreps") }}"><img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" width="100" height="100" ></a>
-                      <p>All Uploaded Sitreps</p>
+                <a href="{{ url("sitreps/municipal") }}" class="clearformat">
+                  <div class="card">
+                      <img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" width="100" height="100" >
+                      <p>Municipal Sitreps</p>
                   </div>
+                </a>
+              </div>
+              <div class="column">
+                <a href="{{ url("sitreps") }}" class="clearformat">
+                  <div class="card">
+                    <img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" width="100" height="100" >
+                    <p>All Uploaded Sitreps</p>
+                  </div>
+                </a>
               </div>
 
             </div>
+            <div class="container md-d-none">
+              <div class="row d-flex xs-mb-3 sm-mb-3">
+                <div class="col-xs-3 col-sm-3 h-100 px-2">
+                  <a class="clearformat h-100 w-100" href="{{ url("sitreps/regional") }}">
+                    <button class="btn btn-secondary h-100 w-100">
+                      <img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" class="w-100">
+                      <p>Regional</p>
+                    </button>
+                  </a>
+                </div>
+                @if(Auth::check() && Auth::user()->role_id <= 3)
+                  <div class="col-xs-3 col-sm-3 h-100 px-2">
+                    <a class="clearformat h-100 w-100" href="{{ url("sitreps/provincial") }}">
+                      <button class="btn btn-secondary h-100 w-100">
+                        <img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" class="w-100">
+                        <p>Provincial</p>
+                      </button>
+                    </a>
+                  </div>
+                @endif
+                <div class="col-xs-3 col-sm-3 h-100 px-2">
+                  <a class="clearformat h-100 w-100" href="{{ url("sitreps/municipal") }}">
+                    <button class="btn btn-secondary h-100 w-100">
+                      <img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" class="w-100">
+                      <p>Municipal</p>
+                    </button>
+                  </a>
+                </div>
+                <div class="col-xs-3 col-sm-3 h-100 px-2">
+                  <a class="clearformat h-100 w-100" href="{{ url("sitreps") }}">
+                    <button class="btn btn-secondary h-100 w-100">
+                      <img border="0" src="{{ asset("assets/images/filetypeicons/folder.png") }}" class="w-100">
+                      <p>All Sitreps</p>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div> --}}
           </div> 
         <div class="modal-footer">
-          <div class="col-xs-12 np"><a href="#" data-toggle="modal" data-target="#addsitrepModal" class="btn btn-viewupload">+ Add New File</a></div> 
-          <a type="button" class="btn btn-danger" data-dismiss="modal">Cancel</a>  
-             
+          <div class="col-xs-12 np">
+            <a href="#" data-toggle="modal" data-target="#addsitrepModal" class="btn btn-viewupload xs-mb-3 sm-mb-3">+ Add New File</a>
+            <a type="button" class="btn btn-danger xs-mb-3 sm-mb-3" data-dismiss="modal">Cancel</a>
+          </div> 
+          
         </div>
         </form>
       </div>
     </div>
   </div>
-  @include('pages.addsitrep')
+  {{-- @include('pages.addsitrep') --}}

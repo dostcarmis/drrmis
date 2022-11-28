@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -626,12 +626,12 @@ Route::group(['middlewareGroups' => 'web'], function () {
         'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
     ]);
-	Route::get('viewhydrometdata',[
+	Route::match(['get','post'],'viewhydrometdata',[
         'uses' => 'HydrometController@viewHydrometdata',
         'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
     ]);
-	Route::get('viewhydrometdatawaterlevel',[
+	Route::match(['get','post'],'viewhydrometdatawaterlevel',[
         'uses' => 'HydrometController@viewHydrometdatawaterlevel',
         'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
@@ -995,6 +995,40 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
+	//fire
+	Route::get('addfire',[
+		'uses' => 'FiresController@viewaddFire',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+	]);
+	Route::post('savefire',[
+		'uses' => 'FiresController@savefire',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff'],
+	])->name('savefire');
+	Route::post('uploadfireimages', [
+		'uses' => 'FiresController@uploadFireImages',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+	]);
+
+	//vehicular
+	Route::get('addvehicular',[
+		'uses' => 'VehicularController@viewaddvehicular',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+	]);
+	Route::post('savevehicular',[
+		'uses' => 'VehicularController@savevehicular',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff'],
+	])->name('savevehicular');
+	Route::post('uploadvehicularimages', [
+		'uses' => 'VehicularController@uploadvehicularImages',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+	]);
+
 	//typhoon
 	Route::match(['get', 'post'],'ajaxtyphoontrack',[
         'uses' => 'TyphoontrackController@ajaxtyphoontrack',
@@ -1077,13 +1111,10 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	]);
 
 	//rehab pages
+	Route::post('saverehab','RehabilitationController@saveRehabilitation')->name('saverehab');
+	
 	Route::match(['get', 'post'],'rehabilitationnrecovery',[
 		'uses' => 'RehabilitationController@viewRehabilitation',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM']
-	]);
-	Route::match(['get', 'post'],'saverehab',[
-		'uses' => 'RehabilitationController@saveRehabilitation',
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
@@ -1092,6 +1123,11 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
+	/* Route::match(['get', 'post'],'saverehab',[
+		'uses' => 'RehabilitationController@saveRehabilitation',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM'],
+	]); */
 
 	//DRRM fileDownload pages
 	Route::match(['get', 'post'],'filedownloadpage',[
@@ -1148,7 +1184,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'roles',
 		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
-
+	Route::post('clears-show', 'ClearsController@show');
 	/*==============TEST ROUTES================*/
 
 	Route::get('media-2', 'OtherController@index');

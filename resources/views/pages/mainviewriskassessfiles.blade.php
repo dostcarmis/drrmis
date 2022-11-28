@@ -7,21 +7,16 @@
         </div>
                     
         <div class="modal-body">
-          <div class="dropdown">
-             <button class="btn btn-primary btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Click here<span class="caret"></span>
-                </button>
-                    <div class="dropdown-menu" aria-labelledby="menu1">
-                      <li>
-                      <a class="dropdown-item" href="{{ url("riskassessmentfiles/abra") }}">Abra</a>
-                      <a class="dropdown-item" href="{{ url("riskassessmentfiles/apayao") }}">Apayao</a>
-                      <a class="dropdown-item" href="{{ url("riskassessmentfiles/benguet") }}">Benguet</a>
-                      <a class="dropdown-item" href="{{ url("riskassessmentfiles/ifugao") }}">Ifugao</a>
-                      <a class="dropdown-item" href="{{ url("riskassessmentfiles/kalinga") }}">Kalinga</a>
-                      <a class="dropdown-item" href="{{ url("riskassessmentfiles/mountain") }}">Mt. Province</a>
-                      </li>
-                    </div>
-              </div>
+          <ul class="custom-list action ms-3" >
+            <a class="clearformat" href="{{ url("riskassessmentfiles/abra") }}"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspAbra</li></a>
+            <a class="clearformat" href="{{ url("riskassessmentfiles/apayao") }}"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspApayao</li></a>
+            <a class="clearformat" href="{{ url("riskassessmentfiles/benguet") }}"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspBenguet</li></a>
+            <a class="clearformat" href="{{ url("riskassessmentfiles/ifugao") }}"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspIfugao</li></a>
+            <a class="clearformat" href="{{ url("riskassessmentfiles/kalinga") }}"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspKalinga</li></a>
+            <a class="clearformat" href="{{ url("riskassessmentfiles/mountain") }}"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspMt. Province</li></a>
+            
+          </ul>
+          
         </div> 
         <!--<div class="modal-footer">
           <a type="button" class="btn btn-danger" data-dismiss="modal">Cancel</a>-->        

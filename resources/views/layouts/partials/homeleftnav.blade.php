@@ -23,7 +23,6 @@
             <li><a href="#" id="calTggle" hidden>Date Picker</a></li>
         </ul>
 
-
       <li  class="collapsed prntli">
        <a data-toggle="collapse" data-target="#hazardsnmb" class="homepagetoogle"  href="#"><i class="fa fa-1x fa-map" aria-hidden="true"></i>  Hazard Maps <span class="arrow"></span></a>
         <ul class="sub-menu ulsensorstop collapse" id="hazardsnmb"> 
@@ -50,7 +49,7 @@
           </li>   
             
           <li class="titleli">
-          <a data-toggle="collapse" data-target=".noah" href="#">NOAH</a>
+            <a data-toggle="collapse" data-target=".noah" href="#">NOAH</a>
             <ul class="sub-menu-bottom collapse noah" id="noah">
              @foreach($provinces as $province)
                 <li class="foldername-prov"><a data-toggle="collapse" data-target=".noah-{{$province->id}}">{{$province->name}}</a>
@@ -71,6 +70,10 @@
               @endforeach
             </ul>
           </li>
+          <li class="titleli">
+            <a id="c-viewmap" onclick="$(this).toggleIconsC();" href="#">CLEARS</a>
+              
+            </li>
 
           <li class="externallink">
             <a href="http://bagong.pagasa.dost.gov.ph/tropical-cyclone/tropical-cyclone-advisory" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i> PHIVOLCS</a>
@@ -127,26 +130,26 @@
         </ul>
       </li>
         
-        <li  class="collapsed prntli">
-          <a data-toggle="collapse"  class="homepagetoogle" data-target=".contours" href="#"><i class="fa fa-1x fa-map" aria-hidden="true"></i>  Contours<span class="arrow"></span></a>
-          <ul class="sub-menu collapse ulsensorstop contours"  id="contours">
+      <li  class="collapsed prntli">
+        <a data-toggle="collapse"  class="homepagetoogle" data-target=".contours" href="#"><i class="fa fa-1x fa-map" aria-hidden="true"></i>  Contours<span class="arrow"></span></a>
+        <ul class="sub-menu collapse ulsensorstop contours"  id="contours">
 
-            <?php 
-            $path = 'http://drrmis.dostcar.ph/public/';
-            $Fldrpth = 'contour/';           
-            $files = glob($Fldrpth."*.kml");            
+          <?php 
+          $path = 'http://drrmis.dostcar.ph/public/';
+          $Fldrpth = 'contour/';           
+          $files = glob($Fldrpth."*.kml");            
 
-              ?>
-            <li><a href="#" data-value="<?php echo $path.$files[0];?>" class="contourclick"><span>Abra</span></a></li>
-            <li><a href="#" data-value="<?php echo $path.$files[1];?>" class="contourclick"><span>Apayao</span></a></li>
-            <li><a href="#" data-value="<?php echo $path.$files[2];?>" class="contourclick"><span>Benguet</span></a></li>
-            <li><a href="#" data-value="<?php echo $path.$files[3];?>" class="contourclick"><span>Ifugao</span></a></li>            
-            <li><a href="#" data-value="<?php echo $path.$files[4];?>" class="contourclick"><span>Kalinga</span></a></li>
-            <li><a href="#" data-value="<?php echo $path.$files[5];?>" class="contourclick"><span>Mt. Province</span></a></li>
-          </ul>
-        </li>
-       
-       <!-- @if($typhoonstatus[0]->typhoonstat == 1)
+            ?>
+          <li><a href="#" data-value="<?php echo $path.$files[0];?>" class="contourclick"><span>Abra</span></a></li>
+          <li><a href="#" data-value="<?php echo $path.$files[1];?>" class="contourclick"><span>Apayao</span></a></li>
+          <li><a href="#" data-value="<?php echo $path.$files[2];?>" class="contourclick"><span>Benguet</span></a></li>
+          <li><a href="#" data-value="<?php echo $path.$files[3];?>" class="contourclick"><span>Ifugao</span></a></li>            
+          <li><a href="#" data-value="<?php echo $path.$files[4];?>" class="contourclick"><span>Kalinga</span></a></li>
+          <li><a href="#" data-value="<?php echo $path.$files[5];?>" class="contourclick"><span>Mt. Province</span></a></li>
+        </ul>
+      </li>
+      
+      <!-- @if($typhoonstatus[0]->typhoonstat == 1)
         <li  class="collapsed prntli">
           <a data-toggle="collapse"  class="homepagetoogle" data-target=".typhoontracks" href="#"><i class="fa fa-1x fa-road" aria-hidden="true"></i>  Typhoon Tracks<span class="arrow"></span></a>
           <ul class="sub-menu collapse ulsensorstop typhoontracks"  id="typhoontracks">
@@ -164,6 +167,14 @@
         <!--<li class="externallink">
           <a href="{{action('ChartController@viewmultipleCharts')}}"><i class="fa fa-eye" aria-hidden="true"></i> Charts</a>
         </li>-->
+      @if (!Auth::check())
+        <li class="md-d-none">
+          <a href="" data-toggle="modal" data-target="#modalLoginForm" id="mobile-login">
+            &nbsp<i class="fa fa-user" aria-hidden="true"></i>&nbspLogin
+          </a>
+        </li>
+        
+      @endif
     </ul>
   </div>
 </div>

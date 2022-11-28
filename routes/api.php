@@ -24,8 +24,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login', 'API\UserController@login');
 Route::post('logout/{id}','API\UserController@logout');
+//clears
+Route::get('loginform','API\ClearsController@showLoginForm');
+Route::post('login-clears','API\ClearsController@login')->name('c-login');
+Route::post('save-clears','API\ClearsController@save');
 
 Route::group(['middleware' => 'auth:api'], function() {
+    
     Route::post('user-info', 'API\UserController@getUserInfo');
     Route::post('get-queue-sms', 'API\GsmModuleController@getQueueSMS');
     Route::post('dispose-sent-msgs', 'API\GsmModuleController@disposeSentJsonFile');

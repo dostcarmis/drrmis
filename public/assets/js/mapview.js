@@ -7,6 +7,7 @@ $( window ).resize(function() {
 var locations = []; 
 var landslidelocation = [];
 var floodlocation = [];
+var clearslocation = [];
 var start = moment();
 var end = moment();
 let formatedStart, formatedEnd;
@@ -249,9 +250,9 @@ function initMap() {
         }
     }
     function displaylandslideMarkers(obj,id) {
-         var i;
-         for (i = 0; i < landslidemarkers.length; i++)
-         {   
+        var i;
+        for (i = 0; i < landslidemarkers.length; i++)
+        {   
             if (landslidemarkers[i].id == id) {
                 if ($(obj).hasClass("activelandslide")) {
                     landslidemarkers[i].setVisible(true);
@@ -390,8 +391,146 @@ function initMap() {
         }
         var v = parseInt($(this).attr('id'));  
             displayfloodMarkers(this,v); 
-        });
+    });
 
+    
+    for( var clearscount = 0;clearscount<clears.length;clearscount++){
+        var clearsicon = {
+            url: 'assets/images/clearsicon.png'
+        };                
+        var images = [];    
+        for (var xyz = 0; xyz < clearsimages.length; xyz++) {
+            if(clearsimages[xyz].id == clearss[clearscount].id){
+                myimage = clearsimages[xyz].image;
+                for (var i = 0; i < myimage.length; i++) {
+                    images[i] = '<div class="mapimages"><a data-fancybox-group="clearsimages-'+xyz+'" href='+myimage[i].replace(/ /g,"%20") +' class="fancybox thumbnail"><img src='+myimage[i].replace(/ /g,"%20") +' class="mres"/></a></div>';
+                }
+            }
+        }
+        
+        clearslocation.push({
+            id: clearss[clearscount].id, 
+            province: clears[clearscount].province_id,                
+            icon: clearsicon, 
+            images: images,
+            date: clears[clearscount].date,
+            source: clears[clearscount].author,
+            latlng: new google.maps.LatLng(clears[clearscount].latitude,clears[clearscount].longitude),
+            type: clears[clearscount].clearstype,
+            landcover: clears[clearscount].landcover,
+            landmark: clears[clearscount].landmark,
+            clearsreccuring: clears[clearscount].clearsreccuring,
+            width: clears[clearscount].lewidth,
+            length: clears[clearscount].lelength,
+            depth: clears[clearscount].ledepth,
+            casualty: clears[clearscount].idkilled,
+            injured: clears[clearscount].idinjured,
+            missing: clears[clearscount].idmissing,
+            infra: clears[clearscount].idaffectedinfra,
+            value: clears[clearscount].idaffectedcrops,
+            cause: clears[clearscount].cause,
+            typhoonname: clears[clearscount].typhoonname,
+            heavyrainfall: clears[clearscount].heavyrainfall,
+            reportedby: clears[clearscount].reportedby,
+            reporterpos: clears[clearscount].reporterpos,
+            author: clears[clearscount].author,
+        });
+        
+    }   
+    console.log(clears)
+//Icon info when clicked
+    var clearsmarkers = [];
+    var i, arrMarkersclears;
+    for(i=0;i<clearslocation.length;i++){
+        var data = clearslocation[i];
+        var arrMarkersclears = new google.maps.Marker({
+            position: data.latlng, 
+            map:map, 
+            icon:data.icon, 
+            title:data.road_location,
+            date:data.date,
+        });
+        arrMarkersclears.id = clearslocation[i].id;        
+        arrMarkersclears.setVisible(false);
+        clearsmarkers.push(arrMarkersclears); 
+        
+        (function (arrMarkersclears, data) {
+            var monthNames = ["January", "February", "March", "April", "May", "June",
+              "July", "August", "September", "October", "November", "December"
+            ];
+            var d = new Date(data.date);
+                google.maps.event.addListener(arrMarkersclears, "click", function (e) {
+                    infoWindow.setContent(
+                        `<div id='iw-container' class='clearsmarkerinfowindow'>
+                            <div class='iw-title l-maptitle'>
+                                clears
+                            </div>
+                            <div class='iw-content l-mapcontent'>
+                                <span class='l-name'>
+                                    ${data.name}
+                                </span>
+                                <span class='defsp l-date'>
+                                    ${monthNames[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}
+                                </span>
+                                <span class='l-images'>
+                                    ${data.images}
+                                </span>
+                                <span class='l-coordinates'>
+                                    <p>Wow.
+                                    </p>    
+                                </span>
+                                <span class='l-source'>
+                                Source: ${data.source}
+                                </span>
+                            </div>    
+                            <div class='iw-bottom-gradient'></div>
+                        </div>`);
+                    infoWindow.open(map, arrMarkersclears);
+                });
+        })(arrMarkersclears, data);                      
+    }
+    $('.c-viewmap').on('click',function(){
+        console.log(clears);
+        return false;
+        $(this).toggleClass('activeclears');
+        if($(this).hasClass('activeclears')){
+            $(this).text('Remove on Map');
+        }else{
+            $(this).text('View on Map');
+        }
+        var v = parseInt($(this).attr('id'));  
+            displayclearsMarkers(this,v); 
+        }); 
+    $.fn.toggleIconsC = function() {
+        var isActive = $('#c-viewmap').hasClass("activeclears");
+        $('#c-viewmap').toggleClass('activeclears');
+        if (isActive) {
+            $('#c-viewmap').text('View all clears');
+            for (i = 0; i < clearsmarkers.length; i++)
+            {   
+                clearsmarkers[i].setVisible(false);       
+            }
+        } else {
+            $('#c-viewmap').text('Remove on Map');
+            for (i = 0; i < clearsmarkers.length; i++)
+            {   
+                clearsmarkers[i].setVisible(true);       
+            }
+        }
+    }
+    function displayclearsMarkers(obj,id) {
+        var i;
+        for (i = 0; i < clearsmarkers.length; i++)
+        {   
+            if (clearsmarkers[i].id == id) {
+                if ($(obj).hasClass("activeclears")) {
+                    clearsmarkers[i].setVisible(true);
+                } else {
+                    clearsmarkers[i].setVisible(false);    
+                }      
+            }          
+        }
+    }
    
 
 //showing all loaded icons  

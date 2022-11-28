@@ -68,10 +68,10 @@ class UserController extends Controller {
         $provinces = DB::table('tbl_provinces')->get();  
 
         return view('pages.profile', ['user' =>  Auth::user(),
-                                      'provinces' => $provinces,
-                                      'user_role' => $user_role,
-                                      'roles' => $roles,
-                                      'municipalities' => $municipalities]);
+            'provinces' => $provinces,
+            'user_role' => $user_role,
+            'roles' => $roles,
+            'municipalities' => $municipalities]);
     }
 
     public function updateProfile(Request $request) {  
@@ -84,7 +84,14 @@ class UserController extends Controller {
             [  
                 'first_name' => 'required',
                 'email' => 'required',
-            ]);
+                'cellphone_num'=>'required'
+            ],
+            [
+                'first_name.required' => 'First Name is required',
+                'email.required' => 'Email is required',
+                'cellphone_num.required'=>'Cellphone number is required.'
+            ]
+        );
         
         if ($v->fails()) {
             return redirect()->back()->withErrors($v->errors());
@@ -98,7 +105,6 @@ class UserController extends Controller {
                         'last_name' => $post['last_name'],
                         'email' => $post['email'],
                         'cellphone_num' => $post['cellphone_num'],            
-                        'designation' => $post['designation'],
                         'position' => $post['position'],
                         'profile_img' => $post['filepath'],
                         'password' => bcrypt($post['password']),
@@ -109,7 +115,6 @@ class UserController extends Controller {
                         'last_name' => $post['last_name'],
                         'email' => $post['email'],
                         'cellphone_num' => $post['cellphone_num'],
-                        'designation' => $post['designation'],
                         'position' => $post['position'],
                         'profile_img' => $post['filepath'],
                     ];
@@ -123,7 +128,6 @@ class UserController extends Controller {
                         'cellphone_num' => $post['cellphone_num'],
                         'municipality_id' => $post['municipality_id'],
                         'province_id' => $post['province_id'],
-                        'designation' => $post['designation'],
                         'position' => $post['position'],
                         'password' => bcrypt($post['password']),
                         'profile_img' => $post['filepath'],
@@ -136,7 +140,6 @@ class UserController extends Controller {
                         'cellphone_num' => $post['cellphone_num'],
                         'municipality_id' => $post['municipality_id'],
                         'province_id' => $post['province_id'],
-                        'designation' => $post['designation'],
                         'position' => $post['position'],
                         'profile_img' => $post['filepath'],
                     ];
@@ -287,8 +290,10 @@ class UserController extends Controller {
         $rules = [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required',
-            'cellphone_num' => 'required',
+            'email' => 'required|email|max:255|unique:users',
+            'username' => 'required|max:255|unique:users',
+            'password'=> 'required|string|min:8|confirmed',
+            'municipality_id' => 'required',
             
         ];
         $messages = [
@@ -296,7 +301,6 @@ class UserController extends Controller {
             'last_name.required' => 'Last Name is required',
             'email.required'  => 'Email is required',
             'cellphone_num.required'  => 'Cellphone # is required',
-
         ];
         $v = Validator::make($request->all(), $rules, $messages);
 
@@ -312,7 +316,7 @@ class UserController extends Controller {
                 $user->province_id = $post['province_id'];
                 $user->email = $post['email'];
                 $user->position = $post['position'];
-                $user->password = bcrypt('password');
+                $user->password = bcrypt($post['password']);
                 $user->role_id = $post['role'];
                 $user->profile_img = url('assets/images/default.jpg');
                 $user->save();

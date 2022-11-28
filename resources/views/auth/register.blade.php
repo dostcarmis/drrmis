@@ -19,7 +19,7 @@
 								'required']) !!}
 				{!! Form::email('email',null,['id' => 'email', 'class' => 'txtemail form-control', 'placeholder' => 'Email Address', 'required']) !!}
 				{!! Form::text('username',null,['id' => 'username', 'class' => 'txtusername form-control', 'placeholder' => 'Username', 'required']) !!}
-				<!--{!! Form::password('password',['id' => 'password', 'class' => 'form-control txtpassword', 'placeholder' => 'Password', 'required']) !!}-->
+				{!! Form::password('password',['id' => 'password', 'class' => 'form-control txtpassword', 'placeholder' => 'Password', 'required']) !!}
 				<select name="province_id" id="province_id" class="form-control">
 						<option>Select Province</option>	
 					@foreach($provinces as $province)				

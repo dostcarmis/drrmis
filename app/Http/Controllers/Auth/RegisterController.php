@@ -55,6 +55,7 @@ class RegisterController extends Controller
             'last_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'username' => 'required|max:255|unique:users',
+            'password'=> 'required|string|min:8|confirmed',
             'municipality_id' => 'required',
         ],[
             'municipality_id.required'  => 'Please Select Municipality',
@@ -79,14 +80,14 @@ class RegisterController extends Controller
         $countuserexistusername = DB::table('users')
                 ->where('username', '=', $data['username'])
                 ->count();
-
+        
         if (($countuserexist < 1) || ($countuserexistusername < 1)) {
             $user = new User();
             $user->first_name = $data['first_name'];
             $user->last_name = $data['last_name'];
             $user->email = $data['email'];
             $user->username = $data['username'];
-            $user->password = bcrypt('password');
+            $user->password = bcrypt($data['password']);
             $user->province_id = $data['province_id'];
             $user->municipality_id = $data['municipality_id'];
             $user->role_id = 4;

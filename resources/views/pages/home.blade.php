@@ -22,7 +22,7 @@ $floodimages = [];
 $landslideimages = [];
 $counter = 0;
 $slcounter = 0;
-
+$clearsimages = [];$ccounter = 0;
 foreach ($floods as $flood) {
 	$floodimage[$counter++] = array(
 		'id' => $flood->id,
@@ -35,6 +35,12 @@ foreach ($landslides as $landslide) {
 		'image' => unserialize($landslide->incident_images),
 	);
 } 
+foreach ($clears as $clear) {
+	$clearsimages[$ccounter++] = array(
+		'id' => $clear->id,
+		'image' => unserialize($clear->image),
+	);
+} 
 ?>
 @include('pages.loginmodal')
 @stop
@@ -43,6 +49,8 @@ foreach ($landslides as $landslide) {
     var landslides = {!! json_encode($landslides->toArray()) !!};
     var floods = {!! json_encode($floods->toArray()) !!};
     var floodimage = {!! json_encode($floodimage) !!};
+	var clears = {!! json_encode($clears->toArray()) !!};
+    var clearsimages = {!! json_encode($clearsimages) !!};
     var landslideimages = {!! json_encode($landslideimages) !!};
 </script>
 

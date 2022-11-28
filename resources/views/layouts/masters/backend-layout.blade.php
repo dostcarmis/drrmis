@@ -30,6 +30,19 @@
     <link rel="stylesheet" href="{!! url('css/plugins/kendo-ui/kendo.flat.mobile.min.css') !!}">
     <link rel="stylesheet" href="{!! url('css/plugins/kendo-ui/kendo.dataviz.flat.min.css') !!}">
     <link id="themecss" rel="stylesheet" href="{!! url('css/plugins/shield-ui/all.min.css') !!}">
+    <script>
+        const baseURL = "{{ url('/') }}/";
+    </script>
+    <script src="{!! url('js/jquery1-11-3.min.js')!!}"></script>   
+    <script src="{!! url('js/code-jquery-1.12.3.min.js')!!}"></script>
+    <script src="{!! url('js/code-jquery-ui.1.11.4.min.js')!!}"></script>
+    <script src="{!! url('js/jquery-2.2.0.js')!!}"></script>
+    <script src="{!! url('js/bootstrap.min.js') !!}"></script>
+    <script src="{!! url('js/jquery-3.6.0.min.js')!!}"></script>
+    <script type="text/javascript" src="{!! url('js/jquery-ui.js') !!}"></script>
+    <script type="text/javascript" src="{!! url('js/jquery.dataTables.js') !!}"></script>
+    <script type="text/javascript" src="{!! url('js/dataTables.bootstrap.js') !!}"></script>
+    <script type="text/javascript" src="{!! url('js/dataTables.buttons.js') !!}"></script>
 </head>
 <body class="bckclass">
     @include('layouts.partials.nav')
@@ -43,14 +56,7 @@
             </div>
         </aside>
     </div>
-    <script>
-        const baseURL = "{{ url('/') }}/";
-    </script>
-    <script src="{!! url('js/jquery1-11-3.min.js')!!}"></script>   
-    <script src="{!! url('js/code-jquery-1.12.3.min.js')!!}"></script>
-    <script src="{!! url('js/code-jquery-ui.1.11.4.min.js')!!}"></script>
-    <script src="{!! url('js/jquery.js') !!}"></script>
-    <script src="{!! url('js/bootstrap.min.js') !!}"></script>
+    
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyC058wNQG2iAeF7z0ysRHQw_0Gsqd6Xp5s"></script> 
     <script src="{!! url('js/moment.js') !!}"></script>
     <script src="{!! url('js/bootstrap-datetimepicker.min.js') !!}"></script>
@@ -59,10 +65,7 @@
     <script src="{!! url('assets/js/confirmation.js') !!}"></script>
     <script src="{!! url('assets/js/main.js') !!}"></script>
 
-    <script type="text/javascript" src="{!! url('js/jquery-ui.js') !!}"></script>
-    <script type="text/javascript" src="{!! url('js/jquery.dataTables.js') !!}"></script>
-    <script type="text/javascript" src="{!! url('js/dataTables.bootstrap.js') !!}"></script>
-    <script type="text/javascript" src="{!! url('js/dataTables.buttons.js') !!}"></script>
+    
     <script type="text/javascript" src="{!! url('js/buttons.flash.js') !!}"></script>
     <script type="text/javascript" src="{!! url('js/buttons.html5.js') !!}"></script>
     <script type="text/javascript" src="{!! url('js/buttons.print.js') !!}"></script>

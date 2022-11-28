@@ -18,6 +18,14 @@
     <link href="{{ URL::asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ URL::asset('assets/fonts/allfonts/stylesheet.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/jquery.fancybox.min.css') }}">
+    <script>
+        const baseURL = "{{ url('/') }}/";
+    </script>
+    <script src="{!! url('js/jquery1-11-3.min.js')!!}"></script> 
+    <script type="text/javascript" src="{{ URL::asset('js/jquery-2.2.0.js') }}"></script>
+    <script src="{!! url('js/corejs.min.js')!!}"></script>
+    <script src="{!! url('js/jqueryui.min.js')!!}"></script>
+    <script src="{!! url('js/jquery.js')!!}"></script>
 </head>
 <?php
 if (Auth::check()) : ?>
@@ -38,19 +46,7 @@ if (Auth::check()) : ?>
     </div>
         
 
-        <script>
-            const baseURL = "{{ url('/') }}/";
-        </script>
-        <script src="{!! url('js/jquery1-11-3.min.js')!!}"></script> 
-        <script type="text/javascript" src="{{ URL::asset('js/jquery-2.2.0.js') }}"></script>
         
-
-
-        <script src="{!! url('js/corejs.min.js')!!}"></script>
-        <script src="{!! url('js/jqueryui.min.js')!!}"></script>
-  
-
-        <script src="{!! url('js/jquery.js')!!}"></script>
         <script src="{!! url('js/bootstrap.min.js') !!}"></script>
         <script src="http://maps.google.com/maps/api/js?key=AIzaSyC058wNQG2iAeF7z0ysRHQw_0Gsqd6Xp5s"></script>
         <script src="{!! url('js/jquery.fancybox.pack.js')!!}"></script>

@@ -4,21 +4,77 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use DB;
-use Auth;
+// use Auth;
+use Illuminate\Support\Facades\Auth;
 use File;
 use App\Models\User;
+use App\Sitrep;
 use App\Role;
 
 class SitrepController extends Controller
 {
-    public function viewallsitreps(){
-        $sitreps = DB::table('tbl_sitreps as sitrep')
-            ->select('sitrep.*',
-                    DB::raw('CONCAT(user.first_name, " ", user.last_name) as name'))
-            ->join('users as user', 'user.id', '=', 'sitrep.uploadedby')
-            ->orderBy('sitrep.created_at', 'desc')
-            ->get();
-        return view('pages.viewsitreps')->with(['sitrep' => $sitreps]);
+    public function viewallsitreps(Request $request){
+        if($request->has('sitrep_level')){
+            $this->validate($request,[
+                'sitrep_level'=>'required|string',
+                'val'=>'required|string'
+            ]);
+            $sitrep_level = strtolower(trim($request->input('sitrep_level')));
+            $val = strtolower(trim(strip_tags($request->input('val'))));
+            $user = Auth::user();
+            $role = $user->role_id;
+            if($sitrep_level != "provincial" && $sitrep_level != "regional" && $sitrep_level != "all"){
+                return response()->json(["success"=>false,"msg"=>"Invalid Level: ".$sitrep_level]);
+            }else if($val == ""){
+                return response()->json(["success"=>false]);
+            }else{
+                $files = Sitrep::where("filename","like","%".$val."%");
+                if($sitrep_level != "all" && $sitrep_level != null)
+                    $files = $files->where("sitrep_level","like",$sitrep_level);
+                $filtered = [];
+                if(strtolower($sitrep_level) != 'regional'){
+                    if($role == 3){ // provincial
+                        $province = $user->province_id;
+                        $filtered = [];
+                        $sitreps = $files->orderBy('created_at','desc')->get();
+                        
+                        foreach($sitreps as $sit){
+                            $uploader_province = $sit->uploader->province_id;
+                            if($uploader_province == $province ){
+                                $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;
+                                $filtered[] = $sit;
+                                continue;
+                            }
+                        }
+                    }else if($role == 4){ //municipal
+                        $municipality = $user->municipality_id;
+                        $filtered = [];
+                        $sitreps = $files->orderBy('created_at','desc')->get();
+                        foreach($sitreps as $sit){
+                            $uploader_municipality = $sit->uploader->municipality_id;
+                            if($uploader_municipality == $municipality){
+                                $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;  
+                                $filtered[] = $sit;
+                                continue;
+                            }
+                        }
+                    }else if($role == 1 || $role == 2){
+                        $filtered = $files->orderBy('created_at','desc')->get();
+                    }
+                }else{
+                    $filtered = $files->orderBy('created_at','desc')->get();
+                }
+                
+                $count = count($filtered);
+                if($count > 0){
+                    return view('pages.viewsitreps_filtered',compact('filtered'));
+                }else{
+                    return response()->json(['success'=>true,"msg"=>"No matches found."]);
+                }
+            }
+        }else{
+            return $this->mainviewsitreps('all');
+        }
     }
 
     public function deleteSitrep($id){
@@ -35,16 +91,63 @@ class SitrepController extends Controller
     }
     
     public function mainviewsitreps($sitrep_level){
-        $sitreps = DB::table('tbl_sitreps as sitrep')
-                ->select('sitrep.*',
-                        DB::raw('CONCAT(user.first_name, " ", user.last_name) as name'))
-                ->join('users as user', 'user.id', '=', 'sitrep.uploadedby')
-                ->where('sitrep.sitrep_level', $sitrep_level)
-                ->orderBy('sitrep.created_at', 'desc')
-                ->get();
+        $user = Auth::user();
+        $role = $user->role_id;
+        $sitreps = Sitrep::where('sitrep_level',$sitrep_level)->orderBy('created_at','desc')->get();
+        if(strtolower($sitrep_level) == 'all' || strtolower($sitrep_level) == '' || !isset($sitrep_level)){
+            $sitreps = Sitrep::orderBy('created_at','desc')->get();
+        }
+        $filtered = [];
+        if(strtolower($sitrep_level) != 'regional'){
+            
+            if($role == 3){ // provincial
+                $province = $user->province_id;
+                
+                foreach($sitreps as $sit){
+                    $uploader_province = $sit->uploader->province_id;
+                    if($uploader_province == $province && strtolower($sit->sitrep_level) != 'regional'){
+                        $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;
+                        $filtered[] = $sit;
+                        continue;
+                    }
+                    if(strtolower($sitrep_level) == 'all' && strtolower($sit->sitrep_level) == 'regional'){
+                        $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;  
+                        $filtered[] = $sit;
+                        continue;
+                    }
+                }
+            }else if($role == 4){ //municipal
+                $municipality = $user->municipality_id;
+                
+                foreach($sitreps as $sit){
+                    $uploader_municipality = $sit->uploader->municipality_id;
+                    $ins[] = [$uploader_municipality,$municipality];
+                    if(strtolower($sit->sitrep_level) == 'provincial'){continue;}
+                    
+                    if($uploader_municipality == $municipality && strtolower($sit->sitrep_level) == 'municipal'){
+                        $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;  
+                        $filtered[] = $sit;
+                        continue;
+                    }
+                    if(strtolower($sitrep_level) == 'all' && strtolower($sit->sitrep_level) == 'regional'){
+                        $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;  
+                        $filtered[] = $sit;
+                        continue;
+                    }
+                }
+                
+            }else if($role == 1 || $role == 2){
+                $filtered = $sitreps;
+            }
+        }else{
+            $filtered = $sitreps;
+        }
         
-        return view('pages.viewsitreps')->with(['sitrep' => $sitreps]);
-      
+
+
+        
+        return view('pages.viewsitreps')->with(['sitrep' => $filtered]);
+    
     }
     
 
