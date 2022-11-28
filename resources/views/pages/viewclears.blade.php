@@ -92,7 +92,7 @@
             
             <div class="strong d-flex mt-3">
                 <h4>Reference Tables</h4>
-                <button id="master-panel-toggler" class="my-auto ms-3 btn btn-sm strong border-none">Hide all</button>
+                <button id="master-panel-toggler" class="my-auto ms-3 btn btn-sm strong border-none" is_hidden="false">Hide all</button>
             </div>
             <div class="grid-container">
                 <div class="panel panel-default">
@@ -102,7 +102,7 @@
                             <button class="border-none bg-none p-0 panel-toggler" data-toggle="tooltip" title="Toggle show/hide"><i class="fa fa-expand" aria-hidden="true" class="panel-toggler"></i></button>
                         </div>
                         <hr>
-                        <table class="table">
+                        <table class="table" is_hidden="false">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -132,7 +132,7 @@
                             <button class="border-none bg-none p-0 panel-toggler" data-toggle="tooltip" title="Toggle show/hide"><i class="fa fa-expand" aria-hidden="true" class="panel-toggler"></i></button>
                         </div>
                         <hr>
-                        <table class="table">
+                        <table class="table" is_hidden="false">
                             <thead>
                                 <tr>
                                     <th>Value</th>
@@ -157,7 +157,7 @@
                             <button class="border-none bg-none p-0 panel-toggler" data-toggle="tooltip" title="Toggle show/hide"><i class="fa fa-expand" aria-hidden="true" class="panel-toggler"></i></button>
                         </div>
                         <hr>
-                        <table class="table">
+                        <table class="table" is_hidden="false">
                             <thead>
                                 <tr>
                                     <th>Value</th>
@@ -182,7 +182,7 @@
                             <button class="border-none bg-none p-0 panel-toggler" data-toggle="tooltip" title="Toggle show/hide"><i class="fa fa-expand" aria-hidden="true" class="panel-toggler"></i></button>
                         </div>
                         <hr>
-                        <table class="table">
+                        <table class="table" is_hidden="false">
                             <thead>
                                 <tr>
                                     <th>Value</th>
@@ -206,7 +206,7 @@
                             <button class="border-none bg-none p-0 panel-toggler" data-toggle="tooltip" title="Toggle show/hide"><i class="fa fa-expand" aria-hidden="true" class="panel-toggler"></i></button>
                         </div>
                         <hr>
-                        <table class="table">
+                        <table class="table" is_hidden="false">
                             <thead>
                                 <tr>
                                     <th>Value</th>
@@ -228,7 +228,7 @@
                             <button class="border-none bg-none p-0 panel-toggler" data-toggle="tooltip" title="Toggle show/hide"><i class="fa fa-expand" aria-hidden="true" class="panel-toggler"></i></button>
                         </div>
                         <hr>
-                        <table class="table">
+                        <table class="table" is_hidden="false">
                             <thead>
                                 <tr>
                                     <th>Value</th>
@@ -252,7 +252,7 @@
                             <button class="border-none bg-none p-0 panel-toggler" data-toggle="tooltip" title="Toggle show/hide"><i class="fa fa-expand" aria-hidden="true" class="panel-toggler"></i></button>
                         </div>
                         <hr>
-                        <table class="table">
+                        <table class="table" is_hidden="false">
                             <thead>
                                 <tr>
                                     <th>Value</th>
@@ -275,7 +275,7 @@
                             <button class="border-none bg-none p-0 panel-toggler" data-toggle="tooltip" title="Toggle show/hide"><i class="fa fa-expand" aria-hidden="true" class="panel-toggler"></i></button>
                         </div>
                         <hr>
-                        <table class="table">
+                        <table class="table" is_hidden="false">
                             <thead>
                                 <tr>
                                     <th>Value</th>
@@ -302,7 +302,7 @@
                             <button class="border-none bg-none p-0 panel-toggler" data-toggle="tooltip" title="Toggle show/hide"><i class="fa fa-expand" aria-hidden="true"></i></button>
                         </div>
                         <hr>
-                        <table class="table">
+                        <table class="table" is_hidden="false">
                             <thead>
                                 <tr>
                                     <th>Value</th>
@@ -319,10 +319,6 @@
                     </div>
                 </div>
             </div>
-
-            {{-- <div id="dZUpload" class="dropzone form-control pos-rel">
-                <div class="dz-default dz-message pos-a centered">Drop images here or click to upload image</div>
-            </div> --}}
             
         </div>
     </div>
@@ -362,13 +358,6 @@ CKEDITOR.replace( 'piw-textarea', {
     filebrowserUploadUrl: '{{ asset("laravel-filemanager/upload?type=Files&_token=") }}{{csrf_token()}}'
 });
 </script>
-<script type="text/javascript">
-	
-    /* google.maps.event.addListener(marker,'dragend',function(){
-        $('#latitude').val(marker.getPosition().lat());
-        $('#longitude').val(marker.getPosition().lng());
-    }); */
-</script>
 @endsection
 <script>
     $(document).on('click','.panel-toggler',function(e){
@@ -376,9 +365,14 @@ CKEDITOR.replace( 'piw-textarea', {
         $(e.target).closest('.panel-body').find('.table').toggle();
     })
     .on('click','#master-panel-toggler',function(){
-        $('#clear-fluid .panel .table').toggle();
-        if($(this).text() == "Hide all"){$(this).text("Show all")}
-        else{$(this).text('Hide all')}
+        let hidden = $(this).attr("is_hidden");
+        if(hidden == "true"){
+            $('#clear-fluid .panel .table').attr('is_hidden','false').show();
+            $(this).text('Hide all').attr('is_hidden','false')
+        }else{
+            $('#clear-fluid .panel .table').attr('is_hidden','true').hide();
+            $(this).text("Show all").attr('is_hidden','true')
+        }
     })
     .on('click','#clears-table tbody tr',function(e){
         let lat = parseFloat($(e.currentTarget).attr('lat'));
