@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Clears;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\Middleware\ErrorBinder;
@@ -222,6 +222,7 @@ class _PagesController extends Controller
         $floods = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','2')->get();
         $landslide = Landslide::orderBy('created_at', 'desc')->get(); 
         $flood = Floods::orderBy('created_at', 'desc')->get(); 
+        $clears = Clears::orderBy('created_at', 'desc')->get(); 
         return view('pages.mapviewincidents')->with(['landslides' => $landslides,'floods' => $floods,'landslide' => $landslide, 'flood' => $flood]);
     }
 }

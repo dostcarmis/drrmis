@@ -276,6 +276,7 @@ class PagesController extends Controller
         //$floods = Incidents::orderBy('created_at', 'desc')->where('incident_type','=','2')->get();
         $landslides = Landslide::orderBy('created_at', 'desc')->get(); 
         $floods = Floods::orderBy('created_at', 'desc')->get(); 
-        return view('pages.mapviewincidents')->with(['landslides' => $landslides,'floods' => $floods]);
+        $clears = Clears::orderBy('created_at', 'desc')->get(); 
+        return view('pages.mapviewincidents', compact('landslides','floods','clears'))/* ->with(['landslides' => $landslides,'floods' => $floods]) */;
     }
 }
