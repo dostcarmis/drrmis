@@ -42,21 +42,27 @@ $(document).ready(function(){
       url: `${baseURL}/cn`,
       dataType:"json",
       success:function(data){
-
+        if(data != null){
           var item = $('#message-preview');
           var notifcount = $('.notifcount');
           item.empty();
           notifcount.empty();
           notifcount.append(data.unread);
-          for (var i = 0; i < 3; i++) {
-            item.append(data.output['body'][i]);            
-          }    
+          try{
+            for (var i = 0; i < 3; i++) {
+              item.append(data.output['body'][i]);            
+            }  
+          }
+          catch(err) {
+            console.log(err.message);
+          }
           if($('.notifcount').text() == 0){
             $('.notifcount').addClass('hidden');
           }else{
             $('.notifcount').removeClass('hidden');
           }
         }
+      }
 
     });
     setInterval(function(){    
@@ -65,23 +71,28 @@ $(document).ready(function(){
         url: `${baseURL}/cn`,
         dataType:"json",
         success:function(data){
-
+          if(data != null && data.output != null && data.output['body'] != null ){
             var item = $('#message-preview');
             var notifcount = $('.notifcount');
             item.empty();
             notifcount.empty();
             notifcount.append(data.unread);
-            for (var i = 0; i < data.output['body'].length; i++) {
-              item.append(data.output['body'][i]);
-              
-            }       
+            try {
+              for (var i = 0; i < data.output['body'].length; i++) {
+                item.append(data.output['body'][i]);
+              } 
+            }
+            catch(err) {
+              console.log(err.message);
+            }
+                  
             if($('.notifcount').text() == 0){
               $('.notifcount').addClass('hidden');
             }else{
               $('.notifcount').removeClass('hidden');
             } 
           }
-   
+        }
         
       });
    },60000);
