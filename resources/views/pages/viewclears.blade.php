@@ -5,6 +5,9 @@
     .grid-container .panel{-webkit-column-break-inside: avoid;page-break-inside: avoid;break-inside: avoid;}
     #addcoords{ width: 100%; }
     #clears-table.table>tbody>tr>td{padding:5px 0px; text-align: center;}
+    #clears-table.table>tbody>tr>td.text-danger{color: red !important;}
+    #clears-table.table>tbody>tr>td.text-success{color: rgb(4, 157, 4) !important;}
+    #clears-table.table>tbody>tr>td.text-warning{color: orange !important;}
 </style>
 <div id="page-wrapper">
     <div class="container-fluid" id="clear-fluid">
@@ -65,7 +68,14 @@
                                 <td class="text-center" data-toggle="tooltip" title="{{$r->rain($r->rain)}}">{{$r->rain}}</td>
                                 <td class="text-center" data-toggle="tooltip" title="{{$r->land($r->land_id)}}">{{$r->lFactor}}</td>
                                 <td class="text-center" data-toggle="tooltip" title="{{$r->slopeAngle($r->alphaRating)}}" >{{$r->alphaRating}}</td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->stability($r->Fs)}}">{{$r->Fs}}</td>
+                                <td class="strong {{
+                                    ($r->Fs >= 1.2) ? "text-success" : 
+                                    (
+                                        ($r->Fs < 1.2 && $r->Fs >= 1) || ($r->Fs < 1 && $r->Fs >= 0.7) ? "text-warning" : 
+                                        (
+                                            ($r->Fs < 0.7) ? "text-danger" : ""
+                                        )
+                                    )}}" data-toggle="tooltip" title="{{$r->stability($r->Fs)}}">{{$r->Fs}}</td>
                                 <td>
                                     @if(Auth::user()->id == $r->user_id)
                                     <div class="btn-group" role="group" aria-label="...">

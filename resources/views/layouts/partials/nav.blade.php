@@ -76,12 +76,14 @@
             <li>
                 <a href="{{action('HydrometController@dashboard')}}"><i class="fa fa-tachometer"></i> Dashboard</a>
             </li>
+            @if (Auth::user()->role_id <= 4)
             <li>
                 <a data-toggle="modal" data-target="#selectfilemodal" href="#"><i class="fa fa-download"></i> DRRM KM Resources </a>
             </li>
             <li>
                 <a data-toggle="modal" data-target="#selectsitreplevelmodal" href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Sit Reps</a>
             </li>
+            @endif
             <!------------------------------------ Report Dropdown -------------------------------------------->
 
             <li>
@@ -453,21 +455,6 @@
                 $('#page-wrapper').html(r)
                 $('#clears-table').DataTable();
                 $('[data-toggle="tooltip"]').tooltip();
-                /* var map = new google.maps.Map(document.getElementById('addcoords'),{
-                    center:{
-                        lat:17.351324,
-                        lng:121.17500399999994
-                    },
-                    zoom:9
-                });
-                var marker = new google.maps.Marker({
-                    position:{
-                        lat:17.351324,
-                        lng:121.17500399999994
-                    },
-                    map:map,
-                    draggable:false
-                }); */
             }
         })
     })

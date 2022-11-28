@@ -62,7 +62,12 @@ class SitrepController extends Controller
                         $filtered = $files->orderBy('created_at','desc')->get();
                     }
                 }else{
-                    $filtered = $files->orderBy('created_at','desc')->get();
+                    if($role <=4){
+                        $filtered = $files->orderBy('created_at','desc')->get();
+                    }else{
+                        $filtered= [];
+                    }
+                    
                 }
                 
                 $count = count($filtered);
@@ -96,6 +101,9 @@ class SitrepController extends Controller
         $sitreps = Sitrep::where('sitrep_level',$sitrep_level)->orderBy('created_at','desc')->get();
         if(strtolower($sitrep_level) == 'all' || strtolower($sitrep_level) == '' || !isset($sitrep_level)){
             $sitreps = Sitrep::orderBy('created_at','desc')->get();
+        }
+        if($role > 4){
+            return back();
         }
         $filtered = [];
         if(strtolower($sitrep_level) != 'regional'){
@@ -140,7 +148,13 @@ class SitrepController extends Controller
                 $filtered = $sitreps;
             }
         }else{
-            $filtered = $sitreps;
+            if($role <=4){
+                $filtered = $filtered = $sitreps;
+            }else{
+                $filtered= [];
+            }
+            
+            
         }
         
 

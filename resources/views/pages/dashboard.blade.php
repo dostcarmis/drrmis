@@ -57,7 +57,7 @@
 </div>
 <!-- /.row -->
 <div class="row">
-     <div class="col-xs-12 col-sm-4 col-lg-4 dshboacol">
+    <div class="col-xs-12 col-sm-4 col-lg-4 dshboacol">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="demo-icon"></i> Critical Sensor Readings</h3>

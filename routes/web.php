@@ -56,8 +56,8 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	]);
 	Route::match(['get', 'post'],'dashboard',[
         'uses' => 'HydrometController@dashboard',
-        'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+        'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
         ]);
 	
 	Route::match(['get', 'post'], 'viewsensor',[
@@ -438,76 +438,76 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	//Report Generation Routes
 	Route::get('report',[
 		'uses' => 'ReportController@showReport',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	Route::post('report/display-sensor-location',[
 		'uses' => 'ReportController@getSensorLocation',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	Route::post('report/generate-threshold', [
 		'uses' => 'ReportController@getSensorThreshold',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	Route::post('report/generate-data', [
 		'uses' => 'ReportController@initializeDataGeneration',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	Route::get('report/test',[
 		'uses' => 'ReportController@test',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	//SMS Module Routes
 	/*
 	Route::get('warn/test-semaphore',[
 		'uses' => 'SMSController@testSemaphore',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);*/
 	Route::get('warn/notification-subscribers',[
 		'uses' => 'SMSController@viewNotificationSubscribers',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('warn/notifications',[
 		'uses' => 'SMSController@viewAllNotifications',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	Route::get('warn/contacts',[
 		'uses' => 'SMSController@viewRegisteredContacts',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('warn/compose-message',[
 		'uses' => 'SMSController@viewComposeMessage',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('warn/queued-msg/count',[
 		'uses' => 'SMSController@getQueuedMsgCount',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('warn/queued-msg/delete',[
 		'uses' => 'SMSController@deleteQueuedMsg',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('warn/sent-messages',[
 		'uses' => 'SMSController@viewSentMessages',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::any('destroymultiplesentmessages', [
 		'uses' => 'SMSController@destroymultipleSentMsgs',
@@ -516,49 +516,49 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	]);
 	Route::get('warn/get-sender-names',[
 		'uses' => 'SMSController@getSenderNames',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	
 	Route::get('warn/subscribe',[
 		'uses' => 'SMSController@viewSubscribe',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('warn/success-subscribe',[
 		'uses' => 'SMSController@viewSuccessSubscribe',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('warn/web-subscribe',[
 		'uses' => 'SMSController@webSubscribe',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('warn/send',[
 		'uses' => 'SMSController@sendMessage',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('warn/get-recipients',[
 		'uses' => 'SMSController@getRecipients',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('warn/get-notification',[
 		'uses' => 'SMSController@getNotifications',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('warn/add-subscriber',[
 		'uses' => 'SMSController@addSubscriber',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('warn/check-subscribed',[
 		'uses' => 'SMSController@checkSubscribed',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('warn/unsubscribed',[
 			'uses' => 'SMSController@unsubscribeUser',
@@ -599,13 +599,13 @@ Route::group(['middlewareGroups' => 'web'], function () {
 
 	Route::post('updateprofile',[
 		'uses' => 'UserController@updateProfile',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('profile',[
 		'uses' => 'UserController@profile',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	
 	Route::match(['get', 'post'],'viewroadnetworks',[
@@ -613,200 +613,200 @@ Route::group(['middlewareGroups' => 'web'], function () {
     ]);
 	Route::match(['get', 'post'],'viewroadnetworksmonitoring',[
         'uses' => 'RoadController@viewRoadnetworksmonitoring',
-        'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+        'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
     ]);
 	Route::match(['get', 'post'],'ajaxhydromet',[
         'uses' => 'HydrometController@ajaxHydromet',
-        'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+        'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
     ]);
 	Route::match(['get', 'post'],'ajaxwaterlvl',[
         'uses' => 'HydrometController@ajaxWaterlvl',
-        'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+        'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
     ]);
 	Route::match(['get','post'],'viewhydrometdata',[
         'uses' => 'HydrometController@viewHydrometdata',
-        'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+        'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
     ]);
 	Route::match(['get','post'],'viewhydrometdatawaterlevel',[
         'uses' => 'HydrometController@viewHydrometdatawaterlevel',
-        'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+        'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
     ]);
 	Route::get('addroadnetwork',[
 		'uses' => 'RoadController@viewaddRoadnetwork',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('searchroadnetwork',[
 		'uses' => 'RoadController@searchRoadnetwork',
 	]);
 	Route::post('saveroadnetwork', [
 		'uses' => 'RoadController@saveRoadnetwork',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'editroadnetwork/{id}', [
 		'uses' => 'RoadController@editRoadnetwork',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('updateroadnetwork',[
 		'uses' =>  'RoadController@updateRoadnetwork',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('destroyroadnetwork/{id}', [
 		'uses' => 'RoadController@destroyRoadnetwork',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'destroymultipleroadnetworks',[
 		'uses' => 'RoadController@destroymultipleRoadnetworks',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	Route::match(['get', 'post'],'viewperlandslide/{id}', [
 		'uses' => 'LandslideController@viewperLandslide',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'viewmultiplelandslides',[
         'uses' => 'LandslideController@viewmultipleLandslides',        
     ]);
 	Route::match(['get', 'post'],'viewlandslides',[
         'uses' => 'LandslideController@viewLandslides',
-        'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+        'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
         ]);
 	Route::match(['get', 'post'],'viewlandslidereports',[
         'uses' => 'LandslideController@viewReportLandslide',
-        'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+        'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
     ]);
 
 	Route::match(['get', 'post'],'destroymultiplelandslides',[
 		'uses' => 'LandslideController@destroymultipleLandslides',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'addlandslide',[
 		'uses' => 'LandslideController@viewaddLandslide',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('savelandslide', [
 		'uses' => 'LandslideController@saveLandslide',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('filterlandslidereport', [
 		'uses' => 'LandslideController@filterLandslideReport',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'editlandslide/{id}', [
 		'uses' => 'LandslideController@editLandslide',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('updatelandslide',[
 		'uses' =>  'LandslideController@updateLandslide',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('destroylandslide/{id}', [
 		'uses' => 'LandslideController@destroyLandslide',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('uploadlandslideimage', [
 		'uses' => 'LandslideController@uploadLandslideimage',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('editlandslide/{id}/edituploadlandslideimage', [
 		'uses' => 'LandslideController@edituploadLandslideimage',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('province-show','LandslideController@showprovince');
 
 	Route::match(['get', 'post'],'viewfloods',[
         'uses' => 'FloodController@viewFloods',
-        'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+        'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
     ]);
 	Route::match(['get', 'post'],'viewfloodreports',[
         'uses' => 'FloodController@viewFloodLandslide',
-        'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+        'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
     ]);
 	Route::post('filterfloodreport', [
 		'uses' => 'FloodController@filterFloodReport',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	Route::match(['get', 'post'],'editflood/{id}', [
 		'uses' => 'FloodController@editFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('updateflood',[
 		'uses' =>  'FloodController@updateFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('destroyflood/{id}', [
 		'uses' => 'FloodController@destroyFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'addflood',[
 		'uses' => 'FloodController@viewaddFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('saveflood', [
 		'uses' => 'FloodController@saveFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'destroymultiplefloods',[
 		'uses' => 'FloodController@destroymultipleFloods',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'viewperflood/{id}', [
 		'uses' => 'FloodController@viewperFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'viewmultiplefloods',[
         'uses' => 'FloodController@viewmultipleFloods',
-        'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+        'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
     ]);
 	Route::post('uploadfloodimages', [
 		'uses' => 'FloodController@uploadFloodimages',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('editflood/{id}/edituploadfloodimage', [
 		'uses' => 'FloodController@edituploadFloodimage',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	Route::match(['get', 'post'],'filterdata',[
 		'uses' => 'HydrometController@Filterdata',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('view', [
 		'uses' => 'ProvinceController@saveProvince',
@@ -819,59 +819,59 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	
 	Route::get('notificationsmob', [
 		'uses' => 'NotificationsController@viewmobileNotifications',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('viewnotifications', [
 		'uses' => 'NotificationsController@viewNotifications',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'seenotifications', [
 		'uses' => 'NotificationsController@seeNotifications',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('readnotifications', [
 		'uses' => 'NotificationsController@readNotifications',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('viewnotification/{id}',[
 		'uses' => 'NotificationsController@viewNotification',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('viewnotificationflood/{id}',[
 		'uses' => 'NotificationsController@viewNotificationFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('ajax-notif',[
 		'uses' => 'NotificationsController@ajaxnotif',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('displaycount',[
 		'uses' => 'NotificationsController@displayCount',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('notification', [
 		'uses' => 'NotificationsController@displaynotif',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('viewmultiplecharts', [
 		'uses' => 'ChartController@viewmultipleCharts',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	
 	Route::match(['get', 'post'],'filterchart',[
 		'uses' => 'ChartController@filterChart',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	Route::get('cn','NotificationsController@myNotifications');
@@ -950,28 +950,28 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	//incidents (useless routes)
 	Route::match(['get', 'post'],'incidents',[
 		'uses' => 'IncidentsController@viewIncidents',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('addincident',[
 		'uses' => 'IncidentsController@viewaddIncident',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('uploadincidentimage', [
 		'uses' => 'IncidentsController@uploadIncidentimage',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('saveincident',[
 		'uses' => 'IncidentsController@saveIncident',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('updateincident',[
 		'uses' => 'IncidentsController@updateIncident',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'editincident/{slug}', [
 		'uses' => 'IncidentsController@editIncident',
@@ -981,13 +981,13 @@ Route::group(['middlewareGroups' => 'web'], function () {
 
 	Route::match(['get', 'post'],'incident/{slug}', [
 		'uses' => 'IncidentsController@viewperIncident',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('destroyincident/{id}', [
 		'uses' => 'IncidentsController@destroyIncident',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'destroymultipleincidents',[
 		'uses' => 'IncidentsController@destroymultipleIncidents',
@@ -998,52 +998,52 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	//fire
 	Route::get('addfire',[
 		'uses' => 'FiresController@viewaddFire',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('savefire',[
 		'uses' => 'FiresController@savefire',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff'],
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM'],
 	])->name('savefire');
 	Route::post('uploadfireimages', [
 		'uses' => 'FiresController@uploadFireImages',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	//vehicular
 	Route::get('addvehicular',[
 		'uses' => 'VehicularController@viewaddvehicular',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('savevehicular',[
 		'uses' => 'VehicularController@savevehicular',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff'],
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM'],
 	])->name('savevehicular');
 	Route::post('uploadvehicularimages', [
 		'uses' => 'VehicularController@uploadvehicularImages',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	//typhoon
 	Route::match(['get', 'post'],'ajaxtyphoontrack',[
         'uses' => 'TyphoontrackController@ajaxtyphoontrack',
-        'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+        'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
     ]);
 	Route::match(['get', 'post'],'viewtyphoontracks',[
 		'uses' => 'TyphoontrackController@viewTyphoonTracks',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'addtyphoontracks',[
 		'uses' => 'TyphoontrackController@viewaddTyphoonTracks',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM','Staff']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'savetyphoon',[
 		'uses' => 'TyphoontrackController@saveTyphoonTrack',
@@ -1132,57 +1132,57 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	//DRRM fileDownload pages
 	Route::match(['get', 'post'],'filedownloadpage',[
 		'uses' => 'FileDownloadController@viewFiledownload',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'savefile',[
 		'uses' => 'FileDownloadController@saveFile',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'filedownloadpage/deletefile/{id}',[
 		'uses' => 'FileDownloadController@deleteFile',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	//sitreps
 	Route::match(['get', 'post'],'sitreps',[
 		'uses' => 'SitrepController@viewallsitreps',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'sitreps/{sitrep_level}',[
 		'uses' => 'SitrepController@mainviewsitreps',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'savesitrepfile',[
 		'uses' => 'SitrepController@savesitrepfile',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'sitreps/deletesitrep/{id}',[
 		'uses' => 'SitrepController@deleteSitrep',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);	
 	
 	//risk assess pages
 	Route::match(['get', 'post'],'riskassessmentfiles/{province}',[
 		'uses' => 'RiskassessController@viewFiles',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'saverehab',[
 		'uses' => 'RiskassessController@saveRiskassess',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'riskassessmentfiles/deleterisk/{id}',[
 		'uses' => 'RiskassessController@deleteRiskfile',
-		'middleware' => 'roles',
-		'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('clears-show', 'ClearsController@show');
 	/*==============TEST ROUTES================*/
