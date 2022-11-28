@@ -4,7 +4,7 @@
     .grid-container {-webkit-column-count: 2;column-count: 2;}
     .grid-container .panel{-webkit-column-break-inside: avoid;page-break-inside: avoid;break-inside: avoid;}
     #addcoords{ width: 100%; }
-    .table>tbody>tr>td{padding:5px 0px; text-align: center;}
+    #clears-table.table>tbody>tr>td{padding:5px 0px; text-align: center;}
 </style>
 <div id="page-wrapper">
     <div class="container-fluid" id="clear-fluid">
