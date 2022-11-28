@@ -4,13 +4,14 @@
     .grid-container {-webkit-column-count: 2;column-count: 2;}
     .grid-container .panel{-webkit-column-break-inside: avoid;page-break-inside: avoid;break-inside: avoid;}
     #addcoords{ width: 100%; }
+    .table>tbody>tr>td{padding:5px 0px; text-align: center;}
 </style>
 <div id="page-wrapper">
     <div class="container-fluid" id="clear-fluid">
         <div class="wrap">
-            <div class="dashboardtitle"><h1>CLEARS</h1></div>
+            <div class="dashboardtitle"><h1 id="h4mapview">CLEARS</h1></div>
             <div class="lead">RAIN-INDUCED LANDSLIDE SUSCEPTIBILITY</div>
-            <h4 id="h4mapview">Map View</h4>
+            <h4>Map View</h4>
             <div id="addcoords" class="w-100"><span class="ms-3">Click on a report below to view its location</span></div>
             <div class="d-none">
                 <span class="title defsp">Drag Map marker to change Coordinates</span>
@@ -28,7 +29,7 @@
                     </div>	
                 </div>
             </div>
-            <div class="mt-3">
+            <div class="mt-5">
                 <h4>Reports List</h4>
                 <table id="clears-table" class="table tbldashboard table-hover">
                     <thead>
@@ -51,28 +52,27 @@
                     </thead>
                     <tbody>
                         @foreach ($res as $r)
-                            <tr long = "{{$r->survey_longitude}}" lat = "{{$r->survey_latitude}}">
-                                <td><a href="#h4mapview" class="clearformat">{{date('Y-m-d',strtotime($r->survey_date))}}</a></td>
-                                <td><a href="#h4mapview" class="clearformat">{{$r->municipality->name}}</a></td>
-                                <td><a href="#h4mapview" class="clearformat">{{$r->province->name == "Mountain Province" ? "Mt. Province":$r->province->name }}</a></td>
-                                <td><a href="#h4mapview" class="clearformat">{{$r->user->first_name." ".$r->user->last_name}}</a></td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->slopeMaterial($r->material_id)}}"><a href="#h4mapview" class="clearformat">{{$r->sRating}}</a></td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->vegetation($r->vFactor)}}"><a href="#h4mapview" class="clearformat">{{$r->vFactor}}</a></td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->frequency($r->frequency_id)}}"><a href="#h4mapview" class="clearformat">{{$r->fFactor}}</a></td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->springs($r->sRed)}}"><a href="#h4mapview" class="clearformat">{{$r->sRed}}</a></td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->canals($r->dRed)}}"><a href="#h4mapview" class="clearformat">{{$r->dRed}}</a></td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->rain($r->rain)}}"><a href="#h4mapview" class="clearformat">{{$r->rain}}</a></td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->land($r->land_id)}}"><a href="#h4mapview" class="clearformat">{{$r->lFactor}}</a></td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->slopeAngle($r->alphaRating)}}" ><a href="#h4mapview" class="clearformat">{{$r->alphaRating}}</a></td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->stability($r->Fs)}}"><a href="#h4mapview" class="clearformat">{{$r->Fs}}</a></td>
-                                <td><a href="#h4mapview" class="clearformat">
+                            <tr long = "{{$r->survey_longitude}}" lat = "{{$r->survey_latitude}}" onclick="window.location='#h4mapview'">
+                                <td>{{date('Y-m-d',strtotime($r->survey_date))}}</td>
+                                <td>{{$r->municipality->name}}</td>
+                                <td>{{$r->province->name == "Mountain Province" ? "Mt. Province":$r->province->name }}</td>
+                                <td>{{$r->user->first_name." ".$r->user->last_name}}</td>
+                                <td class="text-center" data-toggle="tooltip" title="{{$r->slopeMaterial($r->material_id)}}">{{$r->sRating}}</td>
+                                <td class="text-center" data-toggle="tooltip" title="{{$r->vegetation($r->vFactor)}}">{{$r->vFactor}}</td>
+                                <td class="text-center" data-toggle="tooltip" title="{{$r->frequency($r->frequency_id)}}">{{$r->fFactor}}</td>
+                                <td class="text-center" data-toggle="tooltip" title="{{$r->springs($r->sRed)}}">{{$r->sRed}}</td>
+                                <td class="text-center" data-toggle="tooltip" title="{{$r->canals($r->dRed)}}">{{$r->dRed}}</td>
+                                <td class="text-center" data-toggle="tooltip" title="{{$r->rain($r->rain)}}">{{$r->rain}}</td>
+                                <td class="text-center" data-toggle="tooltip" title="{{$r->land($r->land_id)}}">{{$r->lFactor}}</td>
+                                <td class="text-center" data-toggle="tooltip" title="{{$r->slopeAngle($r->alphaRating)}}" >{{$r->alphaRating}}</td>
+                                <td class="text-center" data-toggle="tooltip" title="{{$r->stability($r->Fs)}}">{{$r->Fs}}</td>
+                                <td>
                                     @if(Auth::user()->id == $r->user_id)
                                     <div class="btn-group" role="group" aria-label="...">
                                         <button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                                         <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                     </div>
                                     @endif
-                                    </a>
                                 </td>
                             </tr>                        
                         @endforeach
@@ -300,10 +300,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td>Fs &#8805; 1.2</td><td>Stable</td></tr>
-                                <tr><td>1 &#8804; Fs < 1.2</td><td>Marginally stable</td></tr>
-                                <tr><td>0.7 &#8804; Fs < 1</td><td>Susceptible</td></tr>
-                                <tr><td>Fs < 0.7</td><td>Highly susceptible</td></tr>
+                                <tr><td><i>Fs</i> &#8805; 1.2</td><td>Stable</td></tr>
+                                <tr><td>1 &#8804; <i>Fs</i> < 1.2</td><td>Marginally stable</td></tr>
+                                <tr><td>0.7 &#8804; <i>Fs</i> < 1</td><td>Susceptible</td></tr>
+                                <tr><td><i>Fs</i> < 0.7</td><td>Highly susceptible</td></tr>
                             </tbody>
                         </table>
                     </div>
