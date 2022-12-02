@@ -28,6 +28,9 @@ class UserController extends Controller {
     }
    
     public function destroymultipleUser(Request $request) {
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         User::destroy($request->chks);
         $chk = count($request->chks);
 
@@ -43,6 +46,9 @@ class UserController extends Controller {
     }
 
     public function deleteMultipleGroups(Request $request) {
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         $chk = count($request->chks);
 
         foreach ($request->chks as $grpID) {
@@ -62,6 +68,9 @@ class UserController extends Controller {
     }
 
     public function profile() {
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         $roles = DB::table('roles')->get(); 
         $user_role = DB::table('user_role')->get(); 
         $municipalities = DB::table('tbl_municipality')->get();   
@@ -75,6 +84,9 @@ class UserController extends Controller {
     }
 
     public function updateProfile(Request $request) {  
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         $user = Auth::user();
         $post = $request->all();
         $profile_img = '';
@@ -159,6 +171,9 @@ class UserController extends Controller {
     }
 
     public function viewusers(){	   
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         $cntUser = Auth::user();
         $roles = DB::table('roles')->get(); 
         $user_role = DB::table('user_role')->get(); 
@@ -192,6 +207,9 @@ class UserController extends Controller {
     }
 
     public function viewadduser(){
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         $users = DB::table('users')->get();      
         $roles = DB::table('roles')->get(); 
         $user_role = DB::table('user_role')->get(); 
@@ -210,6 +228,9 @@ class UserController extends Controller {
     }
 
     public function edituser($id){
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         $users = DB::table('users')->where('id',$id)->first();      
         $roles = DB::table('roles')->get(); 
         $user_role = DB::table('user_role')->get(); 
@@ -227,8 +248,10 @@ class UserController extends Controller {
                                         'groups' => $groups]);
     }
 
-    public function updateuser(Request $request)
-    {
+    public function updateuser(Request $request){
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         $cntUser = Auth::user();
         $post = $request->all();
         $rules = [
@@ -284,6 +307,9 @@ class UserController extends Controller {
     }
     
     public function addnewuser(Request $request) {
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         $cntUser = Auth::user();
         $user = new User();
         $post = $request->all();
@@ -358,6 +384,9 @@ class UserController extends Controller {
     }
 
     public function destroyUser($id) {
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         $user = Auth::user();
 
         if ($id != $user->id) {
@@ -376,6 +405,9 @@ class UserController extends Controller {
     }
 
     public function viewGroups() {
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         $grpData = DB::table('tbl_groups')
                      ->whereNull('deleted_at')
                      ->get();
@@ -383,10 +415,16 @@ class UserController extends Controller {
     }
 
     public function viewCreateGroup() {
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         return view('pages.addgroup');
     }
 
     public function viewUpdateGroup($id) {
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         $grpData = DB::table('tbl_groups as grp')
                      ->select(DB::raw('CONCAT(user.first_name, " ", user.last_name) AS created_by'),
                              'grp.id', 'grp.group_name', 'grp.sms_api_key', 'grp.description')
@@ -398,6 +436,9 @@ class UserController extends Controller {
     }
 
     public function createGroup(Request $request) {
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         $rules = [
             'group_name' => 'required',
         ];
@@ -422,6 +463,9 @@ class UserController extends Controller {
     }
 
     public function updateGroup(Request $request) {
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         $rules = [
             'group_name' => 'required',
         ];
@@ -446,6 +490,9 @@ class UserController extends Controller {
     }
 
     public function deleteGroup($id) {
+        if(Auth::user()->role_id > 4){
+            return redirect()->back();
+        }
         try {
             $grpData = Groups::find($id);
 
@@ -462,6 +509,6 @@ class UserController extends Controller {
 
         Session::flash('message', 'Group successfully deleted');
         return redirect('usergroups');
-   }
+    }
 
 }

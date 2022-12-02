@@ -212,35 +212,43 @@ Route::group(['middlewareGroups' => 'web'], function () {
 
 	Route::match(['get', 'post'],'viewusers',[
 		'uses' => 'UserController@viewusers',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('viewadduser',[
 		'uses' => 'UserController@viewadduser',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('addnewuser',[
 		'uses' => 'UserController@addnewuser',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('viewactivitylogs',[
 		'uses' => 'UserlogsController@viewactivitylogs',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('edituser/{id}', [
 		'uses' => 'UserController@edituser',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('updateuser', [
 		'uses' => 'UserController@updateuser',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('destroyuser/{id}',[
 		'uses' => 'UserController@destroyUser',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'destroymultipleusers', [
 		'uses' => 'UserController@destroymultipleUser',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'filteruser',[
 		'uses' => 'UserController@filterUser',
@@ -249,31 +257,38 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	// User Groups
 	Route::get('usergroups', [
 		'uses' => 'UserController@viewGroups',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('viewcreategroup', [
 		'uses' => 'UserController@viewCreateGroup',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('viewupdategroup/{id}', [
 		'uses' => 'UserController@viewUpdateGroup',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('creategroup',[
 		'uses' => 'UserController@createGroup',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('updategroup',[
 		'uses' => 'UserController@updateGroup',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::get('deletegroup/{id}',[
 		'uses' => 'UserController@deleteGroup',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::match(['get', 'post'],'deletemultipleGroups', [
 		'uses' => 'UserController@deleteMultipleGroups',
-		'middleware' => 'auth',
+		'middleware' => 'roles',
+		'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 
 	Route::match(['get', 'post'],'viewthreshold',[
