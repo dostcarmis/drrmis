@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <style>
     .navbar-nav>li>a{padding: 10px 10px;}
-    .navbar-nav>li>a>.fa,.navbar-nav>li>a>.fas{max-width: 14px;}
+    .navbar-nav>li>a>.fa,.navbar-nav>li>a>.fas,.navbar-nav>li>a>.fa,.navbar-nav>li>a>.fa{width: 14px;}
 </style>
 
 <!------------------------------------ Horizontal Navbar ---------------------------------------------------------------------------------------------->
@@ -328,7 +328,7 @@
             @if(Auth::user()->role_id <= 2 )
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#users" class="" aria-expanded="true">
-                    <i class="fa fa-user"></i> Users <i class="fa fa-fw fa-caret-down"></i>
+                    <i class="fa fa-user"></i> Users <i class="fa fa-fw fa-caret-down float-end"></i>
                 </a>
                 <ul id="users" class="collapse" aria-expanded="true">
                     <li>
