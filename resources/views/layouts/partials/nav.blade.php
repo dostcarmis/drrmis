@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <style>
     .navbar-nav>li>a{padding: 10px 10px;}
-    .navbar-nav .fa,.navbar-nav .fas,{width: 14px !important;}
+    .navbar-nav .fa,.navbar-nav .fas{width: 14px !important;}
 </style>
 
 <!------------------------------------ Horizontal Navbar ---------------------------------------------------------------------------------------------->
