@@ -41,7 +41,7 @@
                             <th class="text-center">Municipality</th>
                             <th class="text-center">Province</th>
                             <th class="text-center">Uploaded by</th>
-                            <th class="text-center" data-toggle="tooltip" title="Slope Material">sF</th>
+                            <th class="text-center" data-toggle="tooltip" title="Slope Material">sR</th>
                             <th class="text-center" data-toggle="tooltip" title="Vegetation">vF</th>
                             <th class="text-center" data-toggle="tooltip" title="Frequency of slope failure">fF</th>
                             <th class="text-center" data-toggle="tooltip" title="Presence of springs">sRed</th>
@@ -55,20 +55,20 @@
                     </thead>
                     <tbody>
                         @foreach ($res as $r)
-                            <tr long = "{{$r->survey_longitude}}" lat = "{{$r->survey_latitude}}" onclick="window.location='#h4mapview'">
-                                <td>{{date('Y-m-d',strtotime($r->survey_date))}}</td>
-                                <td>{{$r->municipality->name}}</td>
+                            <tr long = "{{$r->survey_longitude}}" lat = "{{$r->survey_latitude}}" report-id="{{$r->id}}">
+                                <td class="c-date">{{date('Y-m-d',strtotime($r->survey_date))}}</td>
+                                <td class="c-m-id" m_id="{{$r->municipality_id}}">{{$r->municipality->name}}</td>
                                 <td>{{$r->province->name == "Mountain Province" ? "Mt. Province":$r->province->name }}</td>
                                 <td>{{$r->user->first_name." ".$r->user->last_name}}</td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->slopeMaterial($r->material_id)}}">{{$r->sRating}}</td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->vegetation($r->vFactor)}}">{{$r->vFactor}}</td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->frequency($r->frequency_id)}}">{{$r->fFactor}}</td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->springs($r->sRed)}}">{{$r->sRed}}</td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->canals($r->dRed)}}">{{$r->dRed}}</td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->rain($r->rain)}}">{{$r->rain}}</td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->land($r->land_id)}}">{{$r->lFactor}}</td>
-                                <td class="text-center" data-toggle="tooltip" title="{{$r->slopeAngle($r->alphaRating)}}" >{{$r->alphaRating}}</td>
-                                <td class="strong {{
+                                <td class="text-center c-material" data-toggle="tooltip" mid = "{{$r->material_id}}" title="{{$r->slopeMaterial($r->material_id)}}">{{$r->sRating}}</td>
+                                <td class="text-center c-vegetation" data-toggle="tooltip" title="{{$r->vegetation($r->vFactor)}}">{{$r->vFactor}}</td>
+                                <td class="text-center c-freq" data-toggle="tooltip" title="{{$r->frequency($r->frequency_id)}}" fid = {{$r->frequency_id}}>{{$r->fFactor}}</td>
+                                <td class="text-center c-spring" data-toggle="tooltip" title="{{$r->springs($r->sRed)}}">{{$r->sRed}}</td>
+                                <td class="text-center c-canal" data-toggle="tooltip" title="{{$r->canals($r->dRed)}}">{{$r->dRed}}</td>
+                                <td class="text-center c-rain" data-toggle="tooltip" title="{{$r->rain($r->rain)}}">{{$r->rain}}</td>
+                                <td class="text-center c-land" data-toggle="tooltip" lid="{{$r->land_id}}" title="{{$r->land($r->land_id)}}">{{$r->lFactor}}</td>
+                                <td class="text-center c-slope" data-toggle="tooltip" title="{{$r->slopeAngle($r->alphaRating)}}" >{{$r->alphaRating}}</td>
+                                <td class="text-center c-stability strong {{
                                     ($r->Fs >= 1.2) ? "text-success" : 
                                     (
                                         ($r->Fs < 1.2 && $r->Fs >= 1) || ($r->Fs < 1 && $r->Fs >= 0.7) ? "text-warning" : 
@@ -79,8 +79,8 @@
                                 <td>
                                     @if(Auth::user()->id == $r->user_id)
                                     <div class="btn-group" role="group" aria-label="...">
-                                        <button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                        <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                        <button id="clears-e-btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#clears-edit-modal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                        <button id="clears-d-btn" type="button" class="btn btn-danger" data-toggle="modal" data-target="#clears-delete-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                     </div>
                                     @endif
                                 </td>
@@ -98,7 +98,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="d-flex">
-                            <h5 class="panel-title">Slope Material | <b><i>sF</i></b></h5>
+                            <h5 class="panel-title">Slope Material | <b><i>sRating</i></b></h5>
                             <button class="border-none bg-none p-0 panel-toggler" data-toggle="tooltip" title="Toggle show/hide"><i class="fa fa-expand" aria-hidden="true" class="panel-toggler"></i></button>
                         </div>
                         <hr>
@@ -283,7 +283,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td>1.4</td><td>Dense residential area (with closely spaced structures &#60;m)</td></tr>
+                                <tr><td>1.4</td><td>Dense residential area (with closely spaced structures &#60;5m)</td></tr>
                                 <tr><td>1.4</td><td>Commercial with building/s having 2 storeys or more</td></tr>
                                 <tr><td>1.25</td><td>Residential area with buildings having 2 storeys spaced at &#8805;5m</td></tr>
                                 <tr><td>1.4</td><td>Road/highway with heavy traffic (1 truck or more every 10mins)</td></tr>
@@ -323,40 +323,160 @@
         </div>
     </div>
 </div>
+<div id="clears-edit-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit CLEARS Data <i class="fa fa-info-circle" text-align="right" aria-hidden="true"  data-toggle="tooltip"  title="Hover over the choices to view descriptions"></i></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group px-3">
+                    <form id="clears-edit-form">
+                        <label for="form-c-date">Survey date</label>
+                        <input type="date" class="form-control" id="form-c-date">
+                        @if (Auth::user()->role_id <=3)
+                            <label for="form-c-m-id">Municipality</label>
+                            <select class="form-control" id="form-c-m-id">
+                                @foreach ($munis as $m)
+                                    <option value="{{$m->id}}">{{$m->name}}</option>
+                                @endforeach
+                            </select>
+                        @endif
+                        <label for="form-c-material">Material | <i>sRating</i></label>
+                        <select class="form-control" id="form-c-material">
+                            <option value="HR1" data-toggle="tooltip" sr = "100" title="sR = HR1: 100">Massive and intact hard rock</option>
+                            <option value="HR2" data-toggle="tooltip" sr = "45" title="sR = HR2: 45">Blocky, well-interlocked hard rock, rock mass consisting mostly of cubical blocks</option>
+                            <option value="HR3" data-toggle="tooltip" sr = "25" title="sR = HR3: 25">Very blocky and fractured hard rock (disturbed with multifaceted angular blocks formed by 4 or more discontinuity sets)</option>
+                            <option value="HR4" data-toggle="tooltip" sr = "13" title="sR = HR4: 13">Disintegrated, unstable rocks and boulders, protruding rock fragments</option>
+                            <option value="SR1" data-toggle="tooltip" sr = "30" title="sR = SR1: 30">Massive and intact soft rock</option>
+                            <option value="SR2" data-toggle="tooltip" sr = "15" title="sR = SR2: 15">Very blocky and fractured soft rock</option>
+                            <option value="HS1" data-toggle="tooltip" sr = "25" title="sR = HS1: 25">Stiff, cemented and dense gravelly, sandy, silty and clayey soils</option>
+                            <option value="SS1" data-toggle="tooltip" sr = "10" title="sR = SS1: 10">Gravelly soil</option>
+                            <option value="SS2" data-toggle="tooltip" sr = "8" title="sR = SS2: 8">Sandy soil</option>
+                            <option value="SS3" data-toggle="tooltip" sr = "5" title="sR = SS3: 5">Clayey/silty soil</option>
+                        </select>
+                        <label for="form-c-vegetation">Vegetation | <i>vF</i></label>
+                        <select class="form-control" id="form-c-vegetation">
+                            <option value="1.0" data-toggle="tooltip" title="vf = 1.0">No vegetation</option>
+                            <option value="1.1" data-toggle="tooltip" title="vf = 1.1">Predominantly grass or vegetation with shallow roots</option>
+                            <option value="1.2" data-toggle="tooltip" title="vf = 1.2">Coconut, bamboo or vegetation with moderately deep roots</option>
+                            <option value="1.5" data-toggle="tooltip" title="vf = 1.5">Dense forests with trees of the same specie having age less than or equal to 20 years</option>
+                            <option value="2.0" data-toggle="tooltip" title="vf = 2.0">Dense and mixed forests with trees having age less than or equal to 20 years or; Dense forests with pine trees having ages of more than 20 years</option>
+                            <option value="2.5" data-toggle="tooltip" title="vf = 2.5">Dense and mixed forests with trees having ages of more than 20 years</option>
+                        </select>
+                        <label for="form-c-freq">Failure Frequency | <i>fF</i></label>
+                        <select class="form-control" id="form-c-freq">
+                            <option value="1" fF = "0.5" title="fF = 0.5">Once a year or more than once a year</option>
+                            <option value="2" fF = "0.7" title="fF = 0.7">Presence of past failure, but occurrence not yearly</option>
+                            <option value="3" fF = "0.7" title="fF = 0.7">Presence of tensile cracks in ground</option>
+                            <option value="4" fF = "0.7" title="fF = 0.7">If with retaining wall, wall is deformed</option>
+                            <option value="5" fF = "1.2" title="fF = 1.2">None</option>
+                        </select>
+                        <br>
+                        <input type="radio" value="1" name="reds" id="reds-1"><label for="reds-1">Spring and Canal Data</label>&nbsp&nbsp
+                        <input type="radio" value="2" name="reds" id="reds-2"><label for="reds-2">Rain Data</label><br>
+                        <div id="red-inputs" style="display: none">
+                            <label for="form-c-spring">Presence of Springs | <i>sRed</i></label>
+                            <select class="form-control" id="form-c-spring">
+                                <option value="2" title="sRed = 2">Year-long</option>
+                                <option value="1" title="sRed = 1">Only during rainy season</option>
+                                <option value="0" title="sRed = 0">No flow/spring</option>
+                            </select>
+                            <label for="form-c-canal">Drainage Condition | <i>dRed</i></label>
+                            <select class="form-control" id="form-c-canal">
+                                <option value="1" dred="2" title="dRed = 2">No drainage system</option>
+                                <option value="2" dred="2" title="dRed = 2">Totally clogged, filled with debris</option>
+                                <option value="3" dred="1" title="dRed = 1">Partially clogged or overflows during heavy rains</option>
+                                <option value="4" dred="1" title="dRed = 1">Water leaks into the slope</option>
+                                <option value="5" dred="0" title="dRed = 0">Good working condition</option>
+                            </select>
+                        </div>
+                        <div id="rain-input" style="display: none">
+                            <label for="form-c-rain">Rain | <i>Rain</i></label>
+                            <select class="form-control" id="form-c-rain">
+                                <option value="0" title="Rain = 0">50mm or less</option>
+                                <option value="2" title="Rain = 2">More than 50mm but less than 100mm</option>
+                                <option value="3" title="Rain = 3">More than 100mm but less than 200mm</option>
+                                <option value="4" title="Rain = 4">More than 200mm</option>
+                            </select>
+                        </div>
+                        
+                        <label for="form-c-land">Land Use | <i>lF</i></label>
+                        <select class="form-control" id="form-c-land">
+                            <option lf="1.4" title="lF = 1.4" value="1">Dense residential area (with closely spaced structures &#60;5m)</option>
+                            <option lf="1.4" title="lF = 1.4" value="2">Commercial with building/s having 2 storeys or more</option>
+                            <option lf="1.25" title="lF = 1.25" value="3">Residential area with buildings having 2 storeys spaced at &#8805;5m</option>
+                            <option lf="1.4" title="lF = 1.4" value="4">Road/highway with heavy traffic (1 truck or more every 10mins)</option>
+                            <option lf="1.25" title="lF = 1.25" value="5">Road/highway with light traffic (less than 1 truck every 10mins)</option>
+                            <option lf="1.0" title="lF = 1.0" value="6">Agricultural area, grasslands and bushlands</option>
+                            <option lf="1.0" title="lF = 1.0" value="7">Forest</option>
+                            <option lf="1.0" title="lF = 1.0" value="8">Uninhabited and no vegetation</option>
+                        </select>
+                        <label for="form-c-slope">Slope | <i>&alpha;Rating</i></label>
+                        <select class="form-control" id="form-c-slope">
+                            <option title="&alpha;Rating = 100" value="100">Slope angle greater than 75°</option>
+                            <option title="&alpha;Rating = 32" value="32">Slope angle greater than 60° but less than or equal to 75°</option>
+                            <option title="&alpha;Rating = 17" value="17">Slope angle greater than 45° but less than or equal to 60°</option>
+                            <option title="&alpha;Rating = 10" value="10">Slope angle greater than 30° but less than or equal to 45°</option>
+                            <option title="&alpha;Rating = 5" value="5">Slope angle greater than 15° but less than or equal to 30°</option>
+                            <option title="&alpha;Rating = 2" value="2">Slope angle less than or equal to 15°</option>
+                        </select>
+                        <label>Stability | <i>Fs</i></label>
+                        <input type="text" class="form-control" readonly disabled id="form-c-stability">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="clears-delete-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete CLEARS Data</h4>
+            </div>
+            <div class="modal-body">
+                wow
+            </div>
+        </div>
+    </div>
+</div>
 @section('page-js-files')
 <script type="text/javascript" src="{!! url('assets/dropzone/dropzone.js') !!}"></script>
 <script type="text/javascript">
-var baseUrl = "{{ url('/') }}";
-var token = "{{ Session::token() }}";
-var images = []; 
-var counter = 0;
-Dropzone.autoDiscover = false;
-var myDropzone = new Dropzone("div#dZUpload", { 
-    url: "uploadfireimages",
-    params: {
-        _token: token
-    },
-    init: function() {
-        this.on("error", function(file) {console.log("ooopppssss");}),
-        this.on("success", function(file, response) { 
-            var imagefile = baseUrl + '/files/1/Fire Images/'+file["name"] +'-@';
-            images[counter] = imagefile;
-            document.getElementById("fireimages").value = images;
-            counter++;
-        })
-    }
-});
-Dropzone.options.myAwesomeDropzone = {
-    paramName: "file", 
-    maxFilesize: 2, 
-    addRemoveLinks: true,    
-};
-CKEDITOR.replace( 'piw-textarea', {
-    filebrowserImageBrowseUrl: '{{ asset("laravel-filemanager?type=Images") }}',
-    filebrowserImageUploadUrl: '{{ asset("laravel-filemanager/upload?type=Images&_token=") }}{{csrf_token()}}',
-    filebrowserBrowseUrl: '{{ asset("laravel-filemanager?type=Files") }}',
-    filebrowserUploadUrl: '{{ asset("laravel-filemanager/upload?type=Files&_token=") }}{{csrf_token()}}'
-});
+    var baseUrl = "{{ url('/') }}";
+    var token = "{{ Session::token() }}";
+    var images = []; 
+    var counter = 0;
+    Dropzone.autoDiscover = false;
+    var myDropzone = new Dropzone("div#dZUpload", { 
+        url: "uploadfireimages",
+        params: {
+            _token: token
+        },
+        init: function() {
+            this.on("error", function(file) {console.log("ooopppssss");}),
+            this.on("success", function(file, response) { 
+                var imagefile = baseUrl + '/files/1/Fire Images/'+file["name"] +'-@';
+                images[counter] = imagefile;
+                document.getElementById("fireimages").value = images;
+                counter++;
+            })
+        }
+    });
+    Dropzone.options.myAwesomeDropzone = {
+        paramName: "file", 
+        maxFilesize: 2, 
+        addRemoveLinks: true,    
+    };
+    CKEDITOR.replace( 'piw-textarea', {
+        filebrowserImageBrowseUrl: '{{ asset("laravel-filemanager?type=Images") }}',
+        filebrowserImageUploadUrl: '{{ asset("laravel-filemanager/upload?type=Images&_token=") }}{{csrf_token()}}',
+        filebrowserBrowseUrl: '{{ asset("laravel-filemanager?type=Files") }}',
+        filebrowserUploadUrl: '{{ asset("laravel-filemanager/upload?type=Files&_token=") }}{{csrf_token()}}'
+    });
 </script>
 @endsection
 <script>
@@ -375,20 +495,72 @@ CKEDITOR.replace( 'piw-textarea', {
         }
     })
     .on('click','#clears-table tbody tr',function(e){
-        let lat = parseFloat($(e.currentTarget).attr('lat'));
-        let long = parseFloat($(e.currentTarget).attr('long'));
-        $('#addcoords').css('height','500px')
-        var map = new google.maps.Map(document.getElementById('addcoords'),{
-            center:{
-                lat:lat,
-                lng:long
-            },
-            zoom:13
-        });
-        var marker = new google.maps.Marker({
-            position:{lat:lat,lng:long},
-            map:map,
-            draggable:false
-        });
+        if($(e.target).is('button') || $(e.target).is('i')){e.preventDefault(); return false;}
+        if($(e.target).not('button') && $(e.target).not('i')){
+            let lat = parseFloat($(e.currentTarget).attr('lat'));
+            let long = parseFloat($(e.currentTarget).attr('long'));
+            $('#addcoords').css('height','500px')
+            var map = new google.maps.Map(document.getElementById('addcoords'),{
+                center:{
+                    lat:lat,
+                    lng:long
+                },
+                zoom:13
+            });
+            var marker = new google.maps.Marker({
+                position:{lat:lat,lng:long},
+                map:map,
+                draggable:false
+            });
+            window.location='#h4mapview';
+        }
+        
+    })
+    .on('click','#clears-e-btn',function(e){
+        e.preventImmedatePropagation;
+        $('[data-toggle="tooltip"]').tooltip();
+        let row = $(e.currentTarget).closest('tr');
+        let date = row.find('.c-date').text();
+        let muni = row.find('.c-m-id').attr('m_id');
+        let material = row.find('.c-material').attr('mid');
+        let veg = row.find('.c-vegetation').text();
+        let freq = row.find('.c-freq').attr('fid');
+        let spring = row.find('.c-spring').text();
+        let canal = row.find('.c-canal').text();
+        let rain = row.find('.c-rain').text();
+        let land = row.find('.c-land').attr('lid');
+        let slope = row.find('.c-slope').text();
+        $('#clears-edit-form #form-c-date').val(date);
+        $('#clears-edit-form #form-c-m-id').val(muni);
+        $('#clears-edit-form #form-c-material').val(material);
+        $('#clears-edit-form #form-c-vegetation').val(veg);
+        $('#clears-edit-form #form-c-freq').val(freq);
+        $('#clears-edit-form #form-c-spring').val(spring);
+        $('#clears-edit-form #form-c-canal').val(canal);
+        $('#clears-edit-form #form-c-rain').val(rain);
+        $('#clears-edit-form #form-c-land').val(land);
+        $('#clears-edit-form #form-c-slope').val(slope);
+        let sr = parseFloat($("#form-c-material option:selected").attr('sr'));
+        let fF = parseFloat($("#form-c-freq option:selected").attr('fF'));
+        let lf = parseFloat($("#form-c-land option:selected").attr('lf'));
+        let corrosion = sr;
+        if(rain != "" && rain != null){
+            $('#reds-2').prop('checked',true);
+            $('#reds-1').prop('checked',false);
+            $('#rain-input').show();
+            $('#red-inputs').hide();
+            corrosion -= parseInt(rain);
+        }else{
+            $('#reds-1').prop('checked',true);
+            $('#reds-2').prop('checked',false);
+            $('#rain-input').hide();
+            $('#red-inputs').show();
+            let dred = parseInt($("#form-c-canal option:selected").attr('dred'));
+            let sred = parseInt(spring);
+            corrosion -= dred;
+            corrosion -= sred;
+        }
+        let Fs = ((parseFloat(veg) * fF * corrosion) / (parseInt(slope) * lf)).toFixed(2);
+        $('#form-c-stability').val(Fs);
     })
 </script>
