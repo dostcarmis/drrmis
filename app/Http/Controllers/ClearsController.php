@@ -150,6 +150,8 @@ class ClearsController extends Controller
                 }else{
                     return response()->json(['success'=>false,'msg'=>"Update Failed."]);
                 }
+            }else{
+                return response()->json(['success'=>false,'msg'=>"Invalid Factor of Safety."]);
             }
             
         }else{
