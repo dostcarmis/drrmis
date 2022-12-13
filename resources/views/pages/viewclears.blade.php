@@ -377,11 +377,11 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label for="form-c-slat">Latitude</label>
-                                        <input type="text" class="form-control" name="survey_latitude" id="form-c-slat">
+                                        <input type="number" step="0.000000000000001" max="90" min="-90" class="form-control" name="survey_latitude" id="form-c-slat">
                                     </div>
                                     <div class="col-md-4">
                                         <label for="form-c-slon">Longitude</label>
-                                        <input type="text" class="form-control" name="survey_longitude" id="form-c-slon">
+                                        <input type="number" step="0.000000000000001" max="180" min="-180" class="form-control" name="survey_longitude" id="form-c-slon">
                                     </div>
                                     <div class="col-md-4">
                                         <label style="color: white">white</label>
@@ -768,11 +768,15 @@
                         }
                     }
                 }else{
-                    alert(response.error.messages);
+                    $('.alert').hide();
+                    $('#alert-danger').fadeIn();
+                    $('#alert-danger #content').text(response.msg)
                 }
             },
             error:function(data){
-                alert(data.responseJSON.message);
+                $('.alert').hide();
+                $('#alert-danger').fadeIn();
+                $('#alert-danger #content').text(response.msg)
             }
         })
     })

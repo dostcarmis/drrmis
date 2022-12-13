@@ -113,42 +113,45 @@ class ClearsController extends Controller
         $report = Clears::findOrFail($req->input('clears_id'));
         $collection = $report;
         if($report->user_id == $user_id){
-            $update = $report->update([
-                "municipality_id"=>$req->input("municipality_id"),
-                "survey_date"=>date("Y-m-d",strtotime($req->input("survey_date"))),
-                "survey_latitude"=>$req->input("survey_latitude"),
-                "survey_longitude"=>$req->input("survey_longitude"),
-                "vFactor"=>$req->input("vFactor"),
-                "fFactor"=>$req->input("fFactor"),
-                "frequency_id"=>$req->input("frequency_id"),
-                "sRating"=>$req->input("sRating"),
-                "material_id"=>$req->input("material_id"),
-                "sRed"=>$req->input("sRed"),
-                "dRed"=>$req->input("dRed"),
-                "drain_id"=>$req->input("drain_id"),
-                "rain"=>$req->input("rain"),
-                "lFactor"=>$req->input("lFactor"),
-                "land_id"=>$req->input("land_id"),
-                "alphaRating"=>$req->input("alphaRating"),
-                "Fs"=>$req->input("Fs"),
-            ]);
-            if($update){
-                $report = $report->toArray();
-                $report['municipality_name'] = $collection->municipality->name;
-                $report['province_name'] = $collection->province->name;
-                $report['material'] = $collection->slopeMaterial($collection->material_id);
-                $report['vegetation'] = $collection->vegetation($collection->vFactor);
-                $report['frequency'] = $collection->frequency($collection->frequency_id);
-                $report['springs'] = $collection->springs($collection->sRed);
-                $report['canals'] = $collection->canals($collection->dRed);
-                $report['rain_d'] = $collection->rain($collection->rain);
-                $report['land'] = $collection->land($collection->land_id);
-                $report['angle'] = $collection->slopeAngle($collection->alphaRating);
-                $report['stability'] = $collection->stability($collection->Fs);
-                return response()->json(['success'=>true,'report'=>$report]);
-            }else{
-                return response()->json(['success'=>false,'msg'=>"Update Failed."]);
+            if(is_numeric($req->input("Fs"))){
+                $update = $report->update([
+                    "municipality_id"=>$req->input("municipality_id"),
+                    "survey_date"=>date("Y-m-d",strtotime($req->input("survey_date"))),
+                    "survey_latitude"=>$req->input("survey_latitude"),
+                    "survey_longitude"=>$req->input("survey_longitude"),
+                    "vFactor"=>$req->input("vFactor"),
+                    "fFactor"=>$req->input("fFactor"),
+                    "frequency_id"=>$req->input("frequency_id"),
+                    "sRating"=>$req->input("sRating"),
+                    "material_id"=>$req->input("material_id"),
+                    "sRed"=>$req->input("sRed"),
+                    "dRed"=>$req->input("dRed"),
+                    "drain_id"=>$req->input("drain_id"),
+                    "rain"=>$req->input("rain"),
+                    "lFactor"=>$req->input("lFactor"),
+                    "land_id"=>$req->input("land_id"),
+                    "alphaRating"=>$req->input("alphaRating"),
+                    "Fs"=>$req->input("Fs"),
+                ]);
+                if($update){
+                    $report = $report->toArray();
+                    $report['municipality_name'] = $collection->municipality->name;
+                    $report['province_name'] = $collection->province->name;
+                    $report['material'] = $collection->slopeMaterial($collection->material_id);
+                    $report['vegetation'] = $collection->vegetation($collection->vFactor);
+                    $report['frequency'] = $collection->frequency($collection->frequency_id);
+                    $report['springs'] = $collection->springs($collection->sRed);
+                    $report['canals'] = $collection->canals($collection->dRed);
+                    $report['rain_d'] = $collection->rain($collection->rain);
+                    $report['land'] = $collection->land($collection->land_id);
+                    $report['angle'] = $collection->slopeAngle($collection->alphaRating);
+                    $report['stability'] = $collection->stability($collection->Fs);
+                    return response()->json(['success'=>true,'report'=>$report]);
+                }else{
+                    return response()->json(['success'=>false,'msg'=>"Update Failed."]);
+                }
             }
+            
         }else{
             return response()->json(['success'=>false,'msg'=>"Report does not belong to you."]);
         }
