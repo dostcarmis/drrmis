@@ -26,7 +26,8 @@
     <script type="text/javascript" src="{!! url('js/jquery-2.2.0.js') !!}"></script>
     <script src="{!! url('js/corejs.min.js')!!}"></script>
     <script src="{!! url('js/jqueryui.min.js')!!}"></script>
-    <script src="{!! url('js/jquery.js')!!}"></script>
+    {{-- <script src="{!! url('js/jquery.js')!!}"></script> --}}
+    <script src="{!! url('js/bootstrap.min.js') !!}"></script>
 </head>
 <body class="innerbody">
     <div id="wrap-main">
@@ -120,7 +121,7 @@
         
     </div>
         
-        <script src="{!! url('js/bootstrap.min.js') !!}"></script>
+        
         <script src="http://maps.google.com/maps/api/js?key=AIzaSyC058wNQG2iAeF7z0ysRHQw_0Gsqd6Xp5s"></script>
         <script src="{!! url('assets/js/notification.js')!!}"></script>
         <script src="{!! url('js/jquery.mmenu.all.min.js')!!}"></script>

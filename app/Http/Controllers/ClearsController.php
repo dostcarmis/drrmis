@@ -86,4 +86,88 @@ class ClearsController extends Controller
         return view('pages.viewclears',compact('res','munis'));
         // return response()->json(["res"=]);
     }
+    public function update(Request $req){
+        $rules = [
+            "clears_id"=>"required|numeric",
+            "municipality_id"=>'required|numeric',
+            "survey_date"=>'required|date',
+            "survey_latitude"=>'required|numeric',
+            "survey_longitude"=>'required|numeric',
+            "vFactor"=>'required|numeric|min:1|max:2.5|in:1,1.1,1.2,1.5,2,2.5',
+            "fFactor"=>'required|numeric|min:0.5|max:1.2|in:0.5,0.7,1.2',
+            "frequency_id"=>'required|numeric|min:0|max:5',
+            "sRating"=>'required|numeric|min:5|max:100|in:5,8,10,13,15,25,30,45,100',
+            "material_id"=>'required|string',
+            "sRed"=>'integer|min:0|max:2|required_without:rain|required_with:dRed',
+            "dRed"=>'integer|min:0|max:2|required_without:rain|required_with:sRed',
+            "drain_id"=>'integer|min:1|max:5|required_without:rain|required_with:dRed',
+            "rain"=>'integer|min:0|max:4|in:0,2,3,4|required_without_all:sRed,dRed',
+            "lFactor"=>'required|numeric|min:1|max:1.4|in:1,1.25,1.4',
+            "land_id"=>'required|numeric|min:1|max:8',
+            "alphaRating"=>'required|integer|min:2|max:100|in:2,5,10,17,32,100',
+            "Fs"=>'required|numeric',
+        ];
+        $validator = Validator::make($req->all(), $rules);
+        $user = Auth::user();
+        $user_id = $user->id;
+        $report = Clears::findOrFail($req->input('clears_id'));
+        $collection = $report;
+        if($report->user_id == $user_id){
+            $update = $report->update([
+                "municipality_id"=>$req->input("municipality_id"),
+                "survey_date"=>date("Y-m-d",strtotime($req->input("survey_date"))),
+                "survey_latitude"=>$req->input("survey_latitude"),
+                "survey_longitude"=>$req->input("survey_longitude"),
+                "vFactor"=>$req->input("vFactor"),
+                "fFactor"=>$req->input("fFactor"),
+                "frequency_id"=>$req->input("frequency_id"),
+                "sRating"=>$req->input("sRating"),
+                "material_id"=>$req->input("material_id"),
+                "sRed"=>$req->input("sRed"),
+                "dRed"=>$req->input("dRed"),
+                "drain_id"=>$req->input("drain_id"),
+                "rain"=>$req->input("rain"),
+                "lFactor"=>$req->input("lFactor"),
+                "land_id"=>$req->input("land_id"),
+                "alphaRating"=>$req->input("alphaRating"),
+                "Fs"=>$req->input("Fs"),
+            ]);
+            if($update){
+                $report = $report->toArray();
+                $report['municipality_name'] = $collection->municipality->name;
+                $report['province_name'] = $collection->province->name;
+                $report['material'] = $collection->slopeMaterial($collection->material_id);
+                $report['vegetation'] = $collection->vegetation($collection->vFactor);
+                $report['frequency'] = $collection->frequency($collection->frequency_id);
+                $report['springs'] = $collection->springs($collection->sRed);
+                $report['canals'] = $collection->canals($collection->dRed);
+                $report['rain_d'] = $collection->rain($collection->rain);
+                $report['land'] = $collection->land($collection->land_id);
+                $report['angle'] = $collection->slopeAngle($collection->alphaRating);
+                $report['stability'] = $collection->stability($collection->Fs);
+                return response()->json(['success'=>true,'report'=>$report]);
+            }else{
+                return response()->json(['success'=>false,'msg'=>"Update Failed."]);
+            }
+        }else{
+            return response()->json(['success'=>false,'msg'=>"Report does not belong to you."]);
+        }
+    }
+    public function delete(Request $req){
+        $rules = ["clears_id"=>"required|numeric"];
+        $validator = Validator::make($req->all(), $rules);
+        $user = Auth::user();
+        $user_id = $user->id;
+        $report = Clears::findOrFail($req->input('clears_id'));
+        if($report->user_id == $user_id){
+            $delete = $report->delete();
+            if($delete){
+                return response()->json(['success'=>true]);
+            }else{
+                return response()->json(['success'=>false,'msg'=>"Delete Failed."]);
+            }
+        }else{
+            return response()->json(['success'=>false,'msg'=>"Report does not belong to you."]);
+        }
+    }
 }

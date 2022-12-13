@@ -25,7 +25,8 @@
     <script>window.jQuery || document.write('<script src="{!!url('../../js/jquery.min.js') !!}"><\/script>')</script>
     <script src="{!! url('js/code-jquery-1.12.3.min.js')!!}"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="{!! url('js/jquery.js')!!}"></script>
+    {{-- <script src="{!! url('js/jquery.js')!!}"></script> --}}
+    <script src="{!! url('js/bootstrap.min.js') !!}"></script>
 </head>
 <?php
 if (Auth::check()) : ?>
@@ -47,7 +48,7 @@ if (Auth::check()) : ?>
         </aside>
     </div>
         
-        <script src="{!! url('js/bootstrap.min.js') !!}"></script>
+        
         <script src="{!! url('assets/js/notification.js')!!}"></script>
         <script src="{!! url('assets/js/search.js')!!}"></script>
         <script src="{!! url('assets/js/jquery.tablesorter.js')!!}"></script>

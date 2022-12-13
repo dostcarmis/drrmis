@@ -38,7 +38,7 @@
     <script src="{!! url('js/code-jquery-ui.1.11.4.min.js')!!}"></script>
     <script src="{!! url('js/jquery-2.2.0.js')!!}"></script>
     <script src="{!! url('js/bootstrap.min.js') !!}"></script>
-    <script src="{!! url('js/jquery-3.6.0.min.js')!!}"></script>
+    {{-- <script src="{!! url('js/jquery-3.6.0.min.js')!!}"></script> --}}
     <script type="text/javascript" src="{!! url('js/jquery-ui.js') !!}"></script>
     <script type="text/javascript" src="{!! url('js/jquery.dataTables.js') !!}"></script>
     <script type="text/javascript" src="{!! url('js/dataTables.bootstrap.js') !!}"></script>

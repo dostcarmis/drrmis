@@ -23,6 +23,7 @@ class Clears extends Model
         "material_id",
         "sRed",
         "dRed",
+        "drain_id",
         "rain",
         "lFactor",
         "land_id",
@@ -92,6 +93,7 @@ class Clears extends Model
             case "2": $springs = "Year-long"; break;
             case "1": $springs = "Only during rainy season"; break;
             case "0": $springs = "No flow/spring "; break;
+            case "": $springs = "Empty value"; break;
             default: $springs = "This is an invalid rating"; break;
         }
         return $springs;
@@ -102,6 +104,7 @@ class Clears extends Model
             case "2": $canals = "No drainage system or; totally clogged, filled with debris"; break;
             case "1": $canals = "Partially clogged or overflows during heavy rains or; water leaks into the slope"; break;
             case "0": $canals = "Good working condition"; break;
+            case "": $canals = "Empty value"; break;
             default: $canals = "This is an invalid rating"; break;
         }
         return $canals;
@@ -113,6 +116,7 @@ class Clears extends Model
             case "2": $rain = "More than 50mm but less than 100mm"; break;
             case "3": $rain = "More than 100mm but less than 200mm"; break;
             case "4": $rain = "More than 200mm"; break;
+            case "": $rain = "Empty value"; break;
             default: $rain = "This is an invalid rating"; break;
         }
         return $rain;

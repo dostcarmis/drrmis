@@ -1170,6 +1170,9 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
 	Route::post('clears-show', 'ClearsController@show');
+	Route::post('clears-save', 'ClearsController@save')->middleware('auth');
+	Route::post('clears-update', 'ClearsController@update')->middleware('auth')->name('c-update');
+	Route::post('clears-delete', 'ClearsController@delete')->middleware('auth')->name('c-delete');
 	/*==============TEST ROUTES================*/
 
 	Route::get('media-2', 'OtherController@index');

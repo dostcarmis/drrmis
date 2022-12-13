@@ -84,7 +84,6 @@ $(document)/* .on('input','#searchFileName',function(e){
     if($('#addsitrepModal #risk_type8').is(':checked') && ($('#addsitrepModal #other_risk').val()).trim() != '' ){
         risks.push(" "+($('#addsitrepModal #other_risk').val()).trim());
     }
-    console.log(risks)
     $('#risk_').val((risks.toString()).trim());
 })
 
