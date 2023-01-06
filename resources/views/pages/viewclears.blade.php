@@ -36,6 +36,17 @@
         margin-bottom: 0 !important;
     }
     .modal { overflow-y: auto; } 
+    #report-view-div .well{font-family: Menlo,Monaco,Consolas,"Courier New",monospace;}
+    #c-print-paper{
+        width: 21cm;
+        overflow: hidden;
+        height: 29.7cm;
+        font-size: 10.5pt;}
+    @media print{
+        @page { 
+            size: A4;  margin: 0.5in; 
+        }
+    }
 </style>
 <div id="page-wrapper">
     <div class="container-fluid" id="clear-fluid">
@@ -45,7 +56,7 @@
             <h4>Map View</h4>
             <div id="addcoords" class="w-100"><span class="ms-3">Click on a report below to view its location</span></div>
             
-            <div class="mt-5">{{-- TABLE --}}
+            <div class="mt-5" id="reports-list-div">{{-- TABLE --}}
                 <h4>Reports List</h4>
                 <div id="alert-update-1" style="display: none" class="alert alert-success alert-dismissible fade in" role="alert">
                     <button type="button" class=" alert-close close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -59,66 +70,162 @@
                     <button type="button" class="close alert-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     Report deleted.
                 </div>
+                <span class="glyphicon glyphicon-filter"></span><span style="font-size: 16px">Filter</span>
+                <div class="d-flex">
+                    <select id="upload-filter" class="form-control" style="max-width: 200px">
+                        <option value="1" selected>All Reports</option>
+                        <option value="2">My Reports</option>
+                    </select>
+                
+                    <select id="fs-filter" class="form-control" style="max-width: 200px">
+                        <option value="1" selected>All Fs</option>
+                        <option value="2">Stable</option>
+                        <option value="3">Marginally Stable</option>
+                        <option value="4">Susceptible</option>
+                        <option value="5">Highly Susceptible</option>
+                    </select>
+                </div>
                 <div id="alert-danger" style="display: none" class="alert alert-danger alert-dismissible fade in" role="alert">
                     <button type="button" class="close alert-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <span id="content"></span>
                 </div>
-                <table id="clears-table" class="table tbldashboard table-hover">
-                    <thead>
-                        <tr>
-                            <th class="text-center">Survey Date</th>
-                            <th class="text-center">Municipality</th>
-                            <th class="text-center">Province</th>
-                            <th class="text-center">Uploaded by</th>
-                            <th class="text-center" data-toggle="tooltip" title="Slope Material">sR</th>
-                            <th class="text-center" data-toggle="tooltip" title="Vegetation">vF</th>
-                            <th class="text-center" data-toggle="tooltip" title="Frequency of slope failure">fF</th>
-                            <th class="text-center" data-toggle="tooltip" title="Presence of springs">sRed</th>
-                            <th class="text-center" data-toggle="tooltip" title="Condition of drainage/canal/culvert within the site/slope">dRed</th>
-                            <th class="text-center" data-toggle="tooltip" title="Amount of rainfall (mm) in 24 hours">Rain</th>
-                            <th class="text-center" data-toggle="tooltip" title="Land use">lF</th>
-                            <th class="text-center" data-toggle="tooltip" title="Slope rating">&alpha;Rating</th>
-                            <th class="text-center" data-toggle="tooltip" title="Factor of stability">Fs</th>
-                            <th class="text-center">#</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($res as $r)
-                            <tr long = "{{$r->survey_longitude}}" lat = "{{$r->survey_latitude}}" report-id="{{$r->id}}">
-                                <td class="c-date">{{date('Y-m-d',strtotime($r->survey_date))}}</td>
-                                <td class="c-m-id" m_id="{{$r->municipality_id}}">{{$r->municipality->name}}</td>
-                                <td class="c-p-id">{{$r->province->name == "Mountain Province" ? "Mt. Province":$r->province->name }}</td>
-                                <td>{{$r->user->first_name." ".$r->user->last_name}}</td>
-                                <td class="text-center c-material" data-toggle="tooltip" mid = "{{$r->material_id}}" title="{{$r->slopeMaterial($r->material_id)}}">{{$r->sRating}}</td>
-                                <td class="text-center c-vegetation" data-toggle="tooltip" title="{{$r->vegetation($r->vFactor)}}">{{$r->vFactor}}</td>
-                                <td class="text-center c-freq" data-toggle="tooltip" title="{{$r->frequency($r->frequency_id)}}" fid = {{$r->frequency_id}}>{{$r->fFactor}}</td>
-                                <td class="text-center c-spring" data-toggle="tooltip" title="{{$r->springs($r->sRed)}}">{{$r->sRed}}</td>
-                                <td class="text-center c-canal" did="{{$r->drain_id}}" data-toggle="tooltip" title="{{$r->canals($r->dRed)}}">{{$r->dRed}}</td>
-                                <td class="text-center c-rain" data-toggle="tooltip" title="{{$r->rain($r->rain)}}">{{$r->rain}}</td>
-                                <td class="text-center c-land" data-toggle="tooltip" lid="{{$r->land_id}}" title="{{$r->land($r->land_id)}}">{{$r->lFactor}}</td>
-                                <td class="text-center c-slope" data-toggle="tooltip" title="{{$r->slopeAngle($r->alphaRating)}}" >{{$r->alphaRating}}</td>
-                                <td class="text-center c-stability strong {{
-                                    ($r->Fs >= 1.2) ? "text-success" : 
-                                    (
-                                        ($r->Fs < 1.2 && $r->Fs >= 1) || ($r->Fs < 1 && $r->Fs >= 0.7) ? "text-warning" : 
+                <div id="the_table">
+                    <table id="clears-table" class="table tbldashboard table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Survey Date</th>
+                                <th class="text-center">Municipality</th>
+                                <th class="text-center">Province</th>
+                                <th class="text-center">Uploaded by</th>
+                                <th class="text-center" data-toggle="tooltip" title="Slope Material">sR</th>
+                                <th class="text-center" data-toggle="tooltip" title="Vegetation">vF</th>
+                                <th class="text-center" data-toggle="tooltip" title="Frequency of slope failure">fF</th>
+                                <th class="text-center" data-toggle="tooltip" title="Presence of springs">sRed</th>
+                                <th class="text-center" data-toggle="tooltip" title="Condition of drainage/canal/culvert within the site/slope">dRed</th>
+                                <th class="text-center" data-toggle="tooltip" title="Amount of rainfall (mm) in 24 hours">Rain</th>
+                                <th class="text-center" data-toggle="tooltip" title="Land use">lF</th>
+                                <th class="text-center" data-toggle="tooltip" title="Slope rating">&alpha;Rating</th>
+                                <th class="text-center" data-toggle="tooltip" title="Factor of stability">Fs</th>
+                                {{-- <th class="text-center">#</th> --}}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($res as $r)
+                                <tr long = "{{$r->survey_longitude}}" lat = "{{$r->survey_latitude}}" report-id="{{$r->id}}" upload-date = "<?php echo date('F d, Y',strtotime($r->created_at)); ?>" >
+                                    <td class="c-date-slot"><span class="c-date">{{date('F d, Y',strtotime($r->survey_date))}}</span><br>
+                                        <span class="defsp spactions">
+                                            <div class="inneractions">
+                                                @if(Auth::user()->id == $r->user_id)
+                                                <a href="#" class="clears-e-btn" data-toggle="modal" data-target="#clears-edit-modal">Edit</a> | 
+                                                <a class="deletepost clears-d-btn" href="#" data-toggle="modal" data-target="#clears-delete-modal" title="Delete">Delete</a>
+                                                @endif
+                                                | 
+                                                <a href="#report-view-div" class="c-report">Report</a>
+                                            </div>								
+                                        </span>
+                                    </td>
+                                    <td class="c-m-id" m_id="{{$r->municipality_id}}">{{$r->municipality->name}}</td>
+                                    <td class="c-p-id">{{$r->province->name == "Mountain Province" ? "Mt. Province":$r->province->name }}</td>
+                                    <td class="c-uploader">{{$r->user->first_name." ".$r->user->last_name}}</td>
+                                    <td class="text-center c-material" data-toggle="tooltip" mid = "{{$r->material_id}}" title="{{$r->slopeMaterial($r->material_id)}}">{{$r->sRating}}</td>
+                                    <td class="text-center c-vegetation" data-toggle="tooltip" title="{{$r->vegetation($r->vFactor)}}">{{$r->vFactor}}</td>
+                                    <td class="text-center c-freq" data-toggle="tooltip" title="{{$r->frequency($r->frequency_id)}}" fid = {{$r->frequency_id}}>{{$r->fFactor}}</td>
+                                    <td class="text-center c-spring" data-toggle="tooltip" title="{{$r->springs($r->sRed)}}">{{$r->sRed}}</td>
+                                    <td class="text-center c-canal" did="{{$r->drain_id}}" data-toggle="tooltip" title="{{$r->canals($r->dRed)}}">{{$r->dRed}}</td>
+                                    <td class="text-center c-rain" data-toggle="tooltip" title="{{$r->rain($r->rain)}}">{{$r->rain}}</td>
+                                    <td class="text-center c-land" data-toggle="tooltip" lid="{{$r->land_id}}" title="{{$r->land($r->land_id)}}">{{$r->lFactor}}</td>
+                                    <td class="text-center c-slope" data-toggle="tooltip" title="{{$r->slopeAngle($r->alphaRating)}}" >{{$r->alphaRating}}</td>
+                                    <td class="text-center c-stability strong {{
+                                        ($r->Fs >= 1.2) ? "text-success" : 
                                         (
-                                            ($r->Fs < 0.7) ? "text-danger" : ""
-                                        )
-                                    )}}" data-toggle="tooltip" title="{{$r->stability($r->Fs)}}">{{$r->Fs}}</td>
-                                <td>
-                                    @if(Auth::user()->id == $r->user_id)
-                                    <div class="btn-group" role="group" aria-label="...">
-                                        <button id="clears-e-btn" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#clears-edit-modal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                        <button id="clears-d-btn" type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#clears-delete-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                                    </div>
-                                    @endif
-                                </td>
-                            </tr>                        
-                        @endforeach
-                    </tbody>
-                </table>
+                                            ($r->Fs < 1.2 && $r->Fs >= 1) || ($r->Fs < 1 && $r->Fs >= 0.7) ? "text-warning" : 
+                                            (
+                                                ($r->Fs < 0.7) ? "text-danger" : ""
+                                            )
+                                        )}}" data-toggle="tooltip" title="{{$r->stability($r->Fs)}}">{{$r->Fs}}</td>
+                                    {{-- <td >
+                                        @if(Auth::user()->id == $r->user_id)
+                                        <div class="btn-group" role="group" aria-label="...">
+                                            <button id="" type="button" class="btn btn-sm btn-primary clears-e-btn" data-toggle="modal" data-target="#clears-edit-modal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                            <button type="button" class="btn btn-sm btn-danger clears-d-btn" data-toggle="modal" data-target="#clears-delete-modal"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                        </div>
+                                        @endif
+                                    </td> --}}
+                                </tr>                        
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            
+            <div class="mt-5 d-none" id="report-view-div">{{-- REPORT --}}
+                <h4>Generated Report</h4>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="well text-left">
+                            Location: <span class="r-municipality"></span>, <span class="r-province"></span><br>
+                            Survey Date: <span class="r-date"></span><br>
+                            Latitude: <span class="r-lat"></span><br>
+                            Longitude: <span class="r-lon"></span><br>
+                            Slope Material: <span class="r-sr"></span><br>
+                            Vegetation: <span class="r-vf"></span><br>
+                            Frequency of slope failure: <span class="r-ff"></span><br>
+                            Presence of springs: <span class="r-sred"></span><br>
+                            Condition of drainage/canal/culvert: <span class="r-dred"></span><br>
+                            Amount of rainfall (mm) in 24 hours: <span class="r-rain"></span><br>
+                            Land use: <span class="r-lf"></span><br>
+                            Slope Rating: <span class="r-slope"></span><br>
+                            Factor of Stability: <span class="r-fs"></span><br>
+                            The slope is <span class="r-fs-desc"></span><br>
+                            This report is submitted by <span class="r-name"></span> on <span class="r-upload-date"></span>.
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <button class="btn btn-sm btn-primary" id="r-print-report">Print Report</button>
+                        <button class="btn btn-sm btn-secondary" id="r-view-map" >View Map</button>
+                        <button class="btn btn-sm btn-secondary" id="r-view-table">Back to list</button>
+                    </div>
+                </div>
+                <div class="d-none">
+                    <iframe name= "print_frame" frameborder="0"></iframe>
+                    <div id="c-print-paper">
+                        <style>
+                            @media print{
+                                @page { 
+                                    size: A4;  margin: 0.5in; 
+                                }
+                                body{
+                                    font-size: 10.5pt;font-family: 'Times New Roman', Times, serif;
+                                }
+                            }
+                        </style>
+                        <div style="text-align: center">
+                            <span style="font-size: 20pt">RAIN-INDUCED LANDSLIDE SUSCEPTIBILITY REPORT</span><br>
+                            <span style="font-size: 14pt">DOST-CAR | DRRMIS</span><br><br>
+                        </div>
+                        <span style="font-size: 13pt">Report Details</span><br>
+                        <div style="border:1px solid rgb(74, 74, 74); width: 100%; "></div>
+                        <br>
+                        <b>Location:</b> <span class="r-municipality"></span>, <span class="r-province"></span><br>
+                        <b>Survey Date:</b> <span class="r-date"></span><br>
+                        <b>Latitude:</b> <span class="r-lat"></span><br>
+                        <b>Longitude:</b> <span class="r-lon"></span><br>
+                        <b>Slope Material:</b> <span class="r-sr"></span><br>
+                        <b>Vegetation:</b> <span class="r-vf"></span><br>
+                        <b>Frequency of slope failure:</b> <span class="r-ff"></span><br>
+                        <b>Presence of springs:</b> <span class="r-sred"></span><br>
+                        <b>Condition of drainage/canal/culvert:</b> <span class="r-dred"></span><br>
+                        <b>Amount of rainfall (mm) in 24 hours:</b> <span class="r-rain"></span><br>
+                        <b>Land use:</b> <span class="r-lf"></span><br>
+                        <b>Slope Rating:</b> <span class="r-slope"></span><br>
+                        <b>Factor of Stability:</b> <span class="r-fs"></span><br>
+                        The slope is <span class="r-fs-desc"></span><br>
+                        This report is submitted by <span class="r-name"></span> on <span class="r-upload-date"></span>.
+                        <br><br><br>
+                        <span style="font-size: 9pt"><i>Report generated by drrmis.dostcar.ph on <span class="c-current-date">{{date('F d, Y')}}</span></i></span>
+                    </div>
+                </div>
+                
+            </div>
             <div class="strong d-flex mt-3">{{-- REFERENCES --}}
                 <h4>Reference Tables</h4>
                 <button id="master-panel-toggler" class="my-auto ms-3 btn btn-sm strong border-none" is_hidden="false">Hide all</button>
@@ -588,7 +695,82 @@
 </script>
 @endsection
 <script>
-    
+    $('#clears-table tbody tr').off().on('click',function(e){
+        if($(e.target).is('button') || $(e.target).is('i') || $(e.target).is('.clears-e-btn') || $(e.target).is('.clears-d-btn') || $(e.target).is('a')){e.preventDefault(); return false;}
+        if($(e.target).not('button') && $(e.target).not('i') && $(e.target).not('.clears-e-btn') && $(e.target).not('.clears-d-btn')){
+            let lat = parseFloat($(e.currentTarget).attr('lat'));
+            let long = parseFloat($(e.currentTarget).attr('long'));
+            newMap(lat,long)
+        }
+    });
+    $('#upload-filter, #fs-filter').off().on('change',function(e){
+        e.stopImmediatePropagation();
+        let val = $('#upload-filter').val();
+        let fs = $('#fs-filter').val();
+        $.ajax({
+            type:"POST",
+            url: "{{route('c-filter')}}",
+            data: {"filter":val,'fs':fs},
+            success:function(res){
+                if(!res.msg || res.msg == undefined || res.msg == null){
+                    $('#the_table').html(res);
+                    $('#clears-table').DataTable();
+                }
+            }
+        });
+        
+    })
+    $('.c-report').off().on('click',function(e){
+        $('#report-view-div, #reports-list-div').toggleClass('d-none');
+        let row = $(e.currentTarget).closest('tr');
+        let date = row.find('.c-date').text();
+        let muni = row.find('.c-m-id').text();
+        let prov = row.find('.c-p-id').text();
+        let material = row.find('.c-material').attr('title');
+        let sRating = row.find('.c-material').attr('title');
+        let veg = row.find('.c-vegetation').attr('title');
+        let freq = row.find('.c-freq').attr('title');
+        let freq_val = row.find('.c-freq').attr('title');
+        let spring = row.find('.c-spring').attr('title');
+        let canal = row.find('.c-canal').attr('title');
+        let rain = row.find('.c-rain').attr('title');
+        let land = row.find('.c-land').attr('title');
+        let slope = row.find('.c-slope').attr('title');
+        let fs = row.find('.c-stability').text();
+        let fs_desc = row.find('.c-stability').attr('title');
+        let long = row.attr('long');
+        let lat = row.attr('lat');
+        let id = row.attr('report-id');
+        let name = row.find('.c-uploader').text();
+        let up_date = row.attr('upload-date');
+        if(spring == "Empty value"){ spring = "Not recorded"}
+        if(canal == "Empty value"){ canal = "Not recorded"}
+        if(rain == "Empty value"){ rain = "Not recorded"}
+        $('.r-municipality').text(muni);
+        $('.r-province').text(prov);
+        $(".r-date").text(date);
+        $(".r-lat").text(lat);
+        $(".r-lon").text(long);
+        $('#r-view-map').attr('lat',lat);
+        $('#r-view-map').attr('lon',long);
+        $(".r-sr").text(sRating);
+        $(".r-vf").text(veg);
+        $(".r-ff").text(freq);
+        $(".r-sred").text(spring);
+        $(".r-dred").text(canal);
+        $(".r-rain").text(rain);
+        $(".r-lf").text(land);
+        $(".r-slope").text(slope);
+        $(".r-fs").text(fs);
+        $(".r-fs-desc").text(fs_desc);
+        $(".r-name").text(name);
+        $('.r-upload-date').text(up_date);
+        window.location='#report-view-div';
+    })
+    $('#r-print-report').off().on('click',function(e){
+        let content = $('#c-print-paper').html();
+        printreport(content);
+    })
     $(document).on('click','.panel-toggler',function(e){
         e.stopImmediatePropagation();
         $(e.target).closest('.panel-body').find('.table').toggle();
@@ -603,29 +785,7 @@
             $(this).text("Show all").attr('is_hidden','true')
         }
     })
-    .on('click','#clears-table tbody tr',function(e){
-        if($(e.target).is('button') || $(e.target).is('i')){e.preventDefault(); return false;}
-        if($(e.target).not('button') && $(e.target).not('i')){
-            let lat = parseFloat($(e.currentTarget).attr('lat'));
-            let long = parseFloat($(e.currentTarget).attr('long'));
-            $('#addcoords').css('height','500px')
-            var map = new google.maps.Map(document.getElementById('addcoords'),{
-                center:{
-                    lat:lat,
-                    lng:long
-                },
-                zoom:13
-            });
-            var marker = new google.maps.Marker({
-                position:{lat:lat,lng:long},
-                map:map,
-                draggable:false
-            });
-            window.location='#h4mapview';
-        }
-        
-    })
-    .on('click','#clears-e-btn',function(e){
+    .on('click','.clears-e-btn',function(e){
         // e.originalEvent.stopImmedatePropagation();
         $('[data-toggle="tooltip"]').tooltip();
         let row = $(e.currentTarget).closest('tr');
@@ -807,7 +967,7 @@
             $('#longitude,#form-c-slon').val(marker.getPosition().lng());
         });
     })
-    .on('click','#clears-d-btn',function(){
+    .on('click','.clears-d-btn',function(){
         let id = $(this).closest('tr').attr('report-id');
         $('#clears-delete').attr('report-id',id);
     })
@@ -846,6 +1006,20 @@
             }
         })
     })
+    .on('mouseenter','#clears-table tr', function(e){
+        $(e.currentTarget).find('.spactions .inneractions').show();
+    })
+    .on('mouseleave','#clears-table tr', function(e){
+        $(e.currentTarget).find('.spactions .inneractions').hide();
+    })
+    .on('click','#r-view-map',function(){
+        let lat = parseFloat($(this).attr('lat'));
+        let long = parseFloat($(this).attr('lon'));
+        newMap(lat,long);
+    })
+    .on('click', '#r-view-table',function(){
+        $('#report-view-div, #reports-list-div').toggleClass('d-none');
+    })
     function compute(){
         let date = $('#clears-edit-form #form-c-date').val();
         let muni = $('#clears-edit-form #form-c-m-id').val();
@@ -879,5 +1053,36 @@
         
         
         $('#form-c-stability').val(Fs);
+    }
+    function newMap(lat,long){
+        $('#addcoords').css('height','500px')
+            var map = new google.maps.Map(document.getElementById('addcoords'),{
+                center:{
+                    lat:lat,
+                    lng:long
+                },
+                zoom:13
+            });
+            var marker = new google.maps.Marker({
+                position:{lat:lat,lng:long},
+                map:map,
+                draggable:false
+            });
+        window.location='#h4mapview';
+    }
+    function printreport(content){
+        var prtContent = content;
+        var WinPrint = window.open('', 'print_frame', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+        WinPrint.document.write('<html><head>');
+        WinPrint.document.write('<base href="' + location.origin + location.pathname + '">');
+        WinPrint.document.write('</head><body>');
+        WinPrint.document.write(prtContent);
+        WinPrint.document.write('</body></html>');
+        WinPrint.document.close();
+        WinPrint.focus();
+        setTimeout(function () {
+            WinPrint.print();
+            WinPrint.close();
+        }, 500);
     }
 </script>

@@ -1,6 +1,5 @@
-<div id="selectfilemodal" class="modal fade" role="dialog">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
     * {
       box-sizing: border-box;
     }
@@ -42,7 +41,8 @@
       text-align: center;
       background-color: #f1f1f1;
     }
-    </style>  
+</style>  
+<div id="selectfilemodal" class="modal fade" role="dialog">
   <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -52,19 +52,19 @@
                     
           <div class="modal-body">
             <ul class="custom-list action">
-              <li><i class="fa fa-folder" aria-hidden="true"></i> RDNA</li>
-              <li><i class="fa fa-folder" aria-hidden="true"></i> PDNA</li>
-              <li><i class="fa fa-folder" aria-hidden="true"></i> Minutes of Meetings</li>
+              <li id="li-fileref-1" class="li-fileref" ref-id="1"><i class="fa fa-folder" aria-hidden="true"></i> RDNA</li>
+              <li id="li-fileref-2" class="li-fileref" ref-id="2"><i class="fa fa-folder" aria-hidden="true"></i> PDNA</li>
+              <li id="li-fileref-3" class="li-fileref" ref-id="3"><i class="fa fa-folder" aria-hidden="true"></i> Minutes of Meetings</li>
               <li id="filetype-list-toggle"><i class="fa fa-folder" aria-hidden="true"></i> File types</li>
             </ul>
             <ul class="custom-list action ms-3" id="filetype-list" style="display: none">
-              <a class="clearformat" href="{{ url("filedownloadpage") }}"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspAll files</li></a>
-              <a class="clearformat" href="{{ url("filedownloadpage?filetype=docx") }}"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspDocuments</li></a>
-              <a class="clearformat" href="{{ url("filedownloadpage?filetype=pptx") }}"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspPresentations</li></a>
-              <a class="clearformat" href="{{ url("filedownloadpage?filetype=xlsx") }}"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspWorkbooks</li></a>
-              <a class="clearformat" href="{{ url("filedownloadpage?filetype=pdf") }}"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspPortable Documents</li></a>
-              <a class="clearformat" href="{{ url("filedownloadpage?filetype=kml") }}"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspMaps (KML)</li></a>
-              <a class="clearformat" href="{{ url("filedownloadpage?filetype=jpeg") }}"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspMaps (JPG)</li></a>
+              <a class="clearformat" filetype="all" ><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspAll files</li></a>
+              <a class="clearformat" filetype="docx"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspDocuments</li></a>
+              <a class="clearformat" filetype="pptx"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspPresentations</li></a>
+              <a class="clearformat" filetype="xlsx"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspWorkbooks</li></a>
+              <a class="clearformat" filetype="pdf" ><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspPortable Documents</li></a>
+              <a class="clearformat" filetype="kml" ><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspMaps (KML)</li></a>
+              <a class="clearformat" filetype="jpeg"><li><i class="fa fa-files-o" aria-hidden="true"></i>&nbspMaps (JPG)</li></a>
             </ul>
             {{-- <div class="row xs-d-none sm-d-none md-d-block">
                 <div class="column">
@@ -212,9 +212,30 @@
     </div>
   </div>
   <script>
-    $(document).on('click','#filetype-list-toggle',function(){
+    $(document).on('click','#filetype-list-toggle',function(e){
+      e.stopImmediatePropagation();
       $('#filetype-list').slideToggle();
       $(this).find('i').toggleClass('fa-folder fa-folder-open')
+    })
+    .on('click','.li-fileref, #filetype-list>a ',function(){
+      let data = {};
+      if($(this).is('.li-fileref')){
+        let ref_id = $(this).attr('ref-id');
+        data = {ref_id:ref_id};
+      }else{
+        let filetype = $(this).attr('filetype');
+        data = {filetype:filetype};
+      }
+      $.ajax({
+        type:"POST",
+        data:data,
+        url:"{{route('km-viewfiles')}}",
+        success:function(res){
+          $('#page-wrapper').html(res);
+          $('#files-repo-table').DataTable();
+          $("#selectfilemodal").modal('hide');
+        }
+      })
     })
   </script>
   @include('pages.adddrrmfile')

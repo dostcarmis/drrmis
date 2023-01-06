@@ -140,6 +140,7 @@
                         <li><i class="fa fa-road" aria-hidden="true"></i> <a href="{{action('RoadController@viewRoadnetworks')}}"><?php echo count($roadnetworks); ?> Roadnetworks</a></li>
                         <li><i class="fa fa-files-o" aria-hidden="true"></i> <a href="{{action('LandslideController@viewLandslides')}}"><?php echo count($landslides); ?> Landslide Reports</a></li>
                         <li><i class="fa fa-files-o" aria-hidden="true"></i> <a href="{{action('FloodController@viewFloods')}}"><?php echo count($floods); ?> Flood Reports</a></li>   
+                        <li id="li-clears"><i class="fa fa-files-o" aria-hidden="true"></i><a href="#">{{$clears_cnt}} Total CLEARS Reports</a></li>
                         <li><i class="fa fa-users" aria-hidden="true"></i> <a href="{{action('UserController@viewusers')}}"><?php echo count($users);?> Users</a></li>
                         <li><i class="demo-icon"></i> <a href="{{action('HydrometController@viewHydrometdata')}}"><?php echo count($sensors); ?> Total Sensors</a></li>
                         

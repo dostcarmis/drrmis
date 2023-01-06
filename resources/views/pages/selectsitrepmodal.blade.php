@@ -44,14 +44,16 @@
           <h4  data-toggle="tooltip"  title="Note: Select the level where you want to download sitrep" class="modal-title">Select Sitrep Level <i class="fa fa-info-circle" text-align="right" aria-hidden="true"></i></h4>
         </div>
           <div class="modal-body">
-            <ul class="custom-list action">
-              <a href="{{ url("sitreps/regional") }}" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspRegional Sitreps</li></a>
-              @if(Auth::check() && Auth::user()->role_id <= 3)
-              <a href="{{ url("sitreps/provincial") }}" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspProvincial Sitreps</li></a>
-              @endif
-              <a href="{{ url("sitreps/municipal") }}" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspMunicipal Sitreps</li></a>
-              <a href="{{ url("sitreps") }}" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspAll Sitreps</li></a>
+            <ul class="custom-list action" id="sitrep-level-list">
+              <a href="#" level="regional" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspRegional Sitreps</li></a>
+              <a href="#" level="provincial" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspProvincial Sitreps</li></a>
+              <a href="#" level="municipal" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspMunicipal Sitreps</li></a>
+              <a href="#" level="all" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspAll Sitreps</li></a>
             </ul>
+            {{-- {{ url("sitreps/regional") }}
+            {{ url("sitreps/provincial") }}
+            {{ url("sitreps/municipal") }}
+            {{ url("sitreps") }} --}}
             {{-- <div class="row xs-d-none sm-d-none md-d-block">
               <div class="column">
                 <a href="{{ url("sitreps/regional") }}" class="clearformat">
@@ -130,7 +132,7 @@
           </div> 
         <div class="modal-footer">
           <div class="col-xs-12 np">
-            <a href="#" data-toggle="modal" data-target="#addsitrepModal" class="btn btn-viewupload xs-mb-3 sm-mb-3">+ Add New File</a>
+            {{-- <a href="#" data-toggle="modal" data-target="#addsitrepModal" class="btn btn-viewupload xs-mb-3 sm-mb-3">+ Add New File</a> --}}
             <a type="button" class="btn btn-danger xs-mb-3 sm-mb-3" data-dismiss="modal">Cancel</a>
           </div> 
           
@@ -139,4 +141,27 @@
       </div>
     </div>
   </div>
+  <script>
+    $(document).on('click','#filetype-list-toggle',function(e){
+      e.stopImmediatePropagation();
+      $('#filetype-list').slideToggle();
+      $(this).find('i').toggleClass('fa-folder fa-folder-open')
+    })
+    .on('click','#sitrep-level-list>a ',function(){
+      let data = {};
+      let ref_id = $(this).attr('level');
+      data = {"sitrep_level":ref_id};
+      
+      $.ajax({
+        type:"POST",
+        data:data,
+        url:"{{route('sitrep-viewfiles')}}",
+        success:function(res){
+          $('#page-wrapper').html(res);
+          $('#sitrep_table').DataTable();
+          $("#selectsitreplevelmodal").modal('hide');
+        }
+      })
+    })
+  </script>
   {{-- @include('pages.addsitrep') --}}

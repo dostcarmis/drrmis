@@ -445,7 +445,7 @@
     .on('click','#innerNav .navbar-ex1-collapse a[data-toggle=collapse]',function(e){
         $('#innerNav .navbar-ex1-collapse a[data-toggle=collapse]').not($(e.currentTarget)).toggleClass('collapsed').attr('aria-expanded','false').next('.collapse').removeClass('in').attr('aria-expanded','false');
     })
-    .on('click','#nav-clears',function(){
+    .on('click','#nav-clears, #li-clears',function(){
         let url = baseURL+"clears-show";
         $.ajax({
             type:"POST",

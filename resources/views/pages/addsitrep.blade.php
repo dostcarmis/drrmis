@@ -15,6 +15,9 @@
                 <input type="text" name="typhoon_name" class="form-control" id="typhoon_name" placeholder="Typhoon name" disabled>
               </div>
               <input type="checkbox" id="risk_type2" name="risk_check" value="Earthquake"> <label for="risk_type2">Earthquake</label><br>
+              <div id="earthquake_hidden" style="display: none" class="ms-3 w-50">
+                <input type="number" step="0.1" max="11" min="0.1" name="magnitude" class="form-control" id="magnitude" placeholder="Magnitude" disabled>
+              </div>
               <input type="checkbox" id="risk_type3" name="risk_check" value="Volcanic Eruption"> <label for="risk_type3">Volcanic Eruption</label><br>
               <input type="checkbox" id="risk_type4" name="risk_check" value="Disease Outbreak"> <label for="risk_type4">Disease Outbreak</label><br> 
               <input type="checkbox" id="risk_type5" name="risk_check" value="Drought"> <label for="risk_type5">Drought</label><br>
@@ -33,7 +36,7 @@
               </div>
               <div class="form-group">
                 <label for="pwd"><i class="fa fa-folder-open" aria-hidden="true"></i> File:</label>
-                <input type="file" name="sitreptoupload" id="sitreptoupload" required>
+                <input type="file" name="sitreptoupload" id="sitreptoupload" required accept=".pdf,.docx,.jpg,.doc,.png">
               </div>		  
           </div>  
 

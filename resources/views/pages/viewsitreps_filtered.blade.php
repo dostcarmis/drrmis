@@ -6,7 +6,7 @@
 		<table class=" table table-hover tblehead" id="sitrep_table">
 			<thead>
 				<tr>
-					<th>Filename {{Auth::user()->role_id}}</th>
+					<th>Filename</th>
 					<th>Risk Type</th>
 					<th>Typhoon</th>
 					<th>Level</th>
