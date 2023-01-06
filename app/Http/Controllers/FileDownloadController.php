@@ -13,15 +13,18 @@ use File;
 class FileDownloadController extends Controller
 {
     public function viewFiledownload(Request $request){
-        $filetype = strtolower($request->filetype);
+        $filetype = $request->has('filetype') && $request->input('filetype') != null? strtolower($request->input('filetype')):null;
         $filename = strtolower($request->filename);
+        $fileref = $request->has('ref_id') && $request->input('ref_id') != null? $request->input('ref_id'):null;
         $files = DB::table('tbl_files as file')
                 ->select('file.*',
                          DB::Raw('CONCAT(user.first_name, " ", user.last_name) as name'))
                 ->join('users as user', 'user.id', '=', 'file.uploadedby');
-                
-        if (!empty($filetype)) {
-
+        if($fileref != null){
+            $files = $files->where('file.files_ref_id',$fileref);
+        }
+        if (!empty($filetype) && $filetype != null) {
+            if($filetype != 'all')
             $files = $files->where('file.filetype', $filetype);
         }
         if (!empty($filename)){
@@ -30,6 +33,7 @@ class FileDownloadController extends Controller
 
         $files = $files->orderBy('file.created_at', 'desc')
                        ->get();
+        
         
         return view('pages.viewfiledownload')->with(['files' => $files ]);
     }
@@ -59,6 +63,7 @@ class FileDownloadController extends Controller
        
         $rules = [
             'fileToUpload' => 'required|mimes:txt,pdf,docx,pptx,xlsx,rar,kml,jpeg,jpg',
+            'file-category' => 'required|numeric|min:1|max:4'
         ];
         $rules = [];
         $v = \Validator::make($request->all(), $rules);
@@ -99,6 +104,7 @@ class FileDownloadController extends Controller
             $row = array(
                 'uploadedby' => $cntUser->id,
                 'filename' => $post['filename'],
+                'files_ref_id' => $post['file-category'],
                 'original_name' => $nospaceFilename,
                 'fileurl' => $fileurl,
                 'file' => $fname,
@@ -111,9 +117,12 @@ class FileDownloadController extends Controller
                     //$fullName = $cntUser->getFullname();
                     $cntUser->activityLogs($request, $msg = "Added a DRRM file-$fileToDisplay");
                     \Session::flash('success_upload', 'File successfully uploaded');
-                    return redirect('filedownloadpage');
+                    // return redirect('filedownloadpage');
+                    return response()->json(["success"=>1, "message"=>'File successfully uploaded']);
+                }else{
+                    return response()->json(["message"=>'Upload failed. Please try again later']);
                 }
-                return redirect('filedownloadpage');
+                return back();
         }
 
 

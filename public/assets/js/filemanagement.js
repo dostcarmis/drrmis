@@ -54,6 +54,16 @@ $(document)/* .on('input','#searchFileName',function(e){
         })
     }
 })
+.on('submit','#savesitrepfile',function(e){
+    let checked = $('input[name=risk_check]:checked').length;
+    if(!checked){
+        alert('Risk type is required');
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        return false;
+
+    }
+})
 .on('change','input[name=risk_check]',function(e){
     if($(e.currentTarget).val() == 'Typhoon' && $(e.currentTarget).is(':checked')){
         $('#addsitrepModal #typhoon_hidden').show();
@@ -61,6 +71,12 @@ $(document)/* .on('input','#searchFileName',function(e){
     }else if($(e.currentTarget).val() == 'Typhoon' && $(e.currentTarget).not(':checked')){
         $('#addsitrepModal #typhoon_hidden').hide();
         $('#addsitrepModal #typhoon_name').attr('disabled',true)
+    }else if($(e.currentTarget).val() == 'Earthquake' && $(e.currentTarget).is(':checked')){
+        $('#addsitrepModal #earthquake_hidden').show();
+        $('#addsitrepModal #magnitude').removeAttr('disabled').focus();
+    }else if($(e.currentTarget).val() == 'Earthquake' && $(e.currentTarget).not(':checked')){
+        $('#addsitrepModal #earthquake_hidden').hide();
+        $('#addsitrepModal #magnitude').attr('disabled',true)
     }else if($(e.currentTarget).val() == 'Other' && $(e.currentTarget).is(':checked')){
         $('#addsitrepModal #other_hidden').show();
         $('#addsitrepModal #other_risk').removeAttr('disabled').focus();

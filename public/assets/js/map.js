@@ -921,7 +921,7 @@ jQuery(function($){
 
         for( var clearscount = 0;clearscount<clears.length;clearscount++){
           var clearsicon = {
-              url: 'assets/images/landslideicon.png'
+              url: 'assets/images/clearsicon.png'
           };                
           var images = [];    
           for (var xyz = 0; xyz < clearsimages.length; xyz++) {

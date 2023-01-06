@@ -17,16 +17,16 @@ class SitrepController extends Controller
         if($request->has('sitrep_level')){
             $this->validate($request,[
                 'sitrep_level'=>'required|string',
-                'val'=>'required|string'
+                // 'val'=>'required|string'
             ]);
             $sitrep_level = strtolower(trim($request->input('sitrep_level')));
             $val = strtolower(trim(strip_tags($request->input('val'))));
             $user = Auth::user();
             $role = $user->role_id;
-            if($sitrep_level != "provincial" && $sitrep_level != "regional" && $sitrep_level != "all"){
+            if($sitrep_level != "provincial" && $sitrep_level != "regional" && $sitrep_level != "all" && $sitrep_level != "municipal"){
                 return response()->json(["success"=>false,"msg"=>"Invalid Level: ".$sitrep_level]);
-            }else if($val == ""){
-                return response()->json(["success"=>false]);
+            // }else if($val == ""){
+            //     return response()->json(["success"=>false]);
             }else{
                 $files = Sitrep::where("filename","like","%".$val."%");
                 if($sitrep_level != "all" && $sitrep_level != null)
@@ -95,7 +95,8 @@ class SitrepController extends Controller
             }
     }
     
-    public function mainviewsitreps($sitrep_level){
+    public function mainviewsitreps(Request $request){
+        $sitrep_level = $request->input('sitrep_level');
         $user = Auth::user();
         $role = $user->role_id;
         $sitreps = Sitrep::where('sitrep_level',$sitrep_level)->orderBy('created_at','desc')->get();
@@ -130,7 +131,14 @@ class SitrepController extends Controller
                 foreach($sitreps as $sit){
                     $uploader_municipality = $sit->uploader->municipality_id;
                     $ins[] = [$uploader_municipality,$municipality];
-                    if(strtolower($sit->sitrep_level) == 'provincial'){continue;}
+                    if(strtolower($sit->sitrep_level) == 'provincial'){
+                        $uploader_province = $sit->uploader->province_id;
+                        $province = $user->province_id;
+                        if($uploader_province == $province){
+                            $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;  
+                            $filtered[] = $sit;
+                        }
+                        continue;}
                     
                     if($uploader_municipality == $municipality && strtolower($sit->sitrep_level) == 'municipal'){
                         $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;  
@@ -212,7 +220,7 @@ class SitrepController extends Controller
 
             $file->move(public_path('fileuploads/sitreps'), $fname);
             $post['typhoon_name'] = !empty($post['typhoon_name']) ? $post['typhoon_name'] : NULL;
-           
+            $post['magnitude'] = !empty($post['magnitude']) ? $post['magnitude'] : NULL;
           
             if($userRole <= 2){
                 $row = array(
@@ -220,6 +228,7 @@ class SitrepController extends Controller
                     'filename' => $post['filename'],
                     'risk_type' => $post['risk'],
                     'typhoon_name' => $post['typhoon_name'],
+                    'magnitude' => $post['magnitude'],
                     'sitrep_level' => 'Regional',
                     'original_name' => $nospaceFilename,
                     'fileurl' => $fileurl,
@@ -232,6 +241,7 @@ class SitrepController extends Controller
                     'filename' => $post['filename'],
                     'risk_type' => $post['risk'],
                     'typhoon_name' => $post['typhoon_name'],
+                    'magnitude' => $post['magnitude'],
                     'sitrep_level' => 'Provincial',
                     'original_name' => $nospaceFilename,
                     'fileurl' => $fileurl,

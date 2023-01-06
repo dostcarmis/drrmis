@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Input;
 use App\Models\User;
 use App\Models\Notifval;
 use App\Models\Notification;
+use App\Clears;
 use Response;
 use Auth;
 use App\Services\Getcsvdataapi;
@@ -112,14 +113,14 @@ class HydrometController extends Controller
 		$roadnetworks = DB::table('tbl_roadnetworks')->orderBy('date', 'desc')->get();
 		$users = DB::table('users')->get();  
 		$sensors = DB::table('tbl_sensors')->whereIn('category_id', [1,2,3,4])->get();
-
+		$clears_cnt = Clears::get()->count();
         $mainarray = $this->getcsvdata->dashboardData();
            
 		JavaScript::put([
             'mainarray' => $mainarray
         ]);
 	        
-		return view('pages.dashboard')->with(['roadnetworks' => $roadnetworks,'floods' => $floods,'landslides' => $landslides,'users' => $users,'mainarray' => $mainarray,'municipalities' => $municipalities,'thresholds' => $thresholds,'sensors' => $sensors,'provinces' => $provinces,'categories' => $categories]);
+		return view('pages.dashboard')->with(['roadnetworks' => $roadnetworks,'floods' => $floods,'landslides' => $landslides,'users' => $users,'mainarray' => $mainarray,'municipalities' => $municipalities,'thresholds' => $thresholds,'sensors' => $sensors,'provinces' => $provinces,'categories' => $categories, 'clears_cnt'=>$clears_cnt]);
 	}	
     public function viewperSensor(){
 		$sensorid = Input::get('sensorid');

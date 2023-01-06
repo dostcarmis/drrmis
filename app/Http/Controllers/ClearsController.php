@@ -175,4 +175,35 @@ class ClearsController extends Controller
             return response()->json(['success'=>false,'msg'=>"Report does not belong to you."]);
         }
     }
+    public function filter(Request $req){
+        if($req->has('filter') && $req->input('filter') != null && $req->has('fs') && $req->input('fs') != null){
+            $fs = $req->input('fs');
+            if($req->input('filter') == 1){
+                switch($fs){
+                    case 1: $res = Clears::get();break;
+                    case 2: $res = Clears::where('Fs','>=',1.2)->get();break;
+                    case 3: $res = Clears::where('Fs','>=',1)->where('Fs','<',1.2)->get();break;
+                    case 4: $res = Clears::where('Fs','>=',0.7)->where('Fs','<',1)->get();break;
+                    case 5: $res = Clears::where('Fs','<',0.7)->get();break;
+                    default: $res = Clears::get();break;
+                }
+                
+            }else{
+                $uid = Auth::user()->id;
+                $res = Clears::where('user_id',$uid);
+                switch($fs){
+                    case 1: $res = $res->get();break;
+                    case 2: $res = $res->where('Fs','>=',1.2)->get();break;
+                    case 3: $res = $res->where('Fs','>=',1)->where('Fs','<',1.2)->get();break;
+                    case 4: $res = $res->where('Fs','>=',0.7)->where('Fs','<',1)->get();break;
+                    case 5: $res = $res->where('Fs','<',0.7)->get();break;
+                    default: $res = $res->get();break;
+                }
+            }
+            $munis = Municipality::get();
+            return view('pages.viewclears_filtered',compact('res','munis'));
+        }else{
+            return response()->json(['msg'=>'Invalid filter value.']);
+        }
+    }
 }

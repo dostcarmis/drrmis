@@ -1115,16 +1115,15 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	]); */
 
 	//DRRM fileDownload pages
-	Route::match(['get', 'post'],'filedownloadpage',[
+	Route::match(['get'],'filedownloadpage',[
 		'uses' => 'FileDownloadController@viewFiledownload',
 		'middleware' => 'auth', //'roles'
 		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
-	Route::match(['get', 'post'],'savefile',[
-		'uses' => 'FileDownloadController@saveFile',
-		'middleware' => 'auth', //'roles'
-		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
-	]);
+	Route::post('viewfiles', 'FileDownloadController@viewFiledownload')->middleware('auth')->name('km-viewfiles');
+	Route::post('savefiles', 'FileDownloadController@saveFile')->middleware('auth')->name('km-savefiles');
+	
+
 	Route::match(['get', 'post'],'filedownloadpage/deletefile/{id}',[
 		'uses' => 'FileDownloadController@deleteFile',
 		'middleware' => 'auth', //'roles'
@@ -1137,6 +1136,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'auth', //'roles'
 		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
+	Route::post('sitrep-viewfiles', 'SitrepController@mainviewsitreps')->middleware('auth')->name('sitrep-viewfiles');
 	Route::match(['get', 'post'],'sitreps/{sitrep_level}',[
 		'uses' => 'SitrepController@mainviewsitreps',
 		'middleware' => 'auth', //'roles'
@@ -1173,6 +1173,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	Route::post('clears-save', 'ClearsController@save')->middleware('auth');
 	Route::post('clears-update', 'ClearsController@update')->middleware('auth')->name('c-update');
 	Route::post('clears-delete', 'ClearsController@delete')->middleware('auth')->name('c-delete');
+	Route::post('clears-filter', 'ClearsController@filter')->middleware('auth')->name('c-filter');
 	/*==============TEST ROUTES================*/
 
 	Route::get('media-2', 'OtherController@index');
