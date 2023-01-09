@@ -16,10 +16,10 @@
             <span>File Category:</span>
             <div class="form-group">
               <select name="file-category" id="file-categ-select" class="form-control" required>
-                @if (Auth::user()->role_id <=2)
+                @if (Auth::check() && Auth::user()->role_id <=2)
                   <option value="1">RDNA</option>
                 @endif
-                @if (Auth::user()->role_id <=3)
+                @if (Auth::check() && Auth::user()->role_id <=3)
                   <option value="2">PDNA</option>
                 @endif
                 <option value="3">Minutes of Meetings</option>
