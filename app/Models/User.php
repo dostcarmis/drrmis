@@ -28,7 +28,8 @@ class User extends Model implements JWTSubject {
         'password',
         'position',
         'designation',
-        'cellphone_num'
+        'cellphone_num',
+        'c_token'
     ];
 
     /**

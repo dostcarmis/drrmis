@@ -67,6 +67,7 @@ class User extends Authenticatable {
         'province_id',
         'cellphone_num', 
         'email','password' ,
+        'c_token'
     ];
 
     /**
