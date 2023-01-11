@@ -30,7 +30,7 @@ class ClearsController extends Controller
             $c_token = $user->c_token;
             if($c_token && $c_token != null && $c_token != ''){
                 if($request->has('overwrite')){
-                    $api_token = Str::random(60);
+                    $api_token = Str::random(80);
                     $user->c_token=$api_token;
                     $user->save();
                     $message = "Login Successful";
@@ -52,7 +52,7 @@ class ClearsController extends Controller
                         'X-success'=>$success,]);
                 }
             }else{
-                $api_token = Str::random(100);
+                $api_token = Str::random(80);
                 $user->c_token=$api_token;
                 $user->save();
                 $message = "Login Successful";
@@ -141,10 +141,15 @@ class ClearsController extends Controller
         if($request->header('Authorization') != null ){
             $token = $request->header('Authorization');
             $user = User::where('c_token',$token)->get()->first();
-            $update = $user->update(['c_token'=>null]);
-            if($update){
-                return response()->json(["success"=>true],200);
+            if($user){
+                $update = $user->update(['c_token'=>null]);
+                if($update){
+                    return response()->json(["success"=>true],200);
+                }
+            }else{
+                return response()->json(["success"=>false,"msg"=>"Token does not exist"],403);
             }
+            
         }
     }
 
