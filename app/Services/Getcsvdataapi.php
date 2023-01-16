@@ -690,20 +690,19 @@ class Getcsvdataapi
     }
  }
 
-    public function getapistocsvbydate($year,$month,$day){
+    public function getapistocsvbydate($year,$month,$day,$id){
         set_time_limit(0);
-        ignore_user_abort(true); 
-        $sensors = DB::table('tbl_sensors')->get();   
+        ignore_user_abort(true);
         $username = 'dostregioncar';
         $password = 'dostCAR1116';
         $context = stream_context_create(array(
-        'http' => array(
-            'header'  => "Authorization: Basic " . base64_encode("$username:$password")
-        ),
-        "ssl"=>array(
-            "verify_peer"=>false,
-            "verify_peer_name"=>false,
-        ),
+            'http' => array(
+                'header'  => "Authorization: Basic " . base64_encode("$username:$password")
+            ),
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
         ));
         $date=date_create($year.'-'.$month.'-'.$day);
         date_sub($date,date_interval_create_from_date_string("1 days"));
@@ -711,20 +710,15 @@ class Getcsvdataapi
         $ystyear = date_format($date,"Y");
         $ystday = date_format($date,"d");
         
-        foreach ($sensors as $sensor) {
-          if($sensor->dev_id != 0){
-            $url = 'https://philsensors.asti.dost.gov.ph/api/data/'.$sensor->dev_id.'/from/'.$ystyear.'-'.$ystmonth.'-'.$ystday.'/to/'.$year.'-'.$month.'-'.$day;
-            //try {
-            //    $data = file_get_contents($url, false, $context);
-            //} catch (Exception $e) {
-            //    throw new Exception( 'Something really gone wrong', 0, $e);
-            //}
-           
+        
+        if($id != 0){
+            $url = 'https://philsensors.asti.dost.gov.ph/api/data/'.$id.'/from/'.$ystyear.'-'.$ystmonth.'-'.$ystday.'/to/'.$year.'-'.$month.'-'.$day;
+            
+        
             try {
                 $data = file_get_contents($url, false, $context);
             } catch (\Throwable $th) {
-                echo "Something went wrong\n";
-            continue;
+                return false;
             }
         
             $mydatas = json_decode($data, true);
@@ -767,23 +761,23 @@ class Getcsvdataapi
                 $rainvalue = 'rain_value';
                 $raincum = 'rain_cum';
                 $airpressure = 'air_pressure';
-           
+        
                 if(!empty($mydatas['data'])){
-                   if (stripos($sensorType, 'Rain') !== false && stripos($sensorType, 'Water') !== false) {
+                if (stripos($sensorType, 'Rain') !== false && stripos($sensorType, 'Water') !== false) {
                         $csvfield = [$datetimeread,
-                                   $rainvalue,
-                                   $waterlevel,
-                                   //$raincum,
-                                   $airpressure,];        
-                   } elseif (stripos($sensorType, 'Rain') !== false && !(stripos($sensorType, 'Water') !== false)) {
+                                $rainvalue,
+                                $waterlevel,
+                                //$raincum,
+                                $airpressure,];        
+                } elseif (stripos($sensorType, 'Rain') !== false && !(stripos($sensorType, 'Water') !== false)) {
                         $csvfield = [$datetimeread,
                                     $rainvalue,            
                                     //$raincum,
                                     $airpressure];
-                   } elseif (!(stripos($sensorType, 'Rain') !== false) && stripos($sensorType, 'Water') !== false) {
+                } elseif (!(stripos($sensorType, 'Rain') !== false) && stripos($sensorType, 'Water') !== false) {
                         $csvfield = [$datetimeread,
-                                     $waterlevel];   
-                 }
+                                    $waterlevel];   
+                }
                 $csvfields = [$csvfield];
                 foreach ($csvfields as $fields) {
                     fputcsv($file, $fields);
@@ -795,7 +789,7 @@ class Getcsvdataapi
                             $newData = [$datetimeread => $mydata['datetime_read'],
                                         $rainvalue => $mydata['rainfall_amount'],
                                         $waterlevel => $mydata['waterlevel'],
-                                       // $raincum => $mydata['rain_cumulative'],
+                                    // $raincum => $mydata['rain_cumulative'],
                                         $airpressure => $mydata['air_pressure']];        
                         } elseif (stripos($sensorType, 'Rain') !== false && !(stripos($sensorType, 'Water') !== false)) {
                             $newData = [$datetimeread => $mydata['datetime_read'],
@@ -813,9 +807,137 @@ class Getcsvdataapi
                     }
 
                 } 
-                fclose($file);                        
+                fclose($file);    
+                return true;                    
+            }else{
+                return false;
             }
-           }
+        }else{
+            return false;
+        }
+    }  
+    public function getapistocsvbydate_($year,$month,$day){
+        set_time_limit(0);
+        ignore_user_abort(true); 
+        $sensors = DB::table('tbl_sensors')->get();   
+        $username = 'dostregioncar';
+        $password = 'dostCAR1116';
+        $context = stream_context_create(array(
+            'http' => array(
+                'header'  => "Authorization: Basic " . base64_encode("$username:$password")
+            ),
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        ));
+        $date=date_create($year.'-'.$month.'-'.$day);
+        date_sub($date,date_interval_create_from_date_string("1 days"));
+        $ystmonth = date_format($date,"m");
+        $ystyear = date_format($date,"Y");
+        $ystday = date_format($date,"d");
+        
+        foreach ($sensors as $sensor) {
+            if($sensor->dev_id != 0){
+                $url = 'https://philsensors.asti.dost.gov.ph/api/data/'.$sensor->dev_id.'/from/'.$ystyear.'-'.$ystmonth.'-'.$ystday.'/to/'.$year.'-'.$month.'-'.$day;
+                
+            
+                try {
+                    $data = file_get_contents($url, false, $context);
+                } catch (\Throwable $th) {
+                    echo "Something went wrong\n";
+                    continue;
+                }
+            
+                $mydatas = json_decode($data, true);
+                $counter = 0;    
+                $finalarray = [];
+                //$filename = '';
+                $sensorType = $mydatas['type_name'];
+                if (!empty($mydatas['province'])) {
+                    $finalarray = array(
+                        array('region: CAR'),
+                        array('province: '.$mydatas['province']),
+                        array('municipality: '.$mydatas['municipality']),
+                        array('posx: '.$mydatas['latitude']),
+                        array('posy: '.$mydatas['longitude']),
+                        //array('imei: '.$mydatas['imei_num']),
+                        array('sensor_name: '.$mydatas['type_name']),
+                    );
+
+                    $province = strtoupper(str_replace(' ', '_', $mydatas['province']));
+                    $location = strtoupper(str_replace(' ', '_', $mydatas['location']));
+                    $flocation = str_replace(',','',$location);
+                    $finallocation = str_replace('.','',$location);
+                    $type = strtoupper(str_replace(' ', '_', $mydatas['type_name']));
+                    $ftype = str_replace('&_','', $type);
+                    $rootfile = public_path() . '/data/'.$year.'/'.$month.'/'.$day.'/';
+                    $filename = $province.'-'.$finallocation.'-'.$ftype.'-'.$year.$month.$day.'.csv';
+                
+                    if (is_dir($rootfile) === false)
+                    {
+                        mkdir($rootfile, 0777, true);
+                    }
+                    $file = fopen($rootfile.$filename,"w");   
+
+                    foreach ($finalarray as $fields) {
+                        fputcsv($file, $fields);
+                    }
+                    
+                    $datetimeread = 'datetime_read';
+                    $waterlevel = 'waterlevel';
+                    $rainvalue = 'rain_value';
+                    $raincum = 'rain_cum';
+                    $airpressure = 'air_pressure';
+            
+                    if(!empty($mydatas['data'])){
+                    if (stripos($sensorType, 'Rain') !== false && stripos($sensorType, 'Water') !== false) {
+                            $csvfield = [$datetimeread,
+                                    $rainvalue,
+                                    $waterlevel,
+                                    //$raincum,
+                                    $airpressure,];        
+                    } elseif (stripos($sensorType, 'Rain') !== false && !(stripos($sensorType, 'Water') !== false)) {
+                            $csvfield = [$datetimeread,
+                                        $rainvalue,            
+                                        //$raincum,
+                                        $airpressure];
+                    } elseif (!(stripos($sensorType, 'Rain') !== false) && stripos($sensorType, 'Water') !== false) {
+                            $csvfield = [$datetimeread,
+                                        $waterlevel];   
+                    }
+                    $csvfields = [$csvfield];
+                    foreach ($csvfields as $fields) {
+                        fputcsv($file, $fields);
+                    }
+                        sort($mydatas['data']);          
+                        $date =  $year.'-'.$month.'-'.$day;
+                        foreach($mydatas['data'] as $mydata){
+                            if (stripos($sensorType, 'Rain') !== false && stripos($sensorType, 'Water') !== false) {
+                                $newData = [$datetimeread => $mydata['datetime_read'],
+                                            $rainvalue => $mydata['rainfall_amount'],
+                                            $waterlevel => $mydata['waterlevel'],
+                                        // $raincum => $mydata['rain_cumulative'],
+                                            $airpressure => $mydata['air_pressure']];        
+                            } elseif (stripos($sensorType, 'Rain') !== false && !(stripos($sensorType, 'Water') !== false)) {
+                                $newData = [$datetimeread => $mydata['datetime_read'],
+                                            $rainvalue => $mydata['rainfall_amount'],            
+                                            //$raincum => $mydata['rain_cumulative'],
+                                            $airpressure => $mydata['air_pressure']];
+                            } elseif (!(stripos($sensorType, 'Rain') !== false) && stripos($sensorType, 'Water') !== false) {
+                                $newData = [$datetimeread => $mydata['datetime_read'],
+                                            $waterlevel => $mydata['waterlevel']];
+                            }
+                            $csvdatetimearray = explode(" ", $newData['datetime_read']); 
+                            if($csvdatetimearray[0] == $date){
+                                fputcsv($file, $newData);                           
+                            }
+                        }
+
+                    } 
+                    fclose($file);                        
+                }
+            }
         }//end loop sensor
     }      
     public function displayaccumulatedtwodays($path,$csv){

@@ -224,10 +224,54 @@ class PagesController extends Controller
                     'municipality' => $municipality,
                     'provinces' => $provinces]);
     }
+    /* NEW CODE */
+
+
+    public function getSensorList(){
+        $sensors = Sensors::select('dev_id')->where('dev_id','!=','0')->get()->toArray();
+        return response()->json(['sensors'=>array_column($sensors,'dev_id')]);
+    }
+
+
+
+    /* NEW CODE */
     public function minerPage()
     {           
-        $sensors = Sensors::all();
+        $sensors = Sensors::select('dev_id')->where('dev_id','!=','0')->get()->toArray();
         return view('pages.miner')->with(['sensors' => $sensors]);
+    }
+    public function saveMiner2(Request $request){
+        set_time_limit(0);
+        ignore_user_abort(true);
+        //$post = $request->all();
+        $id = $request->id;
+        $dateStart = '2022/03/25';
+        $dateEnd = '2022/04/05'; 
+
+        $begin = new DateTime($dateStart);
+		$end = new DateTime($dateEnd);
+		$end = $end->modify( '+1 day' ); 
+        $interval = new DateInterval('P1D');
+        $period = new DatePeriod($begin, $interval, $end);
+    
+		foreach ($period as $key => $_dateList){
+			$dateList[] = $_dateList->format("Y/m/d");
+        }
+        
+		foreach ($dateList as $key => $dateDat){
+            
+            //$dateList[] = $_dateList->format("Y/m/d");
+            $date = explode('/', $dateDat);
+            $year = $date[0];
+            $month = $date[1];
+            $day = $date[2];
+            $status = $this->getcsvdata->getapistocsvbydate($year,$month,$day,$id);
+            if($status){
+                return response()->json(['success'=>true,'id'=>$id]);
+            }else{
+                return response()->json(['error'=>"Something went wrong",'success'=>false,'id'=>$id]);
+            }
+        }
     }
     public function saveMiner(Request $request){
         set_time_limit(0);

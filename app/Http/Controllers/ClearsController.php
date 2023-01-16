@@ -206,4 +206,14 @@ class ClearsController extends Controller
             return response()->json(['msg'=>'Invalid filter value.']);
         }
     }
+    public function logout(Request $request){
+        if($request->header('Authorization') != null ){
+            $token = $request->header('Authorization');
+            $user = User::where('c_token',$token)->get()->first();
+            $update = $user->update(['c_token'=>null]);
+            if($update){
+                return response()->json(["success"=>true],200);
+            }
+        }
+    }
 }

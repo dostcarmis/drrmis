@@ -553,6 +553,13 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	
 
 	Route::get('aboutpage', 'PagesController@aboutpage');
+
+
+
+
+
+
+	//MINER
 	Route::get('minerpage',[ 
 		'uses' => 'PagesController@minerPage',
 		'middleware' => 'roles',
@@ -564,6 +571,22 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'roles',
 		'roles' => ['Developer']
 	]);
+	Route::post('getsensorlist', 'PagesController@getSensorList')->middleware('auth')->name('getsensorlist');
+	Route::post('saveminer2','PagesController@saveMiner2')->middleware('auth')->name('startmining');
+
+	// Route::post('getsensorlist', [
+	// 	'uses' => 'PagesController@getSensorList',
+	// 	'middleware' => 'roles',
+	// 	'roles' => ['Developer']
+	// ]);
+
+
+
+
+
+
+
+
 
 	Route::post('generatekml', [
 		'uses' => 'IncidentsController@generateKml',
