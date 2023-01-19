@@ -145,11 +145,15 @@ class ClearsController extends Controller
                 $update = $user->update(['c_token'=>null]);
                 if($update){
                     return response()->json(["success"=>true],200);
+                }else{
+                    return response()->json(["success"=>false,"message"=>"Not updated"],500);
                 }
             }else{
                 return response()->json(["success"=>false,"msg"=>"Token does not exist"],403);
             }
             
+        }else{
+            return response()->json(["success"=>false,"message"=>"Unauthorized"],401);
         }
     }
 
