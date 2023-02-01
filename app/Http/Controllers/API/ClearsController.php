@@ -86,6 +86,7 @@ class ClearsController extends Controller
             "land_id"=>'required|numeric|min:1|max:8',
             "alphaRating"=>'required|integer|min:2|max:100|in:2,5,10,17,32,100',
             "Fs"=>'required|numeric',
+            'image' => 'image|mimes:jpg,png,jpeg|max:2048',
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->passes()) {
@@ -93,6 +94,11 @@ class ClearsController extends Controller
                 $token = $request->header('Authorization');
                 $user = User::where('c_token',$token)->get()->first();
                 if($user != null){
+                    $pic = null;
+                    if($request->has('image')){
+                        $pic = $user->id."-".$user->username.time().'.'.$request->image->extension();
+                        $request->image->move(public_path('photos/clears'), $pic);
+                    }
                     $make = Clears::create([
                         "municipality_id"=>$request->input("municipality_id"),
                         "user_id"=>$user->id,
@@ -112,6 +118,7 @@ class ClearsController extends Controller
                         "land_id"=>$request->input('land_id'),
                         "alphaRating"=>$request->input("alphaRating"),
                         "Fs"=>$request->input("Fs"),
+                        "image"=>$pic
                     ]);
                     if($make->wasRecentlyCreated){
                         session_unset();
@@ -134,8 +141,19 @@ class ClearsController extends Controller
         }
     }
     public function show(Request $request){
-
-        return response()->json(["res"=>Clears::get()->toArray()]);
+        if($request->header('Authorization') != null ){
+            $token = $request->header('Authorization');
+            $user = User::where('c_token',$token)->get()->first();
+            if($user){
+                $id = $user->id;
+                return response()->json(["res"=>Clears::where('user_id',$id)->get()->toArray()]);
+            }else{
+                return response()->json(["success"=>false,"msg"=>"Token does not exist"],403);
+            }
+        }else{
+            return response()->json(["success"=>false,"message"=>"Unauthorized"],401);
+        }
+        
     }
     public function logout(Request $request){
         if($request->header('Authorization') != null ){

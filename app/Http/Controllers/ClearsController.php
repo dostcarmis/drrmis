@@ -9,6 +9,7 @@ use App\Models\Municipality;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Validator;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class ClearsController extends Controller
@@ -33,13 +34,18 @@ class ClearsController extends Controller
             "land_id"=>'required|numeric|min:1|max:8',
             "alphaRating"=>'required|integer|min:2|max:100|in:2,5,10,17,32,100',
             "Fs"=>'required|numeric',
+            'image' => 'image|mimes:jpg,png,jpeg|max:2048',
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->passes()) {
-            if($request->header('Authorization') != null ){
-                $token = $request->header('Authorization');
-                $user = User::where('c_token',$token)->get()->first();
+            if(Auth::check() ){
+                $user = Auth::user();
                 if($user != null){
+                    $pic = null;
+                    if($request->has('image')){
+                        $pic = $user->id."-".$user->username.time().'.'.$request->image->extension();
+                        $request->image->move(public_path('photos/clears'), $pic);
+                    }
                     $make = Clears::create([
                         "municipality_id"=>$request->input("municipality_id"),
                         "user_id"=>$user->id,
@@ -59,22 +65,22 @@ class ClearsController extends Controller
                         "land_id"=>$request->input('land_id'),
                         "alphaRating"=>$request->input("alphaRating"),
                         "Fs"=>$request->input("Fs"),
+                        "image"=>$pic
                     ]);
+
                     if($make->wasRecentlyCreated){
-                        session_unset();
-                        Auth::logout();
-                        Session::flush();
-                        $message = "Upload Successful";
-                        return view('api.clears.success',compact('message'));
+                        $res = Clears::get();
+                        $munis = Municipality::get();
+                        return view('pages.viewclears_filtered',compact('res','munis'));
                     }else{
                         return response()->json(["success"=>false],500);
                     }
                 }else{
-                    return response()->json(["success"=>false,'token'=>$token],401);
+                    return response()->json(["success"=>false,'msg'=>"Invalid user"],401);
                 }
                 
             }else{
-                return response()->json(["success"=>false],401);
+                return response()->json(["success"=>false,'msg'=>"Invalid user"],401);
             }
         } else {
             return response()->json(["success"=>false,"error"=>$validator->errors()->all()],400);
@@ -106,6 +112,7 @@ class ClearsController extends Controller
             "land_id"=>'required|numeric|min:1|max:8',
             "alphaRating"=>'required|integer|min:2|max:100|in:2,5,10,17,32,100',
             "Fs"=>'required|numeric',
+            'image' => 'image|mimes:jpg,png,jpeg|max:2048',
         ];
         $validator = Validator::make($req->all(), $rules);
         $user = Auth::user();
@@ -114,6 +121,19 @@ class ClearsController extends Controller
         $collection = $report;
         if($report->user_id == $user_id){
             if(is_numeric($req->input("Fs"))){
+                $pic= $report->image;
+                if($req->has('image')){
+                    if($pic != null){
+                        $old = public_path('photos/clears/'.$pic);
+                        if(File::exists($old)){
+                            File::delete($old);
+                        }
+                    }
+                    $pic = $user->id."-".$user->username.time().'.'.$req->image->extension();
+                    $req->image->move(public_path('photos/clears'), $pic);
+                    
+                    
+                }
                 $update = $report->update([
                     "municipality_id"=>$req->input("municipality_id"),
                     "survey_date"=>date("Y-m-d",strtotime($req->input("survey_date"))),
@@ -132,6 +152,7 @@ class ClearsController extends Controller
                     "land_id"=>$req->input("land_id"),
                     "alphaRating"=>$req->input("alphaRating"),
                     "Fs"=>$req->input("Fs"),
+                    "image"=>$pic
                 ]);
                 if($update){
                     $report = $report->toArray();

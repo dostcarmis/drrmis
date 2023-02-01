@@ -18,15 +18,17 @@
     </thead>
     <tbody>
         @foreach ($res as $r)
-            <tr long = "{{$r->survey_longitude}}" lat = "{{$r->survey_latitude}}" report-id="{{$r->id}}">
+            <tr long = "{{$r->survey_longitude}}" lat = "{{$r->survey_latitude}}" report-id="{{$r->id}}" upload-date = "<?php echo date('Y-m-d',strtotime($r->created_at)); ?>" image="{{$r->image}}">
                 <td class="c-date-slot"><span class="c-date">{{date('Y-m-d',strtotime($r->survey_date))}}</span><br>
                     <span class="defsp spactions">
                         <div class="inneractions">
+                            <a href="#" class="clears-v-btn" title="View"><i class="fa fa-eye" aria-hidden="true"></i></a> | 
                             @if(Auth::user()->id == $r->user_id)
-                            <a href="#" class="clears-e-btn" data-toggle="modal" data-target="#clears-edit-modal">Edit</a> | 
-                            <a class="deletepost clears-d-btn" href="#" data-toggle="modal" data-target="#clears-delete-modal" title="Delete">Delete</a>
+                            <a href="#" {{-- class="clears-e-btn" --}} title="Edit" data-toggle="modal" data-target="#clears-edit-modal"><i class="fa fa-pencil clears-e-btn" aria-hidden="true"></i></a> | 
+                            <a class="deletepost clears-d-btn" href="#" data-toggle="modal" data-target="#clears-delete-modal" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                             @endif
-                            | <a href="#report-view-div" class="c-report">Report</a>
+                            | 
+                            <a href="#report-view-div" class="c-report" title="Report"><i class="fa fa-file-o" aria-hidden="true"></i></a>
                         </div>								
                     </span>
                 </td>

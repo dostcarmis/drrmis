@@ -29,6 +29,7 @@ Route::get('loginform','API\ClearsController@showLoginForm');
 Route::post('login-clears','API\ClearsController@login')->name('c-login');
 Route::post('save-clears','API\ClearsController@save');
 Route::post('logout-clears','API\ClearsController@logout');
+Route::post('show-clears','API\ClearsController@show');
 
 Route::group(['middleware' => 'auth:api'], function() {
     

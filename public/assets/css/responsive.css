@@ -965,8 +965,8 @@
 
 
 /* DISPLAY */
-.d-flex{display: flex;}
-.d-none{display: none;}
+.d-flex{display: flex !important;}
+.d-none{display: none !important;}
 /* TYPOGRAPHY */
 .strong{font-weight: bolder;}
 .small-text{font-size: 0.8rem;}
