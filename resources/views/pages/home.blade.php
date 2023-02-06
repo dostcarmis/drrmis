@@ -38,7 +38,7 @@ foreach ($landslides as $landslide) {
 foreach ($clears as $clear) {
 	$clearsimages[$ccounter++] = array(
 		'id' => $clear->id,
-		// 'image' => unserialize($clear->image),
+		'image' => $clear->image//unserialize($clear->image),
 	);
 } 
 ?>
