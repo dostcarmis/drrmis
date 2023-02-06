@@ -134,6 +134,15 @@ class ClearsController extends Controller
                     
                     
                 }
+                if($req->input('del-image') == 'true'){
+                    if($pic != null){
+                        $old = public_path('photos/clears/'.$pic);
+                        if(File::exists($old)){
+                            File::delete($old);
+                        }
+                    }
+                    $pic = null;
+                }
                 $update = $report->update([
                     "municipality_id"=>$req->input("municipality_id"),
                     "survey_date"=>date("Y-m-d",strtotime($req->input("survey_date"))),
