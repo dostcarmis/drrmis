@@ -923,15 +923,15 @@ jQuery(function($){
           var clearsicon = {
               url: 'assets/images/clearsicon.png'
           };                
-          var images = [];    
-          for (var xyz = 0; xyz < clearsimages.length; xyz++) {
-              if(clearsimages[xyz].id == clears[clearscount].id){
-                  myimage = clearsimages[xyz].image;
-                  for (var i = 0; i < myimage.length; i++) {
-                      images[i] = '<div class="mapimages"><a data-fancybox-group="clearsimages-'+xyz+'" href='+myimage[i].replace(/ /g,"%20") +' class="fancybox thumbnail"><img src='+myimage[i].replace(/ /g,"%20") +' class="mres"/></a></div>';
-                  }
-              }
-          }
+          var images = [];  
+          // for (var xyz = 0; xyz < clearsimages.length; xyz++) {
+          //     if(clearsimages[xyz].id == clears[clearscount].id){
+          //         myimage = clearsimages[xyz].image;
+          //         for (var i = 0; i < myimage.length; i++) {
+          //             images[i] = '<div class="mapimages"><a data-fancybox-group="clearsimages-'+xyz+'" href='+myimage[i].replace(/ /g,"%20") +' class="fancybox thumbnail"><img src='+myimage[i].replace(/ /g,"%20") +' class="mres"/></a></div>';
+          //         }
+          //     }
+          // }
           
           clearslocation.push({
               id: clears[clearscount].id, 
