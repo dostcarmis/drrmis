@@ -174,5 +174,40 @@ class ClearsController extends Controller
             return response()->json(["success"=>false,"message"=>"Unauthorized"],401);
         }
     }
+    public function delete(Request $req){
+        $rules = ["clears_id"=>"required|numeric"];
+        $validator = Validator::make($req->all(), $rules);
+        if ($validator->passes()) {
+            if($req->header('Authorization') != null ){
+                $token = $req->header('Authorization');
+                $user = User::where('c_token',$token)->get()->first();
+                if($user != null){
+                    $user_id = $user->id;
+                    $report = Clears::find($req->input('clears_id'));
+                    if($report && $report != null){
+                        if($report->user_id == $user_id){
+                            $delete = $report->delete();
+                            if($delete){
+                                return response()->json(['success'=>true],200);
+                            }else{
+                                return response()->json(['success'=>false,'msg'=>"Delete Failed."],500);
+                            }
+                        }else{
+                            return response()->json(['success'=>false,'msg'=>"Report does not belong to you."], 401);
+                        }
+                    }else{
+                        return response()->json(['success'=>false,'msg'=>"Report does not exist."], 200);
+                    }
+                    
+                    
+                }
+            }else{
+                return response()->json(['success'=>false,'msg'=>"Unauthorized."], 401);
+            }
+        }else{
+            return response()->json(['success'=>false,'msg'=>"Missing data."],400);
+        }
+        
+    }
 
 }

@@ -943,6 +943,8 @@ jQuery(function($){
               lat:clears[clearscount].survey_latitude,
               lang:clears[clearscount].survey_longitude,
               source:clears[clearscount].source,
+              municipality: clears[clearscount].municipality,
+              province: clears[clearscount].province,
               fs: clears[clearscount].Fs,
           });
           
@@ -977,7 +979,7 @@ jQuery(function($){
                               </div>
                               <div class='iw-content l-mapcontent'>
                                   <span class='l-name'>
-                                      ${data.lang}
+                                      ${data.municipality.name}, ${data.province.name}
                                   </span>
                                   <span class='defsp l-date'>
                                       ${monthNames[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}

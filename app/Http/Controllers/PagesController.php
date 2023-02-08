@@ -155,6 +155,8 @@ class PagesController extends Controller
                 $source .= " ".$c->user->province->name;
             }
             $clears[$key]['source'] = $source;
+            $clears[$key]['municipality'] = $c->user->municipality->name;
+            $clears[$key]['province'] = $c->user->province->name;
         }
         JavaScript::put([
             'arrtotals' => $arrtotals,
