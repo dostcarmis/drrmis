@@ -272,9 +272,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td>HR1</td><td class="text-center">123</td><td>Massive and intact hard rock</td></tr>
-                                <tr><td>HR2</td><td class="text-center">117</td><td>Blocky, well-interlocked hard rock, rock mass consisting mostly of cubical blocks</td></tr>
-                                <tr><td>HR3</td><td class="text-center">32</td><td>Very blocky and fractured hard rock (disturbed with multifaceted angular blocks formed by 4 or more discontinuity sets) </td></tr>
+                                <tr><td>HR1</td><td class="text-center">122</td><td>Massive and intact hard rock</td></tr>
+                                <tr><td>HR2</td><td class="text-center">61</td><td>Blocky, well-interlocked hard rock, rock mass consisting mostly of cubical blocks</td></tr>
+                                <tr><td>HR3</td><td class="text-center">25</td><td>Very blocky and fractured hard rock (disturbed with multifaceted angular blocks formed by 4 or more discontinuity sets) </td></tr>
                                 <tr><td>HR4</td><td class="text-center">16</td><td>Disintegrated, unstable rocks and boulders, protruding rock fragments</td></tr>
                                 <tr><td>SR1</td><td class="text-center">30</td><td>Massive and intact soft rock</td></tr>
                                 <tr><td>SR2</td><td class="text-center">15</td><td>Very blocky and fractured soft rock </td></tr>
@@ -576,9 +576,9 @@
                             <legend>Numerator Factors</legend>
                             <label for="form-c-material">Material | <i>sRating</i></label>
                             <select class="form-control" id="form-c-material" name="material_id">
-                                <option value="HR1" data-toggle="tooltip" sr = "123" title="sR = HR1: 123">Massive and intact hard rock</option>
-                                <option value="HR2" data-toggle="tooltip" sr = "117" title="sR = HR2: 117">Blocky, well-interlocked hard rock, rock mass consisting mostly of cubical blocks</option>
-                                <option value="HR3" data-toggle="tooltip" sr = "32" title="sR = HR3: 32">Very blocky and fractured hard rock (disturbed with multifaceted angular blocks formed by 4 or more discontinuity sets)</option>
+                                <option value="HR1" data-toggle="tooltip" sr = "122" title="sR = HR1: 122">Massive and intact hard rock</option>
+                                <option value="HR2" data-toggle="tooltip" sr = "61" title="sR = HR2: 61">Blocky, well-interlocked hard rock, rock mass consisting mostly of cubical blocks</option>
+                                <option value="HR3" data-toggle="tooltip" sr = "25" title="sR = HR3: 25">Very blocky and fractured hard rock (disturbed with multifaceted angular blocks formed by 4 or more discontinuity sets)</option>
                                 <option value="HR4" data-toggle="tooltip" sr = "16" title="sR = HR4: 16">Disintegrated, unstable rocks and boulders, protruding rock fragments</option>
                                 <option value="SR1" data-toggle="tooltip" sr = "30" title="sR = SR1: 30">Massive and intact soft rock</option>
                                 <option value="SR2" data-toggle="tooltip" sr = "15" title="sR = SR2: 15">Very blocky and fractured soft rock</option>
@@ -739,9 +739,9 @@
                             <legend>Numerator Factors</legend>
                             <label for="form-ac-material">Material | <i>sRating</i></label>
                             <select class="form-control" id="form-ac-material" name="material_id">
-                                <option value="HR1" data-toggle="tooltip" sr = "123" title="sR = HR1: 123" selected>Massive and intact hard rock</option>
-                                <option value="HR2" data-toggle="tooltip" sr = "117" title="sR = HR2: 117">Blocky, well-interlocked hard rock, rock mass consisting mostly of cubical blocks</option>
-                                <option value="HR3" data-toggle="tooltip" sr = "32" title="sR = HR3: 32">Very blocky and fractured hard rock (disturbed with multifaceted angular blocks formed by 4 or more discontinuity sets)</option>
+                                <option value="HR1" data-toggle="tooltip" sr = "122" title="sR = HR1: 122" selected>Massive and intact hard rock</option>
+                                <option value="HR2" data-toggle="tooltip" sr = "61" title="sR = HR2: 61">Blocky, well-interlocked hard rock, rock mass consisting mostly of cubical blocks</option>
+                                <option value="HR3" data-toggle="tooltip" sr = "25" title="sR = HR3: 25">Very blocky and fractured hard rock (disturbed with multifaceted angular blocks formed by 4 or more discontinuity sets)</option>
                                 <option value="HR4" data-toggle="tooltip" sr = "16" title="sR = HR4: 16">Disintegrated, unstable rocks and boulders, protruding rock fragments</option>
                                 <option value="SR1" data-toggle="tooltip" sr = "30" title="sR = SR1: 30">Massive and intact soft rock</option>
                                 <option value="SR2" data-toggle="tooltip" sr = "15" title="sR = SR2: 15">Very blocky and fractured soft rock</option>
