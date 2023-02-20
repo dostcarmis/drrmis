@@ -272,10 +272,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td>HR1</td><td class="text-center">100</td><td>Massive and intact hard rock</td></tr>
-                                <tr><td>HR2</td><td class="text-center">45</td><td>Blocky, well-interlocked hard rock, rock mass consisting mostly of cubical blocks</td></tr>
-                                <tr><td>HR3</td><td class="text-center">25</td><td>Very blocky and fractured hard rock (disturbed with multifaceted angular blocks formed by 4 or more discontinuity sets) </td></tr>
-                                <tr><td>HR4</td><td class="text-center">13</td><td>Disintegrated, unstable rocks and boulders, protruding rock fragments</td></tr>
+                                <tr><td>HR1</td><td class="text-center">123</td><td>Massive and intact hard rock</td></tr>
+                                <tr><td>HR2</td><td class="text-center">117</td><td>Blocky, well-interlocked hard rock, rock mass consisting mostly of cubical blocks</td></tr>
+                                <tr><td>HR3</td><td class="text-center">32</td><td>Very blocky and fractured hard rock (disturbed with multifaceted angular blocks formed by 4 or more discontinuity sets) </td></tr>
+                                <tr><td>HR4</td><td class="text-center">16</td><td>Disintegrated, unstable rocks and boulders, protruding rock fragments</td></tr>
                                 <tr><td>SR1</td><td class="text-center">30</td><td>Massive and intact soft rock</td></tr>
                                 <tr><td>SR2</td><td class="text-center">15</td><td>Very blocky and fractured soft rock </td></tr>
                                 <tr><td>HS1</td><td class="text-center">25</td><td>Stiff, cemented and dense gravelly, sandy, silty and clayey soils</td></tr>
@@ -576,10 +576,10 @@
                             <legend>Numerator Factors</legend>
                             <label for="form-c-material">Material | <i>sRating</i></label>
                             <select class="form-control" id="form-c-material" name="material_id">
-                                <option value="HR1" data-toggle="tooltip" sr = "100" title="sR = HR1: 100">Massive and intact hard rock</option>
-                                <option value="HR2" data-toggle="tooltip" sr = "45" title="sR = HR2: 45">Blocky, well-interlocked hard rock, rock mass consisting mostly of cubical blocks</option>
-                                <option value="HR3" data-toggle="tooltip" sr = "25" title="sR = HR3: 25">Very blocky and fractured hard rock (disturbed with multifaceted angular blocks formed by 4 or more discontinuity sets)</option>
-                                <option value="HR4" data-toggle="tooltip" sr = "13" title="sR = HR4: 13">Disintegrated, unstable rocks and boulders, protruding rock fragments</option>
+                                <option value="HR1" data-toggle="tooltip" sr = "123" title="sR = HR1: 123">Massive and intact hard rock</option>
+                                <option value="HR2" data-toggle="tooltip" sr = "117" title="sR = HR2: 117">Blocky, well-interlocked hard rock, rock mass consisting mostly of cubical blocks</option>
+                                <option value="HR3" data-toggle="tooltip" sr = "32" title="sR = HR3: 32">Very blocky and fractured hard rock (disturbed with multifaceted angular blocks formed by 4 or more discontinuity sets)</option>
+                                <option value="HR4" data-toggle="tooltip" sr = "16" title="sR = HR4: 16">Disintegrated, unstable rocks and boulders, protruding rock fragments</option>
                                 <option value="SR1" data-toggle="tooltip" sr = "30" title="sR = SR1: 30">Massive and intact soft rock</option>
                                 <option value="SR2" data-toggle="tooltip" sr = "15" title="sR = SR2: 15">Very blocky and fractured soft rock</option>
                                 <option value="HS1" data-toggle="tooltip" sr = "25" title="sR = HS1: 25">Stiff, cemented and dense gravelly, sandy, silty and clayey soils</option>
@@ -739,10 +739,10 @@
                             <legend>Numerator Factors</legend>
                             <label for="form-ac-material">Material | <i>sRating</i></label>
                             <select class="form-control" id="form-ac-material" name="material_id">
-                                <option value="HR1" data-toggle="tooltip" sr = "100" title="sR = HR1: 100" selected>Massive and intact hard rock</option>
-                                <option value="HR2" data-toggle="tooltip" sr = "45" title="sR = HR2: 45">Blocky, well-interlocked hard rock, rock mass consisting mostly of cubical blocks</option>
-                                <option value="HR3" data-toggle="tooltip" sr = "25" title="sR = HR3: 25">Very blocky and fractured hard rock (disturbed with multifaceted angular blocks formed by 4 or more discontinuity sets)</option>
-                                <option value="HR4" data-toggle="tooltip" sr = "13" title="sR = HR4: 13">Disintegrated, unstable rocks and boulders, protruding rock fragments</option>
+                                <option value="HR1" data-toggle="tooltip" sr = "123" title="sR = HR1: 123" selected>Massive and intact hard rock</option>
+                                <option value="HR2" data-toggle="tooltip" sr = "117" title="sR = HR2: 117">Blocky, well-interlocked hard rock, rock mass consisting mostly of cubical blocks</option>
+                                <option value="HR3" data-toggle="tooltip" sr = "32" title="sR = HR3: 32">Very blocky and fractured hard rock (disturbed with multifaceted angular blocks formed by 4 or more discontinuity sets)</option>
+                                <option value="HR4" data-toggle="tooltip" sr = "16" title="sR = HR4: 16">Disintegrated, unstable rocks and boulders, protruding rock fragments</option>
                                 <option value="SR1" data-toggle="tooltip" sr = "30" title="sR = SR1: 30">Massive and intact soft rock</option>
                                 <option value="SR2" data-toggle="tooltip" sr = "15" title="sR = SR2: 15">Very blocky and fractured soft rock</option>
                                 <option value="HS1" data-toggle="tooltip" sr = "25" title="sR = HS1: 25">Stiff, cemented and dense gravelly, sandy, silty and clayey soils</option>
