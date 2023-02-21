@@ -506,38 +506,28 @@
                                         <option value="{{$m->id}}">{{$m->name}}</option>
                                     @endforeach
                                 </select>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label for="form-c-slat">Latitude</label>
-                                        <input type="number" step="0.000000000000001" max="90" min="-90" class="form-control" name="survey_latitude" id="form-c-slat">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="form-c-slon">Longitude</label>
-                                        <input type="number" step="0.000000000000001" max="180" min="-180" class="form-control" name="survey_longitude" id="form-c-slon">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label style="color: white">white</label>
-                                        <button class="btn btn-primary" id="show-coord-map" data-toggle="modal" data-target="#clears-coordinate-modal" type="button">Select from map</button>                                        
-                                    </div>
-                                </div>
 
                             @else
+                            
                                 <select class="form-control" id="form-c-m-id" name="municipality_id" readonly>
-                                    @foreach ($munis as $m)
-                                        <option value="{{$m->id}}">{{$m->name}}</option>
-                                    @endforeach
+                                    <option value="{{Auth::user()->municipality_id}}">{{Auth::user()->municipality->name}}</option>
                                 </select>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="form-c-slat">Latitude</label>
-                                        <input type="text" readonly class="form-control" name="survey_latitude" id="form-c-slat">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="form-c-slon">Longitude</label>
-                                        <input type="text" readonly class="form-control" name="survey_longitude" id="form-c-slon">
-                                    </div>
-                                </div>
+                                
                             @endif
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="form-c-slat">Latitude</label>
+                                    <input type="number" step="0.000000000000001" max="90" min="-90" class="form-control" name="survey_latitude" id="form-c-slat">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="form-c-slon">Longitude</label>
+                                    <input type="number" step="0.000000000000001" max="180" min="-180" class="form-control" name="survey_longitude" id="form-c-slon">
+                                </div>
+                                <div class="col-md-4">
+                                    <label style="color: white">white</label>
+                                    <button class="btn btn-primary" id="show-coord-map" data-toggle="modal" data-target="#clears-coordinate-modal" type="button">Select from map</button>                                        
+                                </div>
+                            </div>
                             <label>Site Image</label>
                             <div class="d-flex" id="form-image-holder" style="display: none">
                                 <input type="file" accept=".jpg,.jpeg,.png" name="image" id="form-c-image" class="form-control" >
