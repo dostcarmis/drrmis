@@ -76,7 +76,7 @@ class ClearsController extends Controller
             "vFactor"=>'required|numeric|min:1|max:2.5|in:1,1.1,1.2,1.5,2,2.5',
             "fFactor"=>'required|numeric|min:0.5|max:1.2|in:0.5,0.7,1.2',
             "frequency_id"=>'required|numeric|min:0|max:5',
-            "sRating"=>'required|numeric|min:5|max:100|in:5,8,10,16,15,25,30,61,122',
+            "sRating"=>'required|numeric|min:5|max:122|in:5,8,10,16,15,25,30,61,122',
             "material_id"=>'required|string',
             "sRed"=>'integer|min:0|max:2|required_without:rain|required_with:dRed',
             "dRed"=>'integer|min:0|max:2|required_without:rain|required_with:sRed',
