@@ -509,10 +509,9 @@
 
                             @else
                             
-                                <select class="form-control" id="form-c-m-id" name="municipality_id" readonly>
-                                    <option value="{{Auth::user()->municipality_id}}">{{Auth::user()->municipality->name}}</option>
+                                <select class="form-control" id="form-c-m-id" name="municipality_id" readonly required>
+                                    <option value="{{Auth::user()->municipality_id}}" selected>{{Auth::user()->municipality->name}}</option>
                                 </select>
-                                
                             @endif
                             <div class="row">
                                 <div class="col-md-4">
@@ -705,12 +704,11 @@
                                     </div>
                                 </div>
                             @else
-                                <select class="form-control" id="form-ac-m-id" name="municipality_id" readonly>
-                                    {{-- @foreach ($munis as $m)
-                                        <option value="{{$m->id}}">{{$m->name}}</option>
-                                    @endforeach --}}
-                                    <option value="{{Auth::user()->municipality_id}}">{{Auth::user()->municipality->name}}</option>
-                                </select>
+                                <input type="text" class="form-control" id="form-ac-m-id"  readonly value="{{Auth::user()->municipality->name}}">
+                                <input type="hidden" value="{{Auth::user()->municipality_id}}" name="municipality_id">
+                                {{-- <select class="form-control" id="form-ac-m-id" name="municipality_id" readonly>
+                                    <option selected value="{{Auth::user()->municipality_id}}">{{Auth::user()->municipality->name}}</option>
+                                </select> --}}
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label for="form-ac-slat">Latitude</label>
@@ -745,7 +743,7 @@
                                 <option value="SS2" data-toggle="tooltip" sr = "8" title="sR = SS2: 8">Sandy soil</option>
                                 <option value="SS3" data-toggle="tooltip" sr = "5" title="sR = SS3: 5">Clayey/silty soil</option>
                             </select>
-                            <input type="hidden" id="form-ac-sRating" name="sRating" value="100">
+                            <input type="hidden" id="form-ac-sRating" name="sRating" value="122">
                             <label for="form-ac-vegetation">Vegetation | <i>vF</i></label>
                             <select class="form-control" id="form-ac-vegetation" name="vFactor">
                                 <option value="1.0" data-toggle="tooltip" title="vf = 1.0" selected>No vegetation</option>
