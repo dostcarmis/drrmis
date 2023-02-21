@@ -716,18 +716,23 @@
                                 </div>
                             @else
                                 <select class="form-control" id="form-ac-m-id" name="municipality_id" readonly>
-                                    @foreach ($munis as $m)
+                                    {{-- @foreach ($munis as $m)
                                         <option value="{{$m->id}}">{{$m->name}}</option>
-                                    @endforeach
+                                    @endforeach --}}
+                                    <option value="{{Auth::user()->municipality_id}}">{{Auth::user()->municipality->name}}</option>
                                 </select>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <label for="form-ac-slat">Latitude</label>
-                                        <input type="text" readonly class="form-control" name="survey_latitude" id="form-ac-slat">
+                                        <input type="text" class="form-control" name="survey_latitude" id="form-ac-slat">
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <label for="form-ac-slon">Longitude</label>
-                                        <input type="text" readonly class="form-control" name="survey_longitude" id="form-ac-slon">
+                                        <input type="text" class="form-control" name="survey_longitude" id="form-ac-slon">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label style="color: white">white</label>
+                                        <button class="btn btn-primary" id="show-coord-map2" data-toggle="modal" data-target="#clears-coordinate-modal2" type="button">Select from map</button>                                        
                                     </div>
                                 </div>
                             @endif
