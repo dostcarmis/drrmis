@@ -29,7 +29,7 @@ class ClearsController extends Controller
             $user = Auth::user();
             $c_token = $user->c_token;
             if($c_token && $c_token != null && $c_token != ''){
-                if($request->has('overwrite')){
+                if($request->has('overwrite') && $request->input('overwrite') == 1){
                     $api_token = Str::random(80);
                     $user->c_token=$api_token;
                     $user->save();
