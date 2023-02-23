@@ -38,7 +38,6 @@ class Clears extends Model
     public function municipality(){
         return $this->belongsTo(Municipality::class);
     }
-
     public function province(){
         return $this->municipality->belongsTo(Province::class);
     }
@@ -159,5 +158,23 @@ class Clears extends Model
             default: $stability = "This is an invalid rating"; break;
         }
         return $stability;
+    }
+    public static function dirty($report,$req){
+        $dirty=[];
+        $base = $report->toArray();
+        $base['survey_date'] = date('Y-m-d',strtotime($base['survey_date']));
+        foreach($base as $k=>$v){
+            if($req->has($k) && $base[$k] != $req->input($k)){
+                $dirty[] = ['field'=>$k,'from'=>$v,'to'=>$req->input($k)];
+            }
+        }
+        $res = '';
+        for($i = 0; $i < count($dirty); $i++){
+            $field = $dirty[$i]['field'];
+            $from = $dirty[$i]['from'];
+            $to = $dirty[$i]['to'];
+            $res.="Changed $field from $from to $to.\n";
+        }
+        return $res;
     }
 }

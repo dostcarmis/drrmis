@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Clears;
+use App\ClearsAudit;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Validator;
@@ -124,6 +125,14 @@ class ClearsController extends Controller
                         session_unset();
                         Auth::logout();
                         Session::flush();
+                        $c_id = $make->id;
+                        $log = ClearsAudit::create([
+                            'user_id'=>$user->id,
+                            'clears_id'=>$c_id,
+                            'request'=>"CREATE",
+                            'source'=>"WEB",
+                            'remarks'=>"Added report"
+                        ]);
                         $message = "Upload Successful";
                         return view('api.clears.success',compact('message'));
                     }else{
@@ -188,6 +197,13 @@ class ClearsController extends Controller
                         if($report->user_id == $user_id){
                             $delete = $report->delete();
                             if($delete){
+                                $log = ClearsAudit::create([
+                                    'user_id'=>$user->id,
+                                    'clears_id'=>$req->input('clears_id'),
+                                    'request'=>"DELETE",
+                                    'source'=>"MOBILE",
+                                    'remarks'=>"Deleted report"
+                                ]);
                                 return response()->json(['success'=>true],200);
                             }else{
                                 return response()->json(['success'=>false,'msg'=>"Delete Failed."],500);

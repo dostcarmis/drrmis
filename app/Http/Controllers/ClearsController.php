@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Clears;
+use App\ClearsAudit;
 use App\Models\Municipality;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -71,6 +72,14 @@ class ClearsController extends Controller
                     if($make->wasRecentlyCreated){
                         $res = Clears::get();
                         $munis = Municipality::get();
+                        $c_id = $make->id;
+                        $log = ClearsAudit::create([
+                            'user_id'=>$user->id,
+                            'clears_id'=>$c_id,
+                            'request'=>"CREATE",
+                            'source'=>"WEB",
+                            'remarks'=>"Added report"
+                        ]);
                         return view('pages.viewclears_filtered',compact('res','munis'));
                     }else{
                         return response()->json(["success"=>false],500);
@@ -119,6 +128,8 @@ class ClearsController extends Controller
         $user_id = $user->id;
         $report = Clears::findOrFail($req->input('clears_id'));
         $collection = $report;
+        
+        
         if($report->user_id == $user_id){
             if(is_numeric($req->input("Fs"))){
                 $pic= $report->image;
@@ -143,6 +154,8 @@ class ClearsController extends Controller
                     }
                     $pic = null;
                 }
+                $req['image'] = $pic;
+                $dirty = Clears::dirty($report,$req);
                 $update = $report->update([
                     "municipality_id"=>$req->input("municipality_id"),
                     "survey_date"=>date("Y-m-d",strtotime($req->input("survey_date"))),
@@ -176,7 +189,14 @@ class ClearsController extends Controller
                     $report['land'] = $collection->land($collection->land_id);
                     $report['angle'] = $collection->slopeAngle($collection->alphaRating);
                     $report['stability'] = $collection->stability($collection->Fs);
-                    return response()->json(['success'=>true,'report'=>$report]);
+                    $log = ClearsAudit::create([
+                        'user_id'=>$user->id,
+                        'clears_id'=>$req->input('clears_id'),
+                        'request'=>"UPDATE",
+                        'source'=>"WEB",
+                        'remarks'=>$dirty
+                    ]);
+                    return response()->json(['success'=>true,'report'=>$report,'dirty'=>$dirty]);
                 }else{
                     return response()->json(['success'=>false,'msg'=>"Update Failed."]);
                 }
@@ -197,6 +217,13 @@ class ClearsController extends Controller
         if($report->user_id == $user_id){
             $delete = $report->delete();
             if($delete){
+                $log = ClearsAudit::create([
+                    'user_id'=>$user->id,
+                    'clears_id'=>$req->input('clears_id'),
+                    'request'=>"DELETE",
+                    'source'=>"WEB",
+                    'remarks'=>"Deleted report"
+                ]);
                 return response()->json(['success'=>true]);
             }else{
                 return response()->json(['success'=>false,'msg'=>"Delete Failed."]);
