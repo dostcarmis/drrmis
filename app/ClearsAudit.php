@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class ClearsAudit extends Model
@@ -14,5 +14,7 @@ class ClearsAudit extends Model
         'source',
         'remarks'
     ];
-
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

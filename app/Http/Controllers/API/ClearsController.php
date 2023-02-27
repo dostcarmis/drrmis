@@ -195,7 +195,8 @@ class ClearsController extends Controller
                     $report = Clears::find($req->input('clears_id'));
                     if($report && $report != null){
                         if($report->user_id == $user_id){
-                            $delete = $report->delete();
+                            $date = date("Y-m-d H:i:s");
+                            $delete = Clears::where('id',$req->input('clears_id'))->update(['deleted_at'=>$date]);
                             if($delete){
                                 $log = ClearsAudit::create([
                                     'user_id'=>$user->id,

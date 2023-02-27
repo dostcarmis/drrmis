@@ -70,7 +70,7 @@ class ClearsController extends Controller
                     ]);
 
                     if($make->wasRecentlyCreated){
-                        $res = Clears::get();
+                        $res = Clears::where('deleted_at',null)->get();
                         $munis = Municipality::get();
                         $c_id = $make->id;
                         $log = ClearsAudit::create([
@@ -96,10 +96,14 @@ class ClearsController extends Controller
         }
     }
     public function show(Request $request){
-        $res = Clears::get();
+        $res = Clears::where('deleted_at',null)->get();
         $munis = Municipality::get();
         return view('pages.viewclears',compact('res','munis'));
         // return response()->json(["res"=]);
+    }
+    public function showAudit(Request $req){
+        $res = ClearsAudit::get();
+        return view('pages.viewclears_audit',compact('res'));
     }
     public function update(Request $req){
         $rules = [
@@ -215,7 +219,8 @@ class ClearsController extends Controller
         $user_id = $user->id;
         $report = Clears::findOrFail($req->input('clears_id'));
         if($report->user_id == $user_id){
-            $delete = $report->delete();
+            $date = date("Y-m-d H:i:s");
+            $delete = Clears::where('id',$req->input('clears_id'))->update(['deleted_at'=>$date]);
             if($delete){
                 $log = ClearsAudit::create([
                     'user_id'=>$user->id,

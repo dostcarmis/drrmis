@@ -102,6 +102,10 @@
                     </select>
 
                     <button class="btn btn-sm btn-primary" id="clears-a-button" style="margin-left:auto" data-toggle="modal" data-target="#clears-add-modal">Add Report</button>
+                    @if(Auth::user()->role_id == 1)
+                    <button class="btn btn-sm btn-secondary ms-2" id="clears-audit-button">View Audit Log</button>
+                    <button class="btn btn-sm btn-secondary ms-2" id="clears-audit-button2" style="display: none">Hide Audit Log</button>
+                    @endif
                 </div>
                 <div id="alert-danger" style="display: none" class="alert alert-danger alert-dismissible fade in" role="alert">
                     <button type="button" class="close alert-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -167,6 +171,23 @@
                         </tbody>
                     </table>
                 </div>
+                @if(Auth::user()->role_id == 1)
+                <div id="logs_table" style="display: none">
+                    <table id="clears-logs-table" class="table tbldashboard table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">User</th>
+                                <th class="text-center">Report ID</th>
+                                <th class="text-center">Request</th>
+                                <th class="text-center">Remarks</th>
+                                <th class="text-center">Source</th>
+                                <th class="text-center">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                @endif
             </div>
             <div class="mt-5 d-none" id="report-view-div">{{-- REPORT --}}
                 <a id="r-anchor">
@@ -1442,6 +1463,24 @@
                 }
             }
         });
+    })
+    .on('click','#clears-audit-button',function(){
+        $.ajax({
+            url:"{{route('c-audit')}}",
+            type: "POST",
+            data: {},
+            success: function(res){
+                $('#clears-logs-table tbody').html(res);
+                $('#clears-logs-table').DataTable();
+                $('#the_table,#clears-audit-button').hide();
+                $('#logs_table,#clears-audit-button2').show();
+            }
+        })
+    })
+    .on('click','#clears-audit-button2',function(){
+        $('#the_table,#clears-audit-button').show();
+        $('#logs_table,#clears-audit-button2').hide();
+
     })
     
     function compute(material,veg,freq,spring,canal,dred = -1,rain,land,slope,sr,fF,lf,rtype){

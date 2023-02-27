@@ -1194,6 +1194,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	]);
 
 	Route::post('clears-show', 'ClearsController@show');
+	Route::post('clears-audit', 'ClearsController@showAudit')->middleware('auth')->name('c-audit');;
 	Route::post('clears-save', 'ClearsController@save')->middleware('auth')->name('c-save');
 	Route::post('clears-update', 'ClearsController@update')->middleware('auth')->name('c-update');
 	Route::post('clears-delete', 'ClearsController@delete')->middleware('auth')->name('c-delete');
