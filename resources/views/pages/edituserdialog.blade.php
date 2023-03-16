@@ -9,14 +9,14 @@
       <div class="modal-body">
         <p>Are you sure you want to update 
 {{ $users->first_name }} {{ $users->last_name }}
-          ?
+          ? Password will be reset.
          </p>
       </div>
    
       
       <div class="modal-footer">
         <input class="btn btn-confirms" type="submit" value="Update" />
-        <a type="button"  class="btn btn-default" data-dismiss="modal">Cancel</a>
+        <button type="button"  class="btn btn-danger" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>

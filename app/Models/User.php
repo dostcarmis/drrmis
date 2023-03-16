@@ -4,9 +4,11 @@ namespace App\Models;
 use App\Models\Logs;
 use App\Models\Municipality;
 use App\Models\Province;
+use App\RoleModules;
 use App\Role;
 use Illuminate\Database\Eloquent\Model;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Model implements JWTSubject {
     
@@ -54,6 +56,18 @@ class User extends Model implements JWTSubject {
         $notification = new Notification;
         $notification->user()->associate($this);
         return $notification;
+    }
+
+    public function hasAccess($module_id,$crud = null){
+        $access = RoleModules::where('user_id',Auth::user()->id)->where('module_id',$module_id);
+        if($crud != null){
+            $access = $access->where($crud,'1');
+        }
+        $access->get()->toArray();
+        if(count($access) == 1){
+            return true;
+        }
+        return false; 
     }
 
     public function getJWTIdentifier() {

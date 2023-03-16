@@ -53,32 +53,54 @@
 		<input required type="text" name="position" id="position" class="form-control" placeholder="Position/Designation">
 		@if ($errors->has('position')) <span class="reqsymbol">*</span> @endif
 	</div>
-	@if(Auth::user()->role_id == 1)
-	<div class="col-xs-12 col-sm-6 perinputwrap">
-		<label>Province:</label>
-		<select required name="province_id" id="province_id" class="form-control">
-			<option>Select Province</option>
-			@foreach($provinces as $province)
-			<option value="{{ $province->id }}">{{ $province->name }}</option>
-			@endforeach
-		</select>
-	</div>
-	<div class="col-xs-12 col-sm-6 perinputwrap">
-		<label>Municipality:</label>
-		<select required name="municipality_id"  id="municipality_id" class="form-control" disabled="disabled">
+	@if(Auth::user()->role_id == 1 || Auth::user()->hasAccess(6,'create'))
+		@if (Auth::user()->role_id < 3)
+			<div class="col-xs-12 col-sm-6 perinputwrap">
+				<label>Province:</label>
+				<select required name="province_id" id="province_id" class="form-control">
+					<option>Select Province</option>
+					@foreach($provinces as $province)
+					<option value="{{ $province->id }}">{{ $province->name }}</option>
+					@endforeach
+				</select>
+			</div>
+			<div class="col-xs-12 col-sm-6 perinputwrap">
+				<label>Municipality:</label>
+				<select required name="municipality_id"  id="municipality_id" class="form-control" disabled="disabled">
+				
+				</select>
+			</div>
+		@elseif (Auth::user()->role_id == 3)
+			<input type="hidden" name="province_id" value="{{Auth::user()->province_id}}">
+			<div class="col-xs-12 col-sm-6 perinputwrap">
+				<label>Municipality:</label>
+				<select required name="municipality_id"  id="municipality_id" class="form-control">
+					@foreach ($municipalities as $m)
+						<option value="{{$m->id}}">{{$m->name}}</option>						
+					@endforeach
+				</select>
+			</div>
+		@elseif (Auth::user()->role_id == 4)
+			<input type="hidden" name="province_id" value="{{Auth::user()->province_id}}">
+			<input type="hidden" name="municipality_id" value="{{Auth::user()->municipality_id}}">
+		@endif
 		
-		</select>
-	</div>
-	<div class="col-xs-12 perinputwrap">
-		<div class="col-xs-12 np col-sm-6">
-			<label>Role:</label>
-			<select required name="role" id="role" class="form-control">
-			@foreach($roles as $role)
-				<option value="{{ $role->id }}">{{ $role->name }}</option>
-			@endforeach
-			</select>
+		<div class="col-xs-12 perinputwrap">
+			<div class="col-xs-12 np col-sm-6">
+				<label>Role:</label>
+				@if (Auth::user()->role_id <= 2)
+					<select required name="role" id="role" class="form-control">
+					@foreach($roles as $role)
+						<option value="{{ $role->id }}">{{ $role->name }}</option>
+					@endforeach
+					</select>
+				@elseif (Auth::user()->role_id == 3)
+					<input type="text" disabled value="PDRRMC" class="form-control">
+				@elseif (Auth::user()->role_id == 4)
+					<input type="text" disabled value="RA Team Member" class="form-control">
+				@endif
+			</div>
 		</div>
-	</div>
 	@endif
 	
 		

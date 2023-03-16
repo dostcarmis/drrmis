@@ -6,9 +6,11 @@ use App\Models\Logs;
 use App\Models\Municipality;
 use App\Models\Province;
 use App\Role;
+use App\Modules;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable {
 
@@ -32,7 +34,6 @@ class User extends Authenticatable {
     {
         return $this->belongsToMany('App\Role', 'user_role', 'user_id', 'role_id');
     }
-    
     public function hasAnyRole($roles)
     {
         if (is_array($roles)) {
@@ -48,7 +49,6 @@ class User extends Authenticatable {
         }
         return false;
     }
-    
     public function hasRole($role)
     {
         if ($this->roles()->where('name', $role)->first()) {
@@ -56,7 +56,73 @@ class User extends Authenticatable {
         }
         return false;
     }
-    
+    public function hasAccess($module_id,$crud = null){
+        /* 
+        REFERENCE FOR MODULE ID
+        | 1	KM Resources
+        | 2	SitReps
+        | 3	Incident Reports
+        | 4	CLEARS
+        | 5	PDRA
+        | 6	Users
+        | 7 Report Generation
+        | 8 Libraries
+        */
+        $access = RoleModules::where('user_id',Auth::user()->id)->where('module_id',$module_id);
+        if($crud != null){
+            $crud = strtolower(trim($crud));
+            $access = $access->where($crud,'1');
+            
+            $access = $access->get()->toArray();
+            if(count($access) == 1){
+                
+                return true;
+            }
+            return false; 
+        }
+        else{
+            $access = $access->get();
+            if($access && count($access) > 0){
+                $access = $access->toArray();
+                if($access[0]['create'] == 0
+                && $access[0]['read'] == 0
+                && $access[0]['update'] == 0
+                && $access[0]['delete'] == 0
+                ){
+                    return false;
+                }
+                return true;
+            }else{
+                return false;
+            }
+
+        }
+    }
+    public function print($module_id){
+        $rm = RoleModules::where('user_id',Auth::user()->id)->where('module_id',$module_id)->get();
+        $rm = $rm->toArray();
+        return var_dump($rm[0]);
+    }
+    public function access(){
+        return $this->hasMany(RoleModules::class);
+    }
+    public function noAccess(){
+        $access = array_column($this->access->toArray(),'module_id');
+        $modules = Modules::whereNotIn('id',$access)->get();
+        return $modules;
+    }
+    public function module($module_id = null){
+        if($module_id != null){
+            if(RoleModules::where('user_id',$this->id)->where('module_id',$module_id)->exists()){
+                $module = Modules::find($module_id);
+            }else{
+                $module = false;
+            }
+        }else{
+            $module = RoleModules::where('user_id',$this->id)->get();
+        }
+        return $module;
+    }
     protected $fillable = [
         'first_name',
         'last_name',

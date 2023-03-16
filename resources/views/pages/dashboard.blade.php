@@ -23,11 +23,13 @@
                     <div class="col-xs-12 col-sm-4 dashboard-3-column">
                         <h3>Quick Links</h3>
                         <ul>
+                            @if (Auth::user()->hasAccess(3,'create'))
                             <li><a href="{{action('LandslideController@viewaddLandslide')}}"><span class="glyphicon glyphicon-plus-sign"></span> Add Landslide Report</a></li>
                             <li><a href="{{action('FloodController@viewaddFlood')}}"><span class="glyphicon glyphicon-plus-sign"></span> Add Flood Report</a></li>
                             <li><a href="{{action('RoadController@viewaddRoadnetwork')}}"><span class="glyphicon glyphicon-plus-sign"></span> Add Road Network Report</a></li>
                             <li><a href="{{ action('FiresController@viewaddFire') }}"><span class="glyphicon glyphicon-plus-sign"></span> Add Fire Report</a></li>
                             <li><a href="{{ action('VehicularController@viewaddvehicular') }}"><span class="glyphicon glyphicon-plus-sign"></span> Add Vehicular Report</a></li>
+                            @endif
                             <li><a href="{{action('ReportController@showReport')}}"><span class="fa fa-download"></span> Download Sensors Data</a></li>
                         </ul>
                     </div>
@@ -55,7 +57,7 @@
         </div>
     </div>
 </div>
-<!-- /.row -->
+
 <div class="row">
     <div class="col-xs-12 col-sm-4 col-lg-4 dshboacol">
         <div class="panel panel-default">

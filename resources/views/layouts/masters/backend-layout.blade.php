@@ -98,6 +98,19 @@
     <script src="{!! url('assets/js/responsive.js')!!}"></script>
     <script src="{!! url('assets/js/confirm2.js')!!}"></script>
     <script src="{!! url('assets/js/pagelayouts.js')!!}"></script>
+    <script>
+        function fireToast(icon,text){
+            $.toast({
+                text: text, // Text that is to be shown in the toast
+                icon: icon, // Type of toast icon
+                showHideTransition: 'fade', // fade, slide or plain
+                allowToastClose: true, // Boolean value true or false
+                hideAfter: 3000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+                stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+                position: 'top-right', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+            })
+        }
+    </script>
      @yield('page-js-files')
 
   

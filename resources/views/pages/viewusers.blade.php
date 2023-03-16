@@ -12,10 +12,12 @@
 		<p style="color:red"><?php echo Session::get('message'); ?></p>
 		<div class="col-xs-12 ulpaginations np">
 			<div class="col-xs-12 col-sm-8 np">
+				@if(Auth::user()->hasAccess(6,'create'))
 				<a id="btnadd-location" title="Add User" class="btnadd-location btn" href="{{ action("UserController@viewadduser") }}"><span class="glyphicon glyphicon-plus"></span> Add User</a>
-
+				@endif
+				@if(Auth::user()->hasAccess(6,'delete'))
 				<button disabled="disabled" type="submit" class="btn btn-deleteselected" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-			
+				@endif
 			</div>
 			<div class="col-xs-12 col-sm-4">
 				<div class="col-xs-12 np text-right">
@@ -42,12 +44,19 @@
 				<tr>
 					<td><input class="chbox" name="chks[]" value="{{$user->id}}" type="checkbox"></td>
 					<td>
-
-					<a class="desctitle" href="<?php echo url('edituser'); ?>/<?php echo $user->id?>">{{ $user->first_name }} {{ $user->last_name }}</a>
+						@if(Auth::user()->hasAccess(6,'update'))
+						<a class="desctitle" href="<?php echo url('edituser'); ?>/<?php echo $user->id?>">{{ $user->first_name }} {{ $user->last_name }}</a>
+						@else
+						<strong>{{ $user->first_name }} {{ $user->last_name }}</strong>
+						@endif
 						<span class="defsp spactions">
 							<div class="inneractions">
+								@if(Auth::user()->hasAccess(6,'update'))
 								<a href="<?php echo url('edituser'); ?>/<?php echo $user->id; ?>">Edit</a> | 
+								@endif
+								@if(Auth::user()->hasAccess(6,'delete'))
 								<a class="deletepost" href="#" id="{{$user->id}}" value="{{$user->id}}" title="Delete">Delete</a>
+								@endif
 							</div>								
 						</span>
 					</td>

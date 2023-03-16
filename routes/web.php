@@ -1192,13 +1192,32 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'auth', //'roles'
 		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
-
+	/*==============CLEARS ROUTES================*/
 	Route::post('clears-show', 'ClearsController@show');
 	Route::post('clears-audit', 'ClearsController@showAudit')->middleware('auth')->name('c-audit');;
 	Route::post('clears-save', 'ClearsController@save')->middleware('auth')->name('c-save');
 	Route::post('clears-update', 'ClearsController@update')->middleware('auth')->name('c-update');
 	Route::post('clears-delete', 'ClearsController@delete')->middleware('auth')->name('c-delete');
 	Route::post('clears-filter', 'ClearsController@filter')->middleware('auth')->name('c-filter');
+
+	/*==============MODULE ACCESS ROUTES================*/
+	Route::post('user-accesses', 'RoleModulesController@show')->middleware('auth');
+	Route::post('ma-search', 'RoleModulesController@search')->middleware('auth')->name('ma-search');
+	Route::post('ma-save', 'RoleModulesController@save')->middleware('auth')->name('ma-save');
+
+	Route::post('modules', 'ModulesController@show')->middleware('auth')->name('modules');
+	Route::post('modules-crud', 'ModulesController@crud')->middleware('auth')->name('modules-crud');
+	Route::post('modules-userlist', 'ModulesController@userlist')->middleware('auth')->name('modules-userlist');
+	Route::post('modules-edit', 'ModulesController@editform')->middleware('auth')->name('modules-edit');
+
+	Route::post('modules-update', 'ModuleDefaultsController@update')->middleware('auth')->name('modules-update');
+	Route::post('save-module', 'ModuleDefaultsController@save')->middleware('auth')->name('save-module');
+
+	/*==============ROLES ROUTES================*/
+	Route::post('rolesmgmt', 'RoleController@show')->middleware('auth')->name('rolesmgmt');
+	Route::post('role-save', 'RoleController@save')->middleware('auth')->name('role-save');
+	Route::post('role-update', 'RoleController@update')->middleware('auth')->name('role-update');
+	Route::post('role-delete', 'RoleController@delete')->middleware('auth')->name('role-delete');
 
 	/*==============TEST ROUTES================*/
 

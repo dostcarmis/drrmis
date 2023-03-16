@@ -1081,6 +1081,8 @@
 .mx-auto{margin-right:auto !important; margin-left: auto !important;}
 .my-auto{margin-top: auto !important; margin-bottom: auto !important;}
 .m-auto{margin: auto auto !important;}
+.ms-auto{margin-left: auto !important;}
+.me-auto{margin-right:auto !important;}
 .mx-1 {margin: 0 0.25rem!important;}
 .mx-2 {margin: 0 0.5rem!important;}
 .mx-3 {margin: 0 1rem!important;}

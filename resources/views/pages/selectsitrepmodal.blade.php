@@ -45,10 +45,10 @@
         </div>
           <div class="modal-body">
             <ul class="custom-list action" id="sitrep-level-list">
-              <a href="#" level="regional" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspRegional Sitreps</li></a>
-              <a href="#" level="provincial" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspProvincial Sitreps</li></a>
-              <a href="#" level="municipal" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspMunicipal Sitreps</li></a>
-              <a href="#" level="all" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspAll Sitreps</li></a>
+              <a level="regional" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspRegional Sitreps</li></a>
+              <a level="provincial" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspProvincial Sitreps</li></a>
+              <a level="municipal" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspMunicipal Sitreps</li></a>
+              <a level="all" class="clearformat"><li><i class="fa fa-folder" aria-hidden="true"></i>&nbspAll Sitreps</li></a>
             </ul>
             {{-- {{ url("sitreps/regional") }}
             {{ url("sitreps/provincial") }}
@@ -147,11 +147,12 @@
       $('#filetype-list').slideToggle();
       $(this).find('i').toggleClass('fa-folder fa-folder-open')
     })
-    .on('click','#sitrep-level-list>a ',function(){
+    .on('click','#sitrep-level-list>a ',function(e){
+      e.stopImmediatePropagation();
+      // alert();
       let data = {};
       let ref_id = $(this).attr('level');
       data = {"sitrep_level":ref_id};
-      
       $.ajax({
         type:"POST",
         data:data,

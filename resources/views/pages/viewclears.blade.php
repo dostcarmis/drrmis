@@ -138,11 +138,16 @@
                                     <span class="defsp spactions">
                                         <div class="inneractions">
                                             <a href="#" class="clears-v-btn" title="View"><i class="fa fa-eye" aria-hidden="true"></i></a> | 
-                                            @if(Auth::user()->id == $r->user_id)
+                                            @if(Auth::user()->id == $r->user_id )
+                                            @if (Auth::user()->hasAccess(4,'update'))
                                             <a href="#" {{-- class="clears-e-btn" --}} title="Edit" data-toggle="modal" data-target="#clears-edit-modal"><i class="fa fa-pencil clears-e-btn" aria-hidden="true"></i></a> | 
+                                            @endif
+                                            @if (Auth::user()->hasAccess(4,'delete'))
                                             <a class="deletepost clears-d-btn" href="#" data-toggle="modal" data-target="#clears-delete-modal" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             @endif
                                             | 
+                                            
+                                            @endif
                                             <a href="#report-view-div" class="c-report" title="Report"><i class="fa fa-file-o" aria-hidden="true"></i></a>
                                         </div>								
                                     </span>

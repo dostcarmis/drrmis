@@ -24,12 +24,17 @@
 			<input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" value="<?= $users->last_name ?>">
 			@if ($errors->has('last_name')) <span class="reqsymbol">*</span> @endif
 		</div>
-	<div class="col-xs-12 col-sm-6 perinputwrap">
+	<div class="col-xs-12 col-sm-4 perinputwrap">
 		<label>Email</label>
 		<input type="text" name="email" id="email" class="form-control" placeholder="Email Address" value="<?= $users->email ?>">
 		@if ($errors->has('email')) <span class="reqsymbol">*</span> @endif
 	</div>
-	<div class="col-xs-12 col-sm-6 perinputwrap">
+	<div class="col-xs-12 col-sm-4 perinputwrap">
+		<label for="username">Username</label>
+		<input type="text" name="username" id="username" class="form-control" placeholder="Username" value="<?= $users->username ?>">
+		@if ($errors->has('username')) <span class="reqsymbol">*</span> @endif
+	</div>
+	<div class="col-xs-12 col-sm-4 perinputwrap">
 		<label>Number</label>
 		<input type="text" name="cellphone_num" id="cellphone_num" class="form-control" placeholder="Cellphone Number" value="<?= $users->cellphone_num ?>">
 		@if ($errors->has('cellphone_num')) <span class="reqsymbol">*</span> @endif

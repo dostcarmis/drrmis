@@ -7,7 +7,7 @@ use DB;
 // use Auth;
 use Illuminate\Support\Facades\Auth;
 use File;
-use App\Models\User;
+use App\User;
 use App\Sitrep;
 use App\Role;
 
@@ -103,73 +103,73 @@ class SitrepController extends Controller
         if(strtolower($sitrep_level) == 'all' || strtolower($sitrep_level) == '' || !isset($sitrep_level)){
             $sitreps = Sitrep::orderBy('created_at','desc')->get();
         }
-        if($role > 4){
-            return back();
-        }
-        $filtered = [];
-        if(strtolower($sitrep_level) != 'regional'){
-            
-            if($role == 3){ // provincial
-                $province = $user->province_id;
+        if($user->hasAccess(2,'read')){
+
+        
+            $filtered = [];
+            if(strtolower($sitrep_level) != 'regional'){
                 
-                foreach($sitreps as $sit){
-                    $uploader_province = $sit->uploader->province_id;
-                    if($uploader_province == $province && strtolower($sit->sitrep_level) != 'regional'){
-                        $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;
-                        $filtered[] = $sit;
-                        continue;
-                    }
-                    if(strtolower($sitrep_level) == 'all' && strtolower($sit->sitrep_level) == 'regional'){
-                        $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;  
-                        $filtered[] = $sit;
-                        continue;
-                    }
-                }
-            }else if($role == 4){ //municipal
-                $municipality = $user->municipality_id;
-                
-                foreach($sitreps as $sit){
-                    $uploader_municipality = $sit->uploader->municipality_id;
-                    $ins[] = [$uploader_municipality,$municipality];
-                    if(strtolower($sit->sitrep_level) == 'provincial'){
+                if($role == 3){ // provincial
+                    $province = $user->province_id;
+                    
+                    foreach($sitreps as $sit){
                         $uploader_province = $sit->uploader->province_id;
-                        $province = $user->province_id;
-                        if($uploader_province == $province){
+                        if($uploader_province == $province && strtolower($sit->sitrep_level) != 'regional'){
+                            $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;
+                            $filtered[] = $sit;
+                            continue;
+                        }
+                        if(strtolower($sitrep_level) == 'all' && strtolower($sit->sitrep_level) == 'regional'){
                             $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;  
                             $filtered[] = $sit;
+                            continue;
                         }
-                        continue;}
+                    }
+                }else if($role == 4){ //municipal
+                    $municipality = $user->municipality_id;
                     
-                    if($uploader_municipality == $municipality && strtolower($sit->sitrep_level) == 'municipal'){
-                        $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;  
-                        $filtered[] = $sit;
-                        continue;
+                    foreach($sitreps as $sit){
+                        $uploader_municipality = $sit->uploader->municipality_id;
+                        $ins[] = [$uploader_municipality,$municipality];
+                        if(strtolower($sit->sitrep_level) == 'provincial'){
+                            $uploader_province = $sit->uploader->province_id;
+                            $province = $user->province_id;
+                            if($uploader_province == $province){
+                                $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;  
+                                $filtered[] = $sit;
+                            }
+                            continue;}
+                        
+                        if($uploader_municipality == $municipality && strtolower($sit->sitrep_level) == 'municipal'){
+                            $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;  
+                            $filtered[] = $sit;
+                            continue;
+                        }
+                        if(strtolower($sitrep_level) == 'all' && strtolower($sit->sitrep_level) == 'regional'){
+                            $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;  
+                            $filtered[] = $sit;
+                            continue;
+                        }
                     }
-                    if(strtolower($sitrep_level) == 'all' && strtolower($sit->sitrep_level) == 'regional'){
-                        $sit->name = $sit->uploader->first_name." ".$sit->uploader->last_name;  
-                        $filtered[] = $sit;
-                        continue;
-                    }
+                    
+                }else if($role == 1 || $role == 2){
+                    $filtered = $sitreps;
+                }
+            }else{
+                if($role <=4){
+                    $filtered = $filtered = $sitreps;
+                }else{
+                    $filtered= [];
                 }
                 
-            }else if($role == 1 || $role == 2){
-                $filtered = $sitreps;
-            }
-        }else{
-            if($role <=4){
-                $filtered = $filtered = $sitreps;
-            }else{
-                $filtered= [];
+                
             }
             
+
+
             
+            return view('pages.viewsitreps')->with(['sitrep' => $filtered]);
         }
-        
-
-
-        
-        return view('pages.viewsitreps')->with(['sitrep' => $filtered]);
-    
     }
     
 
