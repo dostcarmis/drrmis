@@ -217,6 +217,7 @@
         e.preventDefault();
         e.stopImmediatePropagation();
         let cnt = $('.m-select-role:checked').length;
+        var old = $('#m-edit-name').attr('value');
         if(cnt == 0){alert("No roles selected"); return false;}
         else{
             data = {};
@@ -257,7 +258,10 @@
                     fireToast('info','Updating module')
                 },
                 success:function(res){
-                    $('.nav-module').text(data['name'])
+                    $('.nav-module').each(function(item){
+                        if($(this).text() == old)
+                        $(this).text(data['name'])
+                    })
                     fireToast(res.success, res.message)
                 }
             })
