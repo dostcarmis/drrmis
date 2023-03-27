@@ -164,7 +164,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-9">
 					<span class="defsp spprofile">
-						<input type="text" name="position" placeholder="Position" value="{{ $user->position }}" class="proformtext form-control">
+						<input type="text" name="position" placeholder="Position" value="{{ $user->position != null ||$user->position != '' ? $user->position : 'No Position' }}" class="proformtext form-control">
 					</span></div>
 			</div>
 			{{-- <div class="col-xs-12 col-sm-12 per-labels">
