@@ -11,6 +11,7 @@ class Clears extends Model
 {
     protected $table = 'tbl_clears';
     protected $fillable = [
+        'barangay_id',
         "municipality_id",
         "user_id",
         "survey_date",

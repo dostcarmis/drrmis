@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Barangays;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -31,5 +32,15 @@ class Municipality extends Model
 
     public function province(){
         return $this->belongsTo(Province::class);
+    }
+    public function barangays($municipal_id = null){
+        if($municipal_id != null){
+            $m = Municipality::find($municipal_id);
+            return $m->barangays;
+        }
+        return $this->hasMany(Barangays::class,'municipality_id')->orderBy('name');
+    }
+    public function barangay($id){
+        return Barangays::find($id);
     }
 }

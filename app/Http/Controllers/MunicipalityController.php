@@ -105,4 +105,14 @@ class MunicipalityController extends Controller
          return redirect('viewmunicipality');
       }
    }
+
+   public function getbarangays(Request $req){
+      if($req->has('municipal_id')){
+         $municipal_id = $req->input('municipal_id');
+         $m = Municipality::find($municipal_id);
+         return response()->json(['barangays'=>$m->barangays]);
+      }else{
+         return response()->json([],400);
+      }
+   }
 }

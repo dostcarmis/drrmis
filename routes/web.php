@@ -62,42 +62,35 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	
 	Route::match(['get', 'post'], 'viewsensor',[
 		'uses' => 'SensorsController@viewSensor',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 
 	Route::match(['get', 'post'],'destroymultiplesensors',[
 		'uses' => 'SensorsController@destroymultipleSensors',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('viewpersensor',[
 		'uses' => 'HydrometController@viewperSensor',
 	]);
 	Route::get('addsensor',[
 		'uses' => 'SensorsController@viewaddSensor',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::match(['get', 'post'],'editsensor/{id}', [
 		'uses' => 'SensorsController@editSensor',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('savesensor', [
 		'uses' => 'SensorsController@saveSensor',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('updatesensor',[
 		'uses' =>  'SensorsController@updateSensor',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('destroysensor/{id}',[
 		'uses' => 'SensorsController@destroySensor',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::match(['get', 'post'],'filtersensor',[
 		'uses' => 'SensorsController@filterSensor',
@@ -105,110 +98,91 @@ Route::group(['middlewareGroups' => 'web'], function () {
 
 	Route::get('addcategory',[
 		'uses' => 'CategoriesController@viewaddCategories',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('editcategory/{id}',[
 		'uses' => 'CategoriesController@editCategory',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('savecategory', [
 		'uses' => 'CategoriesController@saveCategory',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('updatecategory', [
 		'uses' => 'CategoriesController@updateCategory',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('destroycategory/{id}', [
 		'uses' => 'CategoriesController@destroyCategory',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::match(['get', 'post'],'viewcategories',[
 		'uses' => 'CategoriesController@viewCategories',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::match(['get', 'post'],'destroymultiplecategories',[
 		'uses' => 'CategoriesController@destroymultipleCategories',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 
 	Route::get('addprovince',[
 		'uses' => 'ProvinceController@viewaddProvince',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('editprovince/{id}',[
 		'uses' => 'ProvinceController@editProvince',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('saveprovince', [
 		'uses' => 'ProvinceController@saveProvince',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('updateprovince',[
 		'uses' => 'ProvinceController@updateProvince',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('destroyprovince/{id}', [
 		'uses' => 'ProvinceController@destroyProvince',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::match(['get', 'post'],'viewprovince',[
 		'uses' => 'ProvinceController@viewProvince',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::match(['get', 'post'],'destroymultipleprovinces',[
 		'uses' => 'ProvinceController@destroymultipleProvinces',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('addmunicipality',[
 		'uses' => 'MunicipalityController@viewaddMunicipality',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('editmunicipality/{id}',[
 		'uses' => 'MunicipalityController@editMunicipality',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('savemunicipality', [
 		'uses' => 'MunicipalityController@saveMunicipality',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('updatemunicipality', [
 		'uses' => 'MunicipalityController@updateMunicipality',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('destroymunicipality/{id}',[
 		'uses' => 'MunicipalityController@destroyMunicipality',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::match(['get', 'post'],'viewmunicipality',[
 		'uses' => 'MunicipalityController@viewMunicipality',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::match(['get', 'post'],'destroymultiplemunicipality',[
 		'uses' => 'MunicipalityController@destroymultipleMunicipality',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
+
+	Route::post('getbrgy', 'MunicipalityController@getbarangays')->middleware('auth')->name('getbrgy');
 
 	Route::match(['get', 'post'],'viewusers',[
 		'uses' => 'UserController@viewusers',
@@ -278,146 +252,118 @@ Route::group(['middlewareGroups' => 'web'], function () {
 
 	Route::match(['get', 'post'],'viewthreshold',[
 		'uses' => 'ThresholdController@viewThreshold',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('viewaddthreshold',[
 		'uses' => 'ThresholdController@viewaddThreshold',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('savethreshold',[
 		'uses' => 'ThresholdController@saveThreshold',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('editthreshold/{id}', [
 		'uses' => 'ThresholdController@editThreshold',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('updatethreshold',[
 		'uses' => 'ThresholdController@updateThreshold',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('destroythreshold/{id}',[
 		'uses' => 'ThresholdController@destroyThreshold',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::match(['get', 'post'],'destroymultiplethreshold', [
 		'uses' => 'ThresholdController@destroymultipleThreshold',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 
 	Route::match(['get', 'post'],'viewfloodproneareas',[
 		'uses' => 'FloodproneareasController@viewFloodproneAreas',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::match(['get', 'post'],'destroymultiplefloodproneareas', [
 		'uses' => 'FloodproneareasController@destroymultipleFloodproneAreas',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('destroyfloodpronearea/{id}',[
 		'uses' => 'FloodproneareasController@destroyFloodpronearea',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('viewaddfloodpronearea',[
 		'uses' => 'FloodproneareasController@viewaddFloodproneArea',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('savefloodpronearea',[
 		'uses' => 'FloodproneareasController@saveFloodproneArea',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('editfloodpronearea/{id}', [
 		'uses' => 'FloodproneareasController@editFloodproneArea',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('updatefloodpronearea', [
 		'uses' => 'FloodproneareasController@updateFloodproneArea',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 
 	Route::match(['get', 'post'],'viewthresholdflood',[
 		'uses' => 'ThresholdFlood@viewThresholdFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::match(['get', 'post'],'destroymultiplethresholdflood', [
 		'uses' => 'ThresholdFlood@destroymultipleThresholdFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('viewaddthresholdflood',[
 		'uses' => 'ThresholdFlood@viewaddThresholdFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('savethresholdflood',[
 		'uses' => 'ThresholdFlood@saveThresholdFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('editthresholdflood/{id}', [
 		'uses' => 'ThresholdFlood@editThresholdFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('updatethresholdflood',[
 		'uses' => 'ThresholdFlood@updateThresholdFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('destroythresholdflood/{id}',[
 		'uses' => 'ThresholdFlood@destroyThresholdFlood',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	
 	Route::match(['get', 'post'],'destroymultiplesusceptibility',[
 		'uses' => 'SusceptibilityController@destroymultipleSusceptibility',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::match(['get', 'post'],'viewsusceptibility',[
 		'uses' => 'SusceptibilityController@viewSusceptibility',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('viewaddsusceptibility',[
 		'uses' => 'SusceptibilityController@viewaddSusceptibility',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('savesusceptibility',[
 		'uses' => 'SusceptibilityController@saveSusceptibility',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('editsusceptibility/{id}', [
 		'uses' => 'SusceptibilityController@editSusceptibility',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('updatesusceptibility',[
 		'uses' => 'SusceptibilityController@updateSusceptibility',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::get('destroysusceptibility/{id}', [
 		'uses' => 'SusceptibilityController@destroySusceptibility',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 
 	//Report Generation Routes
@@ -562,14 +508,12 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	//MINER
 	Route::get('minerpage',[ 
 		'uses' => 'PagesController@minerPage',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	
 	Route::post('saveminer', [
 		'uses' => 'PagesController@saveMiner',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('getsensorlist', 'PagesController@getSensorList')->middleware('auth')->name('getsensorlist');
 	Route::post('saveminer2','PagesController@saveMiner2')->middleware('auth')->name('startmining');
@@ -590,19 +534,16 @@ Route::group(['middlewareGroups' => 'web'], function () {
 
 	Route::post('generatekml', [
 		'uses' => 'IncidentsController@generateKml',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	
 	Route::get('debuggenerate',[ 
 		'uses' => 'GenerateKmlController@viewpageGenerate',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::post('postgenerate',[ 
 		'uses' => 'GenerateKmlController@postGenerate',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 
 	Route::post('updateprofile',[
@@ -818,8 +759,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	]);
 	Route::post('view', [
 		'uses' => 'ProvinceController@saveProvince',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 
 	Route::get('ajax-subcat','SensorsController@duplicate');
@@ -1070,8 +1010,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	]);
 	Route::get('destroytyphoon/{id}',[
 		'uses' => 'TyphoontrackController@destroyTyphoon',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 	Route::match(['get', 'post'],'edittyphoontrack/{id}', [
 		'uses' => 'TyphoontrackController@editTyphoonTracks',
@@ -1080,8 +1019,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	]);
 	Route::match(['get', 'post'],'destroymultipletyphoons', [
 		'uses' => 'TyphoontrackController@destroymultipleTyphoons',
-		'middleware' => 'roles',
-		'roles' => ['Developer']
+		'middleware' => 'auth',
 	]);
 
 	//preparedness pages

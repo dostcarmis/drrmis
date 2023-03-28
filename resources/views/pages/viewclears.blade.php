@@ -116,6 +116,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center">Survey Date</th>
+                                <th class="text-center">Barangay</th>
                                 <th class="text-center">Municipality</th>
                                 <th class="text-center">Province</th>
                                 <th class="text-center">Uploaded by</th>
@@ -152,6 +153,7 @@
                                         </div>								
                                     </span>
                                 </td>
+                                <td class="c-b-id" b_id="{{$r->barangay_id != null && $r->barangay_id != '' ? $r->barangay_id : 'empty'}}">{{$r->municipality->barangay($r->barangay_id) ? $r->municipality->barangay($r->barangay_id)->name : ''}}</td>
                                 <td class="c-m-id" m_id="{{$r->municipality_id}}">{{$r->municipality->name}}</td>
                                 <td class="c-p-id">{{$r->province->name == "Mountain Province" ? "Mt. Province":$r->province->name }}</td>
                                 <td class="c-uploader">{{$r->user->first_name." ".$r->user->last_name}}</td>
@@ -244,7 +246,7 @@
                         </style>
                         <div style="text-align: center">
                             <span style="font-size: 20pt">RAIN-INDUCED LANDSLIDE SUSCEPTIBILITY REPORT</span><br>
-                            <span style="font-size: 14pt">DOST-CAR | DRRMIS</span><br><br>
+                            <span style="font-size: 14pt"><span class="r-municipality"></span>, <span class="r-province"></span></span><br><br>
                         </div>
                         <div style="border:1px solid rgb(74, 74, 74); width: 100%; "></div><br>
                         <div id="r-image" style="
@@ -254,7 +256,7 @@
                         <span style="font-size: 13pt">Report Details</span><br>
                         <br>
 
-                        <b>Location:</b> <span class="r-municipality"></span>, <span class="r-province"></span><br>
+                        <b>Assessed Site:</b> <br>
                         <b>Survey Date:</b> <span class="r-date"></span><br>
                         <b>Latitude:</b> <span class="r-lat"></span><br>
                         <b>Longitude:</b> <span class="r-lon"></span><br>
@@ -525,9 +527,13 @@
                             <legend>Location and Date</legend>
                             <label for="form-c-date">Survey date</label>
                             <input type="date" class="form-control" id="form-c-date" name="survey_date">
+                            <label for="form-c-b-id">Barangay</label>
+                            <select name="barangay_id" id="form-c-b-id" required class="form-control">
+
+                            </select>
                             <label for="form-c-m-id">Municipality</label>
                             @if (Auth::user()->role_id <=3)
-                                <select class="form-control" id="form-c-m-id" name="municipality_id">
+                                <select class="form-control" id="form-c-m-id" name="municipality_id" required>
                                     @foreach ($munis as $m)
                                         <option value="{{$m->id}}">{{$m->name}}</option>
                                     @endforeach
@@ -708,6 +714,10 @@
                             <legend>Location and Date</legend>
                             <label for="form-ac-date">Survey date</label>
                             <input type="date" class="form-control" id="form-ac-date" name="survey_date" required>
+                            <label for="form-ac-b-id">Barangay</label>
+                            <select name="barangay_id" id="form-ac-b-id" required class="form-control" disabled>
+
+                            </select>
                             <label for="form-ac-m-id">Municipality</label>
                             @if (Auth::user()->role_id <=3)
                                 <select class="form-control" id="form-ac-m-id" name="municipality_id">
@@ -970,9 +980,11 @@
     .on('click','.clears-e-btn',function(e){
         // e.originalEvent.stopImmedatePropagation();
         $('[data-toggle="tooltip"]').tooltip();
+
         let row = $(e.currentTarget).closest('tr');
         let date = row.find('.c-date').text();
         let muni = row.find('.c-m-id').attr('m_id');
+        let brgy = row.find('.c-b-id').attr('b_id');
         let material = row.find('.c-material').attr('mid');
         let sRating = row.find('.c-material').text();
         let veg = row.find('.c-vegetation').text();
@@ -988,6 +1000,26 @@
         let lat = row.attr('lat');
         let id = row.attr('report-id');
         let img = row.attr('image');
+        $.ajax({
+            type:"POST",
+            data: {'municipal_id':muni},
+            url: baseURL+"getbrgy",
+            success:function(res){
+                let options = '';
+                (res.barangays).forEach(element => {
+                    
+                    options+= "<option value='"+element.id+"'";
+                    if(brgy != 'empty' && element.id == brgy) options += " selected";
+                        options += ">"+element.name+"</option>"
+                        
+                });
+                $('#form-c-b-id').html(options);
+                
+            }
+        });
+
+
+
         $('#latitude').val(lat);
         $('#longitude').val(long);
         $('#clears-edit-form #form-c-id').val(id);
@@ -1179,6 +1211,7 @@
                         row.attr('lat',report.survey_latitude);
                         row.attr('image',report.image);
                         row.find('.c-date').text(report.survey_date);
+                        row.find('.c-b-id').attr('b_id',report.barangay_id).text(report.barangay_name);
                         row.find('.c-m-id').attr('m_id',report.municipality_id).text(report.municipality_name);
                         row.find('.c-p-id').text(report.province_name == "Mountain Province" ? "Mt. Province":report.province_name);
                         row.find('.c-material').attr('mid',report.material_id).attr('title',report.material).text(report.sRating);
@@ -1223,6 +1256,48 @@
                 $('#alert-danger #content').text(response.msg)
             }
         })
+    })
+    .on('change','#form-c-m-id', function(e){
+        e.stopImmediatePropagation();
+        let muni = $('#clears-edit-form #form-c-m-id').val();
+        $.ajax({
+            type:"POST",
+            data: {'municipal_id':muni},
+            url: baseURL+"getbrgy",
+            beforeSend:function(){
+                $('#form-c-b-id').prop('disabled',true);
+                $('#form-c-b-id').empty();
+            },
+            success:function(res){
+                let options = '';
+                (res.barangays).forEach(element => {
+                    options+= "<option value='"+element.id+"'>"+element.name+"</option>"
+                });
+                $('#form-c-b-id').html(options).removeProp('disabled').removeAttr('disabled');
+                
+            }
+        });
+    })
+    .on('change','#form-ac-m-id', function(e){
+        e.stopImmediatePropagation();
+        let muni = $('#clears-add-form #form-ac-m-id').val();
+        $.ajax({
+            type:"POST",
+            data: {'municipal_id':muni},
+            url: baseURL+"getbrgy",
+            beforeSend:function(){
+                $('#form-ac-b-id').prop('disabled',true);
+                $('#form-ac-b-id').empty();
+            },
+            success:function(res){
+                let options = '';
+                (res.barangays).forEach(element => {
+                    options+= "<option value='"+element.id+"'>"+element.name+"</option>"
+                });
+                $('#form-ac-b-id').html(options).removeProp('disabled').removeAttr('disabled');
+                
+            }
+        });
     })
     .on('submit','#clears-add-form',function(e){
         e.preventDefault();
@@ -1541,4 +1616,5 @@
         }, 500);
         
     }
+    
 </script>

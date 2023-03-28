@@ -19,6 +19,7 @@ class ClearsController extends Controller
     public function save(Request $request){
         $rules = [
             "municipality_id"=>'required|numeric',
+            "barangay_id"=>'required|numeric',
             "survey_date"=>'required|date',
             "survey_latitude"=>'required|numeric',
             "survey_longitude"=>'required|numeric',
@@ -49,6 +50,7 @@ class ClearsController extends Controller
                     }
                     $make = Clears::create([
                         "municipality_id"=>$request->input("municipality_id"),
+                        "barangay_id"=>$request->input("barangay_id"),
                         "user_id"=>$user->id,
                         "survey_date"=>$request->input("survey_date"),
                         "survey_latitude"=>$request->input("survey_latitude"),
@@ -97,7 +99,7 @@ class ClearsController extends Controller
     }
     public function show(Request $request){
         $res = Clears::where('deleted_at',null)->get();
-        $munis = Municipality::get();
+        $munis = Municipality::orderBy('name')->get();
         return view('pages.viewclears',compact('res','munis'));
         // return response()->json(["res"=]);
     }
@@ -108,6 +110,7 @@ class ClearsController extends Controller
     public function update(Request $req){
         $rules = [
             "clears_id"=>"required|numeric",
+            "barangay_id"=>'numeric',
             "municipality_id"=>'required|numeric',
             "survey_date"=>'required|date',
             "survey_latitude"=>'required|numeric',
@@ -160,7 +163,8 @@ class ClearsController extends Controller
                 }
                 $req['image'] = $pic;
                 $dirty = Clears::dirty($report,$req);
-                $update = $report->update([
+                $in = [
+                    'barangay_id' =>$req->has('barangay_id')? $req->input('barangay_id'): null,
                     "municipality_id"=>$req->input("municipality_id"),
                     "survey_date"=>date("Y-m-d",strtotime($req->input("survey_date"))),
                     "survey_latitude"=>$req->input("survey_latitude"),
@@ -179,9 +183,19 @@ class ClearsController extends Controller
                     "alphaRating"=>$req->input("alphaRating"),
                     "Fs"=>$req->input("Fs"),
                     "image"=>$pic
-                ]);
+                ];
+                // if($req->has('barangay_id')){
+                //     $in['barangay_id'] = $req->input('barangay_id');
+                // }
+                $update = $report->update($in);
                 if($update){
                     $report = $report->toArray();
+                    if($req->has('barangay_id')){
+                        $report['barangay_name'] = $collection->municipality->barangay($req->input('barangay_id'))->name;
+                    }else{
+                        $report['barangay_name'] = "";
+                    }
+                    $report["survey_date"]= date("Y-m-d",strtotime($collection->survey_date));
                     $report['municipality_name'] = $collection->municipality->name;
                     $report['province_name'] = $collection->province->name;
                     $report['material'] = $collection->slopeMaterial($collection->material_id);
@@ -200,7 +214,7 @@ class ClearsController extends Controller
                         'source'=>"WEB",
                         'remarks'=>$dirty
                     ]);
-                    return response()->json(['success'=>true,'report'=>$report,'dirty'=>$dirty]);
+                    return response()->json(['success'=>true,'report'=>$report,'dirty'=>$dirty, 'update'=>$in]);
                 }else{
                     return response()->json(['success'=>false,'msg'=>"Update Failed."]);
                 }
@@ -242,17 +256,17 @@ class ClearsController extends Controller
             $fs = $req->input('fs');
             if($req->input('filter') == 1){
                 switch($fs){
-                    case 1: $res = Clears::get();break;
-                    case 2: $res = Clears::where('Fs','>=',1.2)->get();break;
-                    case 3: $res = Clears::where('Fs','>=',1)->where('Fs','<',1.2)->get();break;
-                    case 4: $res = Clears::where('Fs','>=',0.7)->where('Fs','<',1)->get();break;
-                    case 5: $res = Clears::where('Fs','<',0.7)->get();break;
-                    default: $res = Clears::get();break;
+                    case 1: $res = Clears::where('deleted_at',null)->get();break;
+                    case 2: $res = Clears::where('deleted_at',null)->where('Fs','>=',1.2)->get();break;
+                    case 3: $res = Clears::where('deleted_at',null)->where('Fs','>=',1)->where('Fs','<',1.2)->get();break;
+                    case 4: $res = Clears::where('deleted_at',null)->where('Fs','>=',0.7)->where('Fs','<',1)->get();break;
+                    case 5: $res = Clears::where('deleted_at',null)->where('Fs','<',0.7)->get();break;
+                    default: $res = Clears::where('deleted_at',null)->get();break;
                 }
                 
             }else{
                 $uid = Auth::user()->id;
-                $res = Clears::where('user_id',$uid);
+                $res = Clears::where('deleted_at',null)->where('user_id',$uid);
                 switch($fs){
                     case 1: $res = $res->get();break;
                     case 2: $res = $res->where('Fs','>=',1.2)->get();break;

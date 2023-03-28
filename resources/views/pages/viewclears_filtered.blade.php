@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th class="text-center">Survey Date</th>
+            <th class="text-center">Barangay</th>
             <th class="text-center">Municipality</th>
             <th class="text-center">Province</th>
             <th class="text-center">Uploaded by</th>
@@ -32,6 +33,7 @@
                         </div>								
                     </span>
                 </td>
+                <td class="c-b-id" b_id="{{$r->barangay_id != null && $r->barangay_id != '' ? $r->barangay_id : 'empty'}}">{{$r->municipality->barangay($r->barangay_id) ? $r->municipality->barangay($r->barangay_id)->name : ''}}</td>
                 <td class="c-m-id" m_id="{{$r->municipality_id}}">{{$r->municipality->name}}</td>
                 <td class="c-p-id">{{$r->province->name == "Mountain Province" ? "Mt. Province":$r->province->name }}</td>
                 <td>{{$r->user->first_name." ".$r->user->last_name}}</td>
