@@ -4,6 +4,7 @@
     .grid-container {-webkit-column-count: 2;column-count: 2;}
     .grid-container .panel{-webkit-column-break-inside: avoid;page-break-inside: avoid;break-inside: avoid;}
     #addcoords{ width: 100%; }
+    #clears-table.table th{font-size: 13px;}
     #clears-table.table>tbody>tr>td{padding:5px 0px; text-align: center;}
     #clears-table.table>tbody>tr>td.text-danger{color: red !important;}
     #clears-table.table>tbody>tr>td.text-success{color: rgb(4, 157, 4) !important;}
@@ -115,7 +116,7 @@
                     <table id="clears-table" class="table tbldashboard table-hover">
                         <thead>
                             <tr>
-                                <th class="text-center">Survey Date</th>
+                                <th class="text-center"  style="min-width: 100px;">Survey Date</th>
                                 <th class="text-center">Barangay</th>
                                 <th class="text-center">Municipality</th>
                                 <th class="text-center">Province</th>
@@ -203,7 +204,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="well text-left">
-                            Location: <span class="r-municipality"></span>, <span class="r-province"></span><br>
+                            Location: <span class="r-barangay"></span>, <span class="r-municipality"></span>, <span class="r-province"></span><br>
                             Survey Date: <span class="r-date"></span><br>
                             Latitude: <span class="r-lat"></span><br>
                             Longitude: <span class="r-lon"></span><br>
@@ -244,38 +245,46 @@
                                 }
                             }
                         </style>
-                        <div style="text-align: center">
-                            <span style="font-size: 20pt">RAIN-INDUCED LANDSLIDE SUSCEPTIBILITY REPORT</span><br>
-                            <span style="font-size: 14pt"><span class="r-municipality"></span>, <span class="r-province"></span></span><br><br>
+                        <div style="position:relative; height: 100%">
+                            <div style="flex-grow: 1; flex: 1">
+                                <div style="text-align: center">
+                                    <span style="font-size: 20pt">RAIN-INDUCED LANDSLIDE SUSCEPTIBILITY REPORT</span><br>
+                                    <span style="font-size: 14pt"><span class="r-municipality"></span>, <span class="r-province"></span></span><br><br>
+                                </div>
+                                <div style="border:1px solid rgb(74, 74, 74); width: 100%; "></div><br>
+                                <div id="r-image" style="
+                                    background-size: contain; background-position: center; background-repeat: no-repeat;
+                                    width: 80%; height: 250px; margin:auto;
+                                "></div>
+                                <span style="font-size: 13pt">Report Details</span><br>
+                                <br>
+        
+                                <b>Assessed Site:</b> <span class="r-barangay"></span>, <span class="r-municipality"></span>, <span class="r-province"></span><br>
+                                <b>Survey Date:</b> <span class="r-date"></span><br>
+                                <b>Latitude:</b> <span class="r-lat"></span><br>
+                                <b>Longitude:</b> <span class="r-lon"></span><br>
+                                <b>Slope Material:</b> <span class="r-sr"></span><br>
+                                <b>Vegetation:</b> <span class="r-vf"></span><br>
+                                <b>Frequency of slope failure:</b> <span class="r-ff"></span><br>
+                                <b>Presence of springs:</b> <span class="r-sred"></span><br>
+                                <b>Condition of drainage/canal/culvert:</b> <span class="r-dred"></span><br>
+                                <b>Amount of rainfall (mm) in 24 hours:</b> <span class="r-rain"></span><br>
+                                <b>Land use:</b> <span class="r-lf"></span><br>
+                                <b>Slope Rating:</b> <span class="r-slope"></span><br>
+                                <b>Factor of Stability:</b> <span class="r-fs"></span><br>
+                                The slope is <span class="r-fs-desc"></span>.<br>
+                            </div>
+                            <div style="position: absolute; bottom: 2in">
+                                Assessed by:  <span class="r-name"></span><br>
+                                Date: <span class="r-upload-date"></span>.<br>
+                            </div>
+                            <div style="position: absolute; bottom: 0">
+                                <span style="font-size: 9pt"><i>Report generated by drrmis.dostcar.ph on <span class="c-current-date">{{date('F d, Y')}}</span></i></span>
+                            </div>
+                            
                         </div>
-                        <div style="border:1px solid rgb(74, 74, 74); width: 100%; "></div><br>
-                        <div id="r-image" style="
-                            background-size: contain; background-position: center; background-repeat: no-repeat;
-                            width: 80%; height: 250px; margin:auto;
-                        "></div>
-                        <span style="font-size: 13pt">Report Details</span><br>
-                        <br>
-
-                        <b>Assessed Site:</b> <br>
-                        <b>Survey Date:</b> <span class="r-date"></span><br>
-                        <b>Latitude:</b> <span class="r-lat"></span><br>
-                        <b>Longitude:</b> <span class="r-lon"></span><br>
-                        <b>Slope Material:</b> <span class="r-sr"></span><br>
-                        <b>Vegetation:</b> <span class="r-vf"></span><br>
-                        <b>Frequency of slope failure:</b> <span class="r-ff"></span><br>
-                        <b>Presence of springs:</b> <span class="r-sred"></span><br>
-                        <b>Condition of drainage/canal/culvert:</b> <span class="r-dred"></span><br>
-                        <b>Amount of rainfall (mm) in 24 hours:</b> <span class="r-rain"></span><br>
-                        <b>Land use:</b> <span class="r-lf"></span><br>
-                        <b>Slope Rating:</b> <span class="r-slope"></span><br>
-                        <b>Factor of Stability:</b> <span class="r-fs"></span><br>
-                        The slope is <span class="r-fs-desc"></span><br>
-                        This report is submitted by <span class="r-name"></span> on <span class="r-upload-date"></span>.<br>
-                        
-                        
-                        <br><br><br>
-                        <span style="font-size: 9pt"><i>Report generated by drrmis.dostcar.ph on <span class="c-current-date">{{date('F d, Y')}}</span></i></span>
                     </div>
+                        
                 </div>
                 
             </div>
@@ -1476,6 +1485,10 @@
         
         let row = $(e.currentTarget).closest('tr');
         let date = row.find('.c-date').text();
+        date = new Date(date);
+        let options = {year: 'numeric', month: 'long', day: 'numeric' };
+        date = date.toLocaleDateString(undefined,options);
+        let brgy = row.find('.c-b-id').text();
         let muni = row.find('.c-m-id').text();
         let prov = row.find('.c-p-id').text();
         let material = row.find('.c-material').attr('title');
@@ -1495,18 +1508,24 @@
         let id = row.attr('report-id');
         let name = row.find('.c-uploader').text();
         let up_date = row.attr('upload-date');
+        up_date = new Date(up_date);
+        up_date = up_date.toLocaleDateString(undefined,options);
         let img = row.attr('image');
         if( img != '' && img != null && img != undefined){
             $('#r-view-map').attr('image',"{{asset('photos/clears')}}"+"/"+img);
             $('#r-image').css('background-image',"url({{asset('photos/clears')}}"+"/"+img+")");
         }else{
             $('#preview-image').attr('image',"");
-            $('#r-image').text('No image attached').css('height','15px');
+            $('#r-image').text('no image attached').css({
+                'height':'14px','text-align':'center','font-variant':'small-caps',
+                'color':'grey'
+            });
         }
         
         if(spring == "Empty value"){ spring = "Not recorded"}
         if(canal == "Empty value"){ canal = "Not recorded"}
         if(rain == "Empty value"){ rain = "Not recorded"}
+        $('.r-barangay').text(brgy);
         $('.r-municipality').text(muni);
         $('.r-province').text(prov);
         $(".r-date").text(date);
