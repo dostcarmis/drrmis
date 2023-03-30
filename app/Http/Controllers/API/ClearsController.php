@@ -103,8 +103,8 @@ class ClearsController extends Controller
                     $make = Clears::create([
                         "municipality_id"=>$request->input("municipality_id"),
                         "user_id"=>$user->id,
-                        "survey_date"=>$request->input("survey_date"),
-                        "survey_latitude"=>date('Y-m-d',strtotime($request->input("survey_latitude"))),
+                        "survey_date"=>date('Y-m-d',strtotime($request->input("survey_date"))),
+                        "survey_latitude"=>$request->input("survey_latitude"),
                         "survey_longitude"=>$request->input("survey_longitude"),
                         "vFactor"=>$request->input("vFactor"),
                         "fFactor"=>$request->input("fFactor"),
