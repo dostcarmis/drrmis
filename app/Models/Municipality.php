@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Barangays;
+use App\Riskassess;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -31,7 +32,7 @@ class Municipality extends Model
     protected $hidden = [];
 
     public function province(){
-        return $this->belongsTo(Province::class);
+        return $this->belongsTo(Province::class,'province_id');
     }
     public function barangays($municipal_id = null){
         if($municipal_id != null){
@@ -42,5 +43,8 @@ class Municipality extends Model
     }
     public function barangay($id){
         return Barangays::find($id);
+    }
+    public function riskAssessments(){
+        return $this->hasMany(Riskassess::class,'municipality_id');
     }
 }

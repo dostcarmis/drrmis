@@ -158,7 +158,9 @@ class User extends Authenticatable {
         $fullName = $fname. " " .$lname;
         return $fullName ? $fullName : NULL;
     }
-
+    public function riskAssessments(){
+        return $this->hasMany(Riskassess::class,'uploadedby');
+    }
     public function activityLogs($request, $msg){
         $userid = $this->id ? $this->id : NULL;
         $requestURL = $request->getRequestUri();

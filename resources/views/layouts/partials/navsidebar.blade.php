@@ -150,9 +150,16 @@
                 @endif
                 @if (Auth::user()->hasAccess(5))
                 <li>
-                    <a data-toggle="modal" data-target="#selectProvmodal" href="#">
-                        <i class="fa fa-files-o"></i> <span class="nav-module">{{Auth::user()->module(5)->name}}</span>
-                    </a>
+                    @if (Auth::user()->role_id < 4)
+                        <a data-toggle="modal" data-target="#selectProvmodal" href="#">
+                            <i class="fa fa-files-o"></i> <span class="nav-module">{{Auth::user()->module(5)->name}}</span>
+                        </a>
+                    @else
+                        <a href="{{ url("riskassessmentfiles/".Auth::user()->province_id."/".Auth::user()->municipality_id) }}">
+                            <i class="fa fa-files-o"></i> <span class="nav-module">{{Auth::user()->module(5)->name}}</span>
+                        </a>
+                    @endif
+                    
                 </li>
                 @endif
                 <li>

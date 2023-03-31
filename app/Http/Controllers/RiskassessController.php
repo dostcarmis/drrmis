@@ -11,43 +11,53 @@ use Auth;
 use File;
 use  App\Models\Province;
 use App\Models\User;
+use App\Riskassess;
 
 class RiskassessController extends Controller
 {
     public function mainView(){
-        return view('pages.mainviewriskassessfiles');
+            $munici = Municipality::where('province_id',Auth::user()->province_id)->orderBy('name','asc')->get();
+            return view('pages.mainviewriskassessfiles',compact('munici'));
 
     }
     
-    public function viewFiles($province){
-        $role =  Auth::user()->role_id;
+    public function viewFiles($province_id,$municipal_id){
+        if(is_numeric($province_id) && Auth::user()->hasAccess(5)){
+            $role =  Auth::user()->role_id;
+            $upid = Auth::user()->province_id;
+            
+            $municipalities = Municipality::orderBy('name','asc')->get();
+            $riskfiles = Riskassess::where('province_id',$province_id);
+            if($role > 3){
+                $muni = Auth::user()->municipality_id;
+                $riskfiles = Riskassess::where('municipality_id',$muni);
+            }else if($role <= 3 ){
+                if($municipal_id != 'all'){
+                    $riskfiles = $riskfiles->where('municipality_id',$municipal_id);
+                }
+                
+                if($role < 3){
+                    $riskfiles = $riskfiles->where('province_id',$province_id);
+                }else{
+                    $riskfiles = $riskfiles->where('province_id',Auth::user()->province_id);
+                }
+            }else{
 
-        if($role > 2){
-            if(strtolower($province) != strtolower(Auth::user()->province->name)){
-                return back();
             }
+
+            
+            $riskfiles = $riskfiles->orderBy('created_at', 'desc')->get();
+            
+            
+            return view('pages.viewriskassesfiles',compact('riskfiles','municipalities'));
+        }else{
+            return response()->json(['success'=>'danger','message'=>"Access denied"]);
         }
-        $riskfiles = DB::table('tbl_riskassessfiles as risk') 
-                    ->select('risk.*',
-                        DB::raw('CONCAT(user.first_name, " ", user.last_name) as name'))
-                    ->join('users as user', 'user.id', '=', 'risk.uploadedby')
-                    ->where('risk.province', 'LIKE', '%'.$province.'%');
-        if($role == 4){
-            $muni = Auth::user()->municipality->name;
-            $riskfiles = $riskfiles->where('risk.municipality','LIKE','%'.$muni.'%');
-        }
-        $riskfiles = $riskfiles->orderBy('risk.created_at', 'desc')->get();
-        $return = ['riskfile' => $riskfiles];
-        if($role <= 3){
-            $municipalities = Municipality::where('province_id',Auth::user()->province_id)->get();
-            $return['municipalities'] = $municipalities;
-        }
-        return view('pages.viewriskassesfiles')->with($return);
     }
 
-    public function viewaddRiskfiles(){
 
-        return view('pages.addriskfile');
+    public function viewaddRiskfiles(){
+        return view('pages.addriskfile',compact('municipalities'));
     }
     
     public function deleteRiskfile($id){
@@ -92,7 +102,7 @@ class RiskassessController extends Controller
             $nospaceFilename = str_replace(' ', '', $originalNameNoExtension);
             $fileurl = 'fileuploads/riskassessments/'. $nospaceFilename. '.'. $fileExtension;
             $countname = DB::table('tbl_riskassessfiles')->where('original_name', '=', $nospaceFilename)->count(); 
-            
+            $municipality = Municipality::find($post['municipality']);
             $fname = '';
             $origName = '';
 
@@ -123,21 +133,21 @@ class RiskassessController extends Controller
                     'fileurl' => $fileurl,
                     'file' => $fname,
                     'filetype' => $fileExtension,
-                    'municipality'=>'',
+                    'municipality_id'=>$post['municipality'],
+                    'province_id'=>$municipality->province->id,
                     'date'=>$post['date']
             );
             if($cntUser->role_id <= 3){
                 if($request->has('municipality') && $request->input('municipality') != null && $request->input('municipality') != "0"){
                     $muni = $request->input('municipality');
-                    $munis = Municipality::where('name','LIKE','%'.$muni.'%')->get()->first();
-                    // return back()->with('message',($munis->province_id." ".$provincedata->id));
+                    $munis = Municipality::where('id',$muni)->get()->first();
                     if(
                         (empty($munis) || $munis == null) ||
                         ($munis->province_id != $provincedata->id)
                     ){
                         return back()->with('message','Invalid municipality');
                     }else{
-                        $row['municipality'] = $muni;
+                        $row['municipality'] = $municipality->name;
                     }
                     
                 }else{

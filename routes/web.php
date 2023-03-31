@@ -1115,7 +1115,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	]);	
 	
 	//risk assess pages
-	Route::match(['get', 'post'],'riskassessmentfiles/{province}',[
+	Route::match(['get', 'post'],'riskassessmentfiles/{province_id}/{municipal_id}',[
 		'uses' => 'RiskassessController@viewFiles',
 		'middleware' => 'auth', //'roles'
 		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
