@@ -209,8 +209,8 @@ $(document).ready(function(){
         });
 
         $("#mymodal").on("hidden.bs.modal", function (e) {
-          e.preventDefault();
-            window.location = 'incidents';
+          //e.preventDefault();
+          $("##mymodal").modal("hide");
         });
     } 
   });
@@ -370,8 +370,8 @@ $.ajax({
     });
 
     $("#mymodal").on("hidden.bs.modal", function (e) {
-      e.preventDefault();
-      window.location = 'sent-messages';
+      //e.preventDefault();
+      $("##mymodal").modal("hide");
     });
   } 
 });

@@ -300,7 +300,7 @@ class UserController extends Controller {
                     'role_id' => $post['role_id'],     
                     'email' => $post['email'],
                     'group' => $post['group'],
-                    'password'=> bcrypt('password')
+                    'password'=> bcrypt('password'),
                 ];
                 $userrole =  ['role_id' => $post['role_id']];
 

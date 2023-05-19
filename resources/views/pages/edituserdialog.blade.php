@@ -15,8 +15,8 @@
    
       
       <div class="modal-footer">
-        <input class="btn btn-confirms" type="submit" value="Update" />
-        <button type="button"  class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        <input class="btn btn-primary" type="submit" value="Update" />
+        <button  class="btn btn-secondary" type="button"  data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>

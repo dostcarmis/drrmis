@@ -71,7 +71,7 @@
 	<div class="col-xs-12 col-sm-6 perinputwrap">
 		<label>Group:</label>
 		<select name="group" id="group" class="form-control">
-			<option>None</option>
+			
 			@foreach($groups as $group)
 				@if($group->id === $users->group)
 					<option selected="selected" value="{{ $group->id }}">
@@ -97,12 +97,14 @@
 			@endforeach
 		</select>
 	</div>
+
 	@endif
 	
 
 	<div class="col-xs-12 perinputwrap text-right">
 	<a class ="btn btn-update" title="Update" data-toggle="modal" data-target="#mymodal">Update User</a>
 	<a class="btn btn-cancel" href="{{ action("UserController@viewusers") }}">Cancel</a> 
+	
 	@include('pages.edituserdialog')
 	</div>
 	

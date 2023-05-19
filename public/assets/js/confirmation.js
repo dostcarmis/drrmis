@@ -13,8 +13,8 @@ jQuery(function($){
 		});
 
 		$("#mymodal").on("hidden.bs.modal", function (e) {
-			e.preventDefault();
-		    window.location = 'incidents';
+			//e.preventDefault();
+		    $("##mymodal").modal("hide");;
 		});
 		
 $('.headcheckbox').click(function (e) {
