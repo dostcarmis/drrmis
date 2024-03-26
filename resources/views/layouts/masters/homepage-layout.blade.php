@@ -122,7 +122,7 @@
     </div>
         
         
-        <script src="http://maps.google.com/maps/api/js?key=AIzaSyC058wNQG2iAeF7z0ysRHQw_0Gsqd6Xp5s"></script>
+        <script src="https://maps.google.com/maps/api/js?key=AIzaSyC058wNQG2iAeF7z0ysRHQw_0Gsqd6Xp5s"></script>
         <script src="{!! url('assets/js/notification.js')!!}"></script>
         <script src="{!! url('js/jquery.mmenu.all.min.js')!!}"></script>
         <script src="{!! url('js/jquery.fancybox.pack.js')!!}"></script>

@@ -353,8 +353,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://climatex.dost.gov.ph/" target="_blank">
-                        <i class="fa fa-link" aria-hidden="true"></i> ClimateX
+                    <a href="https://landslidekm.dostcar.ph/" target="_blank">
+                        <i class="fa fa-link" aria-hidden="true"></i> LandslideKM
                     </a>
                 </li>
                 <li>
