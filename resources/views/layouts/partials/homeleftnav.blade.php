@@ -148,7 +148,7 @@
           <li><a href="#" data-value="<?php echo $path.$files[5];?>" class="contourclick"><span>Mt. Province</span></a></li>
         </ul>
       </li>
-      
+      <!-- Sample-->
       <!-- @if($typhoonstatus[0]->typhoonstat == 1)
         <li  class="collapsed prntli">
           <a data-toggle="collapse"  class="homepagetoogle" data-target=".typhoontracks" href="#"><i class="fa fa-1x fa-road" aria-hidden="true"></i>  Typhoon Tracks<span class="arrow"></span></a>
