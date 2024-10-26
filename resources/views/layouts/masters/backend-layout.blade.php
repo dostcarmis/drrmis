@@ -57,7 +57,7 @@
         </aside>
     </div>
     
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyC058wNQG2iAeF7z0ysRHQw_0Gsqd6Xp5s"></script> 
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyC058wNQG2iAeF7z0ysRHQw_0Gsqd6Xp5s"></script> 
     <script src="{!! url('js/moment.js') !!}"></script>
     <script src="{!! url('js/bootstrap-datetimepicker.min.js') !!}"></script>
 
