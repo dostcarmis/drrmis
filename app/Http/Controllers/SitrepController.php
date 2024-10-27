@@ -254,9 +254,9 @@ class SitrepController extends Controller
             $i = DB::table('tbl_sitreps')->insert($row);
                 if($i > 0){
                     \Session::flash('success_upload', 'File successfully uploaded');
-                    return redirect('sitreps');
+                    return back();
                 }
-                return redirect('sitreps');
+                return back();
             
         }
     }
