@@ -50,7 +50,7 @@
 				<td>
 					<div class="btn-group pull-right">
 						@if($file->uploadedby == Auth::user()->id)
-							<a class="delete btn btn-danger xs-px-2 sm-px-2 md-p-2" onclick="$(this).delfile({{ $file->id }});" title="Delete File">
+							<a class="delete btn btn-danger xs-px-2 sm-px-2 md-p-2" onclick="$(this).deleteFile({{ $file->id }});" title="Delete File">
 								<i class="fa fa-trash md-d-none" aria-hidden="true"></i>
 								<span class="xs-d-none sm-d-none md-d-block">Delete</span>
 							</a>
