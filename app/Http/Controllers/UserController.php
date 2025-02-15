@@ -29,15 +29,19 @@ class UserController extends Controller {
         $this->middleware('auth');
     }
     public function destroymultipleUser(Request $request) {
+        
         if(Auth::user()->role_id > 4){
             return redirect()->back();
         }
         User::destroy($request->chks);
         $chk = count($request->chks);
+        $cntUser = Auth::user();
 
         if ($chk == 1) {
+            $cntUser->activityLogs($request, $msg = "Deleted a user");
             $delmsg = 'User successfully deleted.';
         } else {
+            $cntUser->activityLogs($request, $msg = "Deleted multiple users");
             $delmsg = $chk .' users successfully deleted.';
         }
         
@@ -425,6 +429,7 @@ class UserController extends Controller {
             }           
 
             Session::flash('message', 'User successfully added');
+            $cntUser->activityLogs($request, $msg = "Added a new user");
             return redirect('viewusers');
         }
     }
@@ -526,10 +531,12 @@ class UserController extends Controller {
 
             if ($i > 0) {
                 Session::flash('message', 'User successfully deleted');
+                $user->activityLogs($request, $msg = "Deleted a user");
                 return redirect('viewusers');
             }
         } else {
             Session::flash('message', 'Cannot delete own account!');
+            $user->activityLogs($request, $msg = "Trying to delete own account");
             return redirect('viewusers');
         }
     }
