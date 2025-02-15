@@ -106,3 +106,23 @@ $(document)/* .on('input','#searchFileName',function(e){
 $(document).ready( function () {
     $('#sitrep_table, #files-repo-table').DataTable();
 });
+
+
+
+
+$(function(){
+    $.fn.deleteFile = function(id){
+        
+        var r = confirm("Are you sure you want to delete this file?");
+        if (r == true){
+            var url = "filedownloadpage/deletefile/" + id;
+            $('#delete-file').attr('action' , url).submit();
+            //console.log(url);
+        } else {   
+
+        }    
+    }
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+});
