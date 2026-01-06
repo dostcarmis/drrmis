@@ -44,7 +44,7 @@
                         <a class="btn" href="{{ action("UserController@profile") }}">Profile</a>
                     </li>                        
                     <li>
-                        {!! link_to_route('get_logout', 'Log out',array() ,array('class' => 'btn')) !!}
+                        {!! link_to_route('get_logout', 'Log out', array(), array('class' => 'btn')) !!}
                     </li>
                 </div>                             
             </ul>
@@ -86,6 +86,19 @@
     .on('click','#innerNav .navbar-ex1-collapse a[data-toggle=collapse]',function(e){
         $('#innerNav .navbar-ex1-collapse a[data-toggle=collapse]').not($(e.currentTarget)).toggleClass('collapsed').attr('aria-expanded','false').next('.collapse').removeClass('in').attr('aria-expanded','false');
     })
+    // .on('click','#nav-landslide-inventories, #li-landslide-inventories',function(){
+    //     let url = baseURL+"landslide-inventories";
+    //     $.ajax({
+    //         type:"GET",
+    //         data:{},
+    //         url: url,
+    //         success:function(r){
+    //             $('#page-wrapper').html(r)
+    //             $('#landslide-inventories-table').DataTable();
+    //             $('[data-toggle="tooltip"]').tooltip();
+    //         }
+    //     })
+    // })
     .on('click','#nav-clears, #li-clears',function(){
         let url = baseURL+"clears-show";
         $.ajax({

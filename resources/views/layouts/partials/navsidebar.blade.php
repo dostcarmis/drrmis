@@ -141,6 +141,13 @@
                 <i class="fa fa-flag"></i> Risk Assessment <i class="fa fa-fw fa-caret-down float-end"></i>
             </a>
             <ul id="riskassess" class="collapse" aria-expanded="true">
+                @if (Auth::user()->hasAccess(15))
+                <li id="nav-landslide-inventories">
+                    <a href="{{ route('landslide-inventories.index') }}">
+                        <i class="fa fa-files-o"></i> <span class="nav-module">{{Auth::user()->module(15)->name}}</span></a>
+                    </a>
+                </li>
+                @endif
                 @if (Auth::user()->hasAccess(4))
                 <li id="nav-clears">
                     <a href="#">

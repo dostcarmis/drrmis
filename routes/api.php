@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +33,14 @@ Route::post('logout-clears','API\ClearsController@logout');
 Route::post('show-clears','API\ClearsController@show');
 Route::post('delete-clears','API\ClearsController@delete');
 
+Route::group([
+    'prefix' => 'landslide-inventories',
+    'name' => 'landslide-inventories.',
+], function() {
+    Route::post('/', 'API\LandslideInventoryController@store')->name('store');
+});
+
 Route::group(['middleware' => 'auth:api'], function() {
-    
     Route::post('user-info', 'API\UserController@getUserInfo');
     Route::post('get-queue-sms', 'API\GsmModuleController@getQueueSMS');
     Route::post('dispose-sent-msgs', 'API\GsmModuleController@disposeSentJsonFile');

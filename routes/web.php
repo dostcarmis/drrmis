@@ -1130,6 +1130,29 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'auth', //'roles'
 		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	]);
+
+	/*==============LANDSLIDE INVENTORY ROUTES================*/
+	Route::match(['get', 'post'], 'landslide-inventories' ,[
+		'uses' => 'LandslideInventoryController@index',
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	])->name('landslide-inventories.index');
+	Route::match(['get'], 'landslide-inventories/{id}/show' ,[
+		'uses' => 'LandslideInventoryController@show',
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	])->name('landslide-inventories.show');
+	Route::match(['get'], 'landslide-inventories/{id}/edit' ,[
+		'uses' => 'LandslideInventoryController@edit',
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	])->name('landslide-inventories.edit');
+	Route::match(['put'], 'landslide-inventories/{id}/update' ,[
+		'uses' => 'LandslideInventoryController@update',
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	])->name('landslide-inventories.update');
+
 	/*==============CLEARS ROUTES================*/
 	Route::post('clears-show', 'ClearsController@show');
 	Route::post('clears-audit', 'ClearsController@showAudit')->middleware('auth')->name('c-audit');;
