@@ -1132,11 +1132,15 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	]);
 
 	/*==============LANDSLIDE INVENTORY ROUTES================*/
-	Route::match(['get', 'post'], 'landslide-inventories' ,[
+	Route::get('landslide-inventories', [
 		'uses' => 'LandslideInventoryController@index',
-		'middleware' => 'auth', //'roles'
-		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
+		'middleware' => 'auth',
 	])->name('landslide-inventories.index');
+
+	Route::post('landslide-inventories', [
+		'uses' => 'LandslideInventoryController@store',
+		'middleware' => 'auth',
+	])->name('landslide-inventories.store');
 	Route::match(['get'], 'landslide-inventories/{id}/show' ,[
 		'uses' => 'LandslideInventoryController@show',
 		'middleware' => 'auth', //'roles'
@@ -1152,6 +1156,11 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'auth', //'roles'
 		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	])->name('landslide-inventories.update');
+
+	Route::get('api/csrf', function () {
+    return response()->json(['token' => csrf_token()]);
+	})->middleware('auth');
+
 
 	/*==============CLEARS ROUTES================*/
 	Route::post('clears-show', 'ClearsController@show');

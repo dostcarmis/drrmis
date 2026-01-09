@@ -21,6 +21,49 @@ class LandslideInventoryController extends Controller
         return view('pages.landslide-inventories', compact('landslides'));
     }
 
+    public function store(Request $request)
+{
+    // Accept JSON payload (React)
+    $payload = $request->json()->all();
+    if (empty($payload)) {
+        $payload = $request->all(); // fallback
+    }
+
+
+    // Validate required fields
+    if (empty($payload['date'])) {
+        return response()->json([
+            'ok' => false,
+            'error' => 'Date is required'
+        ], 422);
+    }
+
+    $inventory = new LandslideInventory();
+
+    $inventory->date = $payload['date'];                  // YYYY-MM-DD
+    $inventory->location = $payload['location'] ?? null;
+
+    // JSON columns (MySQL JSON type)
+    $inventory->details  = $payload['details']  ?? null;
+    $inventory->analysis = $payload['analysis'] ?? null;
+    $inventory->remarks  = $payload['remarks']  ?? null;
+
+    // Default validation status (1 = pending)
+    $inventory->validation_status = 1;
+
+    // Link to logged-in DRRMIS user
+    if (auth()->check()) {
+        $inventory->created_by = auth()->id();
+    }
+
+    $inventory->save();
+
+    return response()->json([
+        'ok' => true,
+        'id' => $inventory->id,
+    ], 201);
+}
+
     /**
      * Display the specified resource.
      *
@@ -33,9 +76,10 @@ class LandslideInventoryController extends Controller
             ->findOrFail($id);
 
         // Pretty JSON string printing for details, analysis, and remarks
-        $landslideInventory->details_formatted = json_encode(json_decode($landslideInventory->details), JSON_PRETTY_PRINT);
-        $landslideInventory->analysis_formatted = json_encode(json_decode($landslideInventory->analysis), JSON_PRETTY_PRINT);
-        $landslideInventory->remarks_formatted = json_encode(json_decode($landslideInventory->remarks), JSON_PRETTY_PRINT);
+        $landslideInventory->details_formatted = json_encode($landslideInventory->details ?? new \stdClass(), JSON_PRETTY_PRINT);
+        $landslideInventory->analysis_formatted = json_encode($landslideInventory->analysis ?? new \stdClass(), JSON_PRETTY_PRINT);
+        $landslideInventory->remarks_formatted = json_encode($landslideInventory->remarks ?? new \stdClass(), JSON_PRETTY_PRINT);
+
 
         return view('pages.landslide-inventory', compact('landslideInventory'));
     }
@@ -53,9 +97,10 @@ class LandslideInventoryController extends Controller
         $landslideInventoryValidations = LandslideInventoryValidation::orderBy('name')->get();
 
         // Pretty JSON string printing for details, analysis, and remarks
-        $landslideInventory->details_formatted = json_encode(json_decode($landslideInventory->details), JSON_PRETTY_PRINT);
-        $landslideInventory->analysis_formatted = json_encode(json_decode($landslideInventory->analysis), JSON_PRETTY_PRINT);
-        $landslideInventory->remarks_formatted = json_encode(json_decode($landslideInventory->remarks), JSON_PRETTY_PRINT);
+        $landslideInventory->details_formatted = json_encode($landslideInventory->details ?? new \stdClass(), JSON_PRETTY_PRINT);
+        $landslideInventory->analysis_formatted = json_encode($landslideInventory->analysis ?? new \stdClass(), JSON_PRETTY_PRINT);
+        $landslideInventory->remarks_formatted = json_encode($landslideInventory->remarks ?? new \stdClass(), JSON_PRETTY_PRINT);
+
 
         return view('pages.edit-landslide-inventory', compact('landslideInventory', 'landslideInventoryValidations'));
     }

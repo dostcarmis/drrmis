@@ -14,6 +14,13 @@ class LandslideInventory extends Model
      *
      * @var array
      */
+
+    protected $casts = [
+        'details'  => 'array',
+        'analysis' => 'array',
+        'remarks'  => 'array',
+    ];
+    
     protected $fillable = [
         'date', 
         'location', 

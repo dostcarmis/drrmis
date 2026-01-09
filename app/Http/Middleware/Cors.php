@@ -14,23 +14,34 @@ class Cors
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
-        $headers = [
-            'Access-Control-Allow-Origin'      => 'http://localhost:3000',
-            'Access-Control-Allow-Methods'     => 'GET, POST, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers'     => 'Content-Type, Authorization, X-Requested-With',
-            'Access-Control-Allow-Credentials' => 'true',
-        ];
+{
+    $origin = $request->headers->get('Origin');
 
-        if ($request->getMethod() === "OPTIONS") {
-            return response()->json('OK', 200, $headers);
-        }
+    $allowed = [
+        'http://localhost:5173',
+        'http://127.0.0.1:5173',
+    ];
 
-        $response = $next($request);
-        foreach ($headers as $key => $value) {
-            $response->headers->set($key, $value);
-        }
+    $headers = [
+        'Access-Control-Allow-Methods'     => 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers'     => 'Content-Type, Authorization, X-Requested-With, X-CSRF-TOKEN, X-XSRF-TOKEN',
+        'Access-Control-Allow-Credentials' => 'true',
+        'Vary'                             => 'Origin',
+    ];
 
-        return $response;
+    if ($origin && in_array($origin, $allowed, true)) {
+        $headers['Access-Control-Allow-Origin'] = $origin;
     }
+
+    if ($request->getMethod() === "OPTIONS") {
+        return response('', 204, $headers);
+    }
+
+    $response = $next($request);
+    foreach ($headers as $key => $value) {
+        $response->headers->set($key, $value);
+    }
+    return $response;
+}
+
 }
