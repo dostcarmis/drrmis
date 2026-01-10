@@ -14,7 +14,7 @@ class LandslideInventoryModuleSeeder extends Seeder
     public function run()
     {
         Modules::create([
-            'name' => 'Landslide Inventories',
+            'name' => 'Landslides (GEE)',
             'description' => 'Module for managing landslide inventory data'
         ]);
     }

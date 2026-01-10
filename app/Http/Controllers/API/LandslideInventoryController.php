@@ -5,24 +5,11 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\LandslideInventory;
+use App\Models\User;
 use Illuminate\Validation\ValidationException;
 
 class LandslideInventoryController extends Controller
 {
-    // public function __construct()
-    // {
-    //     // Apply CORS headers to all responses from this controller
-    //     $this->middleware(function ($request, $next) {
-    //         $response = $next($request);
-
-    //         $response->headers->set('Access-Control-Allow-Origin', ['http://localhost:3000', 'http://drrmis.test']);
-    //         $response->headers->set('Access-Control-Allow-Methods', '*');
-    //         $response->headers->set('Access-Control-Allow-Headers', 'Content-Type');
-
-    //         return $response;
-    //     });
-    // }
-
     /**
      * Display a listing of the resource.
      *
@@ -41,6 +28,8 @@ class LandslideInventoryController extends Controller
      */
     public function store(Request $request)
     {
+        $user = $request->user();
+
         try {
             $validatedData = $request->validate([
                 'date' => 'required|date',
@@ -52,15 +41,17 @@ class LandslideInventoryController extends Controller
             ]);
 
             $landslideInventory = LandslideInventory::create(array_merge($validatedData, [
-                'details' => json_encode($validatedData['details'] ?? []),
-                'analysis' => json_encode($validatedData['analysis'] ?? []),
-                'remarks' => json_encode($validatedData['remarks'] ?? []),
+                'details' => $validatedData['details'] ?: (object)[],
+                'analysis' => $validatedData['analysis'] ?: (object)[],
+                'remarks' => $validatedData['remarks'] ?: (object)[],
+                'validation_status' => $validatedData['validation_status'] ?? 1,
+                'created_by' => $user->id ?? NULL,
             ]));
 
             return response()->json([
                 'data' => $landslideInventory,
                 'message' => 'Landslide inventory stored successfully'
-            ]);
+            ], 201);
         } catch (ValidationException $e) {
             return response()->json(['errors' => $e->errors()], 422);
         }

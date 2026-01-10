@@ -14,8 +14,8 @@ class LandslideInventoryValidationSeeder extends Seeder
     {
         $validations = [
             [
-                'name' => 'Pending',
-                'description' => 'Awaiting validation or additional data',
+                'name' => 'Candidate (Unvalidated)',
+                'description' => 'Initial identification pending validation',
                 'active' => true
             ],
             [
@@ -24,13 +24,18 @@ class LandslideInventoryValidationSeeder extends Seeder
                 'active' => true
             ],
             [
-                'name' => 'Probable',
-                'description' => 'Strong indicators but limited confirmation',
+                'name' => 'Confirmed (Field Validation)',
+                'description' => 'Verified by on-site inspection',
                 'active' => true
             ],
             [
-                'name' => 'Confirmed',
-                'description' => 'Verified by expert review and/or multiple data sources',
+                'name' => 'Confirmed (Remote Validation)',
+                'description' => 'Verified by high-resolution imagery or other remote sensing methods',
+                'active' => true
+            ],
+            [
+                'name' => 'Candidate (Unvalidated)',
+                'description' => 'Identified as a potential landslide but not yet validated',
                 'active' => true
             ],
         ];

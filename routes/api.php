@@ -36,6 +36,7 @@ Route::post('delete-clears','API\ClearsController@delete');
 Route::group([
     'prefix' => 'landslide-inventories',
     'name' => 'landslide-inventories.',
+    'middleware' => 'token.auth'
 ], function() {
     Route::post('/', 'API\LandslideInventoryController@store')->name('store');
 });
@@ -45,4 +46,8 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('get-queue-sms', 'API\GsmModuleController@getQueueSMS');
     Route::post('dispose-sent-msgs', 'API\GsmModuleController@disposeSentJsonFile');
     Route::post('store-sent-msgs', 'API\GsmModuleController@storeSentMessages');
+
+    Route::get('csrf', function () {
+        return response()->json(['token' => csrf_token()]);
+    });
 });

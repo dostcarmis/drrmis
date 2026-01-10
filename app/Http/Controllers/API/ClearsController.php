@@ -38,7 +38,7 @@ class ClearsController extends Controller
                     $success = true;
                     
                     $content = view('api.clears.success',compact('message','success','api_token'));
-                    return response()->json(['message'=>$message])->withHeaders([
+                    return response()->json(['message'=>$message, 'c_token'=>$api_token])->withHeaders([
                         'Content-Type' => 'application/json',
                         'X-success'=>true,
                         'X-c_token'=>$api_token]);
@@ -59,7 +59,7 @@ class ClearsController extends Controller
                 $message = "Login Successful";
                 $success = true;
                 $content = view('api.clears.success',compact('message'));
-                return response()->json(['message'=>$message])->withHeaders([
+                return response()->json(['message'=>$message, 'c_token'=>$api_token])->withHeaders([
                     'Content-Type' => 'application/json',
                     'X-success'=>true,
                     'X-c_token'=>$api_token]);

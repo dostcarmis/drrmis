@@ -3,7 +3,7 @@
 
 <div class="row">
 	<div class="col-xs-12">
-		<h1 class="page-header">Landslide Inventories</h1>
+		<h1 class="page-header">Landslides (GEE)</h1>
 	</div>
 
 	{{-- <form action="{{ action('LandslideController@destroymultipleLandslides') }}"> --}}
