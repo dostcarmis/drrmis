@@ -14,21 +14,19 @@ class LandslideInventory extends Model
      *
      * @var array
      */
-
-    protected $casts = [
-        'details'  => 'array',
-        'analysis' => 'array',
-        'remarks'  => 'array',
-    ];
-    
     protected $fillable = [
         'date', 
         'location', 
         'details', 
         'analysis', 
-        'remarks', 
-        'validation_status',
-        'created_by'
+        'remarks',
+        'created_by_id'
+    ];
+
+    protected $casts = [
+        'details'  => 'array',
+        'analysis' => 'array',
+        'remarks'  => 'array',
     ];
 
     /**
@@ -38,13 +36,23 @@ class LandslideInventory extends Model
      */
     protected $hidden = [];
 
-    public function landslideInventoryValidation()
-    {
-        return $this->hasOne(LandslideInventoryValidation::class, 'id', 'validation_status');
-    }
-
+    /**
+     * Get the user associated with this landslide inventory.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
-        return $this->belongsTo(User::class, 'created_by', 'id');
+        return $this->belongsTo(User::class, 'created_by_id', 'id');
+    }
+
+    /**
+     * Get the candidates associated with this landslide inventory.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function candidates()
+    {
+        return $this->hasMany(LandslideInventoryCandidate::class, 'landslide_inventory_id');
     }
 }

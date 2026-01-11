@@ -1,4 +1,4 @@
-<div class="collapse navbar-collapse navbar-ex1-collapse">
+F<div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
         <li>
             <a href="{{ action("PagesController@home") }}"><i class="fa fa-eye" aria-hidden="true"></i> View Site</a>
@@ -149,7 +149,7 @@
             </a>
             <ul id="riskassess" class="collapse" aria-expanded="true">
                 <li>
-                    <a href="{{ config('integration.clouds.app_url') }}" target="_blank">
+                    <a href="{{ route('landslide-inventories.login') }}" target="_blank">
                         <i class="fa fa-link" aria-hidden="true"></i> CLOUDS
                     </a>
                 </li>

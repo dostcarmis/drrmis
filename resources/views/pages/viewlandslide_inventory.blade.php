@@ -4,41 +4,35 @@
 <div class="row">   
     <div class="col-xs-12 text-center">
         <h1 class="pg-title page-header mb-2"> {!! $landslideInventory->location !!}</h1>
-        <span class="defsp pagedate"><?php echo date("F j Y g:ia", strtotime($landslideInventory->date));?></span>
+        <span class="defsp pagedate">{{ date("F j Y g:ia", strtotime($landslideInventory->date)) }}</span>
     </div>
 
     @if((Auth::user()->id == $landslideInventory->created_by) || (Auth::user()->role_id <= 3))
         <div class="col-xs-12 np text-right editlink">
-            <a href="{{ route('landslide-inventories.edit', $landslideInventory->id) }}" style="margin-right:5px">Edit This Landslide Inventory</a> 
+            <a href="{{ route('landslide-inventories.show', $landslideInventory->id) }}">Back</a>
         </div>
     @endif
 
     <div class="col-xs-12 col-sm-8">
         <div class="col-xs-12 pagedescription np">          
             <h3>Details</h3>
-            <pre style="max-height: 400px; overflow-y: auto;">
-            {!! !empty($landslideInventory->details_formatted) ? $landslideInventory->details_formatted : 'No details available.' !!}  
-            </pre>  
+            <pre style="max-height: 400px; overflow-y: auto;">{!! !empty($landslideInventory->details_formatted) ? $landslideInventory->details_formatted : 'No details available.' !!}</pre>  
         </div>
 
         <div class="col-xs-12 pagedescription np">          
             <h3>Analysis</h3>
-            <pre style="max-height: 400px; overflow-y: auto;">
-            {!! !empty($landslideInventory->analysis_formatted) ? $landslideInventory->analysis_formatted : 'No analysis available.' !!}  
-            </pre>
+            <pre style="max-height: 400px; overflow-y: auto;">{!! !empty($landslideInventory->analysis_formatted) ? $landslideInventory->analysis_formatted : 'No analysis available.' !!}</pre>
         </div>
 
         <div class="col-xs-12 pagedescription np">          
             <h3>Remarks</h3>
-            <pre style="max-height: 400px; overflow-y: auto;">
-            {!! !empty($landslideInventory->remarks_formatted) ? $landslideInventory->remarks_formatted : 'No remarks available.' !!}  
-            </pre>
+            <pre style="max-height: 400px; overflow-y: auto;">{!! !empty($landslideInventory->remarks_formatted) ? $landslideInventory->remarks_formatted : 'No remarks available.' !!}  </pre>
         </div>
         
         <div class="col-xs-12 pagefoot np"> 
             <span class="defsp">This inventory is created and added to this system by: <span>
-                @if(!empty($landslideInventory->user))
-                    {{ $landslideInventory->user->last_name }}, {{ $landslideInventory->user->first_name }}
+                @if(!empty($landslideInventory->validator))
+                    {{ $landslideInventory->validator->full_name }}
                 @else
                     Unknown User
                 @endif
@@ -51,16 +45,6 @@
         <div id="latvalue" style="display:none"><span>{{ $landslideInventory->latitude }}</span></div>
         <div id="longvalue" style="display:none"><span>{{ $landslideInventory->longitude }}</span></div>
         <div id="lfmap" style="height: 500px; width: 100%;"></div>
-		
-		{{-- Show validation status --}}
-		<div class="col-xs-12 np mt-2">
-			<strong>Validation Status:</strong>
-			@if(!empty($landslideInventory->landslideInventoryValidation))
-				{{ $landslideInventory->landslideInventoryValidation->name }}
-			@else
-				Not Validated
-			@endif
-		</div>
     </div>
 
     @if((Auth::user()->id == $landslideInventory->created_by) || (Auth::user()->role_id <= 3))

@@ -15,27 +15,27 @@ class LandslideInventoryValidationSeeder extends Seeder
         $validations = [
             [
                 'name' => 'Candidate (Unvalidated)',
-                'description' => 'Initial identification pending validation',
-                'active' => true
-            ],
-            [
-                'name' => 'Rejected',
-                'description' => 'False positive (e.g., agriculture, construction)',
+                'description' => 'Raw detection awaiting authoritative review and taxonomic classification.',
                 'active' => true
             ],
             [
                 'name' => 'Confirmed (Field Validation)',
-                'description' => 'Verified by on-site inspection',
+                'description' => 'Empirically verified through on-site ground-truthing and physical geological assessment.',
                 'active' => true
             ],
             [
                 'name' => 'Confirmed (Remote Validation)',
-                'description' => 'Verified by high-resolution imagery or other remote sensing methods',
+                'description' => 'Verified via high-resolution multi-spectral imagery or LiDAR topographic analysis.',
                 'active' => true
             ],
             [
-                'name' => 'Candidate (Unvalidated)',
-                'description' => 'Identified as a potential landslide but not yet validated',
+                'name' => 'Rejected',
+                'description' => 'Identified as a false positive; feature corresponds to anthropogenic activity or non-landslide geomorphology.',
+                'active' => true
+            ],
+            [
+                'name' => 'Requires Further Validation',
+                'description' => 'Inconclusive evidence; necessitates secondary expert review or multi-temporal data comparison.',
                 'active' => true
             ],
         ];

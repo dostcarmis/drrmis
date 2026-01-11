@@ -20,12 +20,8 @@ class CreateLandslideInventoriesTable extends Migration
             $table->json('details')->nullable();
             $table->json('analysis')->nullable();
             $table->json('remarks')->nullable();
-            $table->unsignedInteger('validation_status')->default(1);
-            $table->foreign('validation_status')
-                ->references('id')
-                ->on('landslide_inventory_validations');
-            $table->unsignedInteger('created_by')->nullable();
-            $table->foreign('created_by')
+            $table->unsignedInteger('created_by_id')->nullable();
+            $table->foreign('created_by_id')
                 ->references('id')
                 ->on('users');
             $table->timestamps();

@@ -6,6 +6,7 @@ use App\Models\Municipality;
 use App\Models\Province;
 use App\RoleModules;
 use App\Role;
+use Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,23 @@ class User extends Model implements JWTSubject {
         'cellphone_num',
         'c_token'
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['full_name'];
+
+    /**
+     * Get the user's combined first and last name.
+     *
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return trim("{$this->first_name} {$this->last_name}");
+    }
 
     /**
      * The attributes that should be hidden for arrays.

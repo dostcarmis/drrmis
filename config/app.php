@@ -235,6 +235,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'FilemanagerLaravel'=> Pqb\FilemanagerLaravel\Facades\FilemanagerLaravel::class,
         'Javascript' => Laracasts\Utilities\JavaScript\JavaScriptFacade::class,
+        'JsonPrettify' => App\Helpers\JsonHelper::class,
 
     ],
 

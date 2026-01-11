@@ -1132,6 +1132,11 @@ Route::group(['middlewareGroups' => 'web'], function () {
 	]);
 
 	/*==============LANDSLIDE INVENTORY ROUTES================*/
+	Route::match(['get'], 'landslide-inventories/login' ,[
+		'uses' => 'LandslideInventoryController@login',
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	])->name('landslide-inventories.login');
 	Route::get('landslide-inventories', [
 		'uses' => 'LandslideInventoryController@index',
 		'middleware' => 'auth',
@@ -1151,6 +1156,11 @@ Route::group(['middlewareGroups' => 'web'], function () {
 		'middleware' => 'auth', //'roles'
 		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
 	])->name('landslide-inventories.update');
+	Route::match(['post'], 'landslide-inventories/{id}/upload-image' ,[
+		'uses' => 'LandslideInventoryController@uploadImage',
+		'middleware' => 'auth', //'roles'
+		// 'roles' => ['Developer','PDRRM','Admin','MDRRM']
+	])->name('landslide-inventories.uploadimage');
 
 	/*==============CLEARS ROUTES================*/
 	Route::post('clears-show', 'ClearsController@show');
