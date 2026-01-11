@@ -13,7 +13,7 @@
     <p style="color:red">{{ $message }}</p>
 @endforeach
 
-<?php 
+@php
     if(!($landslideInventory->incident_images)){
         $landslideInventoryImages = [];  
     }else{
@@ -24,7 +24,7 @@
             $landslideInventoryImages = [];
         }
     }
-?>
+@endphp
 
 <p style="color:#00CA00">{{ Session::get('message') }}</p>
 
@@ -176,8 +176,19 @@
             </div>
         </div>
     </div>
-
 </form>
+
+<div class="col-xs-12 col-sm-12">
+    <div class="col-xs-12 pagedescription np">          
+        <h3>Analysis</h3>
+        <pre style="max-height: 400px; overflow-y: auto;">{!! !empty($landslideInventory->analysis_formatted) ? $landslideInventory->analysis_formatted : 'No analysis available.' !!}</pre>
+    </div>
+
+    <div class="col-xs-12 pagedescription np">          
+        <h3>Remarks</h3>
+        <pre style="max-height: 400px; overflow-y: auto;">{!! !empty($landslideInventory->remarks_formatted) ? $landslideInventory->remarks_formatted : 'No remarks available.' !!}</pre>
+    </div>
+</div>
 
 @else
 <h2>Insufficient Permission!!!</h2>
