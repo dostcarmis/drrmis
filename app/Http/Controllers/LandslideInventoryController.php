@@ -67,8 +67,13 @@ class LandslideInventoryController extends Controller
         );
         $landslideInventory->remarks_formatted = json_encode($landslideInventory->landslideInventory->remarks ?? new \stdClass(), JSON_PRETTY_PRINT);
 
+        $incidentImages = collect($landslideInventory->incident_images);
+        // dd($incidentImages);
 
-        return view('pages.viewlandslide_inventory_candidate', compact('landslideInventory'));
+        return view('pages.viewlandslide_inventory_candidate', compact(
+            'landslideInventory',
+            'incidentImages'
+        ));
     }
 
     /**

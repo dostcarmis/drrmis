@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <h1 class="page-header">Edit Landslide Inventory</h1>
+        <h1 class="page-header">Edit Landslide (GEE)</h1>
     </div>
 </div>
 

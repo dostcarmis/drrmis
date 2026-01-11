@@ -1,10 +1,23 @@
 @extends('layouts.masters.frontend-layouts')
 @section('page-content')
+
+@php
+    if(!($landslideInventory->incident_images)){
+        $landslideInventoryImages = [];  
+    }else{
+        $landslideInventoryImages = is_string($landslideInventory->incident_images) 
+            ? json_decode($landslideInventory->incident_images, true) 
+            : $landslideInventory->incident_images;
+        if(!is_array($landslideInventoryImages)) {
+            $landslideInventoryImages = [];
+        }
+    }
+@endphp
     
 <div class="row">   
     <div class="col-xs-12 text-center">
         <h1 class="pg-title page-header mb-2"> {!! $landslideInventory->location ?? "No Location - Update Required" !!}</h1>
-        <span class="defsp pagedate">{{ date("F j, Y", strtotime($landslideInventory->date)) }}</span>
+        <span class="defsp pagedate">{{ date("F j, Y g:ia", strtotime($landslideInventory->created_at)) }}</span>
     </div>
 
     @if((Auth::user()->id == $landslideInventory->validator_id) || (Auth::user()->role_id <= 3))
@@ -14,7 +27,7 @@
                 'id' => $landslideInventory->id,
                 'view-all' => '1'
             ]) }}">View All</a> |
-            <a href="{{ route('landslide-inventories.edit', $landslideInventory->id) }}" style="margin-right:5px">Edit This Landslide Inventory</a> 
+            <a href="{{ route('landslide-inventories.edit', $landslideInventory->id) }}" style="margin-right:5px">Edit This Landslide (GEE)</a> 
         </div>
     @endif
 
@@ -54,6 +67,14 @@
 			@else
 				Not Validated
 			@endif
+		</div>
+
+        <div class="incident-images col-xs-12 np">
+			@foreach($landslideInventoryImages as $landslideimg)
+				<div class="col-xs-12 col-sm-6 incident-perimages">
+					<a href="{{$landslideimg}}" data-fancybox-group="myimages" class="fancybox thumbnail"><img class="mres" src="{{$landslideimg}}"></a>
+				</div>
+			@endforeach
 		</div>
     </div>
 
