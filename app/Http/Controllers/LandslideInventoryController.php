@@ -169,15 +169,10 @@ class LandslideInventoryController extends Controller
         // Handle candidateimages from dropzone
         if ($request->has('candidateimages') && !empty($request->candidateimages)) {
             $uploadedImages = explode(',', $request->candidateimages);
-            $uploadedImages = array_filter($uploadedImages); // Remove empty values
-            
-            // Remove -@ suffix from images
-            $uploadedImages = array_map(function($img) {
+            $cleanedUploads = array_filter(array_map(function($img) {
                 return str_replace('-@', '', trim($img));
-            }, $uploadedImages);
-            
-            // Merge with current images
-            $currentImages = array_merge($currentImages, $uploadedImages);
+            }, $uploadedImages));
+            $currentImages = array_values(array_unique(array_merge($currentImages, $cleanedUploads)));
         }
 
         $landslideInventory->update([
@@ -189,7 +184,7 @@ class LandslideInventoryController extends Controller
             'area_m2' => $validatedData['area_m2'],
             'validation_id' => $validatedData['validation_id'],
             'validator_id' => Auth::user()->id,
-            'incident_images' => !empty($currentImages) ? json_encode($currentImages) : null,
+            'incident_images' => !empty($currentImages) ? json_encode($currentImages, JSON_UNESCAPED_SLASHES) : null,
         ]);
 
         Session::flash('message', 'Landslide inventory candidate updated successfully.');
@@ -218,7 +213,7 @@ class LandslideInventoryController extends Controller
             $file = $request->file('file');
             
             // Create directory if it doesn't exist
-            $uploadPath = public_path('files/1/Landslide Images');
+            $uploadPath = public_path('files/1/landslide_inventory_images');
             if (!file_exists($uploadPath)) {
                 mkdir($uploadPath, 0755, true);
             }
@@ -230,7 +225,7 @@ class LandslideInventoryController extends Controller
             $file->move($uploadPath, $filename);
             
             // Get relative path for storage (without baseUrl)
-            $relativePath = 'files/1/Landslide Images/' . $filename;
+            $relativePath = 'files/1/landslide_inventory_images/' . $filename;
 
             return response()->json([
                 'success' => true,

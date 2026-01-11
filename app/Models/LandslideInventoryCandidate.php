@@ -36,6 +36,10 @@ class LandslideInventoryCandidate extends Model
      */
     protected $hidden = [];
 
+    protected $casts = [
+        'incident_images' => 'array',
+    ];
+
     /**
      * Get the landslide inventory associated with this landslide inventory candidate.
      *
